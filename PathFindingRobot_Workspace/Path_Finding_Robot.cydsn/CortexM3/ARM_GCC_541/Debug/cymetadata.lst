@@ -1,0 +1,3858 @@
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 3180
+  28              	cy_meta_configecc:
+  29 0000 01       		.byte	1
+  30 0001 45       		.byte	69
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 02       		.byte	2
+  34 0005 4F       		.byte	79
+  35 0006 00       		.byte	0
+  36 0007 40       		.byte	64
+  37 0008 09       		.byte	9
+  38 0009 52       		.byte	82
+  39 000a 00       		.byte	0
+  40 000b 40       		.byte	64
+  41 000c 01       		.byte	1
+  42 000d 5B       		.byte	91
+  43 000e 00       		.byte	0
+  44 000f 40       		.byte	64
+  45 0010 02       		.byte	2
+  46 0011 64       		.byte	100
+  47 0012 00       		.byte	0
+  48 0013 40       		.byte	64
+  49 0014 03       		.byte	3
+  50 0015 65       		.byte	101
+  51 0016 00       		.byte	0
+  52 0017 40       		.byte	64
+  53 0018 1E       		.byte	30
+  54 0019 00       		.byte	0
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 27       		.byte	39
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 2
+
+
+  58 001d 01       		.byte	1
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 20       		.byte	32
+  62 0021 02       		.byte	2
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 42       		.byte	66
+  66 0025 03       		.byte	3
+  67 0026 01       		.byte	1
+  68 0027 40       		.byte	64
+  69 0028 4F       		.byte	79
+  70 0029 04       		.byte	4
+  71 002a 01       		.byte	1
+  72 002b 40       		.byte	64
+  73 002c 3E       		.byte	62
+  74 002d 05       		.byte	5
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 39       		.byte	57
+  78 0031 06       		.byte	6
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 44       		.byte	68
+  82 0035 07       		.byte	7
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 2F       		.byte	47
+  86 0039 08       		.byte	8
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 36       		.byte	54
+  90 003d 09       		.byte	9
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 28       		.byte	40
+  94 0041 0A       		.byte	10
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 40       		.byte	64
+  98 0045 0B       		.byte	11
+  99 0046 01       		.byte	1
+ 100 0047 40       		.byte	64
+ 101 0048 20       		.byte	32
+ 102 0049 0C       		.byte	12
+ 103 004a 01       		.byte	1
+ 104 004b 40       		.byte	64
+ 105 004c 40       		.byte	64
+ 106 004d 0D       		.byte	13
+ 107 004e 01       		.byte	1
+ 108 004f 40       		.byte	64
+ 109 0050 22       		.byte	34
+ 110 0051 0E       		.byte	14
+ 111 0052 01       		.byte	1
+ 112 0053 40       		.byte	64
+ 113 0054 2C       		.byte	44
+ 114 0055 0F       		.byte	15
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 3
+
+
+ 115 0056 01       		.byte	1
+ 116 0057 40       		.byte	64
+ 117 0058 57       		.byte	87
+ 118 0059 14       		.byte	20
+ 119 005a 01       		.byte	1
+ 120 005b 40       		.byte	64
+ 121 005c 3C       		.byte	60
+ 122 005d 15       		.byte	21
+ 123 005e 01       		.byte	1
+ 124 005f 40       		.byte	64
+ 125 0060 40       		.byte	64
+ 126 0061 16       		.byte	22
+ 127 0062 01       		.byte	1
+ 128 0063 40       		.byte	64
+ 129 0064 37       		.byte	55
+ 130 0065 17       		.byte	23
+ 131 0066 01       		.byte	1
+ 132 0067 40       		.byte	64
+ 133 0068 46       		.byte	70
+ 134 0069 18       		.byte	24
+ 135 006a 01       		.byte	1
+ 136 006b 40       		.byte	64
+ 137 006c 3B       		.byte	59
+ 138 006d 19       		.byte	25
+ 139 006e 01       		.byte	1
+ 140 006f 40       		.byte	64
+ 141 0070 3E       		.byte	62
+ 142 0071 1A       		.byte	26
+ 143 0072 01       		.byte	1
+ 144 0073 40       		.byte	64
+ 145 0074 34       		.byte	52
+ 146 0075 1B       		.byte	27
+ 147 0076 01       		.byte	1
+ 148 0077 40       		.byte	64
+ 149 0078 15       		.byte	21
+ 150 0079 40       		.byte	64
+ 151 007a 01       		.byte	1
+ 152 007b 40       		.byte	64
+ 153 007c 10       		.byte	16
+ 154 007d 41       		.byte	65
+ 155 007e 01       		.byte	1
+ 156 007f 40       		.byte	64
+ 157 0080 0C       		.byte	12
+ 158 0081 42       		.byte	66
+ 159 0082 01       		.byte	1
+ 160 0083 40       		.byte	64
+ 161 0084 07       		.byte	7
+ 162 0085 43       		.byte	67
+ 163 0086 01       		.byte	1
+ 164 0087 40       		.byte	64
+ 165 0088 02       		.byte	2
+ 166 0089 44       		.byte	68
+ 167 008a 01       		.byte	1
+ 168 008b 40       		.byte	64
+ 169 008c 07       		.byte	7
+ 170 008d 45       		.byte	69
+ 171 008e 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 4
+
+
+ 172 008f 40       		.byte	64
+ 173 0090 0A       		.byte	10
+ 174 0091 46       		.byte	70
+ 175 0092 01       		.byte	1
+ 176 0093 40       		.byte	64
+ 177 0094 0C       		.byte	12
+ 178 0095 47       		.byte	71
+ 179 0096 01       		.byte	1
+ 180 0097 40       		.byte	64
+ 181 0098 08       		.byte	8
+ 182 0099 48       		.byte	72
+ 183 009a 01       		.byte	1
+ 184 009b 40       		.byte	64
+ 185 009c 0A       		.byte	10
+ 186 009d 49       		.byte	73
+ 187 009e 01       		.byte	1
+ 188 009f 40       		.byte	64
+ 189 00a0 06       		.byte	6
+ 190 00a1 4C       		.byte	76
+ 191 00a2 01       		.byte	1
+ 192 00a3 40       		.byte	64
+ 193 00a4 03       		.byte	3
+ 194 00a5 4D       		.byte	77
+ 195 00a6 01       		.byte	1
+ 196 00a7 40       		.byte	64
+ 197 00a8 0A       		.byte	10
+ 198 00a9 50       		.byte	80
+ 199 00aa 01       		.byte	1
+ 200 00ab 40       		.byte	64
+ 201 00ac 03       		.byte	3
+ 202 00ad 51       		.byte	81
+ 203 00ae 01       		.byte	1
+ 204 00af 40       		.byte	64
+ 205 00b0 7E       		.byte	126
+ 206 00b1 02       		.byte	2
+ 207 00b2 01       		.byte	1
+ 208 00b3 30       		.byte	48
+ 209 00b4 0A       		.byte	10
+ 210 00b5 4B       		.byte	75
+ 211 00b6 00       		.byte	0
+ 212 00b7 08       		.byte	8
+ 213 00b8 01       		.byte	1
+ 214 00b9 22       		.byte	34
+ 215 00ba 08       		.byte	8
+ 216 00bb 80       		.byte	-128
+ 217 00bc 18       		.byte	24
+ 218 00bd C0       		.byte	-64
+ 219 00be 19       		.byte	25
+ 220 00bf 80       		.byte	-128
+ 221 00c0 20       		.byte	32
+ 222 00c1 20       		.byte	32
+ 223 00c2 21       		.byte	33
+ 224 00c3 A0       		.byte	-96
+ 225 00c4 79       		.byte	121
+ 226 00c5 02       		.byte	2
+ 227 00c6 7C       		.byte	124
+ 228 00c7 40       		.byte	64
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 5
+
+
+ 229 00c8 27       		.byte	39
+ 230 00c9 84       		.byte	-124
+ 231 00ca 82       		.byte	-126
+ 232 00cb 6F       		.byte	111
+ 233 00cc 8D       		.byte	-115
+ 234 00cd 05       		.byte	5
+ 235 00ce 86       		.byte	-122
+ 236 00cf 0F       		.byte	15
+ 237 00d0 87       		.byte	-121
+ 238 00d1 0F       		.byte	15
+ 239 00d2 8B       		.byte	-117
+ 240 00d3 0F       		.byte	15
+ 241 00d4 58       		.byte	88
+ 242 00d5 04       		.byte	4
+ 243 00d6 59       		.byte	89
+ 244 00d7 04       		.byte	4
+ 245 00d8 5C       		.byte	92
+ 246 00d9 11       		.byte	17
+ 247 00da 5F       		.byte	95
+ 248 00db 01       		.byte	1
+ 249 00dc 81       		.byte	-127
+ 250 00dd 01       		.byte	1
+ 251 00de 85       		.byte	-123
+ 252 00df 01       		.byte	1
+ 253 00e0 8A       		.byte	-118
+ 254 00e1 03       		.byte	3
+ 255 00e2 8B       		.byte	-117
+ 256 00e3 01       		.byte	1
+ 257 00e4 8C       		.byte	-116
+ 258 00e5 02       		.byte	2
+ 259 00e6 8E       		.byte	-114
+ 260 00e7 01       		.byte	1
+ 261 00e8 91       		.byte	-111
+ 262 00e9 01       		.byte	1
+ 263 00ea 94       		.byte	-108
+ 264 00eb 03       		.byte	3
+ 265 00ec 95       		.byte	-107
+ 266 00ed 01       		.byte	1
+ 267 00ee 98       		.byte	-104
+ 268 00ef 01       		.byte	1
+ 269 00f0 99       		.byte	-103
+ 270 00f1 01       		.byte	1
+ 271 00f2 9A       		.byte	-102
+ 272 00f3 02       		.byte	2
+ 273 00f4 A4       		.byte	-92
+ 274 00f5 02       		.byte	2
+ 275 00f6 A5       		.byte	-91
+ 276 00f7 01       		.byte	1
+ 277 00f8 A6       		.byte	-90
+ 278 00f9 01       		.byte	1
+ 279 00fa A8       		.byte	-88
+ 280 00fb 03       		.byte	3
+ 281 00fc AC       		.byte	-84
+ 282 00fd 03       		.byte	3
+ 283 00fe B1       		.byte	-79
+ 284 00ff 01       		.byte	1
+ 285 0100 B2       		.byte	-78
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 6
+
+
+ 286 0101 01       		.byte	1
+ 287 0102 B4       		.byte	-76
+ 288 0103 02       		.byte	2
+ 289 0104 B8       		.byte	-72
+ 290 0105 02       		.byte	2
+ 291 0106 BE       		.byte	-66
+ 292 0107 01       		.byte	1
+ 293 0108 D8       		.byte	-40
+ 294 0109 04       		.byte	4
+ 295 010a D9       		.byte	-39
+ 296 010b 04       		.byte	4
+ 297 010c DC       		.byte	-36
+ 298 010d 11       		.byte	17
+ 299 010e DF       		.byte	-33
+ 300 010f 01       		.byte	1
+ 301 0110 00       		.byte	0
+ 302 0111 50       		.byte	80
+ 303 0112 04       		.byte	4
+ 304 0113 50       		.byte	80
+ 305 0114 06       		.byte	6
+ 306 0115 02       		.byte	2
+ 307 0116 09       		.byte	9
+ 308 0117 02       		.byte	2
+ 309 0118 0E       		.byte	14
+ 310 0119 04       		.byte	4
+ 311 011a 0F       		.byte	15
+ 312 011b 20       		.byte	32
+ 313 011c 10       		.byte	16
+ 314 011d 01       		.byte	1
+ 315 011e 11       		.byte	17
+ 316 011f 06       		.byte	6
+ 317 0120 12       		.byte	18
+ 318 0121 0C       		.byte	12
+ 319 0122 14       		.byte	20
+ 320 0123 01       		.byte	1
+ 321 0124 15       		.byte	21
+ 322 0125 04       		.byte	4
+ 323 0126 16       		.byte	22
+ 324 0127 04       		.byte	4
+ 325 0128 1F       		.byte	31
+ 326 0129 25       		.byte	37
+ 327 012a 27       		.byte	39
+ 328 012b 40       		.byte	64
+ 329 012c 28       		.byte	40
+ 330 012d 01       		.byte	1
+ 331 012e 29       		.byte	41
+ 332 012f 20       		.byte	32
+ 333 0130 2E       		.byte	46
+ 334 0131 04       		.byte	4
+ 335 0132 31       		.byte	49
+ 336 0133 02       		.byte	2
+ 337 0134 34       		.byte	52
+ 338 0135 01       		.byte	1
+ 339 0136 35       		.byte	53
+ 340 0137 20       		.byte	32
+ 341 0138 36       		.byte	54
+ 342 0139 08       		.byte	8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 7
+
+
+ 343 013a 38       		.byte	56
+ 344 013b 90       		.byte	-112
+ 345 013c 39       		.byte	57
+ 346 013d 04       		.byte	4
+ 347 013e 3A       		.byte	58
+ 348 013f 02       		.byte	2
+ 349 0140 3C       		.byte	60
+ 350 0141 10       		.byte	16
+ 351 0142 3D       		.byte	61
+ 352 0143 04       		.byte	4
+ 353 0144 3E       		.byte	62
+ 354 0145 02       		.byte	2
+ 355 0146 83       		.byte	-125
+ 356 0147 40       		.byte	64
+ 357 0148 85       		.byte	-123
+ 358 0149 04       		.byte	4
+ 359 014a 87       		.byte	-121
+ 360 014b 20       		.byte	32
+ 361 014c 8B       		.byte	-117
+ 362 014d 04       		.byte	4
+ 363 014e C0       		.byte	-64
+ 364 014f C3       		.byte	-61
+ 365 0150 C2       		.byte	-62
+ 366 0151 68       		.byte	104
+ 367 0152 C4       		.byte	-60
+ 368 0153 EF       		.byte	-17
+ 369 0154 CA       		.byte	-54
+ 370 0155 4C       		.byte	76
+ 371 0156 CC       		.byte	-52
+ 372 0157 E1       		.byte	-31
+ 373 0158 CE       		.byte	-50
+ 374 0159 EF       		.byte	-17
+ 375 015a E2       		.byte	-30
+ 376 015b 80       		.byte	-128
+ 377 015c E6       		.byte	-26
+ 378 015d 02       		.byte	2
+ 379 015e 03       		.byte	3
+ 380 015f 01       		.byte	1
+ 381 0160 0A       		.byte	10
+ 382 0161 01       		.byte	1
+ 383 0162 0B       		.byte	11
+ 384 0163 06       		.byte	6
+ 385 0164 0C       		.byte	12
+ 386 0165 01       		.byte	1
+ 387 0166 0D       		.byte	13
+ 388 0167 06       		.byte	6
+ 389 0168 10       		.byte	16
+ 390 0169 01       		.byte	1
+ 391 016a 11       		.byte	17
+ 392 016b 01       		.byte	1
+ 393 016c 14       		.byte	20
+ 394 016d 01       		.byte	1
+ 395 016e 18       		.byte	24
+ 396 016f 01       		.byte	1
+ 397 0170 19       		.byte	25
+ 398 0171 06       		.byte	6
+ 399 0172 1D       		.byte	29
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 8
+
+
+ 400 0173 06       		.byte	6
+ 401 0174 20       		.byte	32
+ 402 0175 01       		.byte	1
+ 403 0176 23       		.byte	35
+ 404 0177 06       		.byte	6
+ 405 0178 25       		.byte	37
+ 406 0179 02       		.byte	2
+ 407 017a 27       		.byte	39
+ 408 017b 04       		.byte	4
+ 409 017c 2D       		.byte	45
+ 410 017d 06       		.byte	6
+ 411 017e 2E       		.byte	46
+ 412 017f 01       		.byte	1
+ 413 0180 31       		.byte	49
+ 414 0181 04       		.byte	4
+ 415 0182 35       		.byte	53
+ 416 0183 02       		.byte	2
+ 417 0184 36       		.byte	54
+ 418 0185 01       		.byte	1
+ 419 0186 37       		.byte	55
+ 420 0187 01       		.byte	1
+ 421 0188 3F       		.byte	63
+ 422 0189 40       		.byte	64
+ 423 018a 54       		.byte	84
+ 424 018b 0F       		.byte	15
+ 425 018c 58       		.byte	88
+ 426 018d 04       		.byte	4
+ 427 018e 59       		.byte	89
+ 428 018f 04       		.byte	4
+ 429 0190 5B       		.byte	91
+ 430 0191 04       		.byte	4
+ 431 0192 5C       		.byte	92
+ 432 0193 11       		.byte	17
+ 433 0194 5F       		.byte	95
+ 434 0195 05       		.byte	5
+ 435 0196 D8       		.byte	-40
+ 436 0197 04       		.byte	4
+ 437 0198 D9       		.byte	-39
+ 438 0199 04       		.byte	4
+ 439 019a DC       		.byte	-36
+ 440 019b 11       		.byte	17
+ 441 019c DF       		.byte	-33
+ 442 019d 01       		.byte	1
+ 443 019e 00       		.byte	0
+ 444 019f 10       		.byte	16
+ 445 01a0 04       		.byte	4
+ 446 01a1 10       		.byte	16
+ 447 01a2 06       		.byte	6
+ 448 01a3 02       		.byte	2
+ 449 01a4 09       		.byte	9
+ 450 01a5 02       		.byte	2
+ 451 01a6 0A       		.byte	10
+ 452 01a7 20       		.byte	32
+ 453 01a8 0C       		.byte	12
+ 454 01a9 01       		.byte	1
+ 455 01aa 0E       		.byte	14
+ 456 01ab 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 9
+
+
+ 457 01ac 0F       		.byte	15
+ 458 01ad 20       		.byte	32
+ 459 01ae 10       		.byte	16
+ 460 01af 01       		.byte	1
+ 461 01b0 11       		.byte	17
+ 462 01b1 06       		.byte	6
+ 463 01b2 12       		.byte	18
+ 464 01b3 04       		.byte	4
+ 465 01b4 16       		.byte	22
+ 466 01b5 80       		.byte	-128
+ 467 01b6 17       		.byte	23
+ 468 01b7 40       		.byte	64
+ 469 01b8 1F       		.byte	31
+ 470 01b9 40       		.byte	64
+ 471 01ba 24       		.byte	36
+ 472 01bb 40       		.byte	64
+ 473 01bc 27       		.byte	39
+ 474 01bd 06       		.byte	6
+ 475 01be 28       		.byte	40
+ 476 01bf 01       		.byte	1
+ 477 01c0 29       		.byte	41
+ 478 01c1 20       		.byte	32
+ 479 01c2 2A       		.byte	42
+ 480 01c3 02       		.byte	2
+ 481 01c4 2C       		.byte	44
+ 482 01c5 01       		.byte	1
+ 483 01c6 2E       		.byte	46
+ 484 01c7 06       		.byte	6
+ 485 01c8 31       		.byte	49
+ 486 01c9 02       		.byte	2
+ 487 01ca 33       		.byte	51
+ 488 01cb 40       		.byte	64
+ 489 01cc 35       		.byte	53
+ 490 01cd 20       		.byte	32
+ 491 01ce 36       		.byte	54
+ 492 01cf 02       		.byte	2
+ 493 01d0 37       		.byte	55
+ 494 01d1 40       		.byte	64
+ 495 01d2 38       		.byte	56
+ 496 01d3 90       		.byte	-112
+ 497 01d4 3C       		.byte	60
+ 498 01d5 10       		.byte	16
+ 499 01d6 3E       		.byte	62
+ 500 01d7 80       		.byte	-128
+ 501 01d8 3F       		.byte	63
+ 502 01d9 02       		.byte	2
+ 503 01da 5D       		.byte	93
+ 504 01db 10       		.byte	16
+ 505 01dc 5E       		.byte	94
+ 506 01dd 80       		.byte	-128
+ 507 01de 5F       		.byte	95
+ 508 01df 0A       		.byte	10
+ 509 01e0 66       		.byte	102
+ 510 01e1 08       		.byte	8
+ 511 01e2 67       		.byte	103
+ 512 01e3 04       		.byte	4
+ 513 01e4 7D       		.byte	125
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 10
+
+
+ 514 01e5 80       		.byte	-128
+ 515 01e6 81       		.byte	-127
+ 516 01e7 21       		.byte	33
+ 517 01e8 82       		.byte	-126
+ 518 01e9 12       		.byte	18
+ 519 01ea 83       		.byte	-125
+ 520 01eb 10       		.byte	16
+ 521 01ec 85       		.byte	-123
+ 522 01ed 02       		.byte	2
+ 523 01ee 86       		.byte	-122
+ 524 01ef 04       		.byte	4
+ 525 01f0 87       		.byte	-121
+ 526 01f1 40       		.byte	64
+ 527 01f2 89       		.byte	-119
+ 528 01f3 10       		.byte	16
+ 529 01f4 8B       		.byte	-117
+ 530 01f5 01       		.byte	1
+ 531 01f6 91       		.byte	-111
+ 532 01f7 04       		.byte	4
+ 533 01f8 93       		.byte	-109
+ 534 01f9 02       		.byte	2
+ 535 01fa 94       		.byte	-108
+ 536 01fb 90       		.byte	-112
+ 537 01fc 96       		.byte	-106
+ 538 01fd 04       		.byte	4
+ 539 01fe 9C       		.byte	-100
+ 540 01ff 01       		.byte	1
+ 541 0200 9D       		.byte	-99
+ 542 0201 20       		.byte	32
+ 543 0202 9E       		.byte	-98
+ 544 0203 06       		.byte	6
+ 545 0204 A5       		.byte	-91
+ 546 0205 03       		.byte	3
+ 547 0206 A7       		.byte	-89
+ 548 0207 10       		.byte	16
+ 549 0208 C0       		.byte	-64
+ 550 0209 C2       		.byte	-62
+ 551 020a C2       		.byte	-62
+ 552 020b 7C       		.byte	124
+ 553 020c C4       		.byte	-60
+ 554 020d 9F       		.byte	-97
+ 555 020e CA       		.byte	-54
+ 556 020f DD       		.byte	-35
+ 557 0210 CC       		.byte	-52
+ 558 0211 B9       		.byte	-71
+ 559 0212 CE       		.byte	-50
+ 560 0213 BC       		.byte	-68
+ 561 0214 D6       		.byte	-42
+ 562 0215 F0       		.byte	-16
+ 563 0216 D8       		.byte	-40
+ 564 0217 60       		.byte	96
+ 565 0218 DE       		.byte	-34
+ 566 0219 10       		.byte	16
+ 567 021a E2       		.byte	-30
+ 568 021b 02       		.byte	2
+ 569 021c E6       		.byte	-26
+ 570 021d 07       		.byte	7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 11
+
+
+ 571 021e E8       		.byte	-24
+ 572 021f 02       		.byte	2
+ 573 0220 EA       		.byte	-22
+ 574 0221 20       		.byte	32
+ 575 0222 06       		.byte	6
+ 576 0223 0F       		.byte	15
+ 577 0224 08       		.byte	8
+ 578 0225 CF       		.byte	-49
+ 579 0226 0A       		.byte	10
+ 580 0227 30       		.byte	48
+ 581 0228 0C       		.byte	12
+ 582 0229 73       		.byte	115
+ 583 022a 10       		.byte	16
+ 584 022b 30       		.byte	48
+ 585 022c 12       		.byte	18
+ 586 022d C9       		.byte	-55
+ 587 022e 14       		.byte	20
+ 588 022f 9E       		.byte	-98
+ 589 0230 16       		.byte	22
+ 590 0231 60       		.byte	96
+ 591 0232 1C       		.byte	28
+ 592 0233 94       		.byte	-108
+ 593 0234 1E       		.byte	30
+ 594 0235 60       		.byte	96
+ 595 0236 28       		.byte	40
+ 596 0237 FD       		.byte	-3
+ 597 0238 2A       		.byte	42
+ 598 0239 02       		.byte	2
+ 599 023a 36       		.byte	54
+ 600 023b FF       		.byte	-1
+ 601 023c 3E       		.byte	62
+ 602 023d 40       		.byte	64
+ 603 023e 40       		.byte	64
+ 604 023f 13       		.byte	19
+ 605 0240 41       		.byte	65
+ 606 0241 02       		.byte	2
+ 607 0242 49       		.byte	73
+ 608 0243 FF       		.byte	-1
+ 609 0244 4A       		.byte	74
+ 610 0245 FF       		.byte	-1
+ 611 0246 4B       		.byte	75
+ 612 0247 FF       		.byte	-1
+ 613 0248 4D       		.byte	77
+ 614 0249 A0       		.byte	-96
+ 615 024a 4F       		.byte	79
+ 616 024b 01       		.byte	1
+ 617 024c 50       		.byte	80
+ 618 024d 18       		.byte	24
+ 619 024e 58       		.byte	88
+ 620 024f 04       		.byte	4
+ 621 0250 59       		.byte	89
+ 622 0251 04       		.byte	4
+ 623 0252 5A       		.byte	90
+ 624 0253 04       		.byte	4
+ 625 0254 5C       		.byte	92
+ 626 0255 10       		.byte	16
+ 627 0256 5F       		.byte	95
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 12
+
+
+ 628 0257 01       		.byte	1
+ 629 0258 60       		.byte	96
+ 630 0259 40       		.byte	64
+ 631 025a 62       		.byte	98
+ 632 025b 80       		.byte	-128
+ 633 025c 64       		.byte	100
+ 634 025d 40       		.byte	64
+ 635 025e 65       		.byte	101
+ 636 025f 40       		.byte	64
+ 637 0260 66       		.byte	102
+ 638 0261 80       		.byte	-128
+ 639 0262 68       		.byte	104
+ 640 0263 40       		.byte	64
+ 641 0264 6A       		.byte	106
+ 642 0265 80       		.byte	-128
+ 643 0266 6C       		.byte	108
+ 644 0267 40       		.byte	64
+ 645 0268 6D       		.byte	109
+ 646 0269 20       		.byte	32
+ 647 026a 6E       		.byte	110
+ 648 026b 80       		.byte	-128
+ 649 026c 83       		.byte	-125
+ 650 026d 01       		.byte	1
+ 651 026e 89       		.byte	-119
+ 652 026f 0A       		.byte	10
+ 653 0270 91       		.byte	-111
+ 654 0271 06       		.byte	6
+ 655 0272 95       		.byte	-107
+ 656 0273 0C       		.byte	12
+ 657 0274 9C       		.byte	-100
+ 658 0275 01       		.byte	1
+ 659 0276 A0       		.byte	-96
+ 660 0277 01       		.byte	1
+ 661 0278 A4       		.byte	-92
+ 662 0279 01       		.byte	1
+ 663 027a A9       		.byte	-87
+ 664 027b 0C       		.byte	12
+ 665 027c B1       		.byte	-79
+ 666 027d 01       		.byte	1
+ 667 027e B2       		.byte	-78
+ 668 027f 01       		.byte	1
+ 669 0280 B7       		.byte	-73
+ 670 0281 0E       		.byte	14
+ 671 0282 B8       		.byte	-72
+ 672 0283 08       		.byte	8
+ 673 0284 B9       		.byte	-71
+ 674 0285 80       		.byte	-128
+ 675 0286 BE       		.byte	-66
+ 676 0287 04       		.byte	4
+ 677 0288 C0       		.byte	-64
+ 678 0289 43       		.byte	67
+ 679 028a C1       		.byte	-63
+ 680 028b 02       		.byte	2
+ 681 028c C5       		.byte	-59
+ 682 028d 2C       		.byte	44
+ 683 028e C6       		.byte	-58
+ 684 028f 30       		.byte	48
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 13
+
+
+ 685 0290 C7       		.byte	-57
+ 686 0291 4E       		.byte	78
+ 687 0292 C8       		.byte	-56
+ 688 0293 3B       		.byte	59
+ 689 0294 C9       		.byte	-55
+ 690 0295 FF       		.byte	-1
+ 691 0296 CA       		.byte	-54
+ 692 0297 FF       		.byte	-1
+ 693 0298 CB       		.byte	-53
+ 694 0299 FF       		.byte	-1
+ 695 029a CD       		.byte	-51
+ 696 029b AF       		.byte	-81
+ 697 029c CE       		.byte	-50
+ 698 029d 07       		.byte	7
+ 699 029e CF       		.byte	-49
+ 700 029f 01       		.byte	1
+ 701 02a0 D0       		.byte	-48
+ 702 02a1 18       		.byte	24
+ 703 02a2 D8       		.byte	-40
+ 704 02a3 04       		.byte	4
+ 705 02a4 D9       		.byte	-39
+ 706 02a5 04       		.byte	4
+ 707 02a6 DA       		.byte	-38
+ 708 02a7 04       		.byte	4
+ 709 02a8 DC       		.byte	-36
+ 710 02a9 01       		.byte	1
+ 711 02aa DF       		.byte	-33
+ 712 02ab 01       		.byte	1
+ 713 02ac E0       		.byte	-32
+ 714 02ad 40       		.byte	64
+ 715 02ae E2       		.byte	-30
+ 716 02af 80       		.byte	-128
+ 717 02b0 E4       		.byte	-28
+ 718 02b1 40       		.byte	64
+ 719 02b2 E5       		.byte	-27
+ 720 02b3 40       		.byte	64
+ 721 02b4 E6       		.byte	-26
+ 722 02b5 80       		.byte	-128
+ 723 02b6 E8       		.byte	-24
+ 724 02b7 40       		.byte	64
+ 725 02b8 EA       		.byte	-22
+ 726 02b9 80       		.byte	-128
+ 727 02ba EC       		.byte	-20
+ 728 02bb 40       		.byte	64
+ 729 02bc ED       		.byte	-19
+ 730 02bd 20       		.byte	32
+ 731 02be EE       		.byte	-18
+ 732 02bf 80       		.byte	-128
+ 733 02c0 00       		.byte	0
+ 734 02c1 04       		.byte	4
+ 735 02c2 03       		.byte	3
+ 736 02c3 05       		.byte	5
+ 737 02c4 04       		.byte	4
+ 738 02c5 18       		.byte	24
+ 739 02c6 06       		.byte	6
+ 740 02c7 02       		.byte	2
+ 741 02c8 08       		.byte	8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 14
+
+
+ 742 02c9 04       		.byte	4
+ 743 02ca 09       		.byte	9
+ 744 02cb 02       		.byte	2
+ 745 02cc 0A       		.byte	10
+ 746 02cd 02       		.byte	2
+ 747 02ce 0C       		.byte	12
+ 748 02cf 09       		.byte	9
+ 749 02d0 0F       		.byte	15
+ 750 02d1 02       		.byte	2
+ 751 02d2 11       		.byte	17
+ 752 02d3 20       		.byte	32
+ 753 02d4 16       		.byte	22
+ 754 02d5 20       		.byte	32
+ 755 02d6 17       		.byte	23
+ 756 02d7 61       		.byte	97
+ 757 02d8 1A       		.byte	26
+ 758 02d9 01       		.byte	1
+ 759 02da 1D       		.byte	29
+ 760 02db 08       		.byte	8
+ 761 02dc 1E       		.byte	30
+ 762 02dd 10       		.byte	16
+ 763 02de 25       		.byte	37
+ 764 02df 40       		.byte	64
+ 765 02e0 26       		.byte	38
+ 766 02e1 02       		.byte	2
+ 767 02e2 27       		.byte	39
+ 768 02e3 01       		.byte	1
+ 769 02e4 2A       		.byte	42
+ 770 02e5 04       		.byte	4
+ 771 02e6 2C       		.byte	44
+ 772 02e7 04       		.byte	4
+ 773 02e8 30       		.byte	48
+ 774 02e9 09       		.byte	9
+ 775 02ea 33       		.byte	51
+ 776 02eb 40       		.byte	64
+ 777 02ec 37       		.byte	55
+ 778 02ed 05       		.byte	5
+ 779 02ee 38       		.byte	56
+ 780 02ef 18       		.byte	24
+ 781 02f0 3A       		.byte	58
+ 782 02f1 02       		.byte	2
+ 783 02f2 3D       		.byte	61
+ 784 02f3 20       		.byte	32
+ 785 02f4 3F       		.byte	63
+ 786 02f5 02       		.byte	2
+ 787 02f6 40       		.byte	64
+ 788 02f7 05       		.byte	5
+ 789 02f8 42       		.byte	66
+ 790 02f9 10       		.byte	16
+ 791 02fa 45       		.byte	69
+ 792 02fb 28       		.byte	40
+ 793 02fc 47       		.byte	71
+ 794 02fd 02       		.byte	2
+ 795 02fe 4F       		.byte	79
+ 796 02ff 06       		.byte	6
+ 797 0300 55       		.byte	85
+ 798 0301 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 15
+
+
+ 799 0302 56       		.byte	86
+ 800 0303 29       		.byte	41
+ 801 0304 57       		.byte	87
+ 802 0305 20       		.byte	32
+ 803 0306 80       		.byte	-128
+ 804 0307 10       		.byte	16
+ 805 0308 83       		.byte	-125
+ 806 0309 01       		.byte	1
+ 807 030a 84       		.byte	-124
+ 808 030b 01       		.byte	1
+ 809 030c 8C       		.byte	-116
+ 810 030d 04       		.byte	4
+ 811 030e 93       		.byte	-109
+ 812 030f 02       		.byte	2
+ 813 0310 94       		.byte	-108
+ 814 0311 90       		.byte	-112
+ 815 0312 97       		.byte	-105
+ 816 0313 04       		.byte	4
+ 817 0314 9A       		.byte	-102
+ 818 0315 02       		.byte	2
+ 819 0316 9B       		.byte	-101
+ 820 0317 40       		.byte	64
+ 821 0318 9C       		.byte	-100
+ 822 0319 01       		.byte	1
+ 823 031a 9E       		.byte	-98
+ 824 031b 8C       		.byte	-116
+ 825 031c 9F       		.byte	-97
+ 826 031d 08       		.byte	8
+ 827 031e A5       		.byte	-91
+ 828 031f 40       		.byte	64
+ 829 0320 A6       		.byte	-90
+ 830 0321 42       		.byte	66
+ 831 0322 A7       		.byte	-89
+ 832 0323 01       		.byte	1
+ 833 0324 A8       		.byte	-88
+ 834 0325 40       		.byte	64
+ 835 0326 AB       		.byte	-85
+ 836 0327 44       		.byte	68
+ 837 0328 C0       		.byte	-64
+ 838 0329 E7       		.byte	-25
+ 839 032a C2       		.byte	-62
+ 840 032b BD       		.byte	-67
+ 841 032c C4       		.byte	-60
+ 842 032d F2       		.byte	-14
+ 843 032e CA       		.byte	-54
+ 844 032f 22       		.byte	34
+ 845 0330 CC       		.byte	-52
+ 846 0331 CB       		.byte	-53
+ 847 0332 CE       		.byte	-50
+ 848 0333 A7       		.byte	-89
+ 849 0334 D0       		.byte	-48
+ 850 0335 EE       		.byte	-18
+ 851 0336 E2       		.byte	-30
+ 852 0337 02       		.byte	2
+ 853 0338 E6       		.byte	-26
+ 854 0339 01       		.byte	1
+ 855 033a EE       		.byte	-18
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 16
+
+
+ 856 033b 01       		.byte	1
+ 857 033c 03       		.byte	3
+ 858 033d 01       		.byte	1
+ 859 033e 05       		.byte	5
+ 860 033f 04       		.byte	4
+ 861 0340 06       		.byte	6
+ 862 0341 20       		.byte	32
+ 863 0342 09       		.byte	9
+ 864 0343 04       		.byte	4
+ 865 0344 0A       		.byte	10
+ 866 0345 0E       		.byte	14
+ 867 0346 0C       		.byte	12
+ 868 0347 0E       		.byte	14
+ 869 0348 0F       		.byte	15
+ 870 0349 04       		.byte	4
+ 871 034a 10       		.byte	16
+ 872 034b 08       		.byte	8
+ 873 034c 11       		.byte	17
+ 874 034d 02       		.byte	2
+ 875 034e 15       		.byte	21
+ 876 034f 04       		.byte	4
+ 877 0350 1A       		.byte	26
+ 878 0351 08       		.byte	8
+ 879 0352 1D       		.byte	29
+ 880 0353 01       		.byte	1
+ 881 0354 1E       		.byte	30
+ 882 0355 10       		.byte	16
+ 883 0356 20       		.byte	32
+ 884 0357 0E       		.byte	14
+ 885 0358 21       		.byte	33
+ 886 0359 04       		.byte	4
+ 887 035a 24       		.byte	36
+ 888 035b 02       		.byte	2
+ 889 035c 26       		.byte	38
+ 890 035d 04       		.byte	4
+ 891 035e 27       		.byte	39
+ 892 035f 02       		.byte	2
+ 893 0360 28       		.byte	40
+ 894 0361 02       		.byte	2
+ 895 0362 2A       		.byte	42
+ 896 0363 04       		.byte	4
+ 897 0364 2B       		.byte	43
+ 898 0365 08       		.byte	8
+ 899 0366 2E       		.byte	46
+ 900 0367 01       		.byte	1
+ 901 0368 30       		.byte	48
+ 902 0369 20       		.byte	32
+ 903 036a 33       		.byte	51
+ 904 036b 0C       		.byte	12
+ 905 036c 34       		.byte	52
+ 906 036d 1E       		.byte	30
+ 907 036e 35       		.byte	53
+ 908 036f 02       		.byte	2
+ 909 0370 36       		.byte	54
+ 910 0371 01       		.byte	1
+ 911 0372 37       		.byte	55
+ 912 0373 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 17
+
+
+ 913 0374 3F       		.byte	63
+ 914 0375 50       		.byte	80
+ 915 0376 58       		.byte	88
+ 916 0377 04       		.byte	4
+ 917 0378 59       		.byte	89
+ 918 0379 04       		.byte	4
+ 919 037a 5F       		.byte	95
+ 920 037b 01       		.byte	1
+ 921 037c 88       		.byte	-120
+ 922 037d A3       		.byte	-93
+ 923 037e 8A       		.byte	-118
+ 924 037f 5C       		.byte	92
+ 925 0380 8C       		.byte	-116
+ 926 0381 7F       		.byte	127
+ 927 0382 8F       		.byte	-113
+ 928 0383 01       		.byte	1
+ 929 0384 90       		.byte	-112
+ 930 0385 96       		.byte	-106
+ 931 0386 92       		.byte	-110
+ 932 0387 68       		.byte	104
+ 933 0388 96       		.byte	-106
+ 934 0389 01       		.byte	1
+ 935 038a 9B       		.byte	-101
+ 936 038b 01       		.byte	1
+ 937 038c 9C       		.byte	-100
+ 938 038d 0E       		.byte	14
+ 939 038e 9E       		.byte	-98
+ 940 038f F0       		.byte	-16
+ 941 0390 A0       		.byte	-96
+ 942 0391 C5       		.byte	-59
+ 943 0392 A2       		.byte	-94
+ 944 0393 3A       		.byte	58
+ 945 0394 A8       		.byte	-88
+ 946 0395 FE       		.byte	-2
+ 947 0396 AA       		.byte	-86
+ 948 0397 01       		.byte	1
+ 949 0398 AD       		.byte	-83
+ 950 0399 01       		.byte	1
+ 951 039a B4       		.byte	-76
+ 952 039b FF       		.byte	-1
+ 953 039c B7       		.byte	-73
+ 954 039d 01       		.byte	1
+ 955 039e BE       		.byte	-66
+ 956 039f 10       		.byte	16
+ 957 03a0 BF       		.byte	-65
+ 958 03a1 40       		.byte	64
+ 959 03a2 D2       		.byte	-46
+ 960 03a3 80       		.byte	-128
+ 961 03a4 D8       		.byte	-40
+ 962 03a5 04       		.byte	4
+ 963 03a6 D9       		.byte	-39
+ 964 03a7 04       		.byte	4
+ 965 03a8 DB       		.byte	-37
+ 966 03a9 04       		.byte	4
+ 967 03aa DC       		.byte	-36
+ 968 03ab 10       		.byte	16
+ 969 03ac DF       		.byte	-33
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 18
+
+
+ 970 03ad 01       		.byte	1
+ 971 03ae 03       		.byte	3
+ 972 03af 05       		.byte	5
+ 973 03b0 04       		.byte	4
+ 974 03b1 80       		.byte	-128
+ 975 03b2 05       		.byte	5
+ 976 03b3 10       		.byte	16
+ 977 03b4 06       		.byte	6
+ 978 03b5 20       		.byte	32
+ 979 03b6 09       		.byte	9
+ 980 03b7 0A       		.byte	10
+ 981 03b8 0A       		.byte	10
+ 982 03b9 02       		.byte	2
+ 983 03ba 0C       		.byte	12
+ 984 03bb 20       		.byte	32
+ 985 03bc 0D       		.byte	13
+ 986 03bd 02       		.byte	2
+ 987 03be 0E       		.byte	14
+ 988 03bf 01       		.byte	1
+ 989 03c0 10       		.byte	16
+ 990 03c1 80       		.byte	-128
+ 991 03c2 11       		.byte	17
+ 992 03c3 20       		.byte	32
+ 993 03c4 14       		.byte	20
+ 994 03c5 04       		.byte	4
+ 995 03c6 15       		.byte	21
+ 996 03c7 04       		.byte	4
+ 997 03c8 16       		.byte	22
+ 998 03c9 01       		.byte	1
+ 999 03ca 17       		.byte	23
+ 1000 03cb 01       		.byte	1
+ 1001 03cc 19       		.byte	25
+ 1002 03cd 20       		.byte	32
+ 1003 03ce 1C       		.byte	28
+ 1004 03cf 04       		.byte	4
+ 1005 03d0 1D       		.byte	29
+ 1006 03d1 71       		.byte	113
+ 1007 03d2 20       		.byte	32
+ 1008 03d3 01       		.byte	1
+ 1009 03d4 23       		.byte	35
+ 1010 03d5 02       		.byte	2
+ 1011 03d6 25       		.byte	37
+ 1012 03d7 08       		.byte	8
+ 1013 03d8 26       		.byte	38
+ 1014 03d9 40       		.byte	64
+ 1015 03da 27       		.byte	39
+ 1016 03db 18       		.byte	24
+ 1017 03dc 28       		.byte	40
+ 1018 03dd 02       		.byte	2
+ 1019 03de 2A       		.byte	42
+ 1020 03df 06       		.byte	6
+ 1021 03e0 2C       		.byte	44
+ 1022 03e1 80       		.byte	-128
+ 1023 03e2 2D       		.byte	45
+ 1024 03e3 20       		.byte	32
+ 1025 03e4 2F       		.byte	47
+ 1026 03e5 20       		.byte	32
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 19
+
+
+ 1027 03e6 30       		.byte	48
+ 1028 03e7 09       		.byte	9
+ 1029 03e8 33       		.byte	51
+ 1030 03e9 50       		.byte	80
+ 1031 03ea 35       		.byte	53
+ 1032 03eb 41       		.byte	65
+ 1033 03ec 37       		.byte	55
+ 1034 03ed 04       		.byte	4
+ 1035 03ee 38       		.byte	56
+ 1036 03ef 18       		.byte	24
+ 1037 03f0 3A       		.byte	58
+ 1038 03f1 80       		.byte	-128
+ 1039 03f2 3C       		.byte	60
+ 1040 03f3 80       		.byte	-128
+ 1041 03f4 3D       		.byte	61
+ 1042 03f5 26       		.byte	38
+ 1043 03f6 72       		.byte	114
+ 1044 03f7 80       		.byte	-128
+ 1045 03f8 84       		.byte	-124
+ 1046 03f9 08       		.byte	8
+ 1047 03fa 89       		.byte	-119
+ 1048 03fb 0C       		.byte	12
+ 1049 03fc 8A       		.byte	-118
+ 1050 03fd 01       		.byte	1
+ 1051 03fe 8C       		.byte	-116
+ 1052 03ff 20       		.byte	32
+ 1053 0400 8F       		.byte	-113
+ 1054 0401 04       		.byte	4
+ 1055 0402 90       		.byte	-112
+ 1056 0403 18       		.byte	24
+ 1057 0404 92       		.byte	-110
+ 1058 0405 01       		.byte	1
+ 1059 0406 94       		.byte	-108
+ 1060 0407 05       		.byte	5
+ 1061 0408 96       		.byte	-106
+ 1062 0409 02       		.byte	2
+ 1063 040a 98       		.byte	-104
+ 1064 040b 01       		.byte	1
+ 1065 040c 9A       		.byte	-102
+ 1066 040d 27       		.byte	39
+ 1067 040e 9B       		.byte	-101
+ 1068 040f 41       		.byte	65
+ 1069 0410 9C       		.byte	-100
+ 1070 0411 04       		.byte	4
+ 1071 0412 9F       		.byte	-97
+ 1072 0413 0E       		.byte	14
+ 1073 0414 A1       		.byte	-95
+ 1074 0415 01       		.byte	1
+ 1075 0416 A3       		.byte	-93
+ 1076 0417 21       		.byte	33
+ 1077 0418 A4       		.byte	-92
+ 1078 0419 08       		.byte	8
+ 1079 041a A5       		.byte	-91
+ 1080 041b 32       		.byte	50
+ 1081 041c A6       		.byte	-90
+ 1082 041d 40       		.byte	64
+ 1083 041e A8       		.byte	-88
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 20
+
+
+ 1084 041f 40       		.byte	64
+ 1085 0420 AA       		.byte	-86
+ 1086 0421 84       		.byte	-124
+ 1087 0422 AB       		.byte	-85
+ 1088 0423 20       		.byte	32
+ 1089 0424 C0       		.byte	-64
+ 1090 0425 E3       		.byte	-29
+ 1091 0426 C2       		.byte	-62
+ 1092 0427 DD       		.byte	-35
+ 1093 0428 C4       		.byte	-60
+ 1094 0429 FA       		.byte	-6
+ 1095 042a CA       		.byte	-54
+ 1096 042b EB       		.byte	-21
+ 1097 042c CC       		.byte	-52
+ 1098 042d DF       		.byte	-33
+ 1099 042e CE       		.byte	-50
+ 1100 042f FE       		.byte	-2
+ 1101 0430 E2       		.byte	-30
+ 1102 0431 82       		.byte	-126
+ 1103 0432 EA       		.byte	-22
+ 1104 0433 05       		.byte	5
+ 1105 0434 EC       		.byte	-20
+ 1106 0435 01       		.byte	1
+ 1107 0436 00       		.byte	0
+ 1108 0437 02       		.byte	2
+ 1109 0438 01       		.byte	1
+ 1110 0439 16       		.byte	22
+ 1111 043a 02       		.byte	2
+ 1112 043b 04       		.byte	4
+ 1113 043c 03       		.byte	3
+ 1114 043d 08       		.byte	8
+ 1115 043e 04       		.byte	4
+ 1116 043f 60       		.byte	96
+ 1117 0440 06       		.byte	6
+ 1118 0441 10       		.byte	16
+ 1119 0442 07       		.byte	7
+ 1120 0443 1E       		.byte	30
+ 1121 0444 08       		.byte	8
+ 1122 0445 44       		.byte	68
+ 1123 0446 09       		.byte	9
+ 1124 0447 18       		.byte	24
+ 1125 0448 0A       		.byte	10
+ 1126 0449 0A       		.byte	10
+ 1127 044a 0B       		.byte	11
+ 1128 044b 04       		.byte	4
+ 1129 044c 0C       		.byte	12
+ 1130 044d 58       		.byte	88
+ 1131 044e 0E       		.byte	14
+ 1132 044f 20       		.byte	32
+ 1133 0450 0F       		.byte	15
+ 1134 0451 01       		.byte	1
+ 1135 0452 12       		.byte	18
+ 1136 0453 78       		.byte	120
+ 1137 0454 13       		.byte	19
+ 1138 0455 20       		.byte	32
+ 1139 0456 15       		.byte	21
+ 1140 0457 18       		.byte	24
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 21
+
+
+ 1141 0458 17       		.byte	23
+ 1142 0459 02       		.byte	2
+ 1143 045a 18       		.byte	24
+ 1144 045b 38       		.byte	56
+ 1145 045c 1B       		.byte	27
+ 1146 045d 40       		.byte	64
+ 1147 045e 1C       		.byte	28
+ 1148 045f 02       		.byte	2
+ 1149 0460 1E       		.byte	30
+ 1150 0461 04       		.byte	4
+ 1151 0462 22       		.byte	34
+ 1152 0463 01       		.byte	1
+ 1153 0464 24       		.byte	36
+ 1154 0465 60       		.byte	96
+ 1155 0466 25       		.byte	37
+ 1156 0467 0E       		.byte	14
+ 1157 0468 26       		.byte	38
+ 1158 0469 08       		.byte	8
+ 1159 046a 28       		.byte	40
+ 1160 046b 02       		.byte	2
+ 1161 046c 2A       		.byte	42
+ 1162 046d 04       		.byte	4
+ 1163 046e 2D       		.byte	45
+ 1164 046f 10       		.byte	16
+ 1165 0470 2F       		.byte	47
+ 1166 0471 02       		.byte	2
+ 1167 0472 31       		.byte	49
+ 1168 0473 40       		.byte	64
+ 1169 0474 32       		.byte	50
+ 1170 0475 78       		.byte	120
+ 1171 0476 33       		.byte	51
+ 1172 0477 20       		.byte	32
+ 1173 0478 34       		.byte	52
+ 1174 0479 06       		.byte	6
+ 1175 047a 35       		.byte	53
+ 1176 047b 1E       		.byte	30
+ 1177 047c 36       		.byte	54
+ 1178 047d 01       		.byte	1
+ 1179 047e 37       		.byte	55
+ 1180 047f 01       		.byte	1
+ 1181 0480 3A       		.byte	58
+ 1182 0481 20       		.byte	32
+ 1183 0482 58       		.byte	88
+ 1184 0483 04       		.byte	4
+ 1185 0484 59       		.byte	89
+ 1186 0485 04       		.byte	4
+ 1187 0486 5F       		.byte	95
+ 1188 0487 01       		.byte	1
+ 1189 0488 8B       		.byte	-117
+ 1190 0489 01       		.byte	1
+ 1191 048a B3       		.byte	-77
+ 1192 048b 01       		.byte	1
+ 1193 048c D8       		.byte	-40
+ 1194 048d 04       		.byte	4
+ 1195 048e D9       		.byte	-39
+ 1196 048f 04       		.byte	4
+ 1197 0490 DC       		.byte	-36
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 22
+
+
+ 1198 0491 11       		.byte	17
+ 1199 0492 DF       		.byte	-33
+ 1200 0493 01       		.byte	1
+ 1201 0494 01       		.byte	1
+ 1202 0495 22       		.byte	34
+ 1203 0496 02       		.byte	2
+ 1204 0497 02       		.byte	2
+ 1205 0498 03       		.byte	3
+ 1206 0499 20       		.byte	32
+ 1207 049a 04       		.byte	4
+ 1208 049b 80       		.byte	-128
+ 1209 049c 05       		.byte	5
+ 1210 049d 14       		.byte	20
+ 1211 049e 06       		.byte	6
+ 1212 049f 02       		.byte	2
+ 1213 04a0 07       		.byte	7
+ 1214 04a1 40       		.byte	64
+ 1215 04a2 09       		.byte	9
+ 1216 04a3 08       		.byte	8
+ 1217 04a4 0A       		.byte	10
+ 1218 04a5 80       		.byte	-128
+ 1219 04a6 0C       		.byte	12
+ 1220 04a7 21       		.byte	33
+ 1221 04a8 0E       		.byte	14
+ 1222 04a9 02       		.byte	2
+ 1223 04aa 12       		.byte	18
+ 1224 04ab 20       		.byte	32
+ 1225 04ac 14       		.byte	20
+ 1226 04ad 80       		.byte	-128
+ 1227 04ae 17       		.byte	23
+ 1228 04af 28       		.byte	40
+ 1229 04b0 1C       		.byte	28
+ 1230 04b1 28       		.byte	40
+ 1231 04b2 1D       		.byte	29
+ 1232 04b3 14       		.byte	20
+ 1233 04b4 1E       		.byte	30
+ 1234 04b5 02       		.byte	2
+ 1235 04b6 21       		.byte	33
+ 1236 04b7 08       		.byte	8
+ 1237 04b8 25       		.byte	37
+ 1238 04b9 10       		.byte	16
+ 1239 04ba 27       		.byte	39
+ 1240 04bb 6A       		.byte	106
+ 1241 04bc 29       		.byte	41
+ 1242 04bd 22       		.byte	34
+ 1243 04be 2B       		.byte	43
+ 1244 04bf 20       		.byte	32
+ 1245 04c0 2C       		.byte	44
+ 1246 04c1 21       		.byte	33
+ 1247 04c2 31       		.byte	49
+ 1248 04c3 08       		.byte	8
+ 1249 04c4 32       		.byte	50
+ 1250 04c5 62       		.byte	98
+ 1251 04c6 35       		.byte	53
+ 1252 04c7 04       		.byte	4
+ 1253 04c8 36       		.byte	54
+ 1254 04c9 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 23
+
+
+ 1255 04ca 37       		.byte	55
+ 1256 04cb 20       		.byte	32
+ 1257 04cc 3A       		.byte	58
+ 1258 04cd 10       		.byte	16
+ 1259 04ce 3C       		.byte	60
+ 1260 04cf 08       		.byte	8
+ 1261 04d0 3D       		.byte	61
+ 1262 04d1 20       		.byte	32
+ 1263 04d2 3E       		.byte	62
+ 1264 04d3 82       		.byte	-126
+ 1265 04d4 85       		.byte	-123
+ 1266 04d5 08       		.byte	8
+ 1267 04d6 88       		.byte	-120
+ 1268 04d7 04       		.byte	4
+ 1269 04d8 8A       		.byte	-118
+ 1270 04d9 80       		.byte	-128
+ 1271 04da 8D       		.byte	-115
+ 1272 04db 10       		.byte	16
+ 1273 04dc 92       		.byte	-110
+ 1274 04dd 80       		.byte	-128
+ 1275 04de 99       		.byte	-103
+ 1276 04df 22       		.byte	34
+ 1277 04e0 9A       		.byte	-102
+ 1278 04e1 10       		.byte	16
+ 1279 04e2 A2       		.byte	-94
+ 1280 04e3 22       		.byte	34
+ 1281 04e4 A3       		.byte	-93
+ 1282 04e5 20       		.byte	32
+ 1283 04e6 A5       		.byte	-91
+ 1284 04e7 08       		.byte	8
+ 1285 04e8 A9       		.byte	-87
+ 1286 04e9 40       		.byte	64
+ 1287 04ea AA       		.byte	-86
+ 1288 04eb 40       		.byte	64
+ 1289 04ec AB       		.byte	-85
+ 1290 04ed 08       		.byte	8
+ 1291 04ee C0       		.byte	-64
+ 1292 04ef FF       		.byte	-1
+ 1293 04f0 C2       		.byte	-62
+ 1294 04f1 DC       		.byte	-36
+ 1295 04f2 C4       		.byte	-60
+ 1296 04f3 74       		.byte	116
+ 1297 04f4 CA       		.byte	-54
+ 1298 04f5 57       		.byte	87
+ 1299 04f6 CC       		.byte	-52
+ 1300 04f7 EF       		.byte	-17
+ 1301 04f8 CE       		.byte	-50
+ 1302 04f9 F4       		.byte	-12
+ 1303 04fa E2       		.byte	-30
+ 1304 04fb A0       		.byte	-96
+ 1305 04fc E4       		.byte	-28
+ 1306 04fd 20       		.byte	32
+ 1307 04fe E6       		.byte	-26
+ 1308 04ff 10       		.byte	16
+ 1309 0500 02       		.byte	2
+ 1310 0501 04       		.byte	4
+ 1311 0502 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 24
+
+
+ 1312 0503 01       		.byte	1
+ 1313 0504 07       		.byte	7
+ 1314 0505 04       		.byte	4
+ 1315 0506 08       		.byte	8
+ 1316 0507 40       		.byte	64
+ 1317 0508 0E       		.byte	14
+ 1318 0509 10       		.byte	16
+ 1319 050a 10       		.byte	16
+ 1320 050b 02       		.byte	2
+ 1321 050c 14       		.byte	20
+ 1322 050d 08       		.byte	8
+ 1323 050e 1A       		.byte	26
+ 1324 050f 01       		.byte	1
+ 1325 0510 1E       		.byte	30
+ 1326 0511 60       		.byte	96
+ 1327 0512 22       		.byte	34
+ 1328 0513 02       		.byte	2
+ 1329 0514 23       		.byte	35
+ 1330 0515 02       		.byte	2
+ 1331 0516 26       		.byte	38
+ 1332 0517 08       		.byte	8
+ 1333 0518 2C       		.byte	44
+ 1334 0519 04       		.byte	4
+ 1335 051a 2F       		.byte	47
+ 1336 051b 01       		.byte	1
+ 1337 051c 30       		.byte	48
+ 1338 051d 40       		.byte	64
+ 1339 051e 31       		.byte	49
+ 1340 051f 01       		.byte	1
+ 1341 0520 32       		.byte	50
+ 1342 0521 20       		.byte	32
+ 1343 0522 34       		.byte	52
+ 1344 0523 1F       		.byte	31
+ 1345 0524 35       		.byte	53
+ 1346 0525 04       		.byte	4
+ 1347 0526 37       		.byte	55
+ 1348 0527 02       		.byte	2
+ 1349 0528 38       		.byte	56
+ 1350 0529 20       		.byte	32
+ 1351 052a 3E       		.byte	62
+ 1352 052b 10       		.byte	16
+ 1353 052c 54       		.byte	84
+ 1354 052d 01       		.byte	1
+ 1355 052e 58       		.byte	88
+ 1356 052f 0C       		.byte	12
+ 1357 0530 59       		.byte	89
+ 1358 0531 04       		.byte	4
+ 1359 0532 5B       		.byte	91
+ 1360 0533 0C       		.byte	12
+ 1361 0534 5C       		.byte	92
+ 1362 0535 11       		.byte	17
+ 1363 0536 5D       		.byte	93
+ 1364 0537 10       		.byte	16
+ 1365 0538 5F       		.byte	95
+ 1366 0539 01       		.byte	1
+ 1367 053a 8C       		.byte	-116
+ 1368 053b 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 25
+
+
+ 1369 053c 92       		.byte	-110
+ 1370 053d 01       		.byte	1
+ 1371 053e AE       		.byte	-82
+ 1372 053f 02       		.byte	2
+ 1373 0540 B0       		.byte	-80
+ 1374 0541 03       		.byte	3
+ 1375 0542 D6       		.byte	-42
+ 1376 0543 08       		.byte	8
+ 1377 0544 D8       		.byte	-40
+ 1378 0545 04       		.byte	4
+ 1379 0546 D9       		.byte	-39
+ 1380 0547 04       		.byte	4
+ 1381 0548 DB       		.byte	-37
+ 1382 0549 04       		.byte	4
+ 1383 054a DC       		.byte	-36
+ 1384 054b 19       		.byte	25
+ 1385 054c DD       		.byte	-35
+ 1386 054d 90       		.byte	-112
+ 1387 054e DF       		.byte	-33
+ 1388 054f 01       		.byte	1
+ 1389 0550 00       		.byte	0
+ 1390 0551 10       		.byte	16
+ 1391 0552 01       		.byte	1
+ 1392 0553 81       		.byte	-127
+ 1393 0554 02       		.byte	2
+ 1394 0555 60       		.byte	96
+ 1395 0556 04       		.byte	4
+ 1396 0557 80       		.byte	-128
+ 1397 0558 09       		.byte	9
+ 1398 0559 28       		.byte	40
+ 1399 055a 0A       		.byte	10
+ 1400 055b 80       		.byte	-128
+ 1401 055c 0B       		.byte	11
+ 1402 055d 0A       		.byte	10
+ 1403 055e 0E       		.byte	14
+ 1404 055f 80       		.byte	-128
+ 1405 0560 10       		.byte	16
+ 1406 0561 C0       		.byte	-64
+ 1407 0562 11       		.byte	17
+ 1408 0563 04       		.byte	4
+ 1409 0564 12       		.byte	18
+ 1410 0565 12       		.byte	18
+ 1411 0566 14       		.byte	20
+ 1412 0567 02       		.byte	2
+ 1413 0568 18       		.byte	24
+ 1414 0569 90       		.byte	-112
+ 1415 056a 1A       		.byte	26
+ 1416 056b 44       		.byte	68
+ 1417 056c 1B       		.byte	27
+ 1418 056d 30       		.byte	48
+ 1419 056e 1E       		.byte	30
+ 1420 056f 80       		.byte	-128
+ 1421 0570 1F       		.byte	31
+ 1422 0571 01       		.byte	1
+ 1423 0572 20       		.byte	32
+ 1424 0573 80       		.byte	-128
+ 1425 0574 21       		.byte	33
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 26
+
+
+ 1426 0575 40       		.byte	64
+ 1427 0576 22       		.byte	34
+ 1428 0577 62       		.byte	98
+ 1429 0578 23       		.byte	35
+ 1430 0579 06       		.byte	6
+ 1431 057a 28       		.byte	40
+ 1432 057b 40       		.byte	64
+ 1433 057c 2A       		.byte	42
+ 1434 057d 40       		.byte	64
+ 1435 057e 2B       		.byte	43
+ 1436 057f 10       		.byte	16
+ 1437 0580 2D       		.byte	45
+ 1438 0581 30       		.byte	48
+ 1439 0582 2F       		.byte	47
+ 1440 0583 20       		.byte	32
+ 1441 0584 31       		.byte	49
+ 1442 0585 08       		.byte	8
+ 1443 0586 32       		.byte	50
+ 1444 0587 A2       		.byte	-94
+ 1445 0588 33       		.byte	51
+ 1446 0589 04       		.byte	4
+ 1447 058a 36       		.byte	54
+ 1448 058b 80       		.byte	-128
+ 1449 058c 37       		.byte	55
+ 1450 058d 06       		.byte	6
+ 1451 058e 39       		.byte	57
+ 1452 058f 90       		.byte	-112
+ 1453 0590 3B       		.byte	59
+ 1454 0591 08       		.byte	8
+ 1455 0592 3C       		.byte	60
+ 1456 0593 80       		.byte	-128
+ 1457 0594 3F       		.byte	63
+ 1458 0595 04       		.byte	4
+ 1459 0596 5A       		.byte	90
+ 1460 0597 40       		.byte	64
+ 1461 0598 5F       		.byte	95
+ 1462 0599 80       		.byte	-128
+ 1463 059a 64       		.byte	100
+ 1464 059b 02       		.byte	2
+ 1465 059c 79       		.byte	121
+ 1466 059d 40       		.byte	64
+ 1467 059e 83       		.byte	-125
+ 1468 059f 10       		.byte	16
+ 1469 05a0 84       		.byte	-124
+ 1470 05a1 40       		.byte	64
+ 1471 05a2 8E       		.byte	-114
+ 1472 05a3 20       		.byte	32
+ 1473 05a4 91       		.byte	-111
+ 1474 05a5 45       		.byte	69
+ 1475 05a6 96       		.byte	-106
+ 1476 05a7 84       		.byte	-124
+ 1477 05a8 99       		.byte	-103
+ 1478 05a9 A2       		.byte	-94
+ 1479 05aa 9B       		.byte	-101
+ 1480 05ab 80       		.byte	-128
+ 1481 05ac A0       		.byte	-96
+ 1482 05ad 80       		.byte	-128
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 27
+
+
+ 1483 05ae A1       		.byte	-95
+ 1484 05af 20       		.byte	32
+ 1485 05b0 A2       		.byte	-94
+ 1486 05b1 80       		.byte	-128
+ 1487 05b2 A4       		.byte	-92
+ 1488 05b3 40       		.byte	64
+ 1489 05b4 A5       		.byte	-91
+ 1490 05b5 08       		.byte	8
+ 1491 05b6 A6       		.byte	-90
+ 1492 05b7 22       		.byte	34
+ 1493 05b8 A7       		.byte	-89
+ 1494 05b9 18       		.byte	24
+ 1495 05ba A9       		.byte	-87
+ 1496 05bb 20       		.byte	32
+ 1497 05bc C0       		.byte	-64
+ 1498 05bd 8F       		.byte	-113
+ 1499 05be C2       		.byte	-62
+ 1500 05bf 1F       		.byte	31
+ 1501 05c0 C4       		.byte	-60
+ 1502 05c1 8D       		.byte	-115
+ 1503 05c2 CA       		.byte	-54
+ 1504 05c3 6B       		.byte	107
+ 1505 05c4 CC       		.byte	-52
+ 1506 05c5 DF       		.byte	-33
+ 1507 05c6 CE       		.byte	-50
+ 1508 05c7 5E       		.byte	94
+ 1509 05c8 D6       		.byte	-42
+ 1510 05c9 18       		.byte	24
+ 1511 05ca D8       		.byte	-40
+ 1512 05cb 10       		.byte	16
+ 1513 05cc DE       		.byte	-34
+ 1514 05cd 08       		.byte	8
+ 1515 05ce E2       		.byte	-30
+ 1516 05cf 10       		.byte	16
+ 1517 05d0 58       		.byte	88
+ 1518 05d1 04       		.byte	4
+ 1519 05d2 59       		.byte	89
+ 1520 05d3 04       		.byte	4
+ 1521 05d4 5C       		.byte	92
+ 1522 05d5 11       		.byte	17
+ 1523 05d6 5F       		.byte	95
+ 1524 05d7 01       		.byte	1
+ 1525 05d8 80       		.byte	-128
+ 1526 05d9 40       		.byte	64
+ 1527 05da 82       		.byte	-126
+ 1528 05db 80       		.byte	-128
+ 1529 05dc 86       		.byte	-122
+ 1530 05dd 01       		.byte	1
+ 1531 05de 88       		.byte	-120
+ 1532 05df 10       		.byte	16
+ 1533 05e0 8A       		.byte	-118
+ 1534 05e1 20       		.byte	32
+ 1535 05e2 8E       		.byte	-114
+ 1536 05e3 04       		.byte	4
+ 1537 05e4 92       		.byte	-110
+ 1538 05e5 02       		.byte	2
+ 1539 05e6 96       		.byte	-106
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 28
+
+
+ 1540 05e7 08       		.byte	8
+ 1541 05e8 98       		.byte	-104
+ 1542 05e9 01       		.byte	1
+ 1543 05ea 9C       		.byte	-100
+ 1544 05eb 02       		.byte	2
+ 1545 05ec A0       		.byte	-96
+ 1546 05ed 04       		.byte	4
+ 1547 05ee A3       		.byte	-93
+ 1548 05ef 01       		.byte	1
+ 1549 05f0 A4       		.byte	-92
+ 1550 05f1 08       		.byte	8
+ 1551 05f2 A8       		.byte	-88
+ 1552 05f3 20       		.byte	32
+ 1553 05f4 AA       		.byte	-86
+ 1554 05f5 10       		.byte	16
+ 1555 05f6 AC       		.byte	-84
+ 1556 05f7 80       		.byte	-128
+ 1557 05f8 AE       		.byte	-82
+ 1558 05f9 40       		.byte	64
+ 1559 05fa B6       		.byte	-74
+ 1560 05fb FF       		.byte	-1
+ 1561 05fc B7       		.byte	-73
+ 1562 05fd 01       		.byte	1
+ 1563 05fe BE       		.byte	-66
+ 1564 05ff 40       		.byte	64
+ 1565 0600 D6       		.byte	-42
+ 1566 0601 02       		.byte	2
+ 1567 0602 D7       		.byte	-41
+ 1568 0603 3D       		.byte	61
+ 1569 0604 D8       		.byte	-40
+ 1570 0605 04       		.byte	4
+ 1571 0606 D9       		.byte	-39
+ 1572 0607 04       		.byte	4
+ 1573 0608 DB       		.byte	-37
+ 1574 0609 0C       		.byte	12
+ 1575 060a DC       		.byte	-36
+ 1576 060b 10       		.byte	16
+ 1577 060c DD       		.byte	-35
+ 1578 060d 10       		.byte	16
+ 1579 060e DF       		.byte	-33
+ 1580 060f 01       		.byte	1
+ 1581 0610 00       		.byte	0
+ 1582 0611 80       		.byte	-128
+ 1583 0612 01       		.byte	1
+ 1584 0613 2A       		.byte	42
+ 1585 0614 02       		.byte	2
+ 1586 0615 A0       		.byte	-96
+ 1587 0616 03       		.byte	3
+ 1588 0617 13       		.byte	19
+ 1589 0618 05       		.byte	5
+ 1590 0619 20       		.byte	32
+ 1591 061a 07       		.byte	7
+ 1592 061b 01       		.byte	1
+ 1593 061c 09       		.byte	9
+ 1594 061d A8       		.byte	-88
+ 1595 061e 0A       		.byte	10
+ 1596 061f C0       		.byte	-64
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 29
+
+
+ 1597 0620 0E       		.byte	14
+ 1598 0621 40       		.byte	64
+ 1599 0622 0F       		.byte	15
+ 1600 0623 20       		.byte	32
+ 1601 0624 10       		.byte	16
+ 1602 0625 0A       		.byte	10
+ 1603 0626 11       		.byte	17
+ 1604 0627 05       		.byte	5
+ 1605 0628 12       		.byte	18
+ 1606 0629 01       		.byte	1
+ 1607 062a 15       		.byte	21
+ 1608 062b 80       		.byte	-128
+ 1609 062c 17       		.byte	23
+ 1610 062d 14       		.byte	20
+ 1611 062e 19       		.byte	25
+ 1612 062f 80       		.byte	-128
+ 1613 0630 21       		.byte	33
+ 1614 0631 40       		.byte	64
+ 1615 0632 22       		.byte	34
+ 1616 0633 80       		.byte	-128
+ 1617 0634 29       		.byte	41
+ 1618 0635 20       		.byte	32
+ 1619 0636 2A       		.byte	42
+ 1620 0637 01       		.byte	1
+ 1621 0638 2B       		.byte	43
+ 1622 0639 12       		.byte	18
+ 1623 063a 2D       		.byte	45
+ 1624 063b 28       		.byte	40
+ 1625 063c 2E       		.byte	46
+ 1626 063d 40       		.byte	64
+ 1627 063e 31       		.byte	49
+ 1628 063f 08       		.byte	8
+ 1629 0640 32       		.byte	50
+ 1630 0641 60       		.byte	96
+ 1631 0642 33       		.byte	51
+ 1632 0643 04       		.byte	4
+ 1633 0644 36       		.byte	54
+ 1634 0645 82       		.byte	-126
+ 1635 0646 37       		.byte	55
+ 1636 0647 04       		.byte	4
+ 1637 0648 39       		.byte	57
+ 1638 0649 80       		.byte	-128
+ 1639 064a 3F       		.byte	63
+ 1640 064b 20       		.byte	32
+ 1641 064c 5A       		.byte	90
+ 1642 064d 10       		.byte	16
+ 1643 064e 60       		.byte	96
+ 1644 064f 40       		.byte	64
+ 1645 0650 68       		.byte	104
+ 1646 0651 0E       		.byte	14
+ 1647 0652 69       		.byte	105
+ 1648 0653 05       		.byte	5
+ 1649 0654 70       		.byte	112
+ 1650 0655 80       		.byte	-128
+ 1651 0656 71       		.byte	113
+ 1652 0657 A1       		.byte	-95
+ 1653 0658 79       		.byte	121
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 30
+
+
+ 1654 0659 40       		.byte	64
+ 1655 065a 82       		.byte	-126
+ 1656 065b A0       		.byte	-96
+ 1657 065c 85       		.byte	-123
+ 1658 065d 08       		.byte	8
+ 1659 065e 8A       		.byte	-118
+ 1660 065f 01       		.byte	1
+ 1661 0660 90       		.byte	-112
+ 1662 0661 40       		.byte	64
+ 1663 0662 91       		.byte	-111
+ 1664 0663 40       		.byte	64
+ 1665 0664 92       		.byte	-110
+ 1666 0665 10       		.byte	16
+ 1667 0666 96       		.byte	-106
+ 1668 0667 85       		.byte	-123
+ 1669 0668 99       		.byte	-103
+ 1670 0669 20       		.byte	32
+ 1671 066a 9B       		.byte	-101
+ 1672 066b 80       		.byte	-128
+ 1673 066c 9D       		.byte	-99
+ 1674 066d 0B       		.byte	11
+ 1675 066e A4       		.byte	-92
+ 1676 066f 04       		.byte	4
+ 1677 0670 A5       		.byte	-91
+ 1678 0671 08       		.byte	8
+ 1679 0672 A6       		.byte	-90
+ 1680 0673 A2       		.byte	-94
+ 1681 0674 A7       		.byte	-89
+ 1682 0675 18       		.byte	24
+ 1683 0676 AF       		.byte	-81
+ 1684 0677 80       		.byte	-128
+ 1685 0678 B2       		.byte	-78
+ 1686 0679 08       		.byte	8
+ 1687 067a C0       		.byte	-64
+ 1688 067b CF       		.byte	-49
+ 1689 067c C2       		.byte	-62
+ 1690 067d 3F       		.byte	63
+ 1691 067e C4       		.byte	-60
+ 1692 067f EF       		.byte	-17
+ 1693 0680 CA       		.byte	-54
+ 1694 0681 7F       		.byte	127
+ 1695 0682 CC       		.byte	-52
+ 1696 0683 DE       		.byte	-34
+ 1697 0684 CE       		.byte	-50
+ 1698 0685 28       		.byte	40
+ 1699 0686 D6       		.byte	-42
+ 1700 0687 04       		.byte	4
+ 1701 0688 D8       		.byte	-40
+ 1702 0689 01       		.byte	1
+ 1703 068a DE       		.byte	-34
+ 1704 068b 08       		.byte	8
+ 1705 068c E6       		.byte	-26
+ 1706 068d 02       		.byte	2
+ 1707 068e EA       		.byte	-22
+ 1708 068f 20       		.byte	32
+ 1709 0690 01       		.byte	1
+ 1710 0691 10       		.byte	16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 31
+
+
+ 1711 0692 05       		.byte	5
+ 1712 0693 04       		.byte	4
+ 1713 0694 06       		.byte	6
+ 1714 0695 01       		.byte	1
+ 1715 0696 07       		.byte	7
+ 1716 0697 01       		.byte	1
+ 1717 0698 09       		.byte	9
+ 1718 0699 0F       		.byte	15
+ 1719 069a 17       		.byte	23
+ 1720 069b 02       		.byte	2
+ 1721 069c 19       		.byte	25
+ 1722 069d 07       		.byte	7
+ 1723 069e 1B       		.byte	27
+ 1724 069f 08       		.byte	8
+ 1725 06a0 1C       		.byte	28
+ 1726 06a1 02       		.byte	2
+ 1727 06a2 1D       		.byte	29
+ 1728 06a3 0A       		.byte	10
+ 1729 06a4 1F       		.byte	31
+ 1730 06a5 05       		.byte	5
+ 1731 06a6 21       		.byte	33
+ 1732 06a7 01       		.byte	1
+ 1733 06a8 28       		.byte	40
+ 1734 06a9 02       		.byte	2
+ 1735 06aa 2B       		.byte	43
+ 1736 06ab 30       		.byte	48
+ 1737 06ac 30       		.byte	48
+ 1738 06ad 02       		.byte	2
+ 1739 06ae 31       		.byte	49
+ 1740 06af 20       		.byte	32
+ 1741 06b0 33       		.byte	51
+ 1742 06b1 10       		.byte	16
+ 1743 06b2 34       		.byte	52
+ 1744 06b3 01       		.byte	1
+ 1745 06b4 35       		.byte	53
+ 1746 06b5 03       		.byte	3
+ 1747 06b6 37       		.byte	55
+ 1748 06b7 0C       		.byte	12
+ 1749 06b8 38       		.byte	56
+ 1750 06b9 02       		.byte	2
+ 1751 06ba 3E       		.byte	62
+ 1752 06bb 01       		.byte	1
+ 1753 06bc 52       		.byte	82
+ 1754 06bd 03       		.byte	3
+ 1755 06be 53       		.byte	83
+ 1756 06bf 02       		.byte	2
+ 1757 06c0 58       		.byte	88
+ 1758 06c1 04       		.byte	4
+ 1759 06c2 59       		.byte	89
+ 1760 06c3 0C       		.byte	12
+ 1761 06c4 5B       		.byte	91
+ 1762 06c5 04       		.byte	4
+ 1763 06c6 5C       		.byte	92
+ 1764 06c7 11       		.byte	17
+ 1765 06c8 5D       		.byte	93
+ 1766 06c9 10       		.byte	16
+ 1767 06ca 5F       		.byte	95
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 32
+
+
+ 1768 06cb 01       		.byte	1
+ 1769 06cc D8       		.byte	-40
+ 1770 06cd 04       		.byte	4
+ 1771 06ce D9       		.byte	-39
+ 1772 06cf 04       		.byte	4
+ 1773 06d0 DC       		.byte	-36
+ 1774 06d1 11       		.byte	17
+ 1775 06d2 DF       		.byte	-33
+ 1776 06d3 01       		.byte	1
+ 1777 06d4 00       		.byte	0
+ 1778 06d5 08       		.byte	8
+ 1779 06d6 01       		.byte	1
+ 1780 06d7 20       		.byte	32
+ 1781 06d8 02       		.byte	2
+ 1782 06d9 02       		.byte	2
+ 1783 06da 03       		.byte	3
+ 1784 06db 01       		.byte	1
+ 1785 06dc 05       		.byte	5
+ 1786 06dd 22       		.byte	34
+ 1787 06de 07       		.byte	7
+ 1788 06df 01       		.byte	1
+ 1789 06e0 08       		.byte	8
+ 1790 06e1 08       		.byte	8
+ 1791 06e2 09       		.byte	9
+ 1792 06e3 08       		.byte	8
+ 1793 06e4 0A       		.byte	10
+ 1794 06e5 85       		.byte	-123
+ 1795 06e6 0B       		.byte	11
+ 1796 06e7 60       		.byte	96
+ 1797 06e8 0F       		.byte	15
+ 1798 06e9 60       		.byte	96
+ 1799 06ea 10       		.byte	16
+ 1800 06eb 08       		.byte	8
+ 1801 06ec 12       		.byte	18
+ 1802 06ed A0       		.byte	-96
+ 1803 06ee 13       		.byte	19
+ 1804 06ef 08       		.byte	8
+ 1805 06f0 14       		.byte	20
+ 1806 06f1 08       		.byte	8
+ 1807 06f2 17       		.byte	23
+ 1808 06f3 08       		.byte	8
+ 1809 06f4 18       		.byte	24
+ 1810 06f5 40       		.byte	64
+ 1811 06f6 19       		.byte	25
+ 1812 06f7 20       		.byte	32
+ 1813 06f8 21       		.byte	33
+ 1814 06f9 A1       		.byte	-95
+ 1815 06fa 22       		.byte	34
+ 1816 06fb 04       		.byte	4
+ 1817 06fc 29       		.byte	41
+ 1818 06fd 01       		.byte	1
+ 1819 06fe 2B       		.byte	43
+ 1820 06ff 08       		.byte	8
+ 1821 0700 2D       		.byte	45
+ 1822 0701 20       		.byte	32
+ 1823 0702 2F       		.byte	47
+ 1824 0703 10       		.byte	16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 33
+
+
+ 1825 0704 31       		.byte	49
+ 1826 0705 A0       		.byte	-96
+ 1827 0706 32       		.byte	50
+ 1828 0707 04       		.byte	4
+ 1829 0708 35       		.byte	53
+ 1830 0709 08       		.byte	8
+ 1831 070a 36       		.byte	54
+ 1832 070b 82       		.byte	-126
+ 1833 070c 39       		.byte	57
+ 1834 070d 12       		.byte	18
+ 1835 070e 3A       		.byte	58
+ 1836 070f 08       		.byte	8
+ 1837 0710 3F       		.byte	63
+ 1838 0711 60       		.byte	96
+ 1839 0712 68       		.byte	104
+ 1840 0713 08       		.byte	8
+ 1841 0714 69       		.byte	105
+ 1842 0715 50       		.byte	80
+ 1843 0716 6A       		.byte	106
+ 1844 0717 10       		.byte	16
+ 1845 0718 79       		.byte	121
+ 1846 0719 40       		.byte	64
+ 1847 071a 85       		.byte	-123
+ 1848 071b 20       		.byte	32
+ 1849 071c 89       		.byte	-119
+ 1850 071d 20       		.byte	32
+ 1851 071e C0       		.byte	-64
+ 1852 071f D7       		.byte	-41
+ 1853 0720 C2       		.byte	-62
+ 1854 0721 3F       		.byte	63
+ 1855 0722 C4       		.byte	-60
+ 1856 0723 6E       		.byte	110
+ 1857 0724 CA       		.byte	-54
+ 1858 0725 65       		.byte	101
+ 1859 0726 CC       		.byte	-52
+ 1860 0727 DE       		.byte	-34
+ 1861 0728 CE       		.byte	-50
+ 1862 0729 37       		.byte	55
+ 1863 072a DE       		.byte	-34
+ 1864 072b 08       		.byte	8
+ 1865 072c 04       		.byte	4
+ 1866 072d 10       		.byte	16
+ 1867 072e 05       		.byte	5
+ 1868 072f 20       		.byte	32
+ 1869 0730 06       		.byte	6
+ 1870 0731 04       		.byte	4
+ 1871 0732 07       		.byte	7
+ 1872 0733 08       		.byte	8
+ 1873 0734 09       		.byte	9
+ 1874 0735 0E       		.byte	14
+ 1875 0736 0A       		.byte	10
+ 1876 0737 1F       		.byte	31
+ 1877 0738 0B       		.byte	11
+ 1878 0739 10       		.byte	16
+ 1879 073a 0C       		.byte	12
+ 1880 073b 06       		.byte	6
+ 1881 073c 0D       		.byte	13
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 34
+
+
+ 1882 073d 02       		.byte	2
+ 1883 073e 0E       		.byte	14
+ 1884 073f 11       		.byte	17
+ 1885 0740 0F       		.byte	15
+ 1886 0741 24       		.byte	36
+ 1887 0742 11       		.byte	17
+ 1888 0743 0C       		.byte	12
+ 1889 0744 12       		.byte	18
+ 1890 0745 20       		.byte	32
+ 1891 0746 13       		.byte	19
+ 1892 0747 22       		.byte	34
+ 1893 0748 18       		.byte	24
+ 1894 0749 18       		.byte	24
+ 1895 074a 1A       		.byte	26
+ 1896 074b 03       		.byte	3
+ 1897 074c 1D       		.byte	29
+ 1898 074d 30       		.byte	48
+ 1899 074e 1F       		.byte	31
+ 1900 074f 06       		.byte	6
+ 1901 0750 23       		.byte	35
+ 1902 0751 01       		.byte	1
+ 1903 0752 24       		.byte	36
+ 1904 0753 07       		.byte	7
+ 1905 0754 26       		.byte	38
+ 1906 0755 08       		.byte	8
+ 1907 0756 27       		.byte	39
+ 1908 0757 01       		.byte	1
+ 1909 0758 28       		.byte	40
+ 1910 0759 01       		.byte	1
+ 1911 075a 2A       		.byte	42
+ 1912 075b 12       		.byte	18
+ 1913 075c 2D       		.byte	45
+ 1914 075d 3E       		.byte	62
+ 1915 075e 32       		.byte	50
+ 1916 075f 20       		.byte	32
+ 1917 0760 33       		.byte	51
+ 1918 0761 01       		.byte	1
+ 1919 0762 34       		.byte	52
+ 1920 0763 1F       		.byte	31
+ 1921 0764 35       		.byte	53
+ 1922 0765 3E       		.byte	62
+ 1923 0766 36       		.byte	54
+ 1924 0767 20       		.byte	32
+ 1925 0768 3F       		.byte	63
+ 1926 0769 04       		.byte	4
+ 1927 076a 40       		.byte	64
+ 1928 076b 10       		.byte	16
+ 1929 076c 41       		.byte	65
+ 1930 076d 04       		.byte	4
+ 1931 076e 45       		.byte	69
+ 1932 076f D0       		.byte	-48
+ 1933 0770 46       		.byte	70
+ 1934 0771 15       		.byte	21
+ 1935 0772 47       		.byte	71
+ 1936 0773 24       		.byte	36
+ 1937 0774 48       		.byte	72
+ 1938 0775 3F       		.byte	63
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 35
+
+
+ 1939 0776 49       		.byte	73
+ 1940 0777 FF       		.byte	-1
+ 1941 0778 4A       		.byte	74
+ 1942 0779 FF       		.byte	-1
+ 1943 077a 4B       		.byte	75
+ 1944 077b FF       		.byte	-1
+ 1945 077c 4D       		.byte	77
+ 1946 077d A0       		.byte	-96
+ 1947 077e 4F       		.byte	79
+ 1948 077f 04       		.byte	4
+ 1949 0780 50       		.byte	80
+ 1950 0781 18       		.byte	24
+ 1951 0782 52       		.byte	82
+ 1952 0783 BF       		.byte	-65
+ 1953 0784 58       		.byte	88
+ 1954 0785 04       		.byte	4
+ 1955 0786 59       		.byte	89
+ 1956 0787 04       		.byte	4
+ 1957 0788 5A       		.byte	90
+ 1958 0789 04       		.byte	4
+ 1959 078a 5B       		.byte	91
+ 1960 078b 04       		.byte	4
+ 1961 078c 5C       		.byte	92
+ 1962 078d 22       		.byte	34
+ 1963 078e 5D       		.byte	93
+ 1964 078f 22       		.byte	34
+ 1965 0790 5F       		.byte	95
+ 1966 0791 01       		.byte	1
+ 1967 0792 60       		.byte	96
+ 1968 0793 40       		.byte	64
+ 1969 0794 62       		.byte	98
+ 1970 0795 C0       		.byte	-64
+ 1971 0796 64       		.byte	100
+ 1972 0797 40       		.byte	64
+ 1973 0798 65       		.byte	101
+ 1974 0799 40       		.byte	64
+ 1975 079a 66       		.byte	102
+ 1976 079b C0       		.byte	-64
+ 1977 079c 68       		.byte	104
+ 1978 079d C0       		.byte	-64
+ 1979 079e 6A       		.byte	106
+ 1980 079f C0       		.byte	-64
+ 1981 07a0 6C       		.byte	108
+ 1982 07a1 C0       		.byte	-64
+ 1983 07a2 6E       		.byte	110
+ 1984 07a3 C0       		.byte	-64
+ 1985 07a4 80       		.byte	-128
+ 1986 07a5 18       		.byte	24
+ 1987 07a6 82       		.byte	-126
+ 1988 07a7 03       		.byte	3
+ 1989 07a8 84       		.byte	-124
+ 1990 07a9 10       		.byte	16
+ 1991 07aa 85       		.byte	-123
+ 1992 07ab 07       		.byte	7
+ 1993 07ac 86       		.byte	-122
+ 1994 07ad 04       		.byte	4
+ 1995 07ae 87       		.byte	-121
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 36
+
+
+ 1996 07af 08       		.byte	8
+ 1997 07b0 8C       		.byte	-116
+ 1998 07b1 01       		.byte	1
+ 1999 07b2 8E       		.byte	-114
+ 2000 07b3 12       		.byte	18
+ 2001 07b4 91       		.byte	-111
+ 2002 07b5 01       		.byte	1
+ 2003 07b6 93       		.byte	-109
+ 2004 07b7 12       		.byte	18
+ 2005 07b8 95       		.byte	-107
+ 2006 07b9 10       		.byte	16
+ 2007 07ba 97       		.byte	-105
+ 2008 07bb 04       		.byte	4
+ 2009 07bc 9C       		.byte	-100
+ 2010 07bd 06       		.byte	6
+ 2011 07be 9D       		.byte	-99
+ 2012 07bf 18       		.byte	24
+ 2013 07c0 9E       		.byte	-98
+ 2014 07c1 11       		.byte	17
+ 2015 07c2 9F       		.byte	-97
+ 2016 07c3 03       		.byte	3
+ 2017 07c4 A1       		.byte	-95
+ 2018 07c5 06       		.byte	6
+ 2019 07c6 A3       		.byte	-93
+ 2020 07c7 11       		.byte	17
+ 2021 07c8 A4       		.byte	-92
+ 2022 07c9 07       		.byte	7
+ 2023 07ca A6       		.byte	-90
+ 2024 07cb 08       		.byte	8
+ 2025 07cc AF       		.byte	-81
+ 2026 07cd 1F       		.byte	31
+ 2027 07ce B6       		.byte	-74
+ 2028 07cf 1F       		.byte	31
+ 2029 07d0 B7       		.byte	-73
+ 2030 07d1 1F       		.byte	31
+ 2031 07d2 D8       		.byte	-40
+ 2032 07d3 04       		.byte	4
+ 2033 07d4 D9       		.byte	-39
+ 2034 07d5 04       		.byte	4
+ 2035 07d6 DC       		.byte	-36
+ 2036 07d7 22       		.byte	34
+ 2037 07d8 DF       		.byte	-33
+ 2038 07d9 01       		.byte	1
+ 2039 07da 00       		.byte	0
+ 2040 07db 10       		.byte	16
+ 2041 07dc 01       		.byte	1
+ 2042 07dd 40       		.byte	64
+ 2043 07de 02       		.byte	2
+ 2044 07df 20       		.byte	32
+ 2045 07e0 04       		.byte	4
+ 2046 07e1 08       		.byte	8
+ 2047 07e2 06       		.byte	6
+ 2048 07e3 40       		.byte	64
+ 2049 07e4 07       		.byte	7
+ 2050 07e5 02       		.byte	2
+ 2051 07e6 09       		.byte	9
+ 2052 07e7 22       		.byte	34
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 37
+
+
+ 2053 07e8 0E       		.byte	14
+ 2054 07e9 01       		.byte	1
+ 2055 07ea 10       		.byte	16
+ 2056 07eb 28       		.byte	40
+ 2057 07ec 17       		.byte	23
+ 2058 07ed 08       		.byte	8
+ 2059 07ee 18       		.byte	24
+ 2060 07ef 11       		.byte	17
+ 2061 07f0 19       		.byte	25
+ 2062 07f1 A8       		.byte	-88
+ 2063 07f2 1D       		.byte	29
+ 2064 07f3 40       		.byte	64
+ 2065 07f4 22       		.byte	34
+ 2066 07f5 14       		.byte	20
+ 2067 07f6 25       		.byte	37
+ 2068 07f7 40       		.byte	64
+ 2069 07f8 29       		.byte	41
+ 2070 07f9 48       		.byte	72
+ 2071 07fa 2A       		.byte	42
+ 2072 07fb 01       		.byte	1
+ 2073 07fc 2D       		.byte	45
+ 2074 07fd 80       		.byte	-128
+ 2075 07fe 2E       		.byte	46
+ 2076 07ff 01       		.byte	1
+ 2077 0800 30       		.byte	48
+ 2078 0801 80       		.byte	-128
+ 2079 0802 32       		.byte	50
+ 2080 0803 01       		.byte	1
+ 2081 0804 36       		.byte	54
+ 2082 0805 88       		.byte	-120
+ 2083 0806 37       		.byte	55
+ 2084 0807 02       		.byte	2
+ 2085 0808 38       		.byte	56
+ 2086 0809 A8       		.byte	-88
+ 2087 080a 3F       		.byte	63
+ 2088 080b 04       		.byte	4
+ 2089 080c 40       		.byte	64
+ 2090 080d 01       		.byte	1
+ 2091 080e 41       		.byte	65
+ 2092 080f 01       		.byte	1
+ 2093 0810 49       		.byte	73
+ 2094 0811 01       		.byte	1
+ 2095 0812 4A       		.byte	74
+ 2096 0813 20       		.byte	32
+ 2097 0814 4B       		.byte	75
+ 2098 0815 08       		.byte	8
+ 2099 0816 50       		.byte	80
+ 2100 0817 84       		.byte	-124
+ 2101 0818 51       		.byte	81
+ 2102 0819 31       		.byte	49
+ 2103 081a 52       		.byte	82
+ 2104 081b C9       		.byte	-55
+ 2105 081c 68       		.byte	104
+ 2106 081d 28       		.byte	40
+ 2107 081e 69       		.byte	105
+ 2108 081f 40       		.byte	64
+ 2109 0820 6A       		.byte	106
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 38
+
+
+ 2110 0821 03       		.byte	3
+ 2111 0822 70       		.byte	112
+ 2112 0823 50       		.byte	80
+ 2113 0824 71       		.byte	113
+ 2114 0825 02       		.byte	2
+ 2115 0826 73       		.byte	115
+ 2116 0827 0E       		.byte	14
+ 2117 0828 85       		.byte	-123
+ 2118 0829 20       		.byte	32
+ 2119 082a 89       		.byte	-119
+ 2120 082b 40       		.byte	64
+ 2121 082c 95       		.byte	-107
+ 2122 082d 60       		.byte	96
+ 2123 082e 96       		.byte	-106
+ 2124 082f 28       		.byte	40
+ 2125 0830 97       		.byte	-105
+ 2126 0831 08       		.byte	8
+ 2127 0832 9D       		.byte	-99
+ 2128 0833 01       		.byte	1
+ 2129 0834 A4       		.byte	-92
+ 2130 0835 28       		.byte	40
+ 2131 0836 A8       		.byte	-88
+ 2132 0837 40       		.byte	64
+ 2133 0838 A9       		.byte	-87
+ 2134 0839 10       		.byte	16
+ 2135 083a AB       		.byte	-85
+ 2136 083b 01       		.byte	1
+ 2137 083c C0       		.byte	-64
+ 2138 083d B7       		.byte	-73
+ 2139 083e C2       		.byte	-62
+ 2140 083f 8A       		.byte	-118
+ 2141 0840 C4       		.byte	-60
+ 2142 0841 26       		.byte	38
+ 2143 0842 CA       		.byte	-54
+ 2144 0843 9B       		.byte	-101
+ 2145 0844 CC       		.byte	-52
+ 2146 0845 D9       		.byte	-39
+ 2147 0846 CE       		.byte	-50
+ 2148 0847 4E       		.byte	78
+ 2149 0848 D0       		.byte	-48
+ 2150 0849 09       		.byte	9
+ 2151 084a E6       		.byte	-26
+ 2152 084b 20       		.byte	32
+ 2153 084c EA       		.byte	-22
+ 2154 084d 01       		.byte	1
+ 2155 084e EC       		.byte	-20
+ 2156 084f 20       		.byte	32
+ 2157 0850 EE       		.byte	-18
+ 2158 0851 04       		.byte	4
+ 2159 0852 01       		.byte	1
+ 2160 0853 01       		.byte	1
+ 2161 0854 02       		.byte	2
+ 2162 0855 10       		.byte	16
+ 2163 0856 04       		.byte	4
+ 2164 0857 04       		.byte	4
+ 2165 0858 07       		.byte	7
+ 2166 0859 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 39
+
+
+ 2167 085a 0C       		.byte	12
+ 2168 085b 04       		.byte	4
+ 2169 085c 10       		.byte	16
+ 2170 085d 02       		.byte	2
+ 2171 085e 12       		.byte	18
+ 2172 085f 01       		.byte	1
+ 2173 0860 13       		.byte	19
+ 2174 0861 02       		.byte	2
+ 2175 0862 17       		.byte	23
+ 2176 0863 04       		.byte	4
+ 2177 0864 18       		.byte	24
+ 2178 0865 01       		.byte	1
+ 2179 0866 1A       		.byte	26
+ 2180 0867 0A       		.byte	10
+ 2181 0868 1C       		.byte	28
+ 2182 0869 01       		.byte	1
+ 2183 086a 1D       		.byte	29
+ 2184 086b 04       		.byte	4
+ 2185 086c 1E       		.byte	30
+ 2186 086d 02       		.byte	2
+ 2187 086e 25       		.byte	37
+ 2188 086f 01       		.byte	1
+ 2189 0870 26       		.byte	38
+ 2190 0871 04       		.byte	4
+ 2191 0872 28       		.byte	40
+ 2192 0873 01       		.byte	1
+ 2193 0874 2A       		.byte	42
+ 2194 0875 02       		.byte	2
+ 2195 0876 30       		.byte	48
+ 2196 0877 03       		.byte	3
+ 2197 0878 32       		.byte	50
+ 2198 0879 04       		.byte	4
+ 2199 087a 33       		.byte	51
+ 2200 087b 02       		.byte	2
+ 2201 087c 34       		.byte	52
+ 2202 087d 10       		.byte	16
+ 2203 087e 35       		.byte	53
+ 2204 087f 01       		.byte	1
+ 2205 0880 36       		.byte	54
+ 2206 0881 08       		.byte	8
+ 2207 0882 37       		.byte	55
+ 2208 0883 04       		.byte	4
+ 2209 0884 39       		.byte	57
+ 2210 0885 20       		.byte	32
+ 2211 0886 3A       		.byte	58
+ 2212 0887 02       		.byte	2
+ 2213 0888 3E       		.byte	62
+ 2214 0889 04       		.byte	4
+ 2215 088a 3F       		.byte	63
+ 2216 088b 40       		.byte	64
+ 2217 088c 54       		.byte	84
+ 2218 088d 0F       		.byte	15
+ 2219 088e 58       		.byte	88
+ 2220 088f 04       		.byte	4
+ 2221 0890 59       		.byte	89
+ 2222 0891 04       		.byte	4
+ 2223 0892 5B       		.byte	91
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 40
+
+
+ 2224 0893 04       		.byte	4
+ 2225 0894 5F       		.byte	95
+ 2226 0895 01       		.byte	1
+ 2227 0896 85       		.byte	-123
+ 2228 0897 10       		.byte	16
+ 2229 0898 87       		.byte	-121
+ 2230 0899 04       		.byte	4
+ 2231 089a 89       		.byte	-119
+ 2232 089b 18       		.byte	24
+ 2233 089c 8B       		.byte	-117
+ 2234 089d 03       		.byte	3
+ 2235 089e 8C       		.byte	-116
+ 2236 089f 06       		.byte	6
+ 2237 08a0 8D       		.byte	-115
+ 2238 08a1 06       		.byte	6
+ 2239 08a2 8E       		.byte	-114
+ 2240 08a3 11       		.byte	17
+ 2241 08a4 8F       		.byte	-113
+ 2242 08a5 11       		.byte	17
+ 2243 08a6 94       		.byte	-108
+ 2244 08a7 01       		.byte	1
+ 2245 08a8 95       		.byte	-107
+ 2246 08a9 01       		.byte	1
+ 2247 08aa 96       		.byte	-106
+ 2248 08ab 12       		.byte	18
+ 2249 08ac 97       		.byte	-105
+ 2250 08ad 12       		.byte	18
+ 2251 08ae 98       		.byte	-104
+ 2252 08af 10       		.byte	16
+ 2253 08b0 99       		.byte	-103
+ 2254 08b1 07       		.byte	7
+ 2255 08b2 9A       		.byte	-102
+ 2256 08b3 04       		.byte	4
+ 2257 08b4 9B       		.byte	-101
+ 2258 08b5 08       		.byte	8
+ 2259 08b6 A4       		.byte	-92
+ 2260 08b7 07       		.byte	7
+ 2261 08b8 A5       		.byte	-91
+ 2262 08b9 1F       		.byte	31
+ 2263 08ba A6       		.byte	-90
+ 2264 08bb 08       		.byte	8
+ 2265 08bc A8       		.byte	-88
+ 2266 08bd 18       		.byte	24
+ 2267 08be AA       		.byte	-86
+ 2268 08bf 03       		.byte	3
+ 2269 08c0 B2       		.byte	-78
+ 2270 08c1 1F       		.byte	31
+ 2271 08c2 B7       		.byte	-73
+ 2272 08c3 1F       		.byte	31
+ 2273 08c4 D4       		.byte	-44
+ 2274 08c5 07       		.byte	7
+ 2275 08c6 D8       		.byte	-40
+ 2276 08c7 04       		.byte	4
+ 2277 08c8 D9       		.byte	-39
+ 2278 08c9 04       		.byte	4
+ 2279 08ca DB       		.byte	-37
+ 2280 08cb 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 41
+
+
+ 2281 08cc DC       		.byte	-36
+ 2282 08cd 22       		.byte	34
+ 2283 08ce DD       		.byte	-35
+ 2284 08cf 20       		.byte	32
+ 2285 08d0 DF       		.byte	-33
+ 2286 08d1 01       		.byte	1
+ 2287 08d2 01       		.byte	1
+ 2288 08d3 40       		.byte	64
+ 2289 08d4 04       		.byte	4
+ 2290 08d5 04       		.byte	4
+ 2291 08d6 05       		.byte	5
+ 2292 08d7 40       		.byte	64
+ 2293 08d8 06       		.byte	6
+ 2294 08d9 80       		.byte	-128
+ 2295 08da 08       		.byte	8
+ 2296 08db 04       		.byte	4
+ 2297 08dc 0B       		.byte	11
+ 2298 08dd 08       		.byte	8
+ 2299 08de 0D       		.byte	13
+ 2300 08df 02       		.byte	2
+ 2301 08e0 0E       		.byte	14
+ 2302 08e1 0A       		.byte	10
+ 2303 08e2 10       		.byte	16
+ 2304 08e3 20       		.byte	32
+ 2305 08e4 11       		.byte	17
+ 2306 08e5 10       		.byte	16
+ 2307 08e6 17       		.byte	23
+ 2308 08e7 28       		.byte	40
+ 2309 08e8 19       		.byte	25
+ 2310 08e9 08       		.byte	8
+ 2311 08ea 1C       		.byte	28
+ 2312 08eb 80       		.byte	-128
+ 2313 08ec 1D       		.byte	29
+ 2314 08ed 02       		.byte	2
+ 2315 08ee 1E       		.byte	30
+ 2316 08ef 2A       		.byte	42
+ 2317 08f0 22       		.byte	34
+ 2318 08f1 40       		.byte	64
+ 2319 08f2 27       		.byte	39
+ 2320 08f3 29       		.byte	41
+ 2321 08f4 29       		.byte	41
+ 2322 08f5 08       		.byte	8
+ 2323 08f6 2F       		.byte	47
+ 2324 08f7 20       		.byte	32
+ 2325 08f8 30       		.byte	48
+ 2326 08f9 2C       		.byte	44
+ 2327 08fa 35       		.byte	53
+ 2328 08fb 40       		.byte	64
+ 2329 08fc 36       		.byte	54
+ 2330 08fd 01       		.byte	1
+ 2331 08fe 37       		.byte	55
+ 2332 08ff 08       		.byte	8
+ 2333 0900 39       		.byte	57
+ 2334 0901 70       		.byte	112
+ 2335 0902 3B       		.byte	59
+ 2336 0903 08       		.byte	8
+ 2337 0904 3C       		.byte	60
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 42
+
+
+ 2338 0905 04       		.byte	4
+ 2339 0906 3F       		.byte	63
+ 2340 0907 02       		.byte	2
+ 2341 0908 42       		.byte	66
+ 2342 0909 40       		.byte	64
+ 2343 090a 43       		.byte	67
+ 2344 090b 01       		.byte	1
+ 2345 090c 59       		.byte	89
+ 2346 090d 01       		.byte	1
+ 2347 090e 5A       		.byte	90
+ 2348 090f A8       		.byte	-88
+ 2349 0910 5E       		.byte	94
+ 2350 0911 64       		.byte	100
+ 2351 0912 5F       		.byte	95
+ 2352 0913 01       		.byte	1
+ 2353 0914 89       		.byte	-119
+ 2354 0915 02       		.byte	2
+ 2355 0916 8E       		.byte	-114
+ 2356 0917 80       		.byte	-128
+ 2357 0918 90       		.byte	-112
+ 2358 0919 04       		.byte	4
+ 2359 091a 92       		.byte	-110
+ 2360 091b 04       		.byte	4
+ 2361 091c 94       		.byte	-108
+ 2362 091d 80       		.byte	-128
+ 2363 091e 99       		.byte	-103
+ 2364 091f 40       		.byte	64
+ 2365 0920 A3       		.byte	-93
+ 2366 0921 21       		.byte	33
+ 2367 0922 A4       		.byte	-92
+ 2368 0923 40       		.byte	64
+ 2369 0924 A5       		.byte	-91
+ 2370 0925 12       		.byte	18
+ 2371 0926 AC       		.byte	-84
+ 2372 0927 86       		.byte	-122
+ 2373 0928 B2       		.byte	-78
+ 2374 0929 04       		.byte	4
+ 2375 092a B3       		.byte	-77
+ 2376 092b 01       		.byte	1
+ 2377 092c C0       		.byte	-64
+ 2378 092d B1       		.byte	-79
+ 2379 092e C2       		.byte	-62
+ 2380 092f D6       		.byte	-42
+ 2381 0930 C4       		.byte	-60
+ 2382 0931 66       		.byte	102
+ 2383 0932 CA       		.byte	-54
+ 2384 0933 42       		.byte	66
+ 2385 0934 CC       		.byte	-52
+ 2386 0935 D6       		.byte	-42
+ 2387 0936 CE       		.byte	-50
+ 2388 0937 CE       		.byte	-50
+ 2389 0938 D6       		.byte	-42
+ 2390 0939 FF       		.byte	-1
+ 2391 093a E4       		.byte	-28
+ 2392 093b 10       		.byte	16
+ 2393 093c EA       		.byte	-22
+ 2394 093d 08       		.byte	8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 43
+
+
+ 2395 093e EE       		.byte	-18
+ 2396 093f 12       		.byte	18
+ 2397 0940 03       		.byte	3
+ 2398 0941 10       		.byte	16
+ 2399 0942 05       		.byte	5
+ 2400 0943 03       		.byte	3
+ 2401 0944 07       		.byte	7
+ 2402 0945 0C       		.byte	12
+ 2403 0946 09       		.byte	9
+ 2404 0947 0C       		.byte	12
+ 2405 0948 0B       		.byte	11
+ 2406 0949 03       		.byte	3
+ 2407 094a 0C       		.byte	12
+ 2408 094b 06       		.byte	6
+ 2409 094c 0E       		.byte	14
+ 2410 094d 11       		.byte	17
+ 2411 094e 0F       		.byte	15
+ 2412 094f 10       		.byte	16
+ 2413 0950 11       		.byte	17
+ 2414 0951 05       		.byte	5
+ 2415 0952 12       		.byte	18
+ 2416 0953 1F       		.byte	31
+ 2417 0954 13       		.byte	19
+ 2418 0955 0A       		.byte	10
+ 2419 0956 14       		.byte	20
+ 2420 0957 01       		.byte	1
+ 2421 0958 15       		.byte	21
+ 2422 0959 0A       		.byte	10
+ 2423 095a 16       		.byte	22
+ 2424 095b 12       		.byte	18
+ 2425 095c 17       		.byte	23
+ 2426 095d 05       		.byte	5
+ 2427 095e 18       		.byte	24
+ 2428 095f 10       		.byte	16
+ 2429 0960 1A       		.byte	26
+ 2430 0961 04       		.byte	4
+ 2431 0962 1D       		.byte	29
+ 2432 0963 0F       		.byte	15
+ 2433 0964 24       		.byte	36
+ 2434 0965 18       		.byte	24
+ 2435 0966 25       		.byte	37
+ 2436 0967 07       		.byte	7
+ 2437 0968 26       		.byte	38
+ 2438 0969 03       		.byte	3
+ 2439 096a 28       		.byte	40
+ 2440 096b 07       		.byte	7
+ 2441 096c 2A       		.byte	42
+ 2442 096d 08       		.byte	8
+ 2443 096e 30       		.byte	48
+ 2444 096f 1F       		.byte	31
+ 2445 0970 31       		.byte	49
+ 2446 0971 0F       		.byte	15
+ 2447 0972 35       		.byte	53
+ 2448 0973 10       		.byte	16
+ 2449 0974 3F       		.byte	63
+ 2450 0975 10       		.byte	16
+ 2451 0976 40       		.byte	64
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 44
+
+
+ 2452 0977 10       		.byte	16
+ 2453 0978 41       		.byte	65
+ 2454 0979 05       		.byte	5
+ 2455 097a 45       		.byte	69
+ 2456 097b D0       		.byte	-48
+ 2457 097c 46       		.byte	70
+ 2458 097d 15       		.byte	21
+ 2459 097e 47       		.byte	71
+ 2460 097f 24       		.byte	36
+ 2461 0980 48       		.byte	72
+ 2462 0981 3F       		.byte	63
+ 2463 0982 49       		.byte	73
+ 2464 0983 FF       		.byte	-1
+ 2465 0984 4A       		.byte	74
+ 2466 0985 FF       		.byte	-1
+ 2467 0986 4B       		.byte	75
+ 2468 0987 FF       		.byte	-1
+ 2469 0988 4D       		.byte	77
+ 2470 0989 A0       		.byte	-96
+ 2471 098a 4F       		.byte	79
+ 2472 098b 04       		.byte	4
+ 2473 098c 50       		.byte	80
+ 2474 098d 18       		.byte	24
+ 2475 098e 58       		.byte	88
+ 2476 098f 04       		.byte	4
+ 2477 0990 59       		.byte	89
+ 2478 0991 04       		.byte	4
+ 2479 0992 5A       		.byte	90
+ 2480 0993 04       		.byte	4
+ 2481 0994 5C       		.byte	92
+ 2482 0995 02       		.byte	2
+ 2483 0996 5D       		.byte	93
+ 2484 0997 02       		.byte	2
+ 2485 0998 5F       		.byte	95
+ 2486 0999 01       		.byte	1
+ 2487 099a 60       		.byte	96
+ 2488 099b 40       		.byte	64
+ 2489 099c 62       		.byte	98
+ 2490 099d C0       		.byte	-64
+ 2491 099e 64       		.byte	100
+ 2492 099f 40       		.byte	64
+ 2493 09a0 65       		.byte	101
+ 2494 09a1 40       		.byte	64
+ 2495 09a2 66       		.byte	102
+ 2496 09a3 C0       		.byte	-64
+ 2497 09a4 68       		.byte	104
+ 2498 09a5 C0       		.byte	-64
+ 2499 09a6 6A       		.byte	106
+ 2500 09a7 C0       		.byte	-64
+ 2501 09a8 6C       		.byte	108
+ 2502 09a9 C0       		.byte	-64
+ 2503 09aa 6E       		.byte	110
+ 2504 09ab C0       		.byte	-64
+ 2505 09ac 85       		.byte	-123
+ 2506 09ad 10       		.byte	16
+ 2507 09ae 87       		.byte	-121
+ 2508 09af 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 45
+
+
+ 2509 09b0 8F       		.byte	-113
+ 2510 09b1 1F       		.byte	31
+ 2511 09b2 99       		.byte	-103
+ 2512 09b3 07       		.byte	7
+ 2513 09b4 9B       		.byte	-101
+ 2514 09b5 08       		.byte	8
+ 2515 09b6 9D       		.byte	-99
+ 2516 09b7 06       		.byte	6
+ 2517 09b8 9F       		.byte	-97
+ 2518 09b9 11       		.byte	17
+ 2519 09ba A1       		.byte	-95
+ 2520 09bb 18       		.byte	24
+ 2521 09bc A3       		.byte	-93
+ 2522 09bd 03       		.byte	3
+ 2523 09be AD       		.byte	-83
+ 2524 09bf 01       		.byte	1
+ 2525 09c0 AF       		.byte	-81
+ 2526 09c1 12       		.byte	18
+ 2527 09c2 B7       		.byte	-73
+ 2528 09c3 1F       		.byte	31
+ 2529 09c4 D8       		.byte	-40
+ 2530 09c5 04       		.byte	4
+ 2531 09c6 D9       		.byte	-39
+ 2532 09c7 04       		.byte	4
+ 2533 09c8 DC       		.byte	-36
+ 2534 09c9 21       		.byte	33
+ 2535 09ca DF       		.byte	-33
+ 2536 09cb 01       		.byte	1
+ 2537 09cc 01       		.byte	1
+ 2538 09cd 22       		.byte	34
+ 2539 09ce 02       		.byte	2
+ 2540 09cf 02       		.byte	2
+ 2541 09d0 03       		.byte	3
+ 2542 09d1 20       		.byte	32
+ 2543 09d2 07       		.byte	7
+ 2544 09d3 01       		.byte	1
+ 2545 09d4 09       		.byte	9
+ 2546 09d5 08       		.byte	8
+ 2547 09d6 0A       		.byte	10
+ 2548 09d7 80       		.byte	-128
+ 2549 09d8 0C       		.byte	12
+ 2550 09d9 08       		.byte	8
+ 2551 09da 0F       		.byte	15
+ 2552 09db 44       		.byte	68
+ 2553 09dc 12       		.byte	18
+ 2554 09dd 20       		.byte	32
+ 2555 09de 16       		.byte	22
+ 2556 09df 20       		.byte	32
+ 2557 09e0 17       		.byte	23
+ 2558 09e1 10       		.byte	16
+ 2559 09e2 1C       		.byte	28
+ 2560 09e3 40       		.byte	64
+ 2561 09e4 20       		.byte	32
+ 2562 09e5 02       		.byte	2
+ 2563 09e6 24       		.byte	36
+ 2564 09e7 80       		.byte	-128
+ 2565 09e8 27       		.byte	39
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 46
+
+
+ 2566 09e9 88       		.byte	-120
+ 2567 09ea 29       		.byte	41
+ 2568 09eb 40       		.byte	64
+ 2569 09ec 2B       		.byte	43
+ 2570 09ed 80       		.byte	-128
+ 2571 09ee 2C       		.byte	44
+ 2572 09ef 20       		.byte	32
+ 2573 09f0 31       		.byte	49
+ 2574 09f1 10       		.byte	16
+ 2575 09f2 33       		.byte	51
+ 2576 09f3 40       		.byte	64
+ 2577 09f4 34       		.byte	52
+ 2578 09f5 01       		.byte	1
+ 2579 09f6 35       		.byte	53
+ 2580 09f7 04       		.byte	4
+ 2581 09f8 37       		.byte	55
+ 2582 09f9 80       		.byte	-128
+ 2583 09fa 3A       		.byte	58
+ 2584 09fb 04       		.byte	4
+ 2585 09fc 3B       		.byte	59
+ 2586 09fd 40       		.byte	64
+ 2587 09fe 3C       		.byte	60
+ 2588 09ff 08       		.byte	8
+ 2589 0a00 3D       		.byte	61
+ 2590 0a01 A0       		.byte	-96
+ 2591 0a02 3F       		.byte	63
+ 2592 0a03 42       		.byte	66
+ 2593 0a04 45       		.byte	69
+ 2594 0a05 40       		.byte	64
+ 2595 0a06 4C       		.byte	76
+ 2596 0a07 02       		.byte	2
+ 2597 0a08 4D       		.byte	77
+ 2598 0a09 01       		.byte	1
+ 2599 0a0a 4F       		.byte	79
+ 2600 0a0b 04       		.byte	4
+ 2601 0a0c 54       		.byte	84
+ 2602 0a0d 42       		.byte	66
+ 2603 0a0e 56       		.byte	86
+ 2604 0a0f 24       		.byte	36
+ 2605 0a10 57       		.byte	87
+ 2606 0a11 81       		.byte	-127
+ 2607 0a12 88       		.byte	-120
+ 2608 0a13 01       		.byte	1
+ 2609 0a14 92       		.byte	-110
+ 2610 0a15 80       		.byte	-128
+ 2611 0a16 94       		.byte	-108
+ 2612 0a17 80       		.byte	-128
+ 2613 0a18 99       		.byte	-103
+ 2614 0a19 26       		.byte	38
+ 2615 0a1a 9C       		.byte	-100
+ 2616 0a1b 01       		.byte	1
+ 2617 0a1c A0       		.byte	-96
+ 2618 0a1d 24       		.byte	36
+ 2619 0a1e A1       		.byte	-95
+ 2620 0a1f 18       		.byte	24
+ 2621 0a20 A2       		.byte	-94
+ 2622 0a21 22       		.byte	34
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 47
+
+
+ 2623 0a22 A3       		.byte	-93
+ 2624 0a23 20       		.byte	32
+ 2625 0a24 A8       		.byte	-88
+ 2626 0a25 80       		.byte	-128
+ 2627 0a26 AC       		.byte	-84
+ 2628 0a27 10       		.byte	16
+ 2629 0a28 AF       		.byte	-81
+ 2630 0a29 02       		.byte	2
+ 2631 0a2a B0       		.byte	-80
+ 2632 0a2b 20       		.byte	32
+ 2633 0a2c C0       		.byte	-64
+ 2634 0a2d 8F       		.byte	-113
+ 2635 0a2e C2       		.byte	-62
+ 2636 0a2f 7C       		.byte	124
+ 2637 0a30 C4       		.byte	-60
+ 2638 0a31 64       		.byte	100
+ 2639 0a32 CA       		.byte	-54
+ 2640 0a33 49       		.byte	73
+ 2641 0a34 CC       		.byte	-52
+ 2642 0a35 DC       		.byte	-36
+ 2643 0a36 CE       		.byte	-50
+ 2644 0a37 FA       		.byte	-6
+ 2645 0a38 D0       		.byte	-48
+ 2646 0a39 10       		.byte	16
+ 2647 0a3a D2       		.byte	-46
+ 2648 0a3b 10       		.byte	16
+ 2649 0a3c E4       		.byte	-28
+ 2650 0a3d 20       		.byte	32
+ 2651 0a3e EC       		.byte	-20
+ 2652 0a3f 20       		.byte	32
+ 2653 0a40 EE       		.byte	-18
+ 2654 0a41 11       		.byte	17
+ 2655 0a42 00       		.byte	0
+ 2656 0a43 06       		.byte	6
+ 2657 0a44 02       		.byte	2
+ 2658 0a45 11       		.byte	17
+ 2659 0a46 05       		.byte	5
+ 2660 0a47 10       		.byte	16
+ 2661 0a48 07       		.byte	7
+ 2662 0a49 04       		.byte	4
+ 2663 0a4a 0C       		.byte	12
+ 2664 0a4b 18       		.byte	24
+ 2665 0a4c 0E       		.byte	14
+ 2666 0a4d 03       		.byte	3
+ 2667 0a4e 13       		.byte	19
+ 2668 0a4f 20       		.byte	32
+ 2669 0a50 19       		.byte	25
+ 2670 0a51 07       		.byte	7
+ 2671 0a52 1B       		.byte	27
+ 2672 0a53 08       		.byte	8
+ 2673 0a54 1C       		.byte	28
+ 2674 0a55 01       		.byte	1
+ 2675 0a56 1D       		.byte	29
+ 2676 0a57 06       		.byte	6
+ 2677 0a58 1E       		.byte	30
+ 2678 0a59 12       		.byte	18
+ 2679 0a5a 1F       		.byte	31
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 48
+
+
+ 2680 0a5b 11       		.byte	17
+ 2681 0a5c 21       		.byte	33
+ 2682 0a5d 18       		.byte	24
+ 2683 0a5e 23       		.byte	35
+ 2684 0a5f 03       		.byte	3
+ 2685 0a60 24       		.byte	36
+ 2686 0a61 07       		.byte	7
+ 2687 0a62 25       		.byte	37
+ 2688 0a63 1F       		.byte	31
+ 2689 0a64 26       		.byte	38
+ 2690 0a65 08       		.byte	8
+ 2691 0a66 28       		.byte	40
+ 2692 0a67 10       		.byte	16
+ 2693 0a68 2A       		.byte	42
+ 2694 0a69 04       		.byte	4
+ 2695 0a6a 2D       		.byte	45
+ 2696 0a6b 01       		.byte	1
+ 2697 0a6c 2F       		.byte	47
+ 2698 0a6d 12       		.byte	18
+ 2699 0a6e 31       		.byte	49
+ 2700 0a6f 20       		.byte	32
+ 2701 0a70 32       		.byte	50
+ 2702 0a71 1F       		.byte	31
+ 2703 0a72 33       		.byte	51
+ 2704 0a73 1F       		.byte	31
+ 2705 0a74 52       		.byte	82
+ 2706 0a75 BF       		.byte	-65
+ 2707 0a76 58       		.byte	88
+ 2708 0a77 04       		.byte	4
+ 2709 0a78 59       		.byte	89
+ 2710 0a79 04       		.byte	4
+ 2711 0a7a 5B       		.byte	91
+ 2712 0a7b 04       		.byte	4
+ 2713 0a7c 5C       		.byte	92
+ 2714 0a7d 22       		.byte	34
+ 2715 0a7e 5D       		.byte	93
+ 2716 0a7f 20       		.byte	32
+ 2717 0a80 5F       		.byte	95
+ 2718 0a81 01       		.byte	1
+ 2719 0a82 84       		.byte	-124
+ 2720 0a83 07       		.byte	7
+ 2721 0a84 85       		.byte	-123
+ 2722 0a85 10       		.byte	16
+ 2723 0a86 86       		.byte	-122
+ 2724 0a87 08       		.byte	8
+ 2725 0a88 87       		.byte	-121
+ 2726 0a89 04       		.byte	4
+ 2727 0a8a 89       		.byte	-119
+ 2728 0a8b 18       		.byte	24
+ 2729 0a8c 8B       		.byte	-117
+ 2730 0a8d 03       		.byte	3
+ 2731 0a8e 91       		.byte	-111
+ 2732 0a8f 06       		.byte	6
+ 2733 0a90 93       		.byte	-109
+ 2734 0a91 11       		.byte	17
+ 2735 0a92 94       		.byte	-108
+ 2736 0a93 01       		.byte	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 49
+
+
+ 2737 0a94 96       		.byte	-106
+ 2738 0a95 12       		.byte	18
+ 2739 0a96 98       		.byte	-104
+ 2740 0a97 10       		.byte	16
+ 2741 0a98 99       		.byte	-103
+ 2742 0a99 07       		.byte	7
+ 2743 0a9a 9A       		.byte	-102
+ 2744 0a9b 04       		.byte	4
+ 2745 0a9c 9B       		.byte	-101
+ 2746 0a9d 08       		.byte	8
+ 2747 0a9e A0       		.byte	-96
+ 2748 0a9f 06       		.byte	6
+ 2749 0aa0 A1       		.byte	-95
+ 2750 0aa1 1F       		.byte	31
+ 2751 0aa2 A2       		.byte	-94
+ 2752 0aa3 11       		.byte	17
+ 2753 0aa4 A4       		.byte	-92
+ 2754 0aa5 18       		.byte	24
+ 2755 0aa6 A6       		.byte	-90
+ 2756 0aa7 03       		.byte	3
+ 2757 0aa8 A9       		.byte	-87
+ 2758 0aa9 01       		.byte	1
+ 2759 0aaa AB       		.byte	-85
+ 2760 0aab 12       		.byte	18
+ 2761 0aac B1       		.byte	-79
+ 2762 0aad 1F       		.byte	31
+ 2763 0aae B6       		.byte	-74
+ 2764 0aaf 1F       		.byte	31
+ 2765 0ab0 D4       		.byte	-44
+ 2766 0ab1 07       		.byte	7
+ 2767 0ab2 D8       		.byte	-40
+ 2768 0ab3 04       		.byte	4
+ 2769 0ab4 D9       		.byte	-39
+ 2770 0ab5 04       		.byte	4
+ 2771 0ab6 DB       		.byte	-37
+ 2772 0ab7 04       		.byte	4
+ 2773 0ab8 DC       		.byte	-36
+ 2774 0ab9 22       		.byte	34
+ 2775 0aba DD       		.byte	-35
+ 2776 0abb 20       		.byte	32
+ 2777 0abc DF       		.byte	-33
+ 2778 0abd 01       		.byte	1
+ 2779 0abe 00       		.byte	0
+ 2780 0abf 80       		.byte	-128
+ 2781 0ac0 02       		.byte	2
+ 2782 0ac1 01       		.byte	1
+ 2783 0ac2 03       		.byte	3
+ 2784 0ac3 40       		.byte	64
+ 2785 0ac4 07       		.byte	7
+ 2786 0ac5 10       		.byte	16
+ 2787 0ac6 0A       		.byte	10
+ 2788 0ac7 01       		.byte	1
+ 2789 0ac8 0C       		.byte	12
+ 2790 0ac9 08       		.byte	8
+ 2791 0aca 0F       		.byte	15
+ 2792 0acb 04       		.byte	4
+ 2793 0acc 10       		.byte	16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 50
+
+
+ 2794 0acd 20       		.byte	32
+ 2795 0ace 12       		.byte	18
+ 2796 0acf 04       		.byte	4
+ 2797 0ad0 16       		.byte	22
+ 2798 0ad1 20       		.byte	32
+ 2799 0ad2 17       		.byte	23
+ 2800 0ad3 01       		.byte	1
+ 2801 0ad4 19       		.byte	25
+ 2802 0ad5 08       		.byte	8
+ 2803 0ad6 1F       		.byte	31
+ 2804 0ad7 80       		.byte	-128
+ 2805 0ad8 23       		.byte	35
+ 2806 0ad9 60       		.byte	96
+ 2807 0ada 27       		.byte	39
+ 2808 0adb 80       		.byte	-128
+ 2809 0adc 29       		.byte	41
+ 2810 0add 48       		.byte	72
+ 2811 0ade 2A       		.byte	42
+ 2812 0adf 01       		.byte	1
+ 2813 0ae0 2C       		.byte	44
+ 2814 0ae1 08       		.byte	8
+ 2815 0ae2 2F       		.byte	47
+ 2816 0ae3 80       		.byte	-128
+ 2817 0ae4 30       		.byte	48
+ 2818 0ae5 22       		.byte	34
+ 2819 0ae6 33       		.byte	51
+ 2820 0ae7 40       		.byte	64
+ 2821 0ae8 37       		.byte	55
+ 2822 0ae9 11       		.byte	17
+ 2823 0aea 3A       		.byte	58
+ 2824 0aeb 04       		.byte	4
+ 2825 0aec 3E       		.byte	62
+ 2826 0aed 20       		.byte	32
+ 2827 0aee 3F       		.byte	63
+ 2828 0aef 04       		.byte	4
+ 2829 0af0 5D       		.byte	93
+ 2830 0af1 01       		.byte	1
+ 2831 0af2 5F       		.byte	95
+ 2832 0af3 A8       		.byte	-88
+ 2833 0af4 68       		.byte	104
+ 2834 0af5 08       		.byte	8
+ 2835 0af6 6B       		.byte	107
+ 2836 0af7 51       		.byte	81
+ 2837 0af8 70       		.byte	112
+ 2838 0af9 22       		.byte	34
+ 2839 0afa 71       		.byte	113
+ 2840 0afb 50       		.byte	80
+ 2841 0afc 72       		.byte	114
+ 2842 0afd 01       		.byte	1
+ 2843 0afe 91       		.byte	-111
+ 2844 0aff 01       		.byte	1
+ 2845 0b00 93       		.byte	-109
+ 2846 0b01 04       		.byte	4
+ 2847 0b02 97       		.byte	-105
+ 2848 0b03 40       		.byte	64
+ 2849 0b04 9A       		.byte	-102
+ 2850 0b05 24       		.byte	36
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 51
+
+
+ 2851 0b06 9B       		.byte	-101
+ 2852 0b07 08       		.byte	8
+ 2853 0b08 9D       		.byte	-99
+ 2854 0b09 50       		.byte	80
+ 2855 0b0a 9F       		.byte	-97
+ 2856 0b0b 51       		.byte	81
+ 2857 0b0c A0       		.byte	-96
+ 2858 0b0d 40       		.byte	64
+ 2859 0b0e A4       		.byte	-92
+ 2860 0b0f 08       		.byte	8
+ 2861 0b10 A8       		.byte	-88
+ 2862 0b11 40       		.byte	64
+ 2863 0b12 AB       		.byte	-85
+ 2864 0b13 80       		.byte	-128
+ 2865 0b14 B0       		.byte	-80
+ 2866 0b15 01       		.byte	1
+ 2867 0b16 C0       		.byte	-64
+ 2868 0b17 29       		.byte	41
+ 2869 0b18 C2       		.byte	-62
+ 2870 0b19 61       		.byte	97
+ 2871 0b1a C4       		.byte	-60
+ 2872 0b1b 36       		.byte	54
+ 2873 0b1c CA       		.byte	-54
+ 2874 0b1d AB       		.byte	-85
+ 2875 0b1e CC       		.byte	-52
+ 2876 0b1f AD       		.byte	-83
+ 2877 0b20 CE       		.byte	-50
+ 2878 0b21 62       		.byte	98
+ 2879 0b22 D6       		.byte	-42
+ 2880 0b23 F0       		.byte	-16
+ 2881 0b24 EC       		.byte	-20
+ 2882 0b25 20       		.byte	32
+ 2883 0b26 13       		.byte	19
+ 2884 0b27 04       		.byte	4
+ 2885 0b28 16       		.byte	22
+ 2886 0b29 80       		.byte	-128
+ 2887 0b2a 30       		.byte	48
+ 2888 0b2b 80       		.byte	-128
+ 2889 0b2c 33       		.byte	51
+ 2890 0b2d 08       		.byte	8
+ 2891 0b2e 36       		.byte	54
+ 2892 0b2f 10       		.byte	16
+ 2893 0b30 37       		.byte	55
+ 2894 0b31 04       		.byte	4
+ 2895 0b32 3A       		.byte	58
+ 2896 0b33 08       		.byte	8
+ 2897 0b34 3B       		.byte	59
+ 2898 0b35 10       		.byte	16
+ 2899 0b36 3E       		.byte	62
+ 2900 0b37 80       		.byte	-128
+ 2901 0b38 52       		.byte	82
+ 2902 0b39 80       		.byte	-128
+ 2903 0b3a 63       		.byte	99
+ 2904 0b3b 20       		.byte	32
+ 2905 0b3c 66       		.byte	102
+ 2906 0b3d 02       		.byte	2
+ 2907 0b3e 83       		.byte	-125
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 52
+
+
+ 2908 0b3f 10       		.byte	16
+ 2909 0b40 86       		.byte	-122
+ 2910 0b41 02       		.byte	2
+ 2911 0b42 8A       		.byte	-118
+ 2912 0b43 80       		.byte	-128
+ 2913 0b44 C4       		.byte	-60
+ 2914 0b45 30       		.byte	48
+ 2915 0b46 CC       		.byte	-52
+ 2916 0b47 F0       		.byte	-16
+ 2917 0b48 CE       		.byte	-50
+ 2918 0b49 70       		.byte	112
+ 2919 0b4a D4       		.byte	-44
+ 2920 0b4b 20       		.byte	32
+ 2921 0b4c D8       		.byte	-40
+ 2922 0b4d C0       		.byte	-64
+ 2923 0b4e E6       		.byte	-26
+ 2924 0b4f 90       		.byte	-112
+ 2925 0b50 57       		.byte	87
+ 2926 0b51 80       		.byte	-128
+ 2927 0b52 5B       		.byte	91
+ 2928 0b53 20       		.byte	32
+ 2929 0b54 63       		.byte	99
+ 2930 0b55 10       		.byte	16
+ 2931 0b56 87       		.byte	-121
+ 2932 0b57 18       		.byte	24
+ 2933 0b58 9F       		.byte	-97
+ 2934 0b59 04       		.byte	4
+ 2935 0b5a A4       		.byte	-92
+ 2936 0b5b 80       		.byte	-128
+ 2937 0b5c A6       		.byte	-90
+ 2938 0b5d 10       		.byte	16
+ 2939 0b5e A7       		.byte	-89
+ 2940 0b5f 08       		.byte	8
+ 2941 0b60 AC       		.byte	-84
+ 2942 0b61 80       		.byte	-128
+ 2943 0b62 AF       		.byte	-81
+ 2944 0b63 14       		.byte	20
+ 2945 0b64 B2       		.byte	-78
+ 2946 0b65 08       		.byte	8
+ 2947 0b66 D4       		.byte	-44
+ 2948 0b67 C0       		.byte	-64
+ 2949 0b68 D8       		.byte	-40
+ 2950 0b69 40       		.byte	64
+ 2951 0b6a E2       		.byte	-30
+ 2952 0b6b 10       		.byte	16
+ 2953 0b6c E6       		.byte	-26
+ 2954 0b6d 40       		.byte	64
+ 2955 0b6e E8       		.byte	-24
+ 2956 0b6f 40       		.byte	64
+ 2957 0b70 12       		.byte	18
+ 2958 0b71 20       		.byte	32
+ 2959 0b72 59       		.byte	89
+ 2960 0b73 08       		.byte	8
+ 2961 0b74 81       		.byte	-127
+ 2962 0b75 08       		.byte	8
+ 2963 0b76 9F       		.byte	-97
+ 2964 0b77 04       		.byte	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 53
+
+
+ 2965 0b78 A4       		.byte	-92
+ 2966 0b79 80       		.byte	-128
+ 2967 0b7a A6       		.byte	-90
+ 2968 0b7b 10       		.byte	16
+ 2969 0b7c AB       		.byte	-85
+ 2970 0b7d A0       		.byte	-96
+ 2971 0b7e C4       		.byte	-60
+ 2972 0b7f 10       		.byte	16
+ 2973 0b80 D6       		.byte	-42
+ 2974 0b81 40       		.byte	64
+ 2975 0b82 E6       		.byte	-26
+ 2976 0b83 20       		.byte	32
+ 2977 0b84 EA       		.byte	-22
+ 2978 0b85 80       		.byte	-128
+ 2979 0b86 EE       		.byte	-18
+ 2980 0b87 20       		.byte	32
+ 2981 0b88 8A       		.byte	-118
+ 2982 0b89 10       		.byte	16
+ 2983 0b8a 9F       		.byte	-97
+ 2984 0b8b 04       		.byte	4
+ 2985 0b8c A6       		.byte	-90
+ 2986 0b8d 10       		.byte	16
+ 2987 0b8e A8       		.byte	-88
+ 2988 0b8f 80       		.byte	-128
+ 2989 0b90 AA       		.byte	-86
+ 2990 0b91 20       		.byte	32
+ 2991 0b92 EA       		.byte	-22
+ 2992 0b93 20       		.byte	32
+ 2993 0b94 EC       		.byte	-20
+ 2994 0b95 80       		.byte	-128
+ 2995 0b96 89       		.byte	-119
+ 2996 0b97 04       		.byte	4
+ 2997 0b98 E4       		.byte	-28
+ 2998 0b99 01       		.byte	1
+ 2999 0b9a 85       		.byte	-123
+ 3000 0b9b 01       		.byte	1
+ 3001 0b9c 8A       		.byte	-118
+ 3002 0b9d 08       		.byte	8
+ 3003 0b9e 91       		.byte	-111
+ 3004 0b9f 08       		.byte	8
+ 3005 0ba0 A7       		.byte	-89
+ 3006 0ba1 08       		.byte	8
+ 3007 0ba2 B3       		.byte	-77
+ 3008 0ba3 08       		.byte	8
+ 3009 0ba4 E6       		.byte	-26
+ 3010 0ba5 01       		.byte	1
+ 3011 0ba6 EA       		.byte	-22
+ 3012 0ba7 04       		.byte	4
+ 3013 0ba8 07       		.byte	7
+ 3014 0ba9 40       		.byte	64
+ 3015 0baa 1B       		.byte	27
+ 3016 0bab 08       		.byte	8
+ 3017 0bac 26       		.byte	38
+ 3018 0bad 08       		.byte	8
+ 3019 0bae 91       		.byte	-111
+ 3020 0baf 08       		.byte	8
+ 3021 0bb0 95       		.byte	-107
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 54
+
+
+ 3022 0bb1 02       		.byte	2
+ 3023 0bb2 A6       		.byte	-90
+ 3024 0bb3 08       		.byte	8
+ 3025 0bb4 A7       		.byte	-89
+ 3026 0bb5 08       		.byte	8
+ 3027 0bb6 C0       		.byte	-64
+ 3028 0bb7 04       		.byte	4
+ 3029 0bb8 C6       		.byte	-58
+ 3030 0bb9 08       		.byte	8
+ 3031 0bba C8       		.byte	-56
+ 3032 0bbb 01       		.byte	1
+ 3033 0bbc 08       		.byte	8
+ 3034 0bbd 08       		.byte	8
+ 3035 0bbe 09       		.byte	9
+ 3036 0bbf 10       		.byte	16
+ 3037 0bc0 0D       		.byte	13
+ 3038 0bc1 01       		.byte	1
+ 3039 0bc2 41       		.byte	65
+ 3040 0bc3 04       		.byte	4
+ 3041 0bc4 44       		.byte	68
+ 3042 0bc5 01       		.byte	1
+ 3043 0bc6 88       		.byte	-120
+ 3044 0bc7 08       		.byte	8
+ 3045 0bc8 91       		.byte	-111
+ 3046 0bc9 08       		.byte	8
+ 3047 0bca 95       		.byte	-107
+ 3048 0bcb 02       		.byte	2
+ 3049 0bcc 9B       		.byte	-101
+ 3050 0bcd 40       		.byte	64
+ 3051 0bce C2       		.byte	-62
+ 3052 0bcf 0E       		.byte	14
+ 3053 0bd0 D0       		.byte	-48
+ 3054 0bd1 06       		.byte	6
+ 3055 0bd2 E2       		.byte	-30
+ 3056 0bd3 01       		.byte	1
+ 3057 0bd4 00       		.byte	0
+ 3058 0bd5 01       		.byte	1
+ 3059 0bd6 20       		.byte	32
+ 3060 0bd7 80       		.byte	-128
+ 3061 0bd8 53       		.byte	83
+ 3062 0bd9 01       		.byte	1
+ 3063 0bda 8C       		.byte	-116
+ 3064 0bdb 01       		.byte	1
+ 3065 0bdc B7       		.byte	-73
+ 3066 0bdd 04       		.byte	4
+ 3067 0bde C0       		.byte	-64
+ 3068 0bdf 10       		.byte	16
+ 3069 0be0 C8       		.byte	-56
+ 3070 0be1 40       		.byte	64
+ 3071 0be2 D4       		.byte	-44
+ 3072 0be3 80       		.byte	-128
+ 3073 0be4 64       		.byte	100
+ 3074 0be5 10       		.byte	16
+ 3075 0be6 66       		.byte	102
+ 3076 0be7 80       		.byte	-128
+ 3077 0be8 84       		.byte	-124
+ 3078 0be9 10       		.byte	16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 55
+
+
+ 3079 0bea 8A       		.byte	-118
+ 3080 0beb 80       		.byte	-128
+ 3081 0bec AB       		.byte	-85
+ 3082 0bed 01       		.byte	1
+ 3083 0bee B0       		.byte	-80
+ 3084 0bef 40       		.byte	64
+ 3085 0bf0 D6       		.byte	-42
+ 3086 0bf1 80       		.byte	-128
+ 3087 0bf2 D8       		.byte	-40
+ 3088 0bf3 80       		.byte	-128
+ 3089 0bf4 E6       		.byte	-26
+ 3090 0bf5 40       		.byte	64
+ 3091 0bf6 EE       		.byte	-18
+ 3092 0bf7 20       		.byte	32
+ 3093 0bf8 5C       		.byte	92
+ 3094 0bf9 08       		.byte	8
+ 3095 0bfa 9C       		.byte	-100
+ 3096 0bfb 01       		.byte	1
+ 3097 0bfc AB       		.byte	-85
+ 3098 0bfd 40       		.byte	64
+ 3099 0bfe B5       		.byte	-75
+ 3100 0bff 10       		.byte	16
+ 3101 0c00 D6       		.byte	-42
+ 3102 0c01 01       		.byte	1
+ 3103 0c02 EE       		.byte	-18
+ 3104 0c03 08       		.byte	8
+ 3105 0c04 B0       		.byte	-80
+ 3106 0c05 09       		.byte	9
+ 3107 0c06 E8       		.byte	-24
+ 3108 0c07 01       		.byte	1
+ 3109 0c08 EC       		.byte	-20
+ 3110 0c09 04       		.byte	4
+ 3111 0c0a 00       		.byte	0
+ 3112 0c0b 03       		.byte	3
+ 3113 0c0c 01       		.byte	1
+ 3114 0c0d 01       		.byte	1
+ 3115 0c0e 08       		.byte	8
+ 3116 0c0f 03       		.byte	3
+ 3117 0c10 0A       		.byte	10
+ 3118 0c11 03       		.byte	3
+ 3119 0c12 0C       		.byte	12
+ 3120 0c13 03       		.byte	3
+ 3121 0c14 0D       		.byte	13
+ 3122 0c15 01       		.byte	1
+ 3123 0c16 0E       		.byte	14
+ 3124 0c17 02       		.byte	2
+ 3125 0c18 10       		.byte	16
+ 3126 0c19 07       		.byte	7
+ 3127 0c1a 1A       		.byte	26
+ 3128 0c1b 05       		.byte	5
+ 3129 0c1c 1C       		.byte	28
+ 3130 0c1d 07       		.byte	7
+ 3131 0c1e 00       		.byte	0
+ 3132 0c1f AB       		.byte	-85
+ 3133 0c20 01       		.byte	1
+ 3134 0c21 03       		.byte	3
+ 3135 0c22 10       		.byte	16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 56
+
+
+ 3136 0c23 0A       		.byte	10
+ 3137 0c24 00       		.byte	0
+ 3138 0c25 00       		.byte	0
+ 3139 0c26 00       		.byte	0
+ 3140 0c27 00       		.byte	0
+ 3141 0c28 00       		.byte	0
+ 3142 0c29 2A       		.byte	42
+ 3143 0c2a 3A       		.byte	58
+ 3144 0c2b 00       		.byte	0
+ 3145 0c2c 00       		.byte	0
+ 3146 0c2d 10       		.byte	16
+ 3147 0c2e 10       		.byte	16
+ 3148 0c2f 00       		.byte	0
+ 3149 0c30 00       		.byte	0
+ 3150 0c31 00       		.byte	0
+ 3151 0c32 00       		.byte	0
+ 3152 0c33 00       		.byte	0
+ 3153 0c34 40       		.byte	64
+ 3154 0c35 00       		.byte	0
+ 3155 0c36 21       		.byte	33
+ 3156 0c37 02       		.byte	2
+ 3157 0c38 02       		.byte	2
+ 3158 0c39 00       		.byte	0
+ 3159 0c3a 02       		.byte	2
+ 3160 0c3b 00       		.byte	0
+ 3161 0c3c C0       		.byte	-64
+ 3162 0c3d 00       		.byte	0
+ 3163 0c3e 00       		.byte	0
+ 3164 0c3f 00       		.byte	0
+ 3165 0c40 00       		.byte	0
+ 3166 0c41 8B       		.byte	-117
+ 3167 0c42 8B       		.byte	-117
+ 3168 0c43 00       		.byte	0
+ 3169 0c44 80       		.byte	-128
+ 3170 0c45 00       		.byte	0
+ 3171 0c46 00       		.byte	0
+ 3172 0c47 00       		.byte	0
+ 3173 0c48 00       		.byte	0
+ 3174 0c49 C0       		.byte	-64
+ 3175 0c4a C0       		.byte	-64
+ 3176 0c4b 00       		.byte	0
+ 3177 0c4c C0       		.byte	-64
+ 3178 0c4d 00       		.byte	0
+ 3179 0c4e 00       		.byte	0
+ 3180 0c4f 00       		.byte	0
+ 3181 0c50 00       		.byte	0
+ 3182 0c51 02       		.byte	2
+ 3183 0c52 02       		.byte	2
+ 3184 0c53 00       		.byte	0
+ 3185 0c54 00       		.byte	0
+ 3186 0c55 A8       		.byte	-88
+ 3187 0c56 A8       		.byte	-88
+ 3188 0c57 00       		.byte	0
+ 3189 0c58 00       		.byte	0
+ 3190 0c59 02       		.byte	2
+ 3191 0c5a 02       		.byte	2
+ 3192 0c5b 00       		.byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 57
+
+
+ 3193 0c5c 00       		.byte	0
+ 3194 0c5d 00       		.byte	0
+ 3195 0c5e 00       		.byte	0
+ 3196 0c5f 00       		.byte	0
+ 3197 0c60 00       		.byte	0
+ 3198 0c61 04       		.byte	4
+ 3199 0c62 04       		.byte	4
+ 3200 0c63 00       		.byte	0
+ 3201 0c64 00       		.byte	0
+ 3202 0c65 00       		.byte	0
+ 3203 0c66 00       		.byte	0
+ 3204 0c67 00       		.byte	0
+ 3205 0c68 00       		.byte	0
+ 3206 0c69 01       		.byte	1
+ 3207 0c6a 00       		.byte	0
+ 3208 0c6b 00       		.byte	0
+ 3209              		.section	.cywolatch,"a",%progbits
+ 3210              		.align	2
+ 3211              		.type	cy_meta_wonvl, %object
+ 3212              		.size	cy_meta_wonvl, 4
+ 3213              	cy_meta_wonvl:
+ 3214 0000 BC       		.byte	-68
+ 3215 0001 90       		.byte	-112
+ 3216 0002 AC       		.byte	-84
+ 3217 0003 AF       		.byte	-81
+ 3218              		.section	.cycustnvl,"a",%progbits
+ 3219              		.align	2
+ 3220              		.type	cy_meta_custnvl, %object
+ 3221              		.size	cy_meta_custnvl, 4
+ 3222              	cy_meta_custnvl:
+ 3223 0000 00       		.byte	0
+ 3224 0001 00       		.byte	0
+ 3225 0002 40       		.byte	64
+ 3226 0003 05       		.byte	5
+ 3227              		.section	.cymeta,"a",%progbits
+ 3228              		.align	2
+ 3229              		.type	cy_metadata, %object
+ 3230              		.size	cy_metadata, 12
+ 3231              	cy_metadata:
+ 3232 0000 00       		.byte	0
+ 3233 0001 01       		.byte	1
+ 3234 0002 2E       		.byte	46
+ 3235 0003 15       		.byte	21
+ 3236 0004 F0       		.byte	-16
+ 3237 0005 69       		.byte	105
+ 3238 0006 00       		.byte	0
+ 3239 0007 01       		.byte	1
+ 3240 0008 00       		.byte	0
+ 3241 0009 00       		.byte	0
+ 3242 000a 00       		.byte	0
+ 3243 000b 00       		.byte	0
+ 3244              		.section	.cyflashprotect,"a",%progbits
+ 3245              		.align	2
+ 3246              		.type	cy_meta_flashprotect, %object
+ 3247              		.size	cy_meta_flashprotect, 256
+ 3248              	cy_meta_flashprotect:
+ 3249 0000 00000000 		.space	256
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 58
+
+
+ 3249      00000000 
+ 3249      00000000 
+ 3249      00000000 
+ 3249      00000000 
+ 3250              		.text
+ 3251              	.Letext0:
+ 3252              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 3253              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 3254              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 3255              		.section	.debug_info,"",%progbits
+ 3256              	.Ldebug_info0:
+ 3257 0000 35010000 		.4byte	0x135
+ 3258 0004 0400     		.2byte	0x4
+ 3259 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 3260 000a 04       		.byte	0x4
+ 3261 000b 01       		.uleb128 0x1
+ 3262 000c 24000000 		.4byte	.LASF17
+ 3263 0010 0C       		.byte	0xc
+ 3264 0011 EB010000 		.4byte	.LASF18
+ 3265 0015 E7000000 		.4byte	.LASF19
+ 3266 0019 00000000 		.4byte	.Ldebug_line0
+ 3267 001d 02       		.uleb128 0x2
+ 3268 001e 01       		.byte	0x1
+ 3269 001f 06       		.byte	0x6
+ 3270 0020 DF010000 		.4byte	.LASF0
+ 3271 0024 03       		.uleb128 0x3
+ 3272 0025 00000000 		.4byte	.LASF9
+ 3273 0029 01       		.byte	0x1
+ 3274 002a 1D       		.byte	0x1d
+ 3275 002b 2F000000 		.4byte	0x2f
+ 3276 002f 02       		.uleb128 0x2
+ 3277 0030 01       		.byte	0x1
+ 3278 0031 08       		.byte	0x8
+ 3279 0032 16000000 		.4byte	.LASF1
+ 3280 0036 02       		.uleb128 0x2
+ 3281 0037 02       		.byte	0x2
+ 3282 0038 05       		.byte	0x5
+ 3283 0039 CC010000 		.4byte	.LASF2
+ 3284 003d 02       		.uleb128 0x2
+ 3285 003e 02       		.byte	0x2
+ 3286 003f 07       		.byte	0x7
+ 3287 0040 C4000000 		.4byte	.LASF3
+ 3288 0044 02       		.uleb128 0x2
+ 3289 0045 04       		.byte	0x4
+ 3290 0046 05       		.byte	0x5
+ 3291 0047 D6010000 		.4byte	.LASF4
+ 3292 004b 02       		.uleb128 0x2
+ 3293 004c 04       		.byte	0x4
+ 3294 004d 07       		.byte	0x7
+ 3295 004e B2000000 		.4byte	.LASF5
+ 3296 0052 02       		.uleb128 0x2
+ 3297 0053 08       		.byte	0x8
+ 3298 0054 05       		.byte	0x5
+ 3299 0055 BE010000 		.4byte	.LASF6
+ 3300 0059 02       		.uleb128 0x2
+ 3301 005a 08       		.byte	0x8
+ 3302 005b 07       		.byte	0x7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 59
+
+
+ 3303 005c 73010000 		.4byte	.LASF7
+ 3304 0060 04       		.uleb128 0x4
+ 3305 0061 04       		.byte	0x4
+ 3306 0062 05       		.byte	0x5
+ 3307 0063 696E7400 		.ascii	"int\000"
+ 3308 0067 02       		.uleb128 0x2
+ 3309 0068 04       		.byte	0x4
+ 3310 0069 07       		.byte	0x7
+ 3311 006a 66010000 		.4byte	.LASF8
+ 3312 006e 03       		.uleb128 0x3
+ 3313 006f 8A010000 		.4byte	.LASF10
+ 3314 0073 02       		.byte	0x2
+ 3315 0074 18       		.byte	0x18
+ 3316 0075 24000000 		.4byte	0x24
+ 3317 0079 05       		.uleb128 0x5
+ 3318 007a 91000000 		.4byte	0x91
+ 3319 007e 8A000000 		.4byte	0x8a
+ 3320 0082 06       		.uleb128 0x6
+ 3321 0083 8A000000 		.4byte	0x8a
+ 3322 0087 6B0C     		.2byte	0xc6b
+ 3323 0089 00       		.byte	0
+ 3324 008a 02       		.uleb128 0x2
+ 3325 008b 04       		.byte	0x4
+ 3326 008c 07       		.byte	0x7
+ 3327 008d B5010000 		.4byte	.LASF11
+ 3328 0091 07       		.uleb128 0x7
+ 3329 0092 6E000000 		.4byte	0x6e
+ 3330 0096 08       		.uleb128 0x8
+ 3331 0097 54010000 		.4byte	.LASF12
+ 3332 009b 03       		.byte	0x3
+ 3333 009c 1F       		.byte	0x1f
+ 3334 009d A7000000 		.4byte	0xa7
+ 3335 00a1 05       		.uleb128 0x5
+ 3336 00a2 03       		.byte	0x3
+ 3337 00a3 00000000 		.4byte	cy_meta_configecc
+ 3338 00a7 07       		.uleb128 0x7
+ 3339 00a8 79000000 		.4byte	0x79
+ 3340 00ac 05       		.uleb128 0x5
+ 3341 00ad 91000000 		.4byte	0x91
+ 3342 00b1 BC000000 		.4byte	0xbc
+ 3343 00b5 09       		.uleb128 0x9
+ 3344 00b6 8A000000 		.4byte	0x8a
+ 3345 00ba 03       		.byte	0x3
+ 3346 00bb 00       		.byte	0
+ 3347 00bc 0A       		.uleb128 0xa
+ 3348 00bd D7000000 		.4byte	.LASF13
+ 3349 00c1 03       		.byte	0x3
+ 3350 00c2 BA01     		.2byte	0x1ba
+ 3351 00c4 CE000000 		.4byte	0xce
+ 3352 00c8 05       		.uleb128 0x5
+ 3353 00c9 03       		.byte	0x3
+ 3354 00ca 00000000 		.4byte	cy_meta_custnvl
+ 3355 00ce 07       		.uleb128 0x7
+ 3356 00cf AC000000 		.4byte	0xac
+ 3357 00d3 0A       		.uleb128 0xa
+ 3358 00d4 A7010000 		.4byte	.LASF14
+ 3359 00d8 03       		.byte	0x3
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 60
+
+
+ 3360 00d9 C801     		.2byte	0x1c8
+ 3361 00db E5000000 		.4byte	0xe5
+ 3362 00df 05       		.uleb128 0x5
+ 3363 00e0 03       		.byte	0x3
+ 3364 00e1 00000000 		.4byte	cy_meta_wonvl
+ 3365 00e5 07       		.uleb128 0x7
+ 3366 00e6 AC000000 		.4byte	0xac
+ 3367 00ea 05       		.uleb128 0x5
+ 3368 00eb 91000000 		.4byte	0x91
+ 3369 00ef FA000000 		.4byte	0xfa
+ 3370 00f3 09       		.uleb128 0x9
+ 3371 00f4 8A000000 		.4byte	0x8a
+ 3372 00f8 FF       		.byte	0xff
+ 3373 00f9 00       		.byte	0
+ 3374 00fa 0A       		.uleb128 0xa
+ 3375 00fb 92010000 		.4byte	.LASF15
+ 3376 00ff 03       		.byte	0x3
+ 3377 0100 D601     		.2byte	0x1d6
+ 3378 0102 0C010000 		.4byte	0x10c
+ 3379 0106 05       		.uleb128 0x5
+ 3380 0107 03       		.byte	0x3
+ 3381 0108 00000000 		.4byte	cy_meta_flashprotect
+ 3382 010c 07       		.uleb128 0x7
+ 3383 010d EA000000 		.4byte	0xea
+ 3384 0111 05       		.uleb128 0x5
+ 3385 0112 91000000 		.4byte	0x91
+ 3386 0116 21010000 		.4byte	0x121
+ 3387 011a 09       		.uleb128 0x9
+ 3388 011b 8A000000 		.4byte	0x8a
+ 3389 011f 0B       		.byte	0xb
+ 3390 0120 00       		.byte	0
+ 3391 0121 0A       		.uleb128 0xa
+ 3392 0122 0A000000 		.4byte	.LASF16
+ 3393 0126 03       		.byte	0x3
+ 3394 0127 0302     		.2byte	0x203
+ 3395 0129 33010000 		.4byte	0x133
+ 3396 012d 05       		.uleb128 0x5
+ 3397 012e 03       		.byte	0x3
+ 3398 012f 00000000 		.4byte	cy_metadata
+ 3399 0133 07       		.uleb128 0x7
+ 3400 0134 11010000 		.4byte	0x111
+ 3401 0138 00       		.byte	0
+ 3402              		.section	.debug_abbrev,"",%progbits
+ 3403              	.Ldebug_abbrev0:
+ 3404 0000 01       		.uleb128 0x1
+ 3405 0001 11       		.uleb128 0x11
+ 3406 0002 01       		.byte	0x1
+ 3407 0003 25       		.uleb128 0x25
+ 3408 0004 0E       		.uleb128 0xe
+ 3409 0005 13       		.uleb128 0x13
+ 3410 0006 0B       		.uleb128 0xb
+ 3411 0007 03       		.uleb128 0x3
+ 3412 0008 0E       		.uleb128 0xe
+ 3413 0009 1B       		.uleb128 0x1b
+ 3414 000a 0E       		.uleb128 0xe
+ 3415 000b 10       		.uleb128 0x10
+ 3416 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 61
+
+
+ 3417 000d 00       		.byte	0
+ 3418 000e 00       		.byte	0
+ 3419 000f 02       		.uleb128 0x2
+ 3420 0010 24       		.uleb128 0x24
+ 3421 0011 00       		.byte	0
+ 3422 0012 0B       		.uleb128 0xb
+ 3423 0013 0B       		.uleb128 0xb
+ 3424 0014 3E       		.uleb128 0x3e
+ 3425 0015 0B       		.uleb128 0xb
+ 3426 0016 03       		.uleb128 0x3
+ 3427 0017 0E       		.uleb128 0xe
+ 3428 0018 00       		.byte	0
+ 3429 0019 00       		.byte	0
+ 3430 001a 03       		.uleb128 0x3
+ 3431 001b 16       		.uleb128 0x16
+ 3432 001c 00       		.byte	0
+ 3433 001d 03       		.uleb128 0x3
+ 3434 001e 0E       		.uleb128 0xe
+ 3435 001f 3A       		.uleb128 0x3a
+ 3436 0020 0B       		.uleb128 0xb
+ 3437 0021 3B       		.uleb128 0x3b
+ 3438 0022 0B       		.uleb128 0xb
+ 3439 0023 49       		.uleb128 0x49
+ 3440 0024 13       		.uleb128 0x13
+ 3441 0025 00       		.byte	0
+ 3442 0026 00       		.byte	0
+ 3443 0027 04       		.uleb128 0x4
+ 3444 0028 24       		.uleb128 0x24
+ 3445 0029 00       		.byte	0
+ 3446 002a 0B       		.uleb128 0xb
+ 3447 002b 0B       		.uleb128 0xb
+ 3448 002c 3E       		.uleb128 0x3e
+ 3449 002d 0B       		.uleb128 0xb
+ 3450 002e 03       		.uleb128 0x3
+ 3451 002f 08       		.uleb128 0x8
+ 3452 0030 00       		.byte	0
+ 3453 0031 00       		.byte	0
+ 3454 0032 05       		.uleb128 0x5
+ 3455 0033 01       		.uleb128 0x1
+ 3456 0034 01       		.byte	0x1
+ 3457 0035 49       		.uleb128 0x49
+ 3458 0036 13       		.uleb128 0x13
+ 3459 0037 01       		.uleb128 0x1
+ 3460 0038 13       		.uleb128 0x13
+ 3461 0039 00       		.byte	0
+ 3462 003a 00       		.byte	0
+ 3463 003b 06       		.uleb128 0x6
+ 3464 003c 21       		.uleb128 0x21
+ 3465 003d 00       		.byte	0
+ 3466 003e 49       		.uleb128 0x49
+ 3467 003f 13       		.uleb128 0x13
+ 3468 0040 2F       		.uleb128 0x2f
+ 3469 0041 05       		.uleb128 0x5
+ 3470 0042 00       		.byte	0
+ 3471 0043 00       		.byte	0
+ 3472 0044 07       		.uleb128 0x7
+ 3473 0045 26       		.uleb128 0x26
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 62
+
+
+ 3474 0046 00       		.byte	0
+ 3475 0047 49       		.uleb128 0x49
+ 3476 0048 13       		.uleb128 0x13
+ 3477 0049 00       		.byte	0
+ 3478 004a 00       		.byte	0
+ 3479 004b 08       		.uleb128 0x8
+ 3480 004c 34       		.uleb128 0x34
+ 3481 004d 00       		.byte	0
+ 3482 004e 03       		.uleb128 0x3
+ 3483 004f 0E       		.uleb128 0xe
+ 3484 0050 3A       		.uleb128 0x3a
+ 3485 0051 0B       		.uleb128 0xb
+ 3486 0052 3B       		.uleb128 0x3b
+ 3487 0053 0B       		.uleb128 0xb
+ 3488 0054 49       		.uleb128 0x49
+ 3489 0055 13       		.uleb128 0x13
+ 3490 0056 3F       		.uleb128 0x3f
+ 3491 0057 19       		.uleb128 0x19
+ 3492 0058 02       		.uleb128 0x2
+ 3493 0059 18       		.uleb128 0x18
+ 3494 005a 00       		.byte	0
+ 3495 005b 00       		.byte	0
+ 3496 005c 09       		.uleb128 0x9
+ 3497 005d 21       		.uleb128 0x21
+ 3498 005e 00       		.byte	0
+ 3499 005f 49       		.uleb128 0x49
+ 3500 0060 13       		.uleb128 0x13
+ 3501 0061 2F       		.uleb128 0x2f
+ 3502 0062 0B       		.uleb128 0xb
+ 3503 0063 00       		.byte	0
+ 3504 0064 00       		.byte	0
+ 3505 0065 0A       		.uleb128 0xa
+ 3506 0066 34       		.uleb128 0x34
+ 3507 0067 00       		.byte	0
+ 3508 0068 03       		.uleb128 0x3
+ 3509 0069 0E       		.uleb128 0xe
+ 3510 006a 3A       		.uleb128 0x3a
+ 3511 006b 0B       		.uleb128 0xb
+ 3512 006c 3B       		.uleb128 0x3b
+ 3513 006d 05       		.uleb128 0x5
+ 3514 006e 49       		.uleb128 0x49
+ 3515 006f 13       		.uleb128 0x13
+ 3516 0070 3F       		.uleb128 0x3f
+ 3517 0071 19       		.uleb128 0x19
+ 3518 0072 02       		.uleb128 0x2
+ 3519 0073 18       		.uleb128 0x18
+ 3520 0074 00       		.byte	0
+ 3521 0075 00       		.byte	0
+ 3522 0076 00       		.byte	0
+ 3523              		.section	.debug_aranges,"",%progbits
+ 3524 0000 14000000 		.4byte	0x14
+ 3525 0004 0200     		.2byte	0x2
+ 3526 0006 00000000 		.4byte	.Ldebug_info0
+ 3527 000a 04       		.byte	0x4
+ 3528 000b 00       		.byte	0
+ 3529 000c 0000     		.2byte	0
+ 3530 000e 0000     		.2byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 63
+
+
+ 3531 0010 00000000 		.4byte	0
+ 3532 0014 00000000 		.4byte	0
+ 3533              		.section	.debug_line,"",%progbits
+ 3534              	.Ldebug_line0:
+ 3535 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 3535      02003701 
+ 3535      00000201 
+ 3535      FB0E0D00 
+ 3535      01010101 
+ 3536              	.LASF9:
+ 3537 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 3537      6E74385F 
+ 3537      7400
+ 3538              	.LASF16:
+ 3539 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 3539      65746164 
+ 3539      61746100 
+ 3540              	.LASF1:
+ 3541 0016 756E7369 		.ascii	"unsigned char\000"
+ 3541      676E6564 
+ 3541      20636861 
+ 3541      7200
+ 3542              	.LASF17:
+ 3543 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3543      43313120 
+ 3543      352E342E 
+ 3543      31203230 
+ 3543      31363036 
+ 3544 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3544      20726576 
+ 3544      6973696F 
+ 3544      6E203233 
+ 3544      37373135 
+ 3545 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 3545      66756E63 
+ 3545      74696F6E 
+ 3545      2D736563 
+ 3545      74696F6E 
+ 3546              	.LASF5:
+ 3547 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3547      20756E73 
+ 3547      69676E65 
+ 3547      6420696E 
+ 3547      7400
+ 3548              	.LASF3:
+ 3549 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 3549      7420756E 
+ 3549      7369676E 
+ 3549      65642069 
+ 3549      6E7400
+ 3550              	.LASF13:
+ 3551 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 3551      6574615F 
+ 3551      63757374 
+ 3551      6E766C00 
+ 3552              	.LASF19:
+ 3553 00e7 433A5C55 		.ascii	"C:\\Users\\Francis Cho\\Documents\\School\\Path_Fin"
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 64
+
+
+ 3553      73657273 
+ 3553      5C467261 
+ 3553      6E636973 
+ 3553      2043686F 
+ 3554 0115 64696E67 		.ascii	"ding_Robot\\PathFindingRobot_Workspace\\Path_Findin"
+ 3554      5F526F62 
+ 3554      6F745C50 
+ 3554      61746846 
+ 3554      696E6469 
+ 3555 0146 675F526F 		.ascii	"g_Robot.cydsn\000"
+ 3555      626F742E 
+ 3555      63796473 
+ 3555      6E00
+ 3556              	.LASF12:
+ 3557 0154 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 3557      6574615F 
+ 3557      636F6E66 
+ 3557      69676563 
+ 3557      6300
+ 3558              	.LASF8:
+ 3559 0166 756E7369 		.ascii	"unsigned int\000"
+ 3559      676E6564 
+ 3559      20696E74 
+ 3559      00
+ 3560              	.LASF7:
+ 3561 0173 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3561      206C6F6E 
+ 3561      6720756E 
+ 3561      7369676E 
+ 3561      65642069 
+ 3562              	.LASF10:
+ 3563 018a 75696E74 		.ascii	"uint8_t\000"
+ 3563      385F7400 
+ 3564              	.LASF15:
+ 3565 0192 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 3565      6574615F 
+ 3565      666C6173 
+ 3565      6870726F 
+ 3565      74656374 
+ 3566              	.LASF14:
+ 3567 01a7 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 3567      6574615F 
+ 3567      776F6E76 
+ 3567      6C00
+ 3568              	.LASF11:
+ 3569 01b5 73697A65 		.ascii	"sizetype\000"
+ 3569      74797065 
+ 3569      00
+ 3570              	.LASF6:
+ 3571 01be 6C6F6E67 		.ascii	"long long int\000"
+ 3571      206C6F6E 
+ 3571      6720696E 
+ 3571      7400
+ 3572              	.LASF2:
+ 3573 01cc 73686F72 		.ascii	"short int\000"
+ 3573      7420696E 
+ 3573      7400
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccxGbpZQ.s 			page 65
+
+
+ 3574              	.LASF4:
+ 3575 01d6 6C6F6E67 		.ascii	"long int\000"
+ 3575      20696E74 
+ 3575      00
+ 3576              	.LASF0:
+ 3577 01df 7369676E 		.ascii	"signed char\000"
+ 3577      65642063 
+ 3577      68617200 
+ 3578              	.LASF18:
+ 3579 01eb 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 3579      72617465 
+ 3579      645F536F 
+ 3579      75726365 
+ 3579      5C50536F 
+ 3580              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

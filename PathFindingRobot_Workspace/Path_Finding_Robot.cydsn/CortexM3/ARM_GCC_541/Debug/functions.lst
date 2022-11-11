@@ -1,0 +1,2424 @@
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"functions.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.findMaximum,"ax",%progbits
+  20              		.align	2
+  21              		.global	findMaximum
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	findMaximum, %function
+  25              	findMaximum:
+  26              	.LFB64:
+  27              		.file 1 "functions.c"
+   1:functions.c   **** /* ========================================
+   2:functions.c   ****  *
+   3:functions.c   ****  * Copyright The University of Auckland, CS301 Group 15, 2022
+   4:functions.c   ****  * All Rights Reserved
+   5:functions.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:functions.c   ****  *
+   7:functions.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:functions.c   ****  * WHICH IS THE PROPERTY OF The University of Auckland, CS301 Group 15.
+   9:functions.c   ****  *
+  10:functions.c   ****  * ========================================
+  11:functions.c   **** */
+  12:functions.c   **** #include <stdio.h>
+  13:functions.c   **** #include <project.h>
+  14:functions.c   **** #include <string.h>
+  15:functions.c   **** 
+  16:functions.c   **** int speed=0;
+  17:functions.c   **** int offset = 15;
+  18:functions.c   **** int startDuty = 90;
+  19:functions.c   **** int leftDuty = 97;
+  20:functions.c   **** int rightDuty = 0;
+  21:functions.c   **** 
+  22:functions.c   **** int findMaximum(int array[10]){
+  28              		.loc 1 22 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  34              	.LBB2:
+  23:functions.c   ****     int maximum = 0;
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 2
+
+
+  24:functions.c   ****         for(int i = 0; i < 10; i ++){
+  35              		.loc 1 24 0
+  36 0000 0023     		movs	r3, #0
+  37              	.LBE2:
+  23:functions.c   ****     int maximum = 0;
+  38              		.loc 1 23 0
+  39 0002 1946     		mov	r1, r3
+  40              	.LBB3:
+  41              		.loc 1 24 0
+  42 0004 05E0     		b	.L2
+  43              	.LVL1:
+  44              	.L4:
+  25:functions.c   ****             if (array[i]> maximum){
+  45              		.loc 1 25 0
+  46 0006 50F82320 		ldr	r2, [r0, r3, lsl #2]
+  47 000a 9142     		cmp	r1, r2
+  48 000c 00DA     		bge	.L3
+  26:functions.c   ****              maximum = array[i];
+  49              		.loc 1 26 0
+  50 000e 1146     		mov	r1, r2
+  51              	.LVL2:
+  52              	.L3:
+  24:functions.c   ****             if (array[i]> maximum){
+  53              		.loc 1 24 0 discriminator 2
+  54 0010 0133     		adds	r3, r3, #1
+  55              	.LVL3:
+  56              	.L2:
+  24:functions.c   ****             if (array[i]> maximum){
+  57              		.loc 1 24 0 is_stmt 0 discriminator 1
+  58 0012 092B     		cmp	r3, #9
+  59 0014 F7DD     		ble	.L4
+  60              	.LBE3:
+  27:functions.c   ****             }  
+  28:functions.c   ****         }
+  29:functions.c   ****         return maximum;
+  30:functions.c   **** }
+  61              		.loc 1 30 0 is_stmt 1
+  62 0016 0846     		mov	r0, r1
+  63              	.LVL4:
+  64 0018 7047     		bx	lr
+  65              		.cfi_endproc
+  66              	.LFE64:
+  67              		.size	findMaximum, .-findMaximum
+  68 001a 00BF     		.section	.text.findMinimum,"ax",%progbits
+  69              		.align	2
+  70              		.global	findMinimum
+  71              		.thumb
+  72              		.thumb_func
+  73              		.type	findMinimum, %function
+  74              	findMinimum:
+  75              	.LFB65:
+  31:functions.c   **** 
+  32:functions.c   **** int findMinimum(int array[10]){
+  76              		.loc 1 32 0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 3
+
+
+  80              		@ link register save eliminated.
+  81              	.LVL5:
+  82              	.LBB4:
+  33:functions.c   ****     int minimum = 10000;
+  34:functions.c   ****         for(int i = 0; i < 10; i ++){
+  83              		.loc 1 34 0
+  84 0000 0023     		movs	r3, #0
+  85              	.LBE4:
+  33:functions.c   ****     int minimum = 10000;
+  86              		.loc 1 33 0
+  87 0002 42F21071 		movw	r1, #10000
+  88              	.LBB5:
+  89              		.loc 1 34 0
+  90 0006 05E0     		b	.L7
+  91              	.LVL6:
+  92              	.L9:
+  35:functions.c   ****             if (array[i] < minimum){
+  93              		.loc 1 35 0
+  94 0008 50F82320 		ldr	r2, [r0, r3, lsl #2]
+  95 000c 9142     		cmp	r1, r2
+  96 000e 00DD     		ble	.L8
+  36:functions.c   ****              minimum = array[i];
+  97              		.loc 1 36 0
+  98 0010 1146     		mov	r1, r2
+  99              	.LVL7:
+ 100              	.L8:
+  34:functions.c   ****             if (array[i] < minimum){
+ 101              		.loc 1 34 0 discriminator 2
+ 102 0012 0133     		adds	r3, r3, #1
+ 103              	.LVL8:
+ 104              	.L7:
+  34:functions.c   ****             if (array[i] < minimum){
+ 105              		.loc 1 34 0 is_stmt 0 discriminator 1
+ 106 0014 092B     		cmp	r3, #9
+ 107 0016 F7DD     		ble	.L9
+ 108              	.LBE5:
+  37:functions.c   ****             }  
+  38:functions.c   ****         }
+  39:functions.c   ****         return minimum;
+  40:functions.c   **** }
+ 109              		.loc 1 40 0 is_stmt 1
+ 110 0018 0846     		mov	r0, r1
+ 111              	.LVL9:
+ 112 001a 7047     		bx	lr
+ 113              		.cfi_endproc
+ 114              	.LFE65:
+ 115              		.size	findMinimum, .-findMinimum
+ 116              		.section	.text.usbPutString,"ax",%progbits
+ 117              		.align	2
+ 118              		.global	usbPutString
+ 119              		.thumb
+ 120              		.thumb_func
+ 121              		.type	usbPutString, %function
+ 122              	usbPutString:
+ 123              	.LFB66:
+  41:functions.c   **** 
+  42:functions.c   **** void usbPutString(char *s)
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 4
+
+
+  43:functions.c   **** {
+ 124              		.loc 1 43 0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              	.LVL10:
+ 129 0000 10B5     		push	{r4, lr}
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 4, -8
+ 132              		.cfi_offset 14, -4
+ 133 0002 0446     		mov	r4, r0
+ 134              	.LVL11:
+ 135              	.L12:
+  44:functions.c   **** // !! Assumes that *s is a string with allocated space >=64 chars     
+  45:functions.c   **** //  Since USB implementation retricts data packets to 64 chars, this function truncates the
+  46:functions.c   **** //  length to 62 char (63rd char is a '!')
+  47:functions.c   ****     
+  48:functions.c   ****     while (USBUART_1_CDCIsReady() == 0);
+ 136              		.loc 1 48 0 discriminator 1
+ 137 0004 FFF7FEFF 		bl	USBUART_1_CDCIsReady
+ 138              	.LVL12:
+ 139 0008 0028     		cmp	r0, #0
+ 140 000a FBD0     		beq	.L12
+  49:functions.c   ****     s[63]='\0';
+ 141              		.loc 1 49 0
+ 142 000c 0023     		movs	r3, #0
+ 143 000e 84F83F30 		strb	r3, [r4, #63]
+  50:functions.c   ****     s[62]='!';
+ 144              		.loc 1 50 0
+ 145 0012 2123     		movs	r3, #33
+ 146 0014 84F83E30 		strb	r3, [r4, #62]
+  51:functions.c   ****     USBUART_1_PutData((uint8*)s,strlen(s));
+ 147              		.loc 1 51 0
+ 148 0018 2046     		mov	r0, r4
+ 149 001a FFF7FEFF 		bl	strlen
+ 150              	.LVL13:
+ 151 001e 81B2     		uxth	r1, r0
+ 152 0020 2046     		mov	r0, r4
+ 153 0022 FFF7FEFF 		bl	USBUART_1_PutData
+ 154              	.LVL14:
+ 155 0026 10BD     		pop	{r4, pc}
+ 156              		.cfi_endproc
+ 157              	.LFE66:
+ 158              		.size	usbPutString, .-usbPutString
+ 159              		.section	.text.DoLeftTurn,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	DoLeftTurn
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.type	DoLeftTurn, %function
+ 165              	DoLeftTurn:
+ 166              	.LFB67:
+  52:functions.c   **** }
+  53:functions.c   **** 
+  54:functions.c   **** void DoLeftTurn(){
+ 167              		.loc 1 54 0
+ 168              		.cfi_startproc
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 5
+
+
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 08B5     		push	{r3, lr}
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 3, -8
+ 174              		.cfi_offset 14, -4
+  55:functions.c   ****     PWM_leftmotor_Start();
+ 175              		.loc 1 55 0
+ 176 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 177              	.LVL15:
+  56:functions.c   ****     PWM_rightmotor_Start();
+ 178              		.loc 1 56 0
+ 179 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 180              	.LVL16:
+  57:functions.c   ****     
+  58:functions.c   ****     //PWM_leftmotor_WriteCompare1(80);
+  59:functions.c   ****     PWM_leftmotor_WriteCompare1(90);
+ 181              		.loc 1 59 0
+ 182 000a 5A20     		movs	r0, #90
+ 183 000c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 184              	.LVL17:
+  60:functions.c   ****     PWM_leftmotor_WriteCompare2(0);
+ 185              		.loc 1 60 0
+ 186 0010 0020     		movs	r0, #0
+ 187 0012 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 188              	.LVL18:
+  61:functions.c   ****     
+  62:functions.c   ****     //PWM_rightmotor_WriteCompare1(60);
+  63:functions.c   ****     PWM_rightmotor_WriteCompare1(90);      // prev value = 120
+ 189              		.loc 1 63 0
+ 190 0016 5A20     		movs	r0, #90
+ 191 0018 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 192              	.LVL19:
+  64:functions.c   ****     PWM_rightmotor_WriteCompare2(0);
+ 193              		.loc 1 64 0
+ 194 001c 0020     		movs	r0, #0
+ 195 001e FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 196              	.LVL20:
+ 197 0022 08BD     		pop	{r3, pc}
+ 198              		.cfi_endproc
+ 199              	.LFE67:
+ 200              		.size	DoLeftTurn, .-DoLeftTurn
+ 201              		.section	.text.DoLeftToStraight,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	DoLeftToStraight
+ 204              		.thumb
+ 205              		.thumb_func
+ 206              		.type	DoLeftToStraight, %function
+ 207              	DoLeftToStraight:
+ 208              	.LFB68:
+  65:functions.c   **** }
+  66:functions.c   **** 
+  67:functions.c   **** void DoLeftToStraight(){
+ 209              		.loc 1 67 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 6
+
+
+ 213 0000 08B5     		push	{r3, lr}
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 3, -8
+ 216              		.cfi_offset 14, -4
+  68:functions.c   **** 
+  69:functions.c   ****     PWM_leftmotor_Start();
+ 217              		.loc 1 69 0
+ 218 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 219              	.LVL21:
+  70:functions.c   ****     PWM_rightmotor_Start();
+ 220              		.loc 1 70 0
+ 221 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 222              	.LVL22:
+  71:functions.c   ****     
+  72:functions.c   ****     //PWM_leftmotor_WriteCompare1(80);
+  73:functions.c   ****     PWM_leftmotor_WriteCompare1(90);
+ 223              		.loc 1 73 0
+ 224 000a 5A20     		movs	r0, #90
+ 225 000c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 226              	.LVL23:
+  74:functions.c   ****     PWM_leftmotor_WriteCompare2(0);
+ 227              		.loc 1 74 0
+ 228 0010 0020     		movs	r0, #0
+ 229 0012 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 230              	.LVL24:
+  75:functions.c   ****     
+  76:functions.c   ****     //PWM_rightmotor_WriteCompare1(60);
+  77:functions.c   ****     PWM_rightmotor_WriteCompare1(100);      // prev value = 120
+ 231              		.loc 1 77 0
+ 232 0016 6420     		movs	r0, #100
+ 233 0018 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 234              	.LVL25:
+  78:functions.c   ****     PWM_rightmotor_WriteCompare2(0);
+ 235              		.loc 1 78 0
+ 236 001c 0020     		movs	r0, #0
+ 237 001e FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 238              	.LVL26:
+ 239 0022 08BD     		pop	{r3, pc}
+ 240              		.cfi_endproc
+ 241              	.LFE68:
+ 242              		.size	DoLeftToStraight, .-DoLeftToStraight
+ 243              		.section	.text.DoRightTurn,"ax",%progbits
+ 244              		.align	2
+ 245              		.global	DoRightTurn
+ 246              		.thumb
+ 247              		.thumb_func
+ 248              		.type	DoRightTurn, %function
+ 249              	DoRightTurn:
+ 250              	.LFB69:
+  79:functions.c   **** 
+  80:functions.c   **** }
+  81:functions.c   **** 
+  82:functions.c   ****  void DoRightTurn() {
+ 251              		.loc 1 82 0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 7
+
+
+ 255 0000 08B5     		push	{r3, lr}
+ 256              		.cfi_def_cfa_offset 8
+ 257              		.cfi_offset 3, -8
+ 258              		.cfi_offset 14, -4
+  83:functions.c   ****     PWM_leftmotor_Start();
+ 259              		.loc 1 83 0
+ 260 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 261              	.LVL27:
+  84:functions.c   ****     PWM_rightmotor_Start();
+ 262              		.loc 1 84 0
+ 263 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 264              	.LVL28:
+  85:functions.c   ****     
+  86:functions.c   ****     // initiate right turn
+  87:functions.c   ****     PWM_leftmotor_WriteCompare1(0);
+ 265              		.loc 1 87 0
+ 266 000a 0020     		movs	r0, #0
+ 267 000c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 268              	.LVL29:
+  88:functions.c   ****     //PWM_leftmotor_WriteCompare2(60);
+  89:functions.c   ****     PWM_leftmotor_WriteCompare2(90);     // going forward -> 140 works 
+ 269              		.loc 1 89 0
+ 270 0010 5A20     		movs	r0, #90
+ 271 0012 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 272              	.LVL30:
+  90:functions.c   ****         
+  91:functions.c   ****     // right turn; right motor reverse
+  92:functions.c   ****     PWM_rightmotor_WriteCompare1(0);
+ 273              		.loc 1 92 0
+ 274 0016 0020     		movs	r0, #0
+ 275 0018 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 276              	.LVL31:
+  93:functions.c   ****     PWM_rightmotor_WriteCompare2(90);    // reverse
+ 277              		.loc 1 93 0
+ 278 001c 5A20     		movs	r0, #90
+ 279 001e FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 280              	.LVL32:
+ 281 0022 08BD     		pop	{r3, pc}
+ 282              		.cfi_endproc
+ 283              	.LFE69:
+ 284              		.size	DoRightTurn, .-DoRightTurn
+ 285              		.section	.text.GoStraight,"ax",%progbits
+ 286              		.align	2
+ 287              		.global	GoStraight
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.type	GoStraight, %function
+ 291              	GoStraight:
+ 292              	.LFB70:
+  94:functions.c   ****     
+  95:functions.c   **** }
+  96:functions.c   **** 
+  97:functions.c   **** void GoStraight(){
+ 293              		.loc 1 97 0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 8
+
+
+ 297 0000 08B5     		push	{r3, lr}
+ 298              		.cfi_def_cfa_offset 8
+ 299              		.cfi_offset 3, -8
+ 300              		.cfi_offset 14, -4
+  98:functions.c   ****     PWM_leftmotor_Start();
+ 301              		.loc 1 98 0
+ 302 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 303              	.LVL33:
+  99:functions.c   ****     PWM_rightmotor_Start();
+ 304              		.loc 1 99 0
+ 305 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 306              	.LVL34:
+ 100:functions.c   ****     
+ 101:functions.c   ****     PWM_leftmotor_WriteCompare1(0);
+ 307              		.loc 1 101 0
+ 308 000a 0020     		movs	r0, #0
+ 309 000c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 310              	.LVL35:
+ 102:functions.c   ****     PWM_leftmotor_WriteCompare2(97);
+ 311              		.loc 1 102 0
+ 312 0010 6120     		movs	r0, #97
+ 313 0012 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 314              	.LVL36:
+ 103:functions.c   **** 
+ 104:functions.c   ****     PWM_rightmotor_WriteCompare1(90);
+ 315              		.loc 1 104 0
+ 316 0016 5A20     		movs	r0, #90
+ 317 0018 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 318              	.LVL37:
+ 105:functions.c   ****     PWM_rightmotor_WriteCompare2(0);
+ 319              		.loc 1 105 0
+ 320 001c 0020     		movs	r0, #0
+ 321 001e FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 322              	.LVL38:
+ 323 0022 08BD     		pop	{r3, pc}
+ 324              		.cfi_endproc
+ 325              	.LFE70:
+ 326              		.size	GoStraight, .-GoStraight
+ 327              		.section	.text.Stop,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	Stop
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	Stop, %function
+ 333              	Stop:
+ 334              	.LFB71:
+ 106:functions.c   **** }
+ 107:functions.c   **** void Stop(){
+ 335              		.loc 1 107 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339 0000 08B5     		push	{r3, lr}
+ 340              		.cfi_def_cfa_offset 8
+ 341              		.cfi_offset 3, -8
+ 342              		.cfi_offset 14, -4
+ 108:functions.c   ****     PWM_leftmotor_WriteCompare1(140);
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 9
+
+
+ 343              		.loc 1 108 0
+ 344 0002 8C20     		movs	r0, #140
+ 345 0004 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 346              	.LVL39:
+ 109:functions.c   ****     PWM_leftmotor_WriteCompare2(140);
+ 347              		.loc 1 109 0
+ 348 0008 8C20     		movs	r0, #140
+ 349 000a FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 350              	.LVL40:
+ 110:functions.c   **** 
+ 111:functions.c   ****     PWM_rightmotor_WriteCompare1(140);
+ 351              		.loc 1 111 0
+ 352 000e 8C20     		movs	r0, #140
+ 353 0010 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 354              	.LVL41:
+ 112:functions.c   ****     PWM_rightmotor_WriteCompare2(140);
+ 355              		.loc 1 112 0
+ 356 0014 8C20     		movs	r0, #140
+ 357 0016 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 358              	.LVL42:
+ 359 001a 08BD     		pop	{r3, pc}
+ 360              		.cfi_endproc
+ 361              	.LFE71:
+ 362              		.size	Stop, .-Stop
+ 363              		.section	.text.ArrangeToLeft,"ax",%progbits
+ 364              		.align	2
+ 365              		.global	ArrangeToLeft
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.type	ArrangeToLeft, %function
+ 369              	ArrangeToLeft:
+ 370              	.LFB72:
+ 113:functions.c   **** }
+ 114:functions.c   **** 
+ 115:functions.c   **** void ArrangeToLeft(){
+ 371              		.loc 1 115 0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375 0000 10B5     		push	{r4, lr}
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 4, -8
+ 378              		.cfi_offset 14, -4
+ 116:functions.c   ****     PWM_leftmotor_Start();
+ 379              		.loc 1 116 0
+ 380 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 381              	.LVL43:
+ 117:functions.c   ****     PWM_rightmotor_Start();
+ 382              		.loc 1 117 0
+ 383 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 384              	.LVL44:
+ 118:functions.c   ****     PWM_leftmotor_WriteCompare1(0);
+ 385              		.loc 1 118 0
+ 386 000a 0020     		movs	r0, #0
+ 387 000c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 388              	.LVL45:
+ 119:functions.c   ****     
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 10
+
+
+ 120:functions.c   ****     leftDuty = leftDuty+ offset;
+ 389              		.loc 1 120 0
+ 390 0010 094C     		ldr	r4, .L26
+ 391 0012 2068     		ldr	r0, [r4]
+ 392 0014 6368     		ldr	r3, [r4, #4]
+ 393 0016 1844     		add	r0, r0, r3
+ 394 0018 2060     		str	r0, [r4]
+ 121:functions.c   ****     PWM_leftmotor_WriteCompare2(leftDuty);
+ 395              		.loc 1 121 0
+ 396 001a C0B2     		uxtb	r0, r0
+ 397 001c FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 398              	.LVL46:
+ 122:functions.c   ****     
+ 123:functions.c   ****     PWM_rightmotor_WriteCompare1(startDuty);
+ 399              		.loc 1 123 0
+ 400 0020 207A     		ldrb	r0, [r4, #8]	@ zero_extendqisi2
+ 401 0022 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 402              	.LVL47:
+ 124:functions.c   ****     
+ 125:functions.c   ****     rightDuty = rightDuty+ offset;
+ 403              		.loc 1 125 0
+ 404 0026 054A     		ldr	r2, .L26+4
+ 405 0028 1068     		ldr	r0, [r2]
+ 406 002a 6368     		ldr	r3, [r4, #4]
+ 407 002c 1844     		add	r0, r0, r3
+ 408 002e 1060     		str	r0, [r2]
+ 126:functions.c   ****     PWM_rightmotor_WriteCompare2(rightDuty);
+ 409              		.loc 1 126 0
+ 410 0030 C0B2     		uxtb	r0, r0
+ 411 0032 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 412              	.LVL48:
+ 413 0036 10BD     		pop	{r4, pc}
+ 414              	.L27:
+ 415              		.align	2
+ 416              	.L26:
+ 417 0038 00000000 		.word	.LANCHOR0
+ 418 003c 00000000 		.word	.LANCHOR1
+ 419              		.cfi_endproc
+ 420              	.LFE72:
+ 421              		.size	ArrangeToLeft, .-ArrangeToLeft
+ 422              		.section	.text.ArrangeToRight,"ax",%progbits
+ 423              		.align	2
+ 424              		.global	ArrangeToRight
+ 425              		.thumb
+ 426              		.thumb_func
+ 427              		.type	ArrangeToRight, %function
+ 428              	ArrangeToRight:
+ 429              	.LFB73:
+ 127:functions.c   **** }
+ 128:functions.c   **** 
+ 129:functions.c   **** void ArrangeToRight(){
+ 430              		.loc 1 129 0
+ 431              		.cfi_startproc
+ 432              		@ args = 0, pretend = 0, frame = 0
+ 433              		@ frame_needed = 0, uses_anonymous_args = 0
+ 434 0000 10B5     		push	{r4, lr}
+ 435              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 11
+
+
+ 436              		.cfi_offset 4, -8
+ 437              		.cfi_offset 14, -4
+ 130:functions.c   ****     PWM_leftmotor_Start();
+ 438              		.loc 1 130 0
+ 439 0002 FFF7FEFF 		bl	PWM_leftmotor_Start
+ 440              	.LVL49:
+ 131:functions.c   ****     PWM_rightmotor_Start();
+ 441              		.loc 1 131 0
+ 442 0006 FFF7FEFF 		bl	PWM_rightmotor_Start
+ 443              	.LVL50:
+ 132:functions.c   ****     PWM_leftmotor_WriteCompare1(0+offset);
+ 444              		.loc 1 132 0
+ 445 000a 084C     		ldr	r4, .L30
+ 446 000c 2079     		ldrb	r0, [r4, #4]	@ zero_extendqisi2
+ 447 000e FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 448              	.LVL51:
+ 133:functions.c   ****     PWM_leftmotor_WriteCompare2(startDuty);
+ 449              		.loc 1 133 0
+ 450 0012 207A     		ldrb	r0, [r4, #8]	@ zero_extendqisi2
+ 451 0014 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 452              	.LVL52:
+ 134:functions.c   **** 
+ 135:functions.c   ****     PWM_rightmotor_WriteCompare1(startDuty+offset);
+ 453              		.loc 1 135 0
+ 454 0018 A068     		ldr	r0, [r4, #8]
+ 455 001a 6368     		ldr	r3, [r4, #4]
+ 456 001c 1844     		add	r0, r0, r3
+ 457 001e C0B2     		uxtb	r0, r0
+ 458 0020 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 459              	.LVL53:
+ 136:functions.c   ****     PWM_rightmotor_WriteCompare2(0);
+ 460              		.loc 1 136 0
+ 461 0024 0020     		movs	r0, #0
+ 462 0026 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 463              	.LVL54:
+ 464 002a 10BD     		pop	{r4, pc}
+ 465              	.L31:
+ 466              		.align	2
+ 467              	.L30:
+ 468 002c 00000000 		.word	.LANCHOR0
+ 469              		.cfi_endproc
+ 470              	.LFE73:
+ 471              		.size	ArrangeToRight, .-ArrangeToRight
+ 472              		.section	.text.updateMotorSpeed_Right,"ax",%progbits
+ 473              		.align	2
+ 474              		.global	updateMotorSpeed_Right
+ 475              		.thumb
+ 476              		.thumb_func
+ 477              		.type	updateMotorSpeed_Right, %function
+ 478              	updateMotorSpeed_Right:
+ 479              	.LFB74:
+ 137:functions.c   **** }
+ 138:functions.c   **** 
+ 139:functions.c   **** void updateMotorSpeed_Right(int speed) {    
+ 480              		.loc 1 139 0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 12
+
+
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484              	.LVL55:
+ 485 0000 10B5     		push	{r4, lr}
+ 486              		.cfi_def_cfa_offset 8
+ 487              		.cfi_offset 4, -8
+ 488              		.cfi_offset 14, -4
+ 140:functions.c   ****     PWM_rightmotor_WriteCompare1(255 - speed);
+ 489              		.loc 1 140 0
+ 490 0002 C4B2     		uxtb	r4, r0
+ 491 0004 E043     		mvns	r0, r4
+ 492              	.LVL56:
+ 493 0006 C0B2     		uxtb	r0, r0
+ 494 0008 FFF7FEFF 		bl	PWM_rightmotor_WriteCompare1
+ 495              	.LVL57:
+ 141:functions.c   ****     PWM_rightmotor_WriteCompare2(255-(255-speed));
+ 496              		.loc 1 141 0
+ 497 000c 2046     		mov	r0, r4
+ 498 000e FFF7FEFF 		bl	PWM_rightmotor_WriteCompare2
+ 499              	.LVL58:
+ 500 0012 10BD     		pop	{r4, pc}
+ 501              		.cfi_endproc
+ 502              	.LFE74:
+ 503              		.size	updateMotorSpeed_Right, .-updateMotorSpeed_Right
+ 504              		.section	.text.updateMotorSpeed_Left,"ax",%progbits
+ 505              		.align	2
+ 506              		.global	updateMotorSpeed_Left
+ 507              		.thumb
+ 508              		.thumb_func
+ 509              		.type	updateMotorSpeed_Left, %function
+ 510              	updateMotorSpeed_Left:
+ 511              	.LFB75:
+ 142:functions.c   **** }
+ 143:functions.c   **** 
+ 144:functions.c   **** void updateMotorSpeed_Left(int speed) {    
+ 512              		.loc 1 144 0
+ 513              		.cfi_startproc
+ 514              		@ args = 0, pretend = 0, frame = 0
+ 515              		@ frame_needed = 0, uses_anonymous_args = 0
+ 516              	.LVL59:
+ 517 0000 10B5     		push	{r4, lr}
+ 518              		.cfi_def_cfa_offset 8
+ 519              		.cfi_offset 4, -8
+ 520              		.cfi_offset 14, -4
+ 145:functions.c   ****     PWM_leftmotor_WriteCompare2(255 - speed);
+ 521              		.loc 1 145 0
+ 522 0002 C4B2     		uxtb	r4, r0
+ 523 0004 E043     		mvns	r0, r4
+ 524              	.LVL60:
+ 525 0006 C0B2     		uxtb	r0, r0
+ 526 0008 FFF7FEFF 		bl	PWM_leftmotor_WriteCompare2
+ 527              	.LVL61:
+ 146:functions.c   ****     PWM_leftmotor_WriteCompare1(255-(255-speed));
+ 528              		.loc 1 146 0
+ 529 000c 2046     		mov	r0, r4
+ 530 000e FFF7FEFF 		bl	PWM_leftmotor_WriteCompare1
+ 531              	.LVL62:
+ 532 0012 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 13
+
+
+ 533              		.cfi_endproc
+ 534              	.LFE75:
+ 535              		.size	updateMotorSpeed_Left, .-updateMotorSpeed_Left
+ 536              		.section	.text.updateMotorSpeed,"ax",%progbits
+ 537              		.align	2
+ 538              		.global	updateMotorSpeed
+ 539              		.thumb
+ 540              		.thumb_func
+ 541              		.type	updateMotorSpeed, %function
+ 542              	updateMotorSpeed:
+ 543              	.LFB76:
+ 147:functions.c   **** }
+ 148:functions.c   **** 
+ 149:functions.c   **** void updateMotorSpeed(int speed) {
+ 544              		.loc 1 149 0
+ 545              		.cfi_startproc
+ 546              		@ args = 0, pretend = 0, frame = 0
+ 547              		@ frame_needed = 0, uses_anonymous_args = 0
+ 548              	.LVL63:
+ 549 0000 10B5     		push	{r4, lr}
+ 550              		.cfi_def_cfa_offset 8
+ 551              		.cfi_offset 4, -8
+ 552              		.cfi_offset 14, -4
+ 553 0002 0446     		mov	r4, r0
+ 150:functions.c   ****     updateMotorSpeed_Right(speed);
+ 554              		.loc 1 150 0
+ 555 0004 FFF7FEFF 		bl	updateMotorSpeed_Right
+ 556              	.LVL64:
+ 151:functions.c   ****     updateMotorSpeed_Left(speed);   
+ 557              		.loc 1 151 0
+ 558 0008 2046     		mov	r0, r4
+ 559 000a FFF7FEFF 		bl	updateMotorSpeed_Left
+ 560              	.LVL65:
+ 561 000e 10BD     		pop	{r4, pc}
+ 562              		.cfi_endproc
+ 563              	.LFE76:
+ 564              		.size	updateMotorSpeed, .-updateMotorSpeed
+ 565              		.global	rightDuty
+ 566              		.global	leftDuty
+ 567              		.global	startDuty
+ 568              		.global	offset
+ 569              		.global	speed
+ 570              		.data
+ 571              		.align	2
+ 572              		.set	.LANCHOR0,. + 0
+ 573              		.type	leftDuty, %object
+ 574              		.size	leftDuty, 4
+ 575              	leftDuty:
+ 576 0000 61000000 		.word	97
+ 577              		.type	offset, %object
+ 578              		.size	offset, 4
+ 579              	offset:
+ 580 0004 0F000000 		.word	15
+ 581              		.type	startDuty, %object
+ 582              		.size	startDuty, 4
+ 583              	startDuty:
+ 584 0008 5A000000 		.word	90
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 14
+
+
+ 585              		.bss
+ 586              		.align	2
+ 587              		.set	.LANCHOR1,. + 0
+ 588              		.type	rightDuty, %object
+ 589              		.size	rightDuty, 4
+ 590              	rightDuty:
+ 591 0000 00000000 		.space	4
+ 592              		.type	speed, %object
+ 593              		.size	speed, 4
+ 594              	speed:
+ 595 0004 00000000 		.space	4
+ 596              		.text
+ 597              	.Letext0:
+ 598              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 599              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 600              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 601              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 602              		.file 6 "Generated_Source\\PSoC5/USBUART_1_cdc.h"
+ 603              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 604              		.file 8 "Generated_Source\\PSoC5/PWM_leftmotor.h"
+ 605              		.file 9 "Generated_Source\\PSoC5/PWM_rightmotor.h"
+ 606              		.section	.debug_info,"",%progbits
+ 607              	.Ldebug_info0:
+ 608 0000 17060000 		.4byte	0x617
+ 609 0004 0400     		.2byte	0x4
+ 610 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 611 000a 04       		.byte	0x4
+ 612 000b 01       		.uleb128 0x1
+ 613 000c A3000000 		.4byte	.LASF48
+ 614 0010 0C       		.byte	0xc
+ 615 0011 40000000 		.4byte	.LASF49
+ 616 0015 F8010000 		.4byte	.LASF50
+ 617 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 618 001d 00000000 		.4byte	0
+ 619 0021 00000000 		.4byte	.Ldebug_line0
+ 620 0025 02       		.uleb128 0x2
+ 621 0026 01       		.byte	0x1
+ 622 0027 06       		.byte	0x6
+ 623 0028 89000000 		.4byte	.LASF0
+ 624 002c 02       		.uleb128 0x2
+ 625 002d 01       		.byte	0x1
+ 626 002e 08       		.byte	0x8
+ 627 002f 95000000 		.4byte	.LASF1
+ 628 0033 02       		.uleb128 0x2
+ 629 0034 02       		.byte	0x2
+ 630 0035 05       		.byte	0x5
+ 631 0036 FD020000 		.4byte	.LASF2
+ 632 003a 02       		.uleb128 0x2
+ 633 003b 02       		.byte	0x2
+ 634 003c 07       		.byte	0x7
+ 635 003d 5F010000 		.4byte	.LASF3
+ 636 0041 03       		.uleb128 0x3
+ 637 0042 1C000000 		.4byte	.LASF12
+ 638 0046 02       		.byte	0x2
+ 639 0047 3F       		.byte	0x3f
+ 640 0048 4C000000 		.4byte	0x4c
+ 641 004c 02       		.uleb128 0x2
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 15
+
+
+ 642 004d 04       		.byte	0x4
+ 643 004e 05       		.byte	0x5
+ 644 004f 48030000 		.4byte	.LASF4
+ 645 0053 02       		.uleb128 0x2
+ 646 0054 04       		.byte	0x4
+ 647 0055 07       		.byte	0x7
+ 648 0056 4D010000 		.4byte	.LASF5
+ 649 005a 02       		.uleb128 0x2
+ 650 005b 08       		.byte	0x8
+ 651 005c 05       		.byte	0x5
+ 652 005d 00000000 		.4byte	.LASF6
+ 653 0061 02       		.uleb128 0x2
+ 654 0062 08       		.byte	0x8
+ 655 0063 07       		.byte	0x7
+ 656 0064 83020000 		.4byte	.LASF7
+ 657 0068 04       		.uleb128 0x4
+ 658 0069 04       		.byte	0x4
+ 659 006a 05       		.byte	0x5
+ 660 006b 696E7400 		.ascii	"int\000"
+ 661 006f 02       		.uleb128 0x2
+ 662 0070 04       		.byte	0x4
+ 663 0071 07       		.byte	0x7
+ 664 0072 33000000 		.4byte	.LASF8
+ 665 0076 02       		.uleb128 0x2
+ 666 0077 08       		.byte	0x8
+ 667 0078 04       		.byte	0x4
+ 668 0079 51030000 		.4byte	.LASF9
+ 669 007d 02       		.uleb128 0x2
+ 670 007e 04       		.byte	0x4
+ 671 007f 07       		.byte	0x7
+ 672 0080 A9020000 		.4byte	.LASF10
+ 673 0084 05       		.uleb128 0x5
+ 674 0085 04       		.byte	0x4
+ 675 0086 8A000000 		.4byte	0x8a
+ 676 008a 02       		.uleb128 0x2
+ 677 008b 01       		.byte	0x1
+ 678 008c 08       		.byte	0x8
+ 679 008d F1020000 		.4byte	.LASF11
+ 680 0091 03       		.uleb128 0x3
+ 681 0092 73000000 		.4byte	.LASF13
+ 682 0096 03       		.byte	0x3
+ 683 0097 2C       		.byte	0x2c
+ 684 0098 41000000 		.4byte	0x41
+ 685 009c 06       		.uleb128 0x6
+ 686 009d 07030000 		.4byte	.LASF14
+ 687 00a1 04       		.byte	0x4
+ 688 00a2 E401     		.2byte	0x1e4
+ 689 00a4 2C000000 		.4byte	0x2c
+ 690 00a8 02       		.uleb128 0x2
+ 691 00a9 04       		.byte	0x4
+ 692 00aa 04       		.byte	0x4
+ 693 00ab 83000000 		.4byte	.LASF15
+ 694 00af 02       		.uleb128 0x2
+ 695 00b0 08       		.byte	0x8
+ 696 00b1 04       		.byte	0x4
+ 697 00b2 BA010000 		.4byte	.LASF16
+ 698 00b6 07       		.uleb128 0x7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 16
+
+
+ 699 00b7 72010000 		.4byte	.LASF18
+ 700 00bb 01       		.byte	0x1
+ 701 00bc 16       		.byte	0x16
+ 702 00bd 68000000 		.4byte	0x68
+ 703 00c1 00000000 		.4byte	.LFB64
+ 704 00c5 1A000000 		.4byte	.LFE64-.LFB64
+ 705 00c9 01       		.uleb128 0x1
+ 706 00ca 9C       		.byte	0x9c
+ 707 00cb 01010000 		.4byte	0x101
+ 708 00cf 08       		.uleb128 0x8
+ 709 00d0 7E010000 		.4byte	.LASF20
+ 710 00d4 01       		.byte	0x1
+ 711 00d5 16       		.byte	0x16
+ 712 00d6 01010000 		.4byte	0x101
+ 713 00da 00000000 		.4byte	.LLST0
+ 714 00de 09       		.uleb128 0x9
+ 715 00df 7B000000 		.4byte	.LASF17
+ 716 00e3 01       		.byte	0x1
+ 717 00e4 17       		.byte	0x17
+ 718 00e5 68000000 		.4byte	0x68
+ 719 00e9 21000000 		.4byte	.LLST1
+ 720 00ed 0A       		.uleb128 0xa
+ 721 00ee 00000000 		.4byte	.Ldebug_ranges0+0
+ 722 00f2 0B       		.uleb128 0xb
+ 723 00f3 6900     		.ascii	"i\000"
+ 724 00f5 01       		.byte	0x1
+ 725 00f6 18       		.byte	0x18
+ 726 00f7 68000000 		.4byte	0x68
+ 727 00fb 40000000 		.4byte	.LLST2
+ 728 00ff 00       		.byte	0
+ 729 0100 00       		.byte	0
+ 730 0101 05       		.uleb128 0x5
+ 731 0102 04       		.byte	0x4
+ 732 0103 68000000 		.4byte	0x68
+ 733 0107 07       		.uleb128 0x7
+ 734 0108 65020000 		.4byte	.LASF19
+ 735 010c 01       		.byte	0x1
+ 736 010d 20       		.byte	0x20
+ 737 010e 68000000 		.4byte	0x68
+ 738 0112 00000000 		.4byte	.LFB65
+ 739 0116 1C000000 		.4byte	.LFE65-.LFB65
+ 740 011a 01       		.uleb128 0x1
+ 741 011b 9C       		.byte	0x9c
+ 742 011c 52010000 		.4byte	0x152
+ 743 0120 08       		.uleb128 0x8
+ 744 0121 7E010000 		.4byte	.LASF20
+ 745 0125 01       		.byte	0x1
+ 746 0126 20       		.byte	0x20
+ 747 0127 01010000 		.4byte	0x101
+ 748 012b 5F000000 		.4byte	.LLST3
+ 749 012f 09       		.uleb128 0x9
+ 750 0130 9B010000 		.4byte	.LASF21
+ 751 0134 01       		.byte	0x1
+ 752 0135 21       		.byte	0x21
+ 753 0136 68000000 		.4byte	0x68
+ 754 013a 80000000 		.4byte	.LLST4
+ 755 013e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 17
+
+
+ 756 013f 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 757 0143 0B       		.uleb128 0xb
+ 758 0144 6900     		.ascii	"i\000"
+ 759 0146 01       		.byte	0x1
+ 760 0147 22       		.byte	0x22
+ 761 0148 68000000 		.4byte	0x68
+ 762 014c A1000000 		.4byte	.LLST5
+ 763 0150 00       		.byte	0
+ 764 0151 00       		.byte	0
+ 765 0152 0C       		.uleb128 0xc
+ 766 0153 26000000 		.4byte	.LASF29
+ 767 0157 01       		.byte	0x1
+ 768 0158 2A       		.byte	0x2a
+ 769 0159 00000000 		.4byte	.LFB66
+ 770 015d 28000000 		.4byte	.LFE66-.LFB66
+ 771 0161 01       		.uleb128 0x1
+ 772 0162 9C       		.byte	0x9c
+ 773 0163 A2010000 		.4byte	0x1a2
+ 774 0167 0D       		.uleb128 0xd
+ 775 0168 7300     		.ascii	"s\000"
+ 776 016a 01       		.byte	0x1
+ 777 016b 2A       		.byte	0x2a
+ 778 016c 84000000 		.4byte	0x84
+ 779 0170 C0000000 		.4byte	.LLST6
+ 780 0174 0E       		.uleb128 0xe
+ 781 0175 08000000 		.4byte	.LVL12
+ 782 0179 B7050000 		.4byte	0x5b7
+ 783 017d 0F       		.uleb128 0xf
+ 784 017e 1E000000 		.4byte	.LVL13
+ 785 0182 C2050000 		.4byte	0x5c2
+ 786 0186 91010000 		.4byte	0x191
+ 787 018a 10       		.uleb128 0x10
+ 788 018b 01       		.uleb128 0x1
+ 789 018c 50       		.byte	0x50
+ 790 018d 02       		.uleb128 0x2
+ 791 018e 74       		.byte	0x74
+ 792 018f 00       		.sleb128 0
+ 793 0190 00       		.byte	0
+ 794 0191 11       		.uleb128 0x11
+ 795 0192 26000000 		.4byte	.LVL14
+ 796 0196 CD050000 		.4byte	0x5cd
+ 797 019a 10       		.uleb128 0x10
+ 798 019b 01       		.uleb128 0x1
+ 799 019c 50       		.byte	0x50
+ 800 019d 02       		.uleb128 0x2
+ 801 019e 74       		.byte	0x74
+ 802 019f 00       		.sleb128 0
+ 803 01a0 00       		.byte	0
+ 804 01a1 00       		.byte	0
+ 805 01a2 12       		.uleb128 0x12
+ 806 01a3 4C000000 		.4byte	.LASF22
+ 807 01a7 01       		.byte	0x1
+ 808 01a8 36       		.byte	0x36
+ 809 01a9 00000000 		.4byte	.LFB67
+ 810 01ad 24000000 		.4byte	.LFE67-.LFB67
+ 811 01b1 01       		.uleb128 0x1
+ 812 01b2 9C       		.byte	0x9c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 18
+
+
+ 813 01b3 14020000 		.4byte	0x214
+ 814 01b7 0E       		.uleb128 0xe
+ 815 01b8 06000000 		.4byte	.LVL15
+ 816 01bc D8050000 		.4byte	0x5d8
+ 817 01c0 0E       		.uleb128 0xe
+ 818 01c1 0A000000 		.4byte	.LVL16
+ 819 01c5 E3050000 		.4byte	0x5e3
+ 820 01c9 0F       		.uleb128 0xf
+ 821 01ca 10000000 		.4byte	.LVL17
+ 822 01ce EE050000 		.4byte	0x5ee
+ 823 01d2 DD010000 		.4byte	0x1dd
+ 824 01d6 10       		.uleb128 0x10
+ 825 01d7 01       		.uleb128 0x1
+ 826 01d8 50       		.byte	0x50
+ 827 01d9 02       		.uleb128 0x2
+ 828 01da 08       		.byte	0x8
+ 829 01db 5A       		.byte	0x5a
+ 830 01dc 00       		.byte	0
+ 831 01dd 0F       		.uleb128 0xf
+ 832 01de 16000000 		.4byte	.LVL18
+ 833 01e2 F9050000 		.4byte	0x5f9
+ 834 01e6 F0010000 		.4byte	0x1f0
+ 835 01ea 10       		.uleb128 0x10
+ 836 01eb 01       		.uleb128 0x1
+ 837 01ec 50       		.byte	0x50
+ 838 01ed 01       		.uleb128 0x1
+ 839 01ee 30       		.byte	0x30
+ 840 01ef 00       		.byte	0
+ 841 01f0 0F       		.uleb128 0xf
+ 842 01f1 1C000000 		.4byte	.LVL19
+ 843 01f5 04060000 		.4byte	0x604
+ 844 01f9 04020000 		.4byte	0x204
+ 845 01fd 10       		.uleb128 0x10
+ 846 01fe 01       		.uleb128 0x1
+ 847 01ff 50       		.byte	0x50
+ 848 0200 02       		.uleb128 0x2
+ 849 0201 08       		.byte	0x8
+ 850 0202 5A       		.byte	0x5a
+ 851 0203 00       		.byte	0
+ 852 0204 11       		.uleb128 0x11
+ 853 0205 22000000 		.4byte	.LVL20
+ 854 0209 0F060000 		.4byte	0x60f
+ 855 020d 10       		.uleb128 0x10
+ 856 020e 01       		.uleb128 0x1
+ 857 020f 50       		.byte	0x50
+ 858 0210 01       		.uleb128 0x1
+ 859 0211 30       		.byte	0x30
+ 860 0212 00       		.byte	0
+ 861 0213 00       		.byte	0
+ 862 0214 12       		.uleb128 0x12
+ 863 0215 71030000 		.4byte	.LASF23
+ 864 0219 01       		.byte	0x1
+ 865 021a 43       		.byte	0x43
+ 866 021b 00000000 		.4byte	.LFB68
+ 867 021f 24000000 		.4byte	.LFE68-.LFB68
+ 868 0223 01       		.uleb128 0x1
+ 869 0224 9C       		.byte	0x9c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 19
+
+
+ 870 0225 86020000 		.4byte	0x286
+ 871 0229 0E       		.uleb128 0xe
+ 872 022a 06000000 		.4byte	.LVL21
+ 873 022e D8050000 		.4byte	0x5d8
+ 874 0232 0E       		.uleb128 0xe
+ 875 0233 0A000000 		.4byte	.LVL22
+ 876 0237 E3050000 		.4byte	0x5e3
+ 877 023b 0F       		.uleb128 0xf
+ 878 023c 10000000 		.4byte	.LVL23
+ 879 0240 EE050000 		.4byte	0x5ee
+ 880 0244 4F020000 		.4byte	0x24f
+ 881 0248 10       		.uleb128 0x10
+ 882 0249 01       		.uleb128 0x1
+ 883 024a 50       		.byte	0x50
+ 884 024b 02       		.uleb128 0x2
+ 885 024c 08       		.byte	0x8
+ 886 024d 5A       		.byte	0x5a
+ 887 024e 00       		.byte	0
+ 888 024f 0F       		.uleb128 0xf
+ 889 0250 16000000 		.4byte	.LVL24
+ 890 0254 F9050000 		.4byte	0x5f9
+ 891 0258 62020000 		.4byte	0x262
+ 892 025c 10       		.uleb128 0x10
+ 893 025d 01       		.uleb128 0x1
+ 894 025e 50       		.byte	0x50
+ 895 025f 01       		.uleb128 0x1
+ 896 0260 30       		.byte	0x30
+ 897 0261 00       		.byte	0
+ 898 0262 0F       		.uleb128 0xf
+ 899 0263 1C000000 		.4byte	.LVL25
+ 900 0267 04060000 		.4byte	0x604
+ 901 026b 76020000 		.4byte	0x276
+ 902 026f 10       		.uleb128 0x10
+ 903 0270 01       		.uleb128 0x1
+ 904 0271 50       		.byte	0x50
+ 905 0272 02       		.uleb128 0x2
+ 906 0273 08       		.byte	0x8
+ 907 0274 64       		.byte	0x64
+ 908 0275 00       		.byte	0
+ 909 0276 11       		.uleb128 0x11
+ 910 0277 22000000 		.4byte	.LVL26
+ 911 027b 0F060000 		.4byte	0x60f
+ 912 027f 10       		.uleb128 0x10
+ 913 0280 01       		.uleb128 0x1
+ 914 0281 50       		.byte	0x50
+ 915 0282 01       		.uleb128 0x1
+ 916 0283 30       		.byte	0x30
+ 917 0284 00       		.byte	0
+ 918 0285 00       		.byte	0
+ 919 0286 12       		.uleb128 0x12
+ 920 0287 DD010000 		.4byte	.LASF24
+ 921 028b 01       		.byte	0x1
+ 922 028c 52       		.byte	0x52
+ 923 028d 00000000 		.4byte	.LFB69
+ 924 0291 24000000 		.4byte	.LFE69-.LFB69
+ 925 0295 01       		.uleb128 0x1
+ 926 0296 9C       		.byte	0x9c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 20
+
+
+ 927 0297 F8020000 		.4byte	0x2f8
+ 928 029b 0E       		.uleb128 0xe
+ 929 029c 06000000 		.4byte	.LVL27
+ 930 02a0 D8050000 		.4byte	0x5d8
+ 931 02a4 0E       		.uleb128 0xe
+ 932 02a5 0A000000 		.4byte	.LVL28
+ 933 02a9 E3050000 		.4byte	0x5e3
+ 934 02ad 0F       		.uleb128 0xf
+ 935 02ae 10000000 		.4byte	.LVL29
+ 936 02b2 EE050000 		.4byte	0x5ee
+ 937 02b6 C0020000 		.4byte	0x2c0
+ 938 02ba 10       		.uleb128 0x10
+ 939 02bb 01       		.uleb128 0x1
+ 940 02bc 50       		.byte	0x50
+ 941 02bd 01       		.uleb128 0x1
+ 942 02be 30       		.byte	0x30
+ 943 02bf 00       		.byte	0
+ 944 02c0 0F       		.uleb128 0xf
+ 945 02c1 16000000 		.4byte	.LVL30
+ 946 02c5 F9050000 		.4byte	0x5f9
+ 947 02c9 D4020000 		.4byte	0x2d4
+ 948 02cd 10       		.uleb128 0x10
+ 949 02ce 01       		.uleb128 0x1
+ 950 02cf 50       		.byte	0x50
+ 951 02d0 02       		.uleb128 0x2
+ 952 02d1 08       		.byte	0x8
+ 953 02d2 5A       		.byte	0x5a
+ 954 02d3 00       		.byte	0
+ 955 02d4 0F       		.uleb128 0xf
+ 956 02d5 1C000000 		.4byte	.LVL31
+ 957 02d9 04060000 		.4byte	0x604
+ 958 02dd E7020000 		.4byte	0x2e7
+ 959 02e1 10       		.uleb128 0x10
+ 960 02e2 01       		.uleb128 0x1
+ 961 02e3 50       		.byte	0x50
+ 962 02e4 01       		.uleb128 0x1
+ 963 02e5 30       		.byte	0x30
+ 964 02e6 00       		.byte	0
+ 965 02e7 11       		.uleb128 0x11
+ 966 02e8 22000000 		.4byte	.LVL32
+ 967 02ec 0F060000 		.4byte	0x60f
+ 968 02f0 10       		.uleb128 0x10
+ 969 02f1 01       		.uleb128 0x1
+ 970 02f2 50       		.byte	0x50
+ 971 02f3 02       		.uleb128 0x2
+ 972 02f4 08       		.byte	0x8
+ 973 02f5 5A       		.byte	0x5a
+ 974 02f6 00       		.byte	0
+ 975 02f7 00       		.byte	0
+ 976 02f8 12       		.uleb128 0x12
+ 977 02f9 71020000 		.4byte	.LASF25
+ 978 02fd 01       		.byte	0x1
+ 979 02fe 61       		.byte	0x61
+ 980 02ff 00000000 		.4byte	.LFB70
+ 981 0303 24000000 		.4byte	.LFE70-.LFB70
+ 982 0307 01       		.uleb128 0x1
+ 983 0308 9C       		.byte	0x9c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 21
+
+
+ 984 0309 6A030000 		.4byte	0x36a
+ 985 030d 0E       		.uleb128 0xe
+ 986 030e 06000000 		.4byte	.LVL33
+ 987 0312 D8050000 		.4byte	0x5d8
+ 988 0316 0E       		.uleb128 0xe
+ 989 0317 0A000000 		.4byte	.LVL34
+ 990 031b E3050000 		.4byte	0x5e3
+ 991 031f 0F       		.uleb128 0xf
+ 992 0320 10000000 		.4byte	.LVL35
+ 993 0324 EE050000 		.4byte	0x5ee
+ 994 0328 32030000 		.4byte	0x332
+ 995 032c 10       		.uleb128 0x10
+ 996 032d 01       		.uleb128 0x1
+ 997 032e 50       		.byte	0x50
+ 998 032f 01       		.uleb128 0x1
+ 999 0330 30       		.byte	0x30
+ 1000 0331 00       		.byte	0
+ 1001 0332 0F       		.uleb128 0xf
+ 1002 0333 16000000 		.4byte	.LVL36
+ 1003 0337 F9050000 		.4byte	0x5f9
+ 1004 033b 46030000 		.4byte	0x346
+ 1005 033f 10       		.uleb128 0x10
+ 1006 0340 01       		.uleb128 0x1
+ 1007 0341 50       		.byte	0x50
+ 1008 0342 02       		.uleb128 0x2
+ 1009 0343 08       		.byte	0x8
+ 1010 0344 61       		.byte	0x61
+ 1011 0345 00       		.byte	0
+ 1012 0346 0F       		.uleb128 0xf
+ 1013 0347 1C000000 		.4byte	.LVL37
+ 1014 034b 04060000 		.4byte	0x604
+ 1015 034f 5A030000 		.4byte	0x35a
+ 1016 0353 10       		.uleb128 0x10
+ 1017 0354 01       		.uleb128 0x1
+ 1018 0355 50       		.byte	0x50
+ 1019 0356 02       		.uleb128 0x2
+ 1020 0357 08       		.byte	0x8
+ 1021 0358 5A       		.byte	0x5a
+ 1022 0359 00       		.byte	0
+ 1023 035a 11       		.uleb128 0x11
+ 1024 035b 22000000 		.4byte	.LVL38
+ 1025 035f 0F060000 		.4byte	0x60f
+ 1026 0363 10       		.uleb128 0x10
+ 1027 0364 01       		.uleb128 0x1
+ 1028 0365 50       		.byte	0x50
+ 1029 0366 01       		.uleb128 0x1
+ 1030 0367 30       		.byte	0x30
+ 1031 0368 00       		.byte	0
+ 1032 0369 00       		.byte	0
+ 1033 036a 12       		.uleb128 0x12
+ 1034 036b EC020000 		.4byte	.LASF26
+ 1035 036f 01       		.byte	0x1
+ 1036 0370 6B       		.byte	0x6b
+ 1037 0371 00000000 		.4byte	.LFB71
+ 1038 0375 1C000000 		.4byte	.LFE71-.LFB71
+ 1039 0379 01       		.uleb128 0x1
+ 1040 037a 9C       		.byte	0x9c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 22
+
+
+ 1041 037b CC030000 		.4byte	0x3cc
+ 1042 037f 0F       		.uleb128 0xf
+ 1043 0380 08000000 		.4byte	.LVL39
+ 1044 0384 EE050000 		.4byte	0x5ee
+ 1045 0388 93030000 		.4byte	0x393
+ 1046 038c 10       		.uleb128 0x10
+ 1047 038d 01       		.uleb128 0x1
+ 1048 038e 50       		.byte	0x50
+ 1049 038f 02       		.uleb128 0x2
+ 1050 0390 09       		.byte	0x9
+ 1051 0391 8C       		.byte	0x8c
+ 1052 0392 00       		.byte	0
+ 1053 0393 0F       		.uleb128 0xf
+ 1054 0394 0E000000 		.4byte	.LVL40
+ 1055 0398 F9050000 		.4byte	0x5f9
+ 1056 039c A7030000 		.4byte	0x3a7
+ 1057 03a0 10       		.uleb128 0x10
+ 1058 03a1 01       		.uleb128 0x1
+ 1059 03a2 50       		.byte	0x50
+ 1060 03a3 02       		.uleb128 0x2
+ 1061 03a4 09       		.byte	0x9
+ 1062 03a5 8C       		.byte	0x8c
+ 1063 03a6 00       		.byte	0
+ 1064 03a7 0F       		.uleb128 0xf
+ 1065 03a8 14000000 		.4byte	.LVL41
+ 1066 03ac 04060000 		.4byte	0x604
+ 1067 03b0 BB030000 		.4byte	0x3bb
+ 1068 03b4 10       		.uleb128 0x10
+ 1069 03b5 01       		.uleb128 0x1
+ 1070 03b6 50       		.byte	0x50
+ 1071 03b7 02       		.uleb128 0x2
+ 1072 03b8 09       		.byte	0x9
+ 1073 03b9 8C       		.byte	0x8c
+ 1074 03ba 00       		.byte	0
+ 1075 03bb 11       		.uleb128 0x11
+ 1076 03bc 1A000000 		.4byte	.LVL42
+ 1077 03c0 0F060000 		.4byte	0x60f
+ 1078 03c4 10       		.uleb128 0x10
+ 1079 03c5 01       		.uleb128 0x1
+ 1080 03c6 50       		.byte	0x50
+ 1081 03c7 02       		.uleb128 0x2
+ 1082 03c8 09       		.byte	0x9
+ 1083 03c9 8C       		.byte	0x8c
+ 1084 03ca 00       		.byte	0
+ 1085 03cb 00       		.byte	0
+ 1086 03cc 12       		.uleb128 0x12
+ 1087 03cd 0E000000 		.4byte	.LASF27
+ 1088 03d1 01       		.byte	0x1
+ 1089 03d2 73       		.byte	0x73
+ 1090 03d3 00000000 		.4byte	.LFB72
+ 1091 03d7 40000000 		.4byte	.LFE72-.LFB72
+ 1092 03db 01       		.uleb128 0x1
+ 1093 03dc 9C       		.byte	0x9c
+ 1094 03dd 22040000 		.4byte	0x422
+ 1095 03e1 0E       		.uleb128 0xe
+ 1096 03e2 06000000 		.4byte	.LVL43
+ 1097 03e6 D8050000 		.4byte	0x5d8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 23
+
+
+ 1098 03ea 0E       		.uleb128 0xe
+ 1099 03eb 0A000000 		.4byte	.LVL44
+ 1100 03ef E3050000 		.4byte	0x5e3
+ 1101 03f3 0F       		.uleb128 0xf
+ 1102 03f4 10000000 		.4byte	.LVL45
+ 1103 03f8 EE050000 		.4byte	0x5ee
+ 1104 03fc 06040000 		.4byte	0x406
+ 1105 0400 10       		.uleb128 0x10
+ 1106 0401 01       		.uleb128 0x1
+ 1107 0402 50       		.byte	0x50
+ 1108 0403 01       		.uleb128 0x1
+ 1109 0404 30       		.byte	0x30
+ 1110 0405 00       		.byte	0
+ 1111 0406 0E       		.uleb128 0xe
+ 1112 0407 20000000 		.4byte	.LVL46
+ 1113 040b F9050000 		.4byte	0x5f9
+ 1114 040f 0E       		.uleb128 0xe
+ 1115 0410 26000000 		.4byte	.LVL47
+ 1116 0414 04060000 		.4byte	0x604
+ 1117 0418 0E       		.uleb128 0xe
+ 1118 0419 36000000 		.4byte	.LVL48
+ 1119 041d 0F060000 		.4byte	0x60f
+ 1120 0421 00       		.byte	0
+ 1121 0422 12       		.uleb128 0x12
+ 1122 0423 E9010000 		.4byte	.LASF28
+ 1123 0427 01       		.byte	0x1
+ 1124 0428 81       		.byte	0x81
+ 1125 0429 00000000 		.4byte	.LFB73
+ 1126 042d 30000000 		.4byte	.LFE73-.LFB73
+ 1127 0431 01       		.uleb128 0x1
+ 1128 0432 9C       		.byte	0x9c
+ 1129 0433 74040000 		.4byte	0x474
+ 1130 0437 0E       		.uleb128 0xe
+ 1131 0438 06000000 		.4byte	.LVL49
+ 1132 043c D8050000 		.4byte	0x5d8
+ 1133 0440 0E       		.uleb128 0xe
+ 1134 0441 0A000000 		.4byte	.LVL50
+ 1135 0445 E3050000 		.4byte	0x5e3
+ 1136 0449 0E       		.uleb128 0xe
+ 1137 044a 12000000 		.4byte	.LVL51
+ 1138 044e EE050000 		.4byte	0x5ee
+ 1139 0452 0E       		.uleb128 0xe
+ 1140 0453 18000000 		.4byte	.LVL52
+ 1141 0457 F9050000 		.4byte	0x5f9
+ 1142 045b 0E       		.uleb128 0xe
+ 1143 045c 24000000 		.4byte	.LVL53
+ 1144 0460 04060000 		.4byte	0x604
+ 1145 0464 11       		.uleb128 0x11
+ 1146 0465 2A000000 		.4byte	.LVL54
+ 1147 0469 0F060000 		.4byte	0x60f
+ 1148 046d 10       		.uleb128 0x10
+ 1149 046e 01       		.uleb128 0x1
+ 1150 046f 50       		.byte	0x50
+ 1151 0470 01       		.uleb128 0x1
+ 1152 0471 30       		.byte	0x30
+ 1153 0472 00       		.byte	0
+ 1154 0473 00       		.byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 24
+
+
+ 1155 0474 0C       		.uleb128 0xc
+ 1156 0475 A3010000 		.4byte	.LASF30
+ 1157 0479 01       		.byte	0x1
+ 1158 047a 8B       		.byte	0x8b
+ 1159 047b 00000000 		.4byte	.LFB74
+ 1160 047f 14000000 		.4byte	.LFE74-.LFB74
+ 1161 0483 01       		.uleb128 0x1
+ 1162 0484 9C       		.byte	0x9c
+ 1163 0485 BE040000 		.4byte	0x4be
+ 1164 0489 08       		.uleb128 0x8
+ 1165 048a A3020000 		.4byte	.LASF31
+ 1166 048e 01       		.byte	0x1
+ 1167 048f 8B       		.byte	0x8b
+ 1168 0490 68000000 		.4byte	0x68
+ 1169 0494 DE000000 		.4byte	.LLST7
+ 1170 0498 0F       		.uleb128 0xf
+ 1171 0499 0C000000 		.4byte	.LVL57
+ 1172 049d 04060000 		.4byte	0x604
+ 1173 04a1 AD040000 		.4byte	0x4ad
+ 1174 04a5 10       		.uleb128 0x10
+ 1175 04a6 01       		.uleb128 0x1
+ 1176 04a7 50       		.byte	0x50
+ 1177 04a8 03       		.uleb128 0x3
+ 1178 04a9 74       		.byte	0x74
+ 1179 04aa 00       		.sleb128 0
+ 1180 04ab 20       		.byte	0x20
+ 1181 04ac 00       		.byte	0
+ 1182 04ad 11       		.uleb128 0x11
+ 1183 04ae 12000000 		.4byte	.LVL58
+ 1184 04b2 0F060000 		.4byte	0x60f
+ 1185 04b6 10       		.uleb128 0x10
+ 1186 04b7 01       		.uleb128 0x1
+ 1187 04b8 50       		.byte	0x50
+ 1188 04b9 02       		.uleb128 0x2
+ 1189 04ba 74       		.byte	0x74
+ 1190 04bb 00       		.sleb128 0
+ 1191 04bc 00       		.byte	0
+ 1192 04bd 00       		.byte	0
+ 1193 04be 0C       		.uleb128 0xc
+ 1194 04bf 82030000 		.4byte	.LASF32
+ 1195 04c3 01       		.byte	0x1
+ 1196 04c4 90       		.byte	0x90
+ 1197 04c5 00000000 		.4byte	.LFB75
+ 1198 04c9 14000000 		.4byte	.LFE75-.LFB75
+ 1199 04cd 01       		.uleb128 0x1
+ 1200 04ce 9C       		.byte	0x9c
+ 1201 04cf 08050000 		.4byte	0x508
+ 1202 04d3 08       		.uleb128 0x8
+ 1203 04d4 A3020000 		.4byte	.LASF31
+ 1204 04d8 01       		.byte	0x1
+ 1205 04d9 90       		.byte	0x90
+ 1206 04da 68000000 		.4byte	0x68
+ 1207 04de FF000000 		.4byte	.LLST8
+ 1208 04e2 0F       		.uleb128 0xf
+ 1209 04e3 0C000000 		.4byte	.LVL61
+ 1210 04e7 F9050000 		.4byte	0x5f9
+ 1211 04eb F7040000 		.4byte	0x4f7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 25
+
+
+ 1212 04ef 10       		.uleb128 0x10
+ 1213 04f0 01       		.uleb128 0x1
+ 1214 04f1 50       		.byte	0x50
+ 1215 04f2 03       		.uleb128 0x3
+ 1216 04f3 74       		.byte	0x74
+ 1217 04f4 00       		.sleb128 0
+ 1218 04f5 20       		.byte	0x20
+ 1219 04f6 00       		.byte	0
+ 1220 04f7 11       		.uleb128 0x11
+ 1221 04f8 12000000 		.4byte	.LVL62
+ 1222 04fc EE050000 		.4byte	0x5ee
+ 1223 0500 10       		.uleb128 0x10
+ 1224 0501 01       		.uleb128 0x1
+ 1225 0502 50       		.byte	0x50
+ 1226 0503 02       		.uleb128 0x2
+ 1227 0504 74       		.byte	0x74
+ 1228 0505 00       		.sleb128 0
+ 1229 0506 00       		.byte	0
+ 1230 0507 00       		.byte	0
+ 1231 0508 0C       		.uleb128 0xc
+ 1232 0509 22030000 		.4byte	.LASF33
+ 1233 050d 01       		.byte	0x1
+ 1234 050e 95       		.byte	0x95
+ 1235 050f 00000000 		.4byte	.LFB76
+ 1236 0513 10000000 		.4byte	.LFE76-.LFB76
+ 1237 0517 01       		.uleb128 0x1
+ 1238 0518 9C       		.byte	0x9c
+ 1239 0519 51050000 		.4byte	0x551
+ 1240 051d 08       		.uleb128 0x8
+ 1241 051e A3020000 		.4byte	.LASF31
+ 1242 0522 01       		.byte	0x1
+ 1243 0523 95       		.byte	0x95
+ 1244 0524 68000000 		.4byte	0x68
+ 1245 0528 20010000 		.4byte	.LLST9
+ 1246 052c 0F       		.uleb128 0xf
+ 1247 052d 08000000 		.4byte	.LVL64
+ 1248 0531 74040000 		.4byte	0x474
+ 1249 0535 40050000 		.4byte	0x540
+ 1250 0539 10       		.uleb128 0x10
+ 1251 053a 01       		.uleb128 0x1
+ 1252 053b 50       		.byte	0x50
+ 1253 053c 02       		.uleb128 0x2
+ 1254 053d 74       		.byte	0x74
+ 1255 053e 00       		.sleb128 0
+ 1256 053f 00       		.byte	0
+ 1257 0540 11       		.uleb128 0x11
+ 1258 0541 0E000000 		.4byte	.LVL65
+ 1259 0545 BE040000 		.4byte	0x4be
+ 1260 0549 10       		.uleb128 0x10
+ 1261 054a 01       		.uleb128 0x1
+ 1262 054b 50       		.byte	0x50
+ 1263 054c 02       		.uleb128 0x2
+ 1264 054d 74       		.byte	0x74
+ 1265 054e 00       		.sleb128 0
+ 1266 054f 00       		.byte	0
+ 1267 0550 00       		.byte	0
+ 1268 0551 13       		.uleb128 0x13
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 26
+
+
+ 1269 0552 84010000 		.4byte	.LASF34
+ 1270 0556 05       		.byte	0x5
+ 1271 0557 1207     		.2byte	0x712
+ 1272 0559 5D050000 		.4byte	0x55d
+ 1273 055d 14       		.uleb128 0x14
+ 1274 055e 91000000 		.4byte	0x91
+ 1275 0562 15       		.uleb128 0x15
+ 1276 0563 A3020000 		.4byte	.LASF31
+ 1277 0567 01       		.byte	0x1
+ 1278 0568 10       		.byte	0x10
+ 1279 0569 68000000 		.4byte	0x68
+ 1280 056d 05       		.uleb128 0x5
+ 1281 056e 03       		.byte	0x3
+ 1282 056f 00000000 		.4byte	speed
+ 1283 0573 15       		.uleb128 0x15
+ 1284 0574 F6020000 		.4byte	.LASF35
+ 1285 0578 01       		.byte	0x1
+ 1286 0579 11       		.byte	0x11
+ 1287 057a 68000000 		.4byte	0x68
+ 1288 057e 05       		.uleb128 0x5
+ 1289 057f 03       		.byte	0x3
+ 1290 0580 00000000 		.4byte	offset
+ 1291 0584 15       		.uleb128 0x15
+ 1292 0585 91010000 		.4byte	.LASF36
+ 1293 0589 01       		.byte	0x1
+ 1294 058a 12       		.byte	0x12
+ 1295 058b 68000000 		.4byte	0x68
+ 1296 058f 05       		.uleb128 0x5
+ 1297 0590 03       		.byte	0x3
+ 1298 0591 00000000 		.4byte	startDuty
+ 1299 0595 15       		.uleb128 0x15
+ 1300 0596 9A020000 		.4byte	.LASF37
+ 1301 059a 01       		.byte	0x1
+ 1302 059b 13       		.byte	0x13
+ 1303 059c 68000000 		.4byte	0x68
+ 1304 05a0 05       		.uleb128 0x5
+ 1305 05a1 03       		.byte	0x3
+ 1306 05a2 00000000 		.4byte	leftDuty
+ 1307 05a6 15       		.uleb128 0x15
+ 1308 05a7 C1010000 		.4byte	.LASF38
+ 1309 05ab 01       		.byte	0x1
+ 1310 05ac 14       		.byte	0x14
+ 1311 05ad 68000000 		.4byte	0x68
+ 1312 05b1 05       		.uleb128 0x5
+ 1313 05b2 03       		.byte	0x3
+ 1314 05b3 00000000 		.4byte	rightDuty
+ 1315 05b7 16       		.uleb128 0x16
+ 1316 05b8 33030000 		.4byte	.LASF39
+ 1317 05bc 33030000 		.4byte	.LASF39
+ 1318 05c0 06       		.byte	0x6
+ 1319 05c1 28       		.byte	0x28
+ 1320 05c2 16       		.uleb128 0x16
+ 1321 05c3 7C020000 		.4byte	.LASF40
+ 1322 05c7 7C020000 		.4byte	.LASF40
+ 1323 05cb 07       		.byte	0x7
+ 1324 05cc 21       		.byte	0x21
+ 1325 05cd 16       		.uleb128 0x16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 27
+
+
+ 1326 05ce CB010000 		.4byte	.LASF41
+ 1327 05d2 CB010000 		.4byte	.LASF41
+ 1328 05d6 06       		.byte	0x6
+ 1329 05d7 23       		.byte	0x23
+ 1330 05d8 16       		.uleb128 0x16
+ 1331 05d9 5D030000 		.4byte	.LASF42
+ 1332 05dd 5D030000 		.4byte	.LASF42
+ 1333 05e1 08       		.byte	0x8
+ 1334 05e2 92       		.byte	0x92
+ 1335 05e3 16       		.uleb128 0x16
+ 1336 05e4 0D030000 		.4byte	.LASF43
+ 1337 05e8 0D030000 		.4byte	.LASF43
+ 1338 05ec 09       		.byte	0x9
+ 1339 05ed 92       		.byte	0x92
+ 1340 05ee 16       		.uleb128 0x16
+ 1341 05ef 57000000 		.4byte	.LASF44
+ 1342 05f3 57000000 		.4byte	.LASF44
+ 1343 05f7 08       		.byte	0x8
+ 1344 05f8 C7       		.byte	0xc7
+ 1345 05f9 16       		.uleb128 0x16
+ 1346 05fa 31010000 		.4byte	.LASF45
+ 1347 05fe 31010000 		.4byte	.LASF45
+ 1348 0602 08       		.byte	0x8
+ 1349 0603 CA       		.byte	0xca
+ 1350 0604 16       		.uleb128 0x16
+ 1351 0605 B2020000 		.4byte	.LASF46
+ 1352 0609 B2020000 		.4byte	.LASF46
+ 1353 060d 09       		.byte	0x9
+ 1354 060e C7       		.byte	0xc7
+ 1355 060f 16       		.uleb128 0x16
+ 1356 0610 CF020000 		.4byte	.LASF47
+ 1357 0614 CF020000 		.4byte	.LASF47
+ 1358 0618 09       		.byte	0x9
+ 1359 0619 CA       		.byte	0xca
+ 1360 061a 00       		.byte	0
+ 1361              		.section	.debug_abbrev,"",%progbits
+ 1362              	.Ldebug_abbrev0:
+ 1363 0000 01       		.uleb128 0x1
+ 1364 0001 11       		.uleb128 0x11
+ 1365 0002 01       		.byte	0x1
+ 1366 0003 25       		.uleb128 0x25
+ 1367 0004 0E       		.uleb128 0xe
+ 1368 0005 13       		.uleb128 0x13
+ 1369 0006 0B       		.uleb128 0xb
+ 1370 0007 03       		.uleb128 0x3
+ 1371 0008 0E       		.uleb128 0xe
+ 1372 0009 1B       		.uleb128 0x1b
+ 1373 000a 0E       		.uleb128 0xe
+ 1374 000b 55       		.uleb128 0x55
+ 1375 000c 17       		.uleb128 0x17
+ 1376 000d 11       		.uleb128 0x11
+ 1377 000e 01       		.uleb128 0x1
+ 1378 000f 10       		.uleb128 0x10
+ 1379 0010 17       		.uleb128 0x17
+ 1380 0011 00       		.byte	0
+ 1381 0012 00       		.byte	0
+ 1382 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 28
+
+
+ 1383 0014 24       		.uleb128 0x24
+ 1384 0015 00       		.byte	0
+ 1385 0016 0B       		.uleb128 0xb
+ 1386 0017 0B       		.uleb128 0xb
+ 1387 0018 3E       		.uleb128 0x3e
+ 1388 0019 0B       		.uleb128 0xb
+ 1389 001a 03       		.uleb128 0x3
+ 1390 001b 0E       		.uleb128 0xe
+ 1391 001c 00       		.byte	0
+ 1392 001d 00       		.byte	0
+ 1393 001e 03       		.uleb128 0x3
+ 1394 001f 16       		.uleb128 0x16
+ 1395 0020 00       		.byte	0
+ 1396 0021 03       		.uleb128 0x3
+ 1397 0022 0E       		.uleb128 0xe
+ 1398 0023 3A       		.uleb128 0x3a
+ 1399 0024 0B       		.uleb128 0xb
+ 1400 0025 3B       		.uleb128 0x3b
+ 1401 0026 0B       		.uleb128 0xb
+ 1402 0027 49       		.uleb128 0x49
+ 1403 0028 13       		.uleb128 0x13
+ 1404 0029 00       		.byte	0
+ 1405 002a 00       		.byte	0
+ 1406 002b 04       		.uleb128 0x4
+ 1407 002c 24       		.uleb128 0x24
+ 1408 002d 00       		.byte	0
+ 1409 002e 0B       		.uleb128 0xb
+ 1410 002f 0B       		.uleb128 0xb
+ 1411 0030 3E       		.uleb128 0x3e
+ 1412 0031 0B       		.uleb128 0xb
+ 1413 0032 03       		.uleb128 0x3
+ 1414 0033 08       		.uleb128 0x8
+ 1415 0034 00       		.byte	0
+ 1416 0035 00       		.byte	0
+ 1417 0036 05       		.uleb128 0x5
+ 1418 0037 0F       		.uleb128 0xf
+ 1419 0038 00       		.byte	0
+ 1420 0039 0B       		.uleb128 0xb
+ 1421 003a 0B       		.uleb128 0xb
+ 1422 003b 49       		.uleb128 0x49
+ 1423 003c 13       		.uleb128 0x13
+ 1424 003d 00       		.byte	0
+ 1425 003e 00       		.byte	0
+ 1426 003f 06       		.uleb128 0x6
+ 1427 0040 16       		.uleb128 0x16
+ 1428 0041 00       		.byte	0
+ 1429 0042 03       		.uleb128 0x3
+ 1430 0043 0E       		.uleb128 0xe
+ 1431 0044 3A       		.uleb128 0x3a
+ 1432 0045 0B       		.uleb128 0xb
+ 1433 0046 3B       		.uleb128 0x3b
+ 1434 0047 05       		.uleb128 0x5
+ 1435 0048 49       		.uleb128 0x49
+ 1436 0049 13       		.uleb128 0x13
+ 1437 004a 00       		.byte	0
+ 1438 004b 00       		.byte	0
+ 1439 004c 07       		.uleb128 0x7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 29
+
+
+ 1440 004d 2E       		.uleb128 0x2e
+ 1441 004e 01       		.byte	0x1
+ 1442 004f 3F       		.uleb128 0x3f
+ 1443 0050 19       		.uleb128 0x19
+ 1444 0051 03       		.uleb128 0x3
+ 1445 0052 0E       		.uleb128 0xe
+ 1446 0053 3A       		.uleb128 0x3a
+ 1447 0054 0B       		.uleb128 0xb
+ 1448 0055 3B       		.uleb128 0x3b
+ 1449 0056 0B       		.uleb128 0xb
+ 1450 0057 27       		.uleb128 0x27
+ 1451 0058 19       		.uleb128 0x19
+ 1452 0059 49       		.uleb128 0x49
+ 1453 005a 13       		.uleb128 0x13
+ 1454 005b 11       		.uleb128 0x11
+ 1455 005c 01       		.uleb128 0x1
+ 1456 005d 12       		.uleb128 0x12
+ 1457 005e 06       		.uleb128 0x6
+ 1458 005f 40       		.uleb128 0x40
+ 1459 0060 18       		.uleb128 0x18
+ 1460 0061 9742     		.uleb128 0x2117
+ 1461 0063 19       		.uleb128 0x19
+ 1462 0064 01       		.uleb128 0x1
+ 1463 0065 13       		.uleb128 0x13
+ 1464 0066 00       		.byte	0
+ 1465 0067 00       		.byte	0
+ 1466 0068 08       		.uleb128 0x8
+ 1467 0069 05       		.uleb128 0x5
+ 1468 006a 00       		.byte	0
+ 1469 006b 03       		.uleb128 0x3
+ 1470 006c 0E       		.uleb128 0xe
+ 1471 006d 3A       		.uleb128 0x3a
+ 1472 006e 0B       		.uleb128 0xb
+ 1473 006f 3B       		.uleb128 0x3b
+ 1474 0070 0B       		.uleb128 0xb
+ 1475 0071 49       		.uleb128 0x49
+ 1476 0072 13       		.uleb128 0x13
+ 1477 0073 02       		.uleb128 0x2
+ 1478 0074 17       		.uleb128 0x17
+ 1479 0075 00       		.byte	0
+ 1480 0076 00       		.byte	0
+ 1481 0077 09       		.uleb128 0x9
+ 1482 0078 34       		.uleb128 0x34
+ 1483 0079 00       		.byte	0
+ 1484 007a 03       		.uleb128 0x3
+ 1485 007b 0E       		.uleb128 0xe
+ 1486 007c 3A       		.uleb128 0x3a
+ 1487 007d 0B       		.uleb128 0xb
+ 1488 007e 3B       		.uleb128 0x3b
+ 1489 007f 0B       		.uleb128 0xb
+ 1490 0080 49       		.uleb128 0x49
+ 1491 0081 13       		.uleb128 0x13
+ 1492 0082 02       		.uleb128 0x2
+ 1493 0083 17       		.uleb128 0x17
+ 1494 0084 00       		.byte	0
+ 1495 0085 00       		.byte	0
+ 1496 0086 0A       		.uleb128 0xa
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 30
+
+
+ 1497 0087 0B       		.uleb128 0xb
+ 1498 0088 01       		.byte	0x1
+ 1499 0089 55       		.uleb128 0x55
+ 1500 008a 17       		.uleb128 0x17
+ 1501 008b 00       		.byte	0
+ 1502 008c 00       		.byte	0
+ 1503 008d 0B       		.uleb128 0xb
+ 1504 008e 34       		.uleb128 0x34
+ 1505 008f 00       		.byte	0
+ 1506 0090 03       		.uleb128 0x3
+ 1507 0091 08       		.uleb128 0x8
+ 1508 0092 3A       		.uleb128 0x3a
+ 1509 0093 0B       		.uleb128 0xb
+ 1510 0094 3B       		.uleb128 0x3b
+ 1511 0095 0B       		.uleb128 0xb
+ 1512 0096 49       		.uleb128 0x49
+ 1513 0097 13       		.uleb128 0x13
+ 1514 0098 02       		.uleb128 0x2
+ 1515 0099 17       		.uleb128 0x17
+ 1516 009a 00       		.byte	0
+ 1517 009b 00       		.byte	0
+ 1518 009c 0C       		.uleb128 0xc
+ 1519 009d 2E       		.uleb128 0x2e
+ 1520 009e 01       		.byte	0x1
+ 1521 009f 3F       		.uleb128 0x3f
+ 1522 00a0 19       		.uleb128 0x19
+ 1523 00a1 03       		.uleb128 0x3
+ 1524 00a2 0E       		.uleb128 0xe
+ 1525 00a3 3A       		.uleb128 0x3a
+ 1526 00a4 0B       		.uleb128 0xb
+ 1527 00a5 3B       		.uleb128 0x3b
+ 1528 00a6 0B       		.uleb128 0xb
+ 1529 00a7 27       		.uleb128 0x27
+ 1530 00a8 19       		.uleb128 0x19
+ 1531 00a9 11       		.uleb128 0x11
+ 1532 00aa 01       		.uleb128 0x1
+ 1533 00ab 12       		.uleb128 0x12
+ 1534 00ac 06       		.uleb128 0x6
+ 1535 00ad 40       		.uleb128 0x40
+ 1536 00ae 18       		.uleb128 0x18
+ 1537 00af 9742     		.uleb128 0x2117
+ 1538 00b1 19       		.uleb128 0x19
+ 1539 00b2 01       		.uleb128 0x1
+ 1540 00b3 13       		.uleb128 0x13
+ 1541 00b4 00       		.byte	0
+ 1542 00b5 00       		.byte	0
+ 1543 00b6 0D       		.uleb128 0xd
+ 1544 00b7 05       		.uleb128 0x5
+ 1545 00b8 00       		.byte	0
+ 1546 00b9 03       		.uleb128 0x3
+ 1547 00ba 08       		.uleb128 0x8
+ 1548 00bb 3A       		.uleb128 0x3a
+ 1549 00bc 0B       		.uleb128 0xb
+ 1550 00bd 3B       		.uleb128 0x3b
+ 1551 00be 0B       		.uleb128 0xb
+ 1552 00bf 49       		.uleb128 0x49
+ 1553 00c0 13       		.uleb128 0x13
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 31
+
+
+ 1554 00c1 02       		.uleb128 0x2
+ 1555 00c2 17       		.uleb128 0x17
+ 1556 00c3 00       		.byte	0
+ 1557 00c4 00       		.byte	0
+ 1558 00c5 0E       		.uleb128 0xe
+ 1559 00c6 898201   		.uleb128 0x4109
+ 1560 00c9 00       		.byte	0
+ 1561 00ca 11       		.uleb128 0x11
+ 1562 00cb 01       		.uleb128 0x1
+ 1563 00cc 31       		.uleb128 0x31
+ 1564 00cd 13       		.uleb128 0x13
+ 1565 00ce 00       		.byte	0
+ 1566 00cf 00       		.byte	0
+ 1567 00d0 0F       		.uleb128 0xf
+ 1568 00d1 898201   		.uleb128 0x4109
+ 1569 00d4 01       		.byte	0x1
+ 1570 00d5 11       		.uleb128 0x11
+ 1571 00d6 01       		.uleb128 0x1
+ 1572 00d7 31       		.uleb128 0x31
+ 1573 00d8 13       		.uleb128 0x13
+ 1574 00d9 01       		.uleb128 0x1
+ 1575 00da 13       		.uleb128 0x13
+ 1576 00db 00       		.byte	0
+ 1577 00dc 00       		.byte	0
+ 1578 00dd 10       		.uleb128 0x10
+ 1579 00de 8A8201   		.uleb128 0x410a
+ 1580 00e1 00       		.byte	0
+ 1581 00e2 02       		.uleb128 0x2
+ 1582 00e3 18       		.uleb128 0x18
+ 1583 00e4 9142     		.uleb128 0x2111
+ 1584 00e6 18       		.uleb128 0x18
+ 1585 00e7 00       		.byte	0
+ 1586 00e8 00       		.byte	0
+ 1587 00e9 11       		.uleb128 0x11
+ 1588 00ea 898201   		.uleb128 0x4109
+ 1589 00ed 01       		.byte	0x1
+ 1590 00ee 11       		.uleb128 0x11
+ 1591 00ef 01       		.uleb128 0x1
+ 1592 00f0 31       		.uleb128 0x31
+ 1593 00f1 13       		.uleb128 0x13
+ 1594 00f2 00       		.byte	0
+ 1595 00f3 00       		.byte	0
+ 1596 00f4 12       		.uleb128 0x12
+ 1597 00f5 2E       		.uleb128 0x2e
+ 1598 00f6 01       		.byte	0x1
+ 1599 00f7 3F       		.uleb128 0x3f
+ 1600 00f8 19       		.uleb128 0x19
+ 1601 00f9 03       		.uleb128 0x3
+ 1602 00fa 0E       		.uleb128 0xe
+ 1603 00fb 3A       		.uleb128 0x3a
+ 1604 00fc 0B       		.uleb128 0xb
+ 1605 00fd 3B       		.uleb128 0x3b
+ 1606 00fe 0B       		.uleb128 0xb
+ 1607 00ff 11       		.uleb128 0x11
+ 1608 0100 01       		.uleb128 0x1
+ 1609 0101 12       		.uleb128 0x12
+ 1610 0102 06       		.uleb128 0x6
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 32
+
+
+ 1611 0103 40       		.uleb128 0x40
+ 1612 0104 18       		.uleb128 0x18
+ 1613 0105 9742     		.uleb128 0x2117
+ 1614 0107 19       		.uleb128 0x19
+ 1615 0108 01       		.uleb128 0x1
+ 1616 0109 13       		.uleb128 0x13
+ 1617 010a 00       		.byte	0
+ 1618 010b 00       		.byte	0
+ 1619 010c 13       		.uleb128 0x13
+ 1620 010d 34       		.uleb128 0x34
+ 1621 010e 00       		.byte	0
+ 1622 010f 03       		.uleb128 0x3
+ 1623 0110 0E       		.uleb128 0xe
+ 1624 0111 3A       		.uleb128 0x3a
+ 1625 0112 0B       		.uleb128 0xb
+ 1626 0113 3B       		.uleb128 0x3b
+ 1627 0114 05       		.uleb128 0x5
+ 1628 0115 49       		.uleb128 0x49
+ 1629 0116 13       		.uleb128 0x13
+ 1630 0117 3F       		.uleb128 0x3f
+ 1631 0118 19       		.uleb128 0x19
+ 1632 0119 3C       		.uleb128 0x3c
+ 1633 011a 19       		.uleb128 0x19
+ 1634 011b 00       		.byte	0
+ 1635 011c 00       		.byte	0
+ 1636 011d 14       		.uleb128 0x14
+ 1637 011e 35       		.uleb128 0x35
+ 1638 011f 00       		.byte	0
+ 1639 0120 49       		.uleb128 0x49
+ 1640 0121 13       		.uleb128 0x13
+ 1641 0122 00       		.byte	0
+ 1642 0123 00       		.byte	0
+ 1643 0124 15       		.uleb128 0x15
+ 1644 0125 34       		.uleb128 0x34
+ 1645 0126 00       		.byte	0
+ 1646 0127 03       		.uleb128 0x3
+ 1647 0128 0E       		.uleb128 0xe
+ 1648 0129 3A       		.uleb128 0x3a
+ 1649 012a 0B       		.uleb128 0xb
+ 1650 012b 3B       		.uleb128 0x3b
+ 1651 012c 0B       		.uleb128 0xb
+ 1652 012d 49       		.uleb128 0x49
+ 1653 012e 13       		.uleb128 0x13
+ 1654 012f 3F       		.uleb128 0x3f
+ 1655 0130 19       		.uleb128 0x19
+ 1656 0131 02       		.uleb128 0x2
+ 1657 0132 18       		.uleb128 0x18
+ 1658 0133 00       		.byte	0
+ 1659 0134 00       		.byte	0
+ 1660 0135 16       		.uleb128 0x16
+ 1661 0136 2E       		.uleb128 0x2e
+ 1662 0137 00       		.byte	0
+ 1663 0138 3F       		.uleb128 0x3f
+ 1664 0139 19       		.uleb128 0x19
+ 1665 013a 3C       		.uleb128 0x3c
+ 1666 013b 19       		.uleb128 0x19
+ 1667 013c 6E       		.uleb128 0x6e
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 33
+
+
+ 1668 013d 0E       		.uleb128 0xe
+ 1669 013e 03       		.uleb128 0x3
+ 1670 013f 0E       		.uleb128 0xe
+ 1671 0140 3A       		.uleb128 0x3a
+ 1672 0141 0B       		.uleb128 0xb
+ 1673 0142 3B       		.uleb128 0x3b
+ 1674 0143 0B       		.uleb128 0xb
+ 1675 0144 00       		.byte	0
+ 1676 0145 00       		.byte	0
+ 1677 0146 00       		.byte	0
+ 1678              		.section	.debug_loc,"",%progbits
+ 1679              	.Ldebug_loc0:
+ 1680              	.LLST0:
+ 1681 0000 00000000 		.4byte	.LVL0
+ 1682 0004 18000000 		.4byte	.LVL4
+ 1683 0008 0100     		.2byte	0x1
+ 1684 000a 50       		.byte	0x50
+ 1685 000b 18000000 		.4byte	.LVL4
+ 1686 000f 1A000000 		.4byte	.LFE64
+ 1687 0013 0400     		.2byte	0x4
+ 1688 0015 F3       		.byte	0xf3
+ 1689 0016 01       		.uleb128 0x1
+ 1690 0017 50       		.byte	0x50
+ 1691 0018 9F       		.byte	0x9f
+ 1692 0019 00000000 		.4byte	0
+ 1693 001d 00000000 		.4byte	0
+ 1694              	.LLST1:
+ 1695 0021 00000000 		.4byte	.LVL0
+ 1696 0025 06000000 		.4byte	.LVL1
+ 1697 0029 0200     		.2byte	0x2
+ 1698 002b 30       		.byte	0x30
+ 1699 002c 9F       		.byte	0x9f
+ 1700 002d 06000000 		.4byte	.LVL1
+ 1701 0031 1A000000 		.4byte	.LFE64
+ 1702 0035 0100     		.2byte	0x1
+ 1703 0037 51       		.byte	0x51
+ 1704 0038 00000000 		.4byte	0
+ 1705 003c 00000000 		.4byte	0
+ 1706              	.LLST2:
+ 1707 0040 00000000 		.4byte	.LVL0
+ 1708 0044 06000000 		.4byte	.LVL1
+ 1709 0048 0200     		.2byte	0x2
+ 1710 004a 30       		.byte	0x30
+ 1711 004b 9F       		.byte	0x9f
+ 1712 004c 06000000 		.4byte	.LVL1
+ 1713 0050 1A000000 		.4byte	.LFE64
+ 1714 0054 0100     		.2byte	0x1
+ 1715 0056 53       		.byte	0x53
+ 1716 0057 00000000 		.4byte	0
+ 1717 005b 00000000 		.4byte	0
+ 1718              	.LLST3:
+ 1719 005f 00000000 		.4byte	.LVL5
+ 1720 0063 1A000000 		.4byte	.LVL9
+ 1721 0067 0100     		.2byte	0x1
+ 1722 0069 50       		.byte	0x50
+ 1723 006a 1A000000 		.4byte	.LVL9
+ 1724 006e 1C000000 		.4byte	.LFE65
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 34
+
+
+ 1725 0072 0400     		.2byte	0x4
+ 1726 0074 F3       		.byte	0xf3
+ 1727 0075 01       		.uleb128 0x1
+ 1728 0076 50       		.byte	0x50
+ 1729 0077 9F       		.byte	0x9f
+ 1730 0078 00000000 		.4byte	0
+ 1731 007c 00000000 		.4byte	0
+ 1732              	.LLST4:
+ 1733 0080 00000000 		.4byte	.LVL5
+ 1734 0084 08000000 		.4byte	.LVL6
+ 1735 0088 0400     		.2byte	0x4
+ 1736 008a 0A       		.byte	0xa
+ 1737 008b 1027     		.2byte	0x2710
+ 1738 008d 9F       		.byte	0x9f
+ 1739 008e 08000000 		.4byte	.LVL6
+ 1740 0092 1C000000 		.4byte	.LFE65
+ 1741 0096 0100     		.2byte	0x1
+ 1742 0098 51       		.byte	0x51
+ 1743 0099 00000000 		.4byte	0
+ 1744 009d 00000000 		.4byte	0
+ 1745              	.LLST5:
+ 1746 00a1 00000000 		.4byte	.LVL5
+ 1747 00a5 08000000 		.4byte	.LVL6
+ 1748 00a9 0200     		.2byte	0x2
+ 1749 00ab 30       		.byte	0x30
+ 1750 00ac 9F       		.byte	0x9f
+ 1751 00ad 08000000 		.4byte	.LVL6
+ 1752 00b1 1C000000 		.4byte	.LFE65
+ 1753 00b5 0100     		.2byte	0x1
+ 1754 00b7 53       		.byte	0x53
+ 1755 00b8 00000000 		.4byte	0
+ 1756 00bc 00000000 		.4byte	0
+ 1757              	.LLST6:
+ 1758 00c0 00000000 		.4byte	.LVL10
+ 1759 00c4 04000000 		.4byte	.LVL11
+ 1760 00c8 0100     		.2byte	0x1
+ 1761 00ca 50       		.byte	0x50
+ 1762 00cb 04000000 		.4byte	.LVL11
+ 1763 00cf 28000000 		.4byte	.LFE66
+ 1764 00d3 0100     		.2byte	0x1
+ 1765 00d5 54       		.byte	0x54
+ 1766 00d6 00000000 		.4byte	0
+ 1767 00da 00000000 		.4byte	0
+ 1768              	.LLST7:
+ 1769 00de 00000000 		.4byte	.LVL55
+ 1770 00e2 06000000 		.4byte	.LVL56
+ 1771 00e6 0100     		.2byte	0x1
+ 1772 00e8 50       		.byte	0x50
+ 1773 00e9 06000000 		.4byte	.LVL56
+ 1774 00ed 14000000 		.4byte	.LFE74
+ 1775 00f1 0400     		.2byte	0x4
+ 1776 00f3 F3       		.byte	0xf3
+ 1777 00f4 01       		.uleb128 0x1
+ 1778 00f5 50       		.byte	0x50
+ 1779 00f6 9F       		.byte	0x9f
+ 1780 00f7 00000000 		.4byte	0
+ 1781 00fb 00000000 		.4byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 35
+
+
+ 1782              	.LLST8:
+ 1783 00ff 00000000 		.4byte	.LVL59
+ 1784 0103 06000000 		.4byte	.LVL60
+ 1785 0107 0100     		.2byte	0x1
+ 1786 0109 50       		.byte	0x50
+ 1787 010a 06000000 		.4byte	.LVL60
+ 1788 010e 14000000 		.4byte	.LFE75
+ 1789 0112 0400     		.2byte	0x4
+ 1790 0114 F3       		.byte	0xf3
+ 1791 0115 01       		.uleb128 0x1
+ 1792 0116 50       		.byte	0x50
+ 1793 0117 9F       		.byte	0x9f
+ 1794 0118 00000000 		.4byte	0
+ 1795 011c 00000000 		.4byte	0
+ 1796              	.LLST9:
+ 1797 0120 00000000 		.4byte	.LVL63
+ 1798 0124 07000000 		.4byte	.LVL64-1
+ 1799 0128 0100     		.2byte	0x1
+ 1800 012a 50       		.byte	0x50
+ 1801 012b 07000000 		.4byte	.LVL64-1
+ 1802 012f 10000000 		.4byte	.LFE76
+ 1803 0133 0100     		.2byte	0x1
+ 1804 0135 54       		.byte	0x54
+ 1805 0136 00000000 		.4byte	0
+ 1806 013a 00000000 		.4byte	0
+ 1807              		.section	.debug_aranges,"",%progbits
+ 1808 0000 7C000000 		.4byte	0x7c
+ 1809 0004 0200     		.2byte	0x2
+ 1810 0006 00000000 		.4byte	.Ldebug_info0
+ 1811 000a 04       		.byte	0x4
+ 1812 000b 00       		.byte	0
+ 1813 000c 0000     		.2byte	0
+ 1814 000e 0000     		.2byte	0
+ 1815 0010 00000000 		.4byte	.LFB64
+ 1816 0014 1A000000 		.4byte	.LFE64-.LFB64
+ 1817 0018 00000000 		.4byte	.LFB65
+ 1818 001c 1C000000 		.4byte	.LFE65-.LFB65
+ 1819 0020 00000000 		.4byte	.LFB66
+ 1820 0024 28000000 		.4byte	.LFE66-.LFB66
+ 1821 0028 00000000 		.4byte	.LFB67
+ 1822 002c 24000000 		.4byte	.LFE67-.LFB67
+ 1823 0030 00000000 		.4byte	.LFB68
+ 1824 0034 24000000 		.4byte	.LFE68-.LFB68
+ 1825 0038 00000000 		.4byte	.LFB69
+ 1826 003c 24000000 		.4byte	.LFE69-.LFB69
+ 1827 0040 00000000 		.4byte	.LFB70
+ 1828 0044 24000000 		.4byte	.LFE70-.LFB70
+ 1829 0048 00000000 		.4byte	.LFB71
+ 1830 004c 1C000000 		.4byte	.LFE71-.LFB71
+ 1831 0050 00000000 		.4byte	.LFB72
+ 1832 0054 40000000 		.4byte	.LFE72-.LFB72
+ 1833 0058 00000000 		.4byte	.LFB73
+ 1834 005c 30000000 		.4byte	.LFE73-.LFB73
+ 1835 0060 00000000 		.4byte	.LFB74
+ 1836 0064 14000000 		.4byte	.LFE74-.LFB74
+ 1837 0068 00000000 		.4byte	.LFB75
+ 1838 006c 14000000 		.4byte	.LFE75-.LFB75
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 36
+
+
+ 1839 0070 00000000 		.4byte	.LFB76
+ 1840 0074 10000000 		.4byte	.LFE76-.LFB76
+ 1841 0078 00000000 		.4byte	0
+ 1842 007c 00000000 		.4byte	0
+ 1843              		.section	.debug_ranges,"",%progbits
+ 1844              	.Ldebug_ranges0:
+ 1845 0000 00000000 		.4byte	.LBB2
+ 1846 0004 02000000 		.4byte	.LBE2
+ 1847 0008 04000000 		.4byte	.LBB3
+ 1848 000c 16000000 		.4byte	.LBE3
+ 1849 0010 00000000 		.4byte	0
+ 1850 0014 00000000 		.4byte	0
+ 1851 0018 00000000 		.4byte	.LBB4
+ 1852 001c 02000000 		.4byte	.LBE4
+ 1853 0020 06000000 		.4byte	.LBB5
+ 1854 0024 18000000 		.4byte	.LBE5
+ 1855 0028 00000000 		.4byte	0
+ 1856 002c 00000000 		.4byte	0
+ 1857 0030 00000000 		.4byte	.LFB64
+ 1858 0034 1A000000 		.4byte	.LFE64
+ 1859 0038 00000000 		.4byte	.LFB65
+ 1860 003c 1C000000 		.4byte	.LFE65
+ 1861 0040 00000000 		.4byte	.LFB66
+ 1862 0044 28000000 		.4byte	.LFE66
+ 1863 0048 00000000 		.4byte	.LFB67
+ 1864 004c 24000000 		.4byte	.LFE67
+ 1865 0050 00000000 		.4byte	.LFB68
+ 1866 0054 24000000 		.4byte	.LFE68
+ 1867 0058 00000000 		.4byte	.LFB69
+ 1868 005c 24000000 		.4byte	.LFE69
+ 1869 0060 00000000 		.4byte	.LFB70
+ 1870 0064 24000000 		.4byte	.LFE70
+ 1871 0068 00000000 		.4byte	.LFB71
+ 1872 006c 1C000000 		.4byte	.LFE71
+ 1873 0070 00000000 		.4byte	.LFB72
+ 1874 0074 40000000 		.4byte	.LFE72
+ 1875 0078 00000000 		.4byte	.LFB73
+ 1876 007c 30000000 		.4byte	.LFE73
+ 1877 0080 00000000 		.4byte	.LFB74
+ 1878 0084 14000000 		.4byte	.LFE74
+ 1879 0088 00000000 		.4byte	.LFB75
+ 1880 008c 14000000 		.4byte	.LFE75
+ 1881 0090 00000000 		.4byte	.LFB76
+ 1882 0094 10000000 		.4byte	.LFE76
+ 1883 0098 00000000 		.4byte	0
+ 1884 009c 00000000 		.4byte	0
+ 1885              		.section	.debug_line,"",%progbits
+ 1886              	.Ldebug_line0:
+ 1887 0000 2D030000 		.section	.debug_str,"MS",%progbits,1
+ 1887      0200FF01 
+ 1887      00000201 
+ 1887      FB0E0D00 
+ 1887      01010101 
+ 1888              	.LASF6:
+ 1889 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1889      206C6F6E 
+ 1889      6720696E 
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 37
+
+
+ 1889      7400
+ 1890              	.LASF27:
+ 1891 000e 41727261 		.ascii	"ArrangeToLeft\000"
+ 1891      6E676554 
+ 1891      6F4C6566 
+ 1891      7400
+ 1892              	.LASF12:
+ 1893 001c 5F5F696E 		.ascii	"__int32_t\000"
+ 1893      7433325F 
+ 1893      7400
+ 1894              	.LASF29:
+ 1895 0026 75736250 		.ascii	"usbPutString\000"
+ 1895      75745374 
+ 1895      72696E67 
+ 1895      00
+ 1896              	.LASF8:
+ 1897 0033 756E7369 		.ascii	"unsigned int\000"
+ 1897      676E6564 
+ 1897      20696E74 
+ 1897      00
+ 1898              	.LASF49:
+ 1899 0040 66756E63 		.ascii	"functions.c\000"
+ 1899      74696F6E 
+ 1899      732E6300 
+ 1900              	.LASF22:
+ 1901 004c 446F4C65 		.ascii	"DoLeftTurn\000"
+ 1901      66745475 
+ 1901      726E00
+ 1902              	.LASF44:
+ 1903 0057 50574D5F 		.ascii	"PWM_leftmotor_WriteCompare1\000"
+ 1903      6C656674 
+ 1903      6D6F746F 
+ 1903      725F5772 
+ 1903      69746543 
+ 1904              	.LASF13:
+ 1905 0073 696E7433 		.ascii	"int32_t\000"
+ 1905      325F7400 
+ 1906              	.LASF17:
+ 1907 007b 6D617869 		.ascii	"maximum\000"
+ 1907      6D756D00 
+ 1908              	.LASF15:
+ 1909 0083 666C6F61 		.ascii	"float\000"
+ 1909      7400
+ 1910              	.LASF0:
+ 1911 0089 7369676E 		.ascii	"signed char\000"
+ 1911      65642063 
+ 1911      68617200 
+ 1912              	.LASF1:
+ 1913 0095 756E7369 		.ascii	"unsigned char\000"
+ 1913      676E6564 
+ 1913      20636861 
+ 1913      7200
+ 1914              	.LASF48:
+ 1915 00a3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1915      43313120 
+ 1915      352E342E 
+ 1915      31203230 
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 38
+
+
+ 1915      31363036 
+ 1916 00d6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1916      20726576 
+ 1916      6973696F 
+ 1916      6E203233 
+ 1916      37373135 
+ 1917 0109 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1917      66756E63 
+ 1917      74696F6E 
+ 1917      2D736563 
+ 1917      74696F6E 
+ 1918              	.LASF45:
+ 1919 0131 50574D5F 		.ascii	"PWM_leftmotor_WriteCompare2\000"
+ 1919      6C656674 
+ 1919      6D6F746F 
+ 1919      725F5772 
+ 1919      69746543 
+ 1920              	.LASF5:
+ 1921 014d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1921      20756E73 
+ 1921      69676E65 
+ 1921      6420696E 
+ 1921      7400
+ 1922              	.LASF3:
+ 1923 015f 73686F72 		.ascii	"short unsigned int\000"
+ 1923      7420756E 
+ 1923      7369676E 
+ 1923      65642069 
+ 1923      6E7400
+ 1924              	.LASF18:
+ 1925 0172 66696E64 		.ascii	"findMaximum\000"
+ 1925      4D617869 
+ 1925      6D756D00 
+ 1926              	.LASF20:
+ 1927 017e 61727261 		.ascii	"array\000"
+ 1927      7900
+ 1928              	.LASF34:
+ 1929 0184 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1929      52784275 
+ 1929      66666572 
+ 1929      00
+ 1930              	.LASF36:
+ 1931 0191 73746172 		.ascii	"startDuty\000"
+ 1931      74447574 
+ 1931      7900
+ 1932              	.LASF21:
+ 1933 019b 6D696E69 		.ascii	"minimum\000"
+ 1933      6D756D00 
+ 1934              	.LASF30:
+ 1935 01a3 75706461 		.ascii	"updateMotorSpeed_Right\000"
+ 1935      74654D6F 
+ 1935      746F7253 
+ 1935      70656564 
+ 1935      5F526967 
+ 1936              	.LASF16:
+ 1937 01ba 646F7562 		.ascii	"double\000"
+ 1937      6C6500
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 39
+
+
+ 1938              	.LASF38:
+ 1939 01c1 72696768 		.ascii	"rightDuty\000"
+ 1939      74447574 
+ 1939      7900
+ 1940              	.LASF41:
+ 1941 01cb 55534255 		.ascii	"USBUART_1_PutData\000"
+ 1941      4152545F 
+ 1941      315F5075 
+ 1941      74446174 
+ 1941      6100
+ 1942              	.LASF24:
+ 1943 01dd 446F5269 		.ascii	"DoRightTurn\000"
+ 1943      67687454 
+ 1943      75726E00 
+ 1944              	.LASF28:
+ 1945 01e9 41727261 		.ascii	"ArrangeToRight\000"
+ 1945      6E676554 
+ 1945      6F526967 
+ 1945      687400
+ 1946              	.LASF50:
+ 1947 01f8 433A5C55 		.ascii	"C:\\Users\\Francis Cho\\Documents\\School\\Path_Fin"
+ 1947      73657273 
+ 1947      5C467261 
+ 1947      6E636973 
+ 1947      2043686F 
+ 1948 0226 64696E67 		.ascii	"ding_Robot\\PathFindingRobot_Workspace\\Path_Findin"
+ 1948      5F526F62 
+ 1948      6F745C50 
+ 1948      61746846 
+ 1948      696E6469 
+ 1949 0257 675F526F 		.ascii	"g_Robot.cydsn\000"
+ 1949      626F742E 
+ 1949      63796473 
+ 1949      6E00
+ 1950              	.LASF19:
+ 1951 0265 66696E64 		.ascii	"findMinimum\000"
+ 1951      4D696E69 
+ 1951      6D756D00 
+ 1952              	.LASF25:
+ 1953 0271 476F5374 		.ascii	"GoStraight\000"
+ 1953      72616967 
+ 1953      687400
+ 1954              	.LASF40:
+ 1955 027c 7374726C 		.ascii	"strlen\000"
+ 1955      656E00
+ 1956              	.LASF7:
+ 1957 0283 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1957      206C6F6E 
+ 1957      6720756E 
+ 1957      7369676E 
+ 1957      65642069 
+ 1958              	.LASF37:
+ 1959 029a 6C656674 		.ascii	"leftDuty\000"
+ 1959      44757479 
+ 1959      00
+ 1960              	.LASF31:
+ 1961 02a3 73706565 		.ascii	"speed\000"
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 40
+
+
+ 1961      6400
+ 1962              	.LASF10:
+ 1963 02a9 73697A65 		.ascii	"sizetype\000"
+ 1963      74797065 
+ 1963      00
+ 1964              	.LASF46:
+ 1965 02b2 50574D5F 		.ascii	"PWM_rightmotor_WriteCompare1\000"
+ 1965      72696768 
+ 1965      746D6F74 
+ 1965      6F725F57 
+ 1965      72697465 
+ 1966              	.LASF47:
+ 1967 02cf 50574D5F 		.ascii	"PWM_rightmotor_WriteCompare2\000"
+ 1967      72696768 
+ 1967      746D6F74 
+ 1967      6F725F57 
+ 1967      72697465 
+ 1968              	.LASF26:
+ 1969 02ec 53746F70 		.ascii	"Stop\000"
+ 1969      00
+ 1970              	.LASF11:
+ 1971 02f1 63686172 		.ascii	"char\000"
+ 1971      00
+ 1972              	.LASF35:
+ 1973 02f6 6F666673 		.ascii	"offset\000"
+ 1973      657400
+ 1974              	.LASF2:
+ 1975 02fd 73686F72 		.ascii	"short int\000"
+ 1975      7420696E 
+ 1975      7400
+ 1976              	.LASF14:
+ 1977 0307 75696E74 		.ascii	"uint8\000"
+ 1977      3800
+ 1978              	.LASF43:
+ 1979 030d 50574D5F 		.ascii	"PWM_rightmotor_Start\000"
+ 1979      72696768 
+ 1979      746D6F74 
+ 1979      6F725F53 
+ 1979      74617274 
+ 1980              	.LASF33:
+ 1981 0322 75706461 		.ascii	"updateMotorSpeed\000"
+ 1981      74654D6F 
+ 1981      746F7253 
+ 1981      70656564 
+ 1981      00
+ 1982              	.LASF39:
+ 1983 0333 55534255 		.ascii	"USBUART_1_CDCIsReady\000"
+ 1983      4152545F 
+ 1983      315F4344 
+ 1983      43497352 
+ 1983      65616479 
+ 1984              	.LASF4:
+ 1985 0348 6C6F6E67 		.ascii	"long int\000"
+ 1985      20696E74 
+ 1985      00
+ 1986              	.LASF9:
+ 1987 0351 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\cccGvjmb.s 			page 41
+
+
+ 1987      20646F75 
+ 1987      626C6500 
+ 1988              	.LASF42:
+ 1989 035d 50574D5F 		.ascii	"PWM_leftmotor_Start\000"
+ 1989      6C656674 
+ 1989      6D6F746F 
+ 1989      725F5374 
+ 1989      61727400 
+ 1990              	.LASF23:
+ 1991 0371 446F4C65 		.ascii	"DoLeftToStraight\000"
+ 1991      6674546F 
+ 1991      53747261 
+ 1991      69676874 
+ 1991      00
+ 1992              	.LASF32:
+ 1993 0382 75706461 		.ascii	"updateMotorSpeed_Left\000"
+ 1993      74654D6F 
+ 1993      746F7253 
+ 1993      70656564 
+ 1993      5F4C6566 
+ 1994              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,4295 @@
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.eoc1,"ax",%progbits
+  20              		.align	2
+  21              		.global	eoc1
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	eoc1, %function
+  25              	eoc1:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright The University of Auckland, CS301 Group 15, 2022
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF The University of Auckland, CS301 Group 15.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include "functions.h"
+  14:main.c        **** #include "algorithm.h"
+  15:main.c        **** #include <stdio.h>
+  16:main.c        **** #include <project.h>
+  17:main.c        **** #include <string.h>
+  18:main.c        **** 
+  19:main.c        **** 
+  20:main.c        **** int turnActionArray[500];
+  21:main.c        **** 
+  22:main.c        **** // for testing use only
+  23:main.c        **** int testArray[14] = {3,3,0,1,2,1,1,0,1,2,0,0,2,1};
+  24:main.c        **** int testArray2[21] = {1,2,0,1,1,2,2,1,1,2,2,1,1,3,2,2,0,2,1,1,1};
+  25:main.c        **** int testArray3[25] ={2,1,1,2,0,3,0,1,1,2,2,1,0,2,1,1,3,2,2,0,2,1,0,1,0};
+  26:main.c        **** 
+  27:main.c        **** int leftFlag = 0;
+  28:main.c        **** int rightFlag = 0;
+  29:main.c        **** 
+  30:main.c        **** // indicate completion of reading and storing values
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 2
+
+
+  31:main.c        **** int flag=0;
+  32:main.c        **** int flag2=0;
+  33:main.c        **** int flag3=0;
+  34:main.c        **** int flag4=0;
+  35:main.c        **** int flag5=0;
+  36:main.c        **** int flag6=0;
+  37:main.c        **** 
+  38:main.c        **** // variable to keep track number of ADC value reading counts
+  39:main.c        **** int count1 = 0;
+  40:main.c        **** int count2 = 0;
+  41:main.c        **** int count3 = 0;
+  42:main.c        **** int count4 = 0;
+  43:main.c        **** int count5 = 0;
+  44:main.c        **** int count6 = 0;
+  45:main.c        **** 
+  46:main.c        **** // array to store mV values
+  47:main.c        **** int array[10] ={0};
+  48:main.c        **** int array2[10] ={0};
+  49:main.c        **** int array3[10] ={0};
+  50:main.c        **** int array4[10] ={0};
+  51:main.c        **** int array5[10] ={0};
+  52:main.c        **** int array6[10] ={0};
+  53:main.c        **** 
+  54:main.c        **** int leftTurn = 0;   // 0  means no turns 
+  55:main.c        **** int rightTurn = 0;
+  56:main.c        **** int finishTurn = 0; // 0 means turn not finished
+  57:main.c        **** 
+  58:main.c        **** int front = 0;
+  59:main.c        **** int left = 0;
+  60:main.c        **** int right = 0;
+  61:main.c        **** int far_left = 0;
+  62:main.c        **** int far_right = 0;
+  63:main.c        **** int back = 0;
+  64:main.c        **** 
+  65:main.c        **** enum States {left_turn, right_turn, straight, stop, straight_left_adjust, straight_right_adjust,lef
+  66:main.c        **** 
+  67:main.c        **** CY_ISR(eoc1){
+  28              		.loc 1 67 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  68:main.c        ****     
+  69:main.c        ****     if(count1 < 9){
+  36              		.loc 1 69 0
+  37 0002 444B     		ldr	r3, .L15
+  38 0004 1B68     		ldr	r3, [r3]
+  39 0006 082B     		cmp	r3, #8
+  40 0008 0CDC     		bgt	.L2
+  41              	.LBB2:
+  70:main.c        ****         int val = ADC_SAR_Seq_1_GetResult16(0);
+  42              		.loc 1 70 0
+  43 000a 0020     		movs	r0, #0
+  44 000c FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 3
+
+
+  45              	.LVL0:
+  71:main.c        ****         int mVolts = ADC_SAR_Seq_1_CountsTo_mVolts(val);
+  46              		.loc 1 71 0
+  47 0010 FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+  48              	.LVL1:
+  72:main.c        ****         array[count1] = mVolts;
+  49              		.loc 1 72 0
+  50 0014 3F4A     		ldr	r2, .L15
+  51 0016 1368     		ldr	r3, [r2]
+  52 0018 02EB8301 		add	r1, r2, r3, lsl #2
+  53 001c 4860     		str	r0, [r1, #4]
+  73:main.c        ****         count1++;
+  54              		.loc 1 73 0
+  55 001e 0133     		adds	r3, r3, #1
+  56 0020 1360     		str	r3, [r2]
+  57              	.LBE2:
+  58 0022 02E0     		b	.L3
+  59              	.LVL2:
+  60              	.L2:
+  74:main.c        ****         
+  75:main.c        ****     } else {
+  76:main.c        ****         flag = 1;
+  61              		.loc 1 76 0
+  62 0024 0122     		movs	r2, #1
+  63 0026 3B4B     		ldr	r3, .L15
+  64 0028 DA62     		str	r2, [r3, #44]
+  65              	.L3:
+  77:main.c        ****     }
+  78:main.c        ****     
+  79:main.c        ****     if(count2 < 9){
+  66              		.loc 1 79 0
+  67 002a 3A4B     		ldr	r3, .L15
+  68 002c 1B6B     		ldr	r3, [r3, #48]
+  69 002e 082B     		cmp	r3, #8
+  70 0030 0CDC     		bgt	.L4
+  71              	.LBB3:
+  80:main.c        ****         int val2 = ADC_SAR_Seq_1_GetResult16(1);
+  72              		.loc 1 80 0
+  73 0032 0120     		movs	r0, #1
+  74 0034 FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+  75              	.LVL3:
+  81:main.c        ****         int mVolts2 = ADC_SAR_Seq_1_CountsTo_mVolts(val2);
+  76              		.loc 1 81 0
+  77 0038 FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+  78              	.LVL4:
+  82:main.c        ****         array2[count2] = mVolts2;
+  79              		.loc 1 82 0
+  80 003c 354A     		ldr	r2, .L15
+  81 003e 136B     		ldr	r3, [r2, #48]
+  82 0040 02EB8301 		add	r1, r2, r3, lsl #2
+  83 0044 4863     		str	r0, [r1, #52]
+  83:main.c        ****         count2++;
+  84              		.loc 1 83 0
+  85 0046 0133     		adds	r3, r3, #1
+  86 0048 1363     		str	r3, [r2, #48]
+  87              	.LBE3:
+  88 004a 02E0     		b	.L5
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 4
+
+
+  89              	.LVL5:
+  90              	.L4:
+  84:main.c        ****         
+  85:main.c        ****     } else{
+  86:main.c        ****         flag2 = 1;
+  91              		.loc 1 86 0
+  92 004c 0122     		movs	r2, #1
+  93 004e 314B     		ldr	r3, .L15
+  94 0050 DA65     		str	r2, [r3, #92]
+  95              	.L5:
+  87:main.c        ****     }
+  88:main.c        ****     
+  89:main.c        ****     if(count3 < 9){
+  96              		.loc 1 89 0
+  97 0052 304B     		ldr	r3, .L15
+  98 0054 1B6E     		ldr	r3, [r3, #96]
+  99 0056 082B     		cmp	r3, #8
+ 100 0058 0CDC     		bgt	.L6
+ 101              	.LBB4:
+  90:main.c        ****         int val3 = ADC_SAR_Seq_1_GetResult16(2);
+ 102              		.loc 1 90 0
+ 103 005a 0220     		movs	r0, #2
+ 104 005c FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+ 105              	.LVL6:
+  91:main.c        ****         int mVolts3 = ADC_SAR_Seq_1_CountsTo_mVolts(val3);
+ 106              		.loc 1 91 0
+ 107 0060 FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+ 108              	.LVL7:
+  92:main.c        ****         array3[count3] = mVolts3;
+ 109              		.loc 1 92 0
+ 110 0064 2B4A     		ldr	r2, .L15
+ 111 0066 136E     		ldr	r3, [r2, #96]
+ 112 0068 02EB8301 		add	r1, r2, r3, lsl #2
+ 113 006c 4866     		str	r0, [r1, #100]
+  93:main.c        ****         count3++;
+ 114              		.loc 1 93 0
+ 115 006e 0133     		adds	r3, r3, #1
+ 116 0070 1366     		str	r3, [r2, #96]
+ 117              	.LBE4:
+ 118 0072 03E0     		b	.L7
+ 119              	.LVL8:
+ 120              	.L6:
+  94:main.c        ****         
+  95:main.c        ****     } else{
+  96:main.c        ****         flag3 = 1;
+ 121              		.loc 1 96 0
+ 122 0074 0122     		movs	r2, #1
+ 123 0076 274B     		ldr	r3, .L15
+ 124 0078 C3F88C20 		str	r2, [r3, #140]
+ 125              	.L7:
+  97:main.c        ****     }
+  98:main.c        ****     
+  99:main.c        ****     if(count4 < 9){
+ 126              		.loc 1 99 0
+ 127 007c 254B     		ldr	r3, .L15
+ 128 007e D3F89030 		ldr	r3, [r3, #144]
+ 129 0082 082B     		cmp	r3, #8
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 5
+
+
+ 130 0084 0FDC     		bgt	.L8
+ 131              	.LBB5:
+ 100:main.c        ****         int val4 = ADC_SAR_Seq_1_GetResult16(3);
+ 132              		.loc 1 100 0
+ 133 0086 0320     		movs	r0, #3
+ 134 0088 FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+ 135              	.LVL9:
+ 101:main.c        ****         int mVolts4 = ADC_SAR_Seq_1_CountsTo_mVolts(val4);
+ 136              		.loc 1 101 0
+ 137 008c FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+ 138              	.LVL10:
+ 102:main.c        ****         array4[count4] = mVolts4;
+ 139              		.loc 1 102 0
+ 140 0090 204A     		ldr	r2, .L15
+ 141 0092 D2F89030 		ldr	r3, [r2, #144]
+ 142 0096 02EB8301 		add	r1, r2, r3, lsl #2
+ 143 009a C1F89400 		str	r0, [r1, #148]
+ 103:main.c        ****         count4++;
+ 144              		.loc 1 103 0
+ 145 009e 0133     		adds	r3, r3, #1
+ 146 00a0 C2F89030 		str	r3, [r2, #144]
+ 147              	.LBE5:
+ 148 00a4 03E0     		b	.L9
+ 149              	.LVL11:
+ 150              	.L8:
+ 104:main.c        ****         
+ 105:main.c        ****     } else{
+ 106:main.c        ****         flag4 = 1;
+ 151              		.loc 1 106 0
+ 152 00a6 0122     		movs	r2, #1
+ 153 00a8 1A4B     		ldr	r3, .L15
+ 154 00aa C3F8BC20 		str	r2, [r3, #188]
+ 155              	.L9:
+ 107:main.c        ****     }
+ 108:main.c        ****     
+ 109:main.c        ****     if(count5 < 9){
+ 156              		.loc 1 109 0
+ 157 00ae 194B     		ldr	r3, .L15
+ 158 00b0 D3F8C030 		ldr	r3, [r3, #192]
+ 159 00b4 082B     		cmp	r3, #8
+ 160 00b6 0FDC     		bgt	.L10
+ 161              	.LBB6:
+ 110:main.c        ****         int val5 = ADC_SAR_Seq_1_GetResult16(4);
+ 162              		.loc 1 110 0
+ 163 00b8 0420     		movs	r0, #4
+ 164 00ba FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+ 165              	.LVL12:
+ 111:main.c        ****         int mVolts5 = ADC_SAR_Seq_1_CountsTo_mVolts(val5);
+ 166              		.loc 1 111 0
+ 167 00be FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+ 168              	.LVL13:
+ 112:main.c        ****         array5[count5] = mVolts5;
+ 169              		.loc 1 112 0
+ 170 00c2 144A     		ldr	r2, .L15
+ 171 00c4 D2F8C030 		ldr	r3, [r2, #192]
+ 172 00c8 02EB8301 		add	r1, r2, r3, lsl #2
+ 173 00cc C1F8C400 		str	r0, [r1, #196]
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 6
+
+
+ 113:main.c        ****         count5++;
+ 174              		.loc 1 113 0
+ 175 00d0 0133     		adds	r3, r3, #1
+ 176 00d2 C2F8C030 		str	r3, [r2, #192]
+ 177              	.LBE6:
+ 178 00d6 03E0     		b	.L11
+ 179              	.LVL14:
+ 180              	.L10:
+ 114:main.c        ****         
+ 115:main.c        ****     } else{
+ 116:main.c        ****         flag5 = 1;
+ 181              		.loc 1 116 0
+ 182 00d8 0122     		movs	r2, #1
+ 183 00da 0E4B     		ldr	r3, .L15
+ 184 00dc C3F8EC20 		str	r2, [r3, #236]
+ 185              	.L11:
+ 117:main.c        ****     }
+ 118:main.c        ****     
+ 119:main.c        ****     if(count6 < 9){
+ 186              		.loc 1 119 0
+ 187 00e0 0C4B     		ldr	r3, .L15
+ 188 00e2 D3F8F030 		ldr	r3, [r3, #240]
+ 189 00e6 082B     		cmp	r3, #8
+ 190 00e8 0FDC     		bgt	.L12
+ 191              	.LBB7:
+ 120:main.c        ****         int val6 = ADC_SAR_Seq_1_GetResult16(5);
+ 192              		.loc 1 120 0
+ 193 00ea 0520     		movs	r0, #5
+ 194 00ec FFF7FEFF 		bl	ADC_SAR_Seq_1_GetResult16
+ 195              	.LVL15:
+ 121:main.c        ****         int mVolts6 = ADC_SAR_Seq_1_CountsTo_mVolts(val6);
+ 196              		.loc 1 121 0
+ 197 00f0 FFF7FEFF 		bl	ADC_SAR_Seq_1_CountsTo_mVolts
+ 198              	.LVL16:
+ 122:main.c        ****         array6[count6] = mVolts6;
+ 199              		.loc 1 122 0
+ 200 00f4 074A     		ldr	r2, .L15
+ 201 00f6 D2F8F030 		ldr	r3, [r2, #240]
+ 202 00fa 02EB8301 		add	r1, r2, r3, lsl #2
+ 203 00fe C1F8F400 		str	r0, [r1, #244]
+ 123:main.c        ****         count6++;
+ 204              		.loc 1 123 0
+ 205 0102 0133     		adds	r3, r3, #1
+ 206 0104 C2F8F030 		str	r3, [r2, #240]
+ 207              	.LBE7:
+ 208 0108 08BD     		pop	{r3, pc}
+ 209              	.LVL17:
+ 210              	.L12:
+ 124:main.c        ****         
+ 125:main.c        ****     } else{
+ 126:main.c        ****         flag6 = 1;
+ 211              		.loc 1 126 0
+ 212 010a 0122     		movs	r2, #1
+ 213 010c 014B     		ldr	r3, .L15
+ 214 010e C3F81C21 		str	r2, [r3, #284]
+ 215 0112 08BD     		pop	{r3, pc}
+ 216              	.L16:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 7
+
+
+ 217              		.align	2
+ 218              	.L15:
+ 219 0114 00000000 		.word	.LANCHOR0
+ 220              		.cfi_endproc
+ 221              	.LFE64:
+ 222              		.size	eoc1, .-eoc1
+ 223              		.section	.text.main,"ax",%progbits
+ 224              		.align	2
+ 225              		.global	main
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.type	main, %function
+ 229              	main:
+ 230              	.LFB65:
+ 127:main.c        ****     }
+ 128:main.c        **** }
+ 129:main.c        **** 
+ 130:main.c        **** 
+ 131:main.c        **** 
+ 132:main.c        **** int main(void) {   
+ 231              		.loc 1 132 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 236              		.cfi_def_cfa_offset 24
+ 237              		.cfi_offset 4, -24
+ 238              		.cfi_offset 5, -20
+ 239              		.cfi_offset 6, -16
+ 240              		.cfi_offset 7, -12
+ 241              		.cfi_offset 8, -8
+ 242              		.cfi_offset 14, -4
+ 243              	.LVL18:
+ 133:main.c        ****     
+ 134:main.c        ****     int currentActionIndex = 0;
+ 135:main.c        ****     isr_EOC_3_StartEx(eoc1);
+ 244              		.loc 1 135 0
+ 245 0004 BE48     		ldr	r0, .L73
+ 246 0006 FFF7FEFF 		bl	isr_EOC_3_StartEx
+ 247              	.LVL19:
+ 136:main.c        ****     
+ 137:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 248              		.loc 1 137 0
+ 249              		.syntax unified
+ 250              	@ 137 "main.c" 1
+ 251 000a 62B6     		CPSIE   i
+ 252              	@ 0 "" 2
+ 138:main.c        **** 
+ 139:main.c        ****     USBUART_1_Start(0,USBUART_1_5V_OPERATION);
+ 253              		.loc 1 139 0
+ 254              		.thumb
+ 255              		.syntax unified
+ 256 000c 0121     		movs	r1, #1
+ 257 000e 0020     		movs	r0, #0
+ 258 0010 FFF7FEFF 		bl	USBUART_1_Start
+ 259              	.LVL20:
+ 140:main.c        ****     
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 8
+
+
+ 141:main.c        ****     ADC_SAR_Seq_1_Start();
+ 260              		.loc 1 141 0
+ 261 0014 FFF7FEFF 		bl	ADC_SAR_Seq_1_Start
+ 262              	.LVL21:
+ 142:main.c        ****     Timer_2_Start();
+ 263              		.loc 1 142 0
+ 264 0018 FFF7FEFF 		bl	Timer_2_Start
+ 265              	.LVL22:
+ 143:main.c        ****     findshortestPath();
+ 266              		.loc 1 143 0
+ 267 001c FFF7FEFF 		bl	findshortestPath
+ 268              	.LVL23:
+ 144:main.c        ****     
+ 145:main.c        ****     // turn on all LEDs
+ 146:main.c        ****     LED_1_Write(1);
+ 269              		.loc 1 146 0
+ 270 0020 0120     		movs	r0, #1
+ 271 0022 FFF7FEFF 		bl	LED_1_Write
+ 272              	.LVL24:
+ 147:main.c        ****     LED_2_Write(1);
+ 273              		.loc 1 147 0
+ 274 0026 0120     		movs	r0, #1
+ 275 0028 FFF7FEFF 		bl	LED_2_Write
+ 276              	.LVL25:
+ 148:main.c        ****     LED_3_Write(1);
+ 277              		.loc 1 148 0
+ 278 002c 0120     		movs	r0, #1
+ 279 002e FFF7FEFF 		bl	LED_3_Write
+ 280              	.LVL26:
+ 149:main.c        ****     
+ 150:main.c        **** 
+ 151:main.c        ****     // set initial FSM state to go straight
+ 152:main.c        ****     enum States FSM =straight;
+ 281              		.loc 1 152 0
+ 282 0032 0224     		movs	r4, #2
+ 134:main.c        ****     isr_EOC_3_StartEx(eoc1);
+ 283              		.loc 1 134 0
+ 284 0034 0025     		movs	r5, #0
+ 285              	.LVL27:
+ 286              	.L18:
+ 287              	.LBB8:
+ 153:main.c        **** 
+ 154:main.c        **** 
+ 155:main.c        ****     for(;;){   
+ 156:main.c        **** 
+ 157:main.c        ****         if(flag == 1){
+ 288              		.loc 1 157 0
+ 289 0036 B34B     		ldr	r3, .L73+4
+ 290 0038 DB6A     		ldr	r3, [r3, #44]
+ 291 003a 012B     		cmp	r3, #1
+ 292 003c 0FD1     		bne	.L20
+ 158:main.c        ****             flag = 0;
+ 293              		.loc 1 158 0
+ 294 003e B14E     		ldr	r6, .L73+4
+ 295 0040 0027     		movs	r7, #0
+ 296 0042 F762     		str	r7, [r6, #44]
+ 159:main.c        ****             front = findMaximum(array);    
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 9
+
+
+ 297              		.loc 1 159 0
+ 298 0044 06F10408 		add	r8, r6, #4
+ 299 0048 4046     		mov	r0, r8
+ 300 004a FFF7FEFF 		bl	findMaximum
+ 301              	.LVL28:
+ 302 004e C6F82001 		str	r0, [r6, #288]
+ 160:main.c        ****             count1 = 0;
+ 303              		.loc 1 160 0
+ 304 0052 3760     		str	r7, [r6]
+ 161:main.c        ****             memset(array,0,sizeof(array));
+ 305              		.loc 1 161 0
+ 306 0054 2822     		movs	r2, #40
+ 307 0056 3946     		mov	r1, r7
+ 308 0058 4046     		mov	r0, r8
+ 309 005a FFF7FEFF 		bl	memset
+ 310              	.LVL29:
+ 311              	.L20:
+ 162:main.c        ****         }
+ 163:main.c        ****         
+ 164:main.c        ****         if(flag2 == 1){
+ 312              		.loc 1 164 0
+ 313 005e A94B     		ldr	r3, .L73+4
+ 314 0060 DB6D     		ldr	r3, [r3, #92]
+ 315 0062 012B     		cmp	r3, #1
+ 316 0064 0FD1     		bne	.L21
+ 165:main.c        ****             flag2 = 0;
+ 317              		.loc 1 165 0
+ 318 0066 A74E     		ldr	r6, .L73+4
+ 319 0068 0027     		movs	r7, #0
+ 320 006a F765     		str	r7, [r6, #92]
+ 166:main.c        ****             left = findMaximum(array2);
+ 321              		.loc 1 166 0
+ 322 006c 06F13408 		add	r8, r6, #52
+ 323 0070 4046     		mov	r0, r8
+ 324 0072 FFF7FEFF 		bl	findMaximum
+ 325              	.LVL30:
+ 326 0076 C6F82401 		str	r0, [r6, #292]
+ 167:main.c        ****             count2 = 0;
+ 327              		.loc 1 167 0
+ 328 007a 3763     		str	r7, [r6, #48]
+ 168:main.c        ****             memset(array2,0,sizeof(array2));
+ 329              		.loc 1 168 0
+ 330 007c 2822     		movs	r2, #40
+ 331 007e 3946     		mov	r1, r7
+ 332 0080 4046     		mov	r0, r8
+ 333 0082 FFF7FEFF 		bl	memset
+ 334              	.LVL31:
+ 335              	.L21:
+ 169:main.c        ****         }
+ 170:main.c        ****         
+ 171:main.c        ****         if(flag3 == 1){
+ 336              		.loc 1 171 0
+ 337 0086 9F4B     		ldr	r3, .L73+4
+ 338 0088 D3F88C30 		ldr	r3, [r3, #140]
+ 339 008c 012B     		cmp	r3, #1
+ 340 008e 10D1     		bne	.L22
+ 172:main.c        ****             flag3 = 0;
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 10
+
+
+ 341              		.loc 1 172 0
+ 342 0090 9C4E     		ldr	r6, .L73+4
+ 343 0092 0027     		movs	r7, #0
+ 344 0094 C6F88C70 		str	r7, [r6, #140]
+ 173:main.c        ****             right = findMaximum(array3);
+ 345              		.loc 1 173 0
+ 346 0098 06F16408 		add	r8, r6, #100
+ 347 009c 4046     		mov	r0, r8
+ 348 009e FFF7FEFF 		bl	findMaximum
+ 349              	.LVL32:
+ 350 00a2 C6F82801 		str	r0, [r6, #296]
+ 174:main.c        ****             count3 = 0;
+ 351              		.loc 1 174 0
+ 352 00a6 3766     		str	r7, [r6, #96]
+ 175:main.c        ****             memset(array3,0,sizeof(array3));
+ 353              		.loc 1 175 0
+ 354 00a8 2822     		movs	r2, #40
+ 355 00aa 3946     		mov	r1, r7
+ 356 00ac 4046     		mov	r0, r8
+ 357 00ae FFF7FEFF 		bl	memset
+ 358              	.LVL33:
+ 359              	.L22:
+ 176:main.c        ****         }    
+ 177:main.c        ****         
+ 178:main.c        ****         if(flag4 == 1){
+ 360              		.loc 1 178 0
+ 361 00b2 944B     		ldr	r3, .L73+4
+ 362 00b4 D3F8BC30 		ldr	r3, [r3, #188]
+ 363 00b8 012B     		cmp	r3, #1
+ 364 00ba 11D1     		bne	.L23
+ 179:main.c        ****             flag4 = 0;
+ 365              		.loc 1 179 0
+ 366 00bc 914E     		ldr	r6, .L73+4
+ 367 00be 0027     		movs	r7, #0
+ 368 00c0 C6F8BC70 		str	r7, [r6, #188]
+ 180:main.c        ****             far_left = findMaximum(array4);
+ 369              		.loc 1 180 0
+ 370 00c4 06F19408 		add	r8, r6, #148
+ 371 00c8 4046     		mov	r0, r8
+ 372 00ca FFF7FEFF 		bl	findMaximum
+ 373              	.LVL34:
+ 374 00ce C6F82C01 		str	r0, [r6, #300]
+ 181:main.c        ****             count4 = 0;
+ 375              		.loc 1 181 0
+ 376 00d2 C6F89070 		str	r7, [r6, #144]
+ 182:main.c        ****             memset(array4,0,sizeof(array4));
+ 377              		.loc 1 182 0
+ 378 00d6 2822     		movs	r2, #40
+ 379 00d8 3946     		mov	r1, r7
+ 380 00da 4046     		mov	r0, r8
+ 381 00dc FFF7FEFF 		bl	memset
+ 382              	.LVL35:
+ 383              	.L23:
+ 183:main.c        ****         }
+ 184:main.c        ****         
+ 185:main.c        ****         if(flag5 == 1){
+ 384              		.loc 1 185 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 11
+
+
+ 385 00e0 884B     		ldr	r3, .L73+4
+ 386 00e2 D3F8EC30 		ldr	r3, [r3, #236]
+ 387 00e6 012B     		cmp	r3, #1
+ 388 00e8 11D1     		bne	.L24
+ 186:main.c        ****             flag5 = 0;
+ 389              		.loc 1 186 0
+ 390 00ea 864E     		ldr	r6, .L73+4
+ 391 00ec 0027     		movs	r7, #0
+ 392 00ee C6F8EC70 		str	r7, [r6, #236]
+ 187:main.c        ****             far_right = findMaximum(array5);
+ 393              		.loc 1 187 0
+ 394 00f2 06F1C408 		add	r8, r6, #196
+ 395 00f6 4046     		mov	r0, r8
+ 396 00f8 FFF7FEFF 		bl	findMaximum
+ 397              	.LVL36:
+ 398 00fc C6F83001 		str	r0, [r6, #304]
+ 188:main.c        ****             count5 = 0;
+ 399              		.loc 1 188 0
+ 400 0100 C6F8C070 		str	r7, [r6, #192]
+ 189:main.c        ****             memset(array5,0,sizeof(array5));
+ 401              		.loc 1 189 0
+ 402 0104 2822     		movs	r2, #40
+ 403 0106 3946     		mov	r1, r7
+ 404 0108 4046     		mov	r0, r8
+ 405 010a FFF7FEFF 		bl	memset
+ 406              	.LVL37:
+ 407              	.L24:
+ 190:main.c        ****         }
+ 191:main.c        ****         
+ 192:main.c        ****         if(flag6 == 1){
+ 408              		.loc 1 192 0
+ 409 010e 7D4B     		ldr	r3, .L73+4
+ 410 0110 D3F81C31 		ldr	r3, [r3, #284]
+ 411 0114 012B     		cmp	r3, #1
+ 412 0116 11D1     		bne	.L25
+ 193:main.c        ****             flag6 = 0;
+ 413              		.loc 1 193 0
+ 414 0118 7A4E     		ldr	r6, .L73+4
+ 415 011a 0027     		movs	r7, #0
+ 416 011c C6F81C71 		str	r7, [r6, #284]
+ 194:main.c        ****             back = findMaximum(array6);
+ 417              		.loc 1 194 0
+ 418 0120 06F1F408 		add	r8, r6, #244
+ 419 0124 4046     		mov	r0, r8
+ 420 0126 FFF7FEFF 		bl	findMaximum
+ 421              	.LVL38:
+ 422 012a C6F83401 		str	r0, [r6, #308]
+ 195:main.c        ****             count6 = 0;
+ 423              		.loc 1 195 0
+ 424 012e C6F8F070 		str	r7, [r6, #240]
+ 196:main.c        ****             memset(array6,0,sizeof(array6));
+ 425              		.loc 1 196 0
+ 426 0132 2822     		movs	r2, #40
+ 427 0134 3946     		mov	r1, r7
+ 428 0136 4046     		mov	r0, r8
+ 429 0138 FFF7FEFF 		bl	memset
+ 430              	.LVL39:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 12
+
+
+ 431              	.L25:
+ 197:main.c        ****         }
+ 198:main.c        **** 
+ 199:main.c        ****         
+ 200:main.c        ****         int cmp_val = 500;
+ 201:main.c        ****         int currentTurnAction = turnActionArray[currentActionIndex];
+ 432              		.loc 1 201 0
+ 433 013c 724B     		ldr	r3, .L73+8
+ 434 013e 53F82510 		ldr	r1, [r3, r5, lsl #2]
+ 435              	.LVL40:
+ 202:main.c        ****         
+ 203:main.c        **** 
+ 204:main.c        ****         if ((far_left > cmp_val)&&(front > cmp_val)&&(far_right > cmp_val)&&(left > cmp_val)&&(righ
+ 436              		.loc 1 204 0
+ 437 0142 704B     		ldr	r3, .L73+4
+ 438 0144 D3F82C31 		ldr	r3, [r3, #300]
+ 439 0148 B3F5FA7F 		cmp	r3, #500
+ 440 014c 20DD     		ble	.L26
+ 441              		.loc 1 204 0 is_stmt 0 discriminator 1
+ 442 014e 6D4A     		ldr	r2, .L73+4
+ 443 0150 D2F82021 		ldr	r2, [r2, #288]
+ 444 0154 B2F5FA7F 		cmp	r2, #500
+ 445 0158 1ADD     		ble	.L26
+ 446              		.loc 1 204 0 discriminator 2
+ 447 015a 6A4A     		ldr	r2, .L73+4
+ 448 015c D2F83021 		ldr	r2, [r2, #304]
+ 449 0160 B2F5FA7F 		cmp	r2, #500
+ 450 0164 14DD     		ble	.L26
+ 451              		.loc 1 204 0 discriminator 3
+ 452 0166 674A     		ldr	r2, .L73+4
+ 453 0168 D2F82421 		ldr	r2, [r2, #292]
+ 454 016c B2F5FA7F 		cmp	r2, #500
+ 455 0170 0EDD     		ble	.L26
+ 456              		.loc 1 204 0 discriminator 4
+ 457 0172 644A     		ldr	r2, .L73+4
+ 458 0174 D2F82821 		ldr	r2, [r2, #296]
+ 459 0178 B2F5FA7F 		cmp	r2, #500
+ 460 017c 08DD     		ble	.L26
+ 205:main.c        ****             if((FSM != right_turn)&&(FSM != left_turn)){
+ 461              		.loc 1 205 0 is_stmt 1
+ 462 017e 012C     		cmp	r4, #1
+ 463 0180 06D9     		bls	.L26
+ 206:main.c        ****                 if((currentTurnAction == 3)&&(FSM != left_turn)){
+ 464              		.loc 1 206 0
+ 465 0182 0329     		cmp	r1, #3
+ 466 0184 04D1     		bne	.L26
+ 467              		.loc 1 206 0 is_stmt 0 discriminator 1
+ 468 0186 1CB1     		cbz	r4, .L26
+ 207:main.c        ****                     rightTurn = 2;
+ 469              		.loc 1 207 0 is_stmt 1
+ 470 0188 0220     		movs	r0, #2
+ 471 018a 5E4A     		ldr	r2, .L73+4
+ 472 018c C2F83801 		str	r0, [r2, #312]
+ 473              	.L26:
+ 208:main.c        ****                 }
+ 209:main.c        ****             }
+ 210:main.c        ****         }
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 13
+
+
+ 211:main.c        ****         
+ 212:main.c        ****         
+ 213:main.c        ****         if ((far_left < cmp_val)&&(front > cmp_val)&&(far_right > cmp_val)) {
+ 474              		.loc 1 213 0
+ 475 0190 B3F5FA7F 		cmp	r3, #500
+ 476 0194 25DA     		bge	.L27
+ 477              		.loc 1 213 0 is_stmt 0 discriminator 1
+ 478 0196 5B4A     		ldr	r2, .L73+4
+ 479 0198 D2F82021 		ldr	r2, [r2, #288]
+ 480 019c B2F5FA7F 		cmp	r2, #500
+ 481 01a0 1FDD     		ble	.L27
+ 482              		.loc 1 213 0 discriminator 2
+ 483 01a2 584A     		ldr	r2, .L73+4
+ 484 01a4 D2F83021 		ldr	r2, [r2, #304]
+ 485 01a8 B2F5FA7F 		cmp	r2, #500
+ 486 01ac 19DD     		ble	.L27
+ 214:main.c        ****           if(FSM != right_turn){
+ 487              		.loc 1 214 0 is_stmt 1
+ 488 01ae 012C     		cmp	r4, #1
+ 489 01b0 00F07681 		beq	.L28
+ 215:main.c        ****                 if(currentTurnAction == 1){
+ 490              		.loc 1 215 0
+ 491 01b4 0129     		cmp	r1, #1
+ 492 01b6 03D1     		bne	.L29
+ 216:main.c        ****                     leftTurn = 1;
+ 493              		.loc 1 216 0
+ 494 01b8 524A     		ldr	r2, .L73+4
+ 495 01ba C2F83C11 		str	r1, [r2, #316]
+ 496 01be 6FE1     		b	.L28
+ 497              	.L29:
+ 217:main.c        ****                 }else if(currentTurnAction == 0){
+ 498              		.loc 1 217 0
+ 499 01c0 21B9     		cbnz	r1, .L30
+ 218:main.c        ****                      leftTurn = 10;
+ 500              		.loc 1 218 0
+ 501 01c2 0A21     		movs	r1, #10
+ 502              	.LVL41:
+ 503 01c4 4F4A     		ldr	r2, .L73+4
+ 504 01c6 C2F83C11 		str	r1, [r2, #316]
+ 505 01ca 69E1     		b	.L28
+ 506              	.LVL42:
+ 507              	.L30:
+ 219:main.c        ****                  }else if((currentTurnAction == 3)&&(FSM != left_turn)){
+ 508              		.loc 1 219 0
+ 509 01cc 0329     		cmp	r1, #3
+ 510 01ce 40F06781 		bne	.L28
+ 511              		.loc 1 219 0 is_stmt 0 discriminator 1
+ 512 01d2 002C     		cmp	r4, #0
+ 513 01d4 00F06481 		beq	.L28
+ 220:main.c        ****                     rightTurn = 2;
+ 514              		.loc 1 220 0 is_stmt 1
+ 515 01d8 0221     		movs	r1, #2
+ 516              	.LVL43:
+ 517 01da 4A4A     		ldr	r2, .L73+4
+ 518 01dc C2F83811 		str	r1, [r2, #312]
+ 519 01e0 5EE1     		b	.L28
+ 520              	.LVL44:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 14
+
+
+ 521              	.L27:
+ 221:main.c        ****                 }             
+ 222:main.c        ****           }
+ 223:main.c        ****           
+ 224:main.c        ****         }
+ 225:main.c        ****         
+ 226:main.c        ****         else if((far_left < cmp_val)&&(front < cmp_val)&&(far_right > cmp_val)){
+ 522              		.loc 1 226 0
+ 523 01e2 B3F5FA7F 		cmp	r3, #500
+ 524 01e6 26DA     		bge	.L31
+ 525              		.loc 1 226 0 is_stmt 0 discriminator 1
+ 526 01e8 464A     		ldr	r2, .L73+4
+ 527 01ea D2F82021 		ldr	r2, [r2, #288]
+ 528 01ee B2F5FA7F 		cmp	r2, #500
+ 529 01f2 20DA     		bge	.L31
+ 530              		.loc 1 226 0 discriminator 2
+ 531 01f4 434A     		ldr	r2, .L73+4
+ 532 01f6 D2F83021 		ldr	r2, [r2, #304]
+ 533 01fa B2F5FA7F 		cmp	r2, #500
+ 534 01fe 1ADD     		ble	.L31
+ 227:main.c        ****             if(FSM != right_turn){
+ 535              		.loc 1 227 0 is_stmt 1
+ 536 0200 012C     		cmp	r4, #1
+ 537 0202 00F04D81 		beq	.L28
+ 228:main.c        ****                 if(currentTurnAction == 1){
+ 538              		.loc 1 228 0
+ 539 0206 0129     		cmp	r1, #1
+ 540 0208 04D1     		bne	.L32
+ 229:main.c        ****                     leftTurn = 11;
+ 541              		.loc 1 229 0
+ 542 020a 0B21     		movs	r1, #11
+ 543              	.LVL45:
+ 544 020c 3D4A     		ldr	r2, .L73+4
+ 545 020e C2F83C11 		str	r1, [r2, #316]
+ 546 0212 45E1     		b	.L28
+ 547              	.LVL46:
+ 548              	.L32:
+ 230:main.c        ****                 }else if(currentTurnAction == 0){
+ 549              		.loc 1 230 0
+ 550 0214 21B9     		cbnz	r1, .L33
+ 231:main.c        ****                     leftTurn = 10;
+ 551              		.loc 1 231 0
+ 552 0216 0A21     		movs	r1, #10
+ 553              	.LVL47:
+ 554 0218 3A4A     		ldr	r2, .L73+4
+ 555 021a C2F83C11 		str	r1, [r2, #316]
+ 556 021e 3FE1     		b	.L28
+ 557              	.LVL48:
+ 558              	.L33:
+ 232:main.c        ****                 }else if((currentTurnAction == 3)&&(FSM != left_turn)){
+ 559              		.loc 1 232 0
+ 560 0220 0329     		cmp	r1, #3
+ 561 0222 40F03D81 		bne	.L28
+ 562              		.loc 1 232 0 is_stmt 0 discriminator 1
+ 563 0226 002C     		cmp	r4, #0
+ 564 0228 00F03A81 		beq	.L28
+ 233:main.c        ****                         rightTurn = 22;
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 15
+
+
+ 565              		.loc 1 233 0 is_stmt 1
+ 566 022c 1621     		movs	r1, #22
+ 567              	.LVL49:
+ 568 022e 354A     		ldr	r2, .L73+4
+ 569 0230 C2F83811 		str	r1, [r2, #312]
+ 570 0234 34E1     		b	.L28
+ 571              	.LVL50:
+ 572              	.L31:
+ 234:main.c        ****                 }             
+ 235:main.c        ****             }   
+ 236:main.c        ****         }
+ 237:main.c        **** 
+ 238:main.c        ****         else if ((far_right < cmp_val)&&(front > cmp_val)&&(far_left > cmp_val)) {  
+ 573              		.loc 1 238 0
+ 574 0236 334A     		ldr	r2, .L73+4
+ 575 0238 D2F83021 		ldr	r2, [r2, #304]
+ 576 023c B2F5FA7F 		cmp	r2, #500
+ 577 0240 22DA     		bge	.L34
+ 578              		.loc 1 238 0 is_stmt 0 discriminator 1
+ 579 0242 3048     		ldr	r0, .L73+4
+ 580 0244 D0F82001 		ldr	r0, [r0, #288]
+ 581 0248 B0F5FA7F 		cmp	r0, #500
+ 582 024c 1CDD     		ble	.L34
+ 583              		.loc 1 238 0 discriminator 2
+ 584 024e B3F5FA7F 		cmp	r3, #500
+ 585 0252 19DD     		ble	.L34
+ 239:main.c        ****             if(FSM != left_turn){
+ 586              		.loc 1 239 0 is_stmt 1
+ 587 0254 002C     		cmp	r4, #0
+ 588 0256 00F02381 		beq	.L28
+ 240:main.c        ****                 if(currentTurnAction == 2){
+ 589              		.loc 1 240 0
+ 590 025a 0229     		cmp	r1, #2
+ 591 025c 03D1     		bne	.L35
+ 241:main.c        ****                     rightTurn = 2;
+ 592              		.loc 1 241 0
+ 593 025e 294A     		ldr	r2, .L73+4
+ 594 0260 C2F83811 		str	r1, [r2, #312]
+ 595 0264 1CE1     		b	.L28
+ 596              	.L35:
+ 242:main.c        ****                 }else if(currentTurnAction == 0){
+ 597              		.loc 1 242 0
+ 598 0266 21B9     		cbnz	r1, .L36
+ 243:main.c        ****                      rightTurn = 20;
+ 599              		.loc 1 243 0
+ 600 0268 1421     		movs	r1, #20
+ 601              	.LVL51:
+ 602 026a 264A     		ldr	r2, .L73+4
+ 603 026c C2F83811 		str	r1, [r2, #312]
+ 604 0270 16E1     		b	.L28
+ 605              	.LVL52:
+ 606              	.L36:
+ 244:main.c        ****                  }else if((currentTurnAction == 3)&&(FSM != right_turn)){
+ 607              		.loc 1 244 0
+ 608 0272 0329     		cmp	r1, #3
+ 609 0274 40F01481 		bne	.L28
+ 610              		.loc 1 244 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 16
+
+
+ 611 0278 012C     		cmp	r4, #1
+ 612 027a 00F01181 		beq	.L28
+ 245:main.c        ****                     leftTurn = 1;
+ 613              		.loc 1 245 0 is_stmt 1
+ 614 027e 0121     		movs	r1, #1
+ 615              	.LVL53:
+ 616 0280 204A     		ldr	r2, .L73+4
+ 617 0282 C2F83C11 		str	r1, [r2, #316]
+ 618 0286 0BE1     		b	.L28
+ 619              	.LVL54:
+ 620              	.L34:
+ 246:main.c        ****                 }    
+ 247:main.c        ****             }
+ 248:main.c        ****         }
+ 249:main.c        ****         
+ 250:main.c        ****         else if ((far_right < cmp_val)&&(front < cmp_val)&&(far_left > cmp_val)) {  
+ 621              		.loc 1 250 0
+ 622 0288 B2F5FA7F 		cmp	r2, #500
+ 623 028c 23DA     		bge	.L37
+ 624              		.loc 1 250 0 is_stmt 0 discriminator 1
+ 625 028e 1D48     		ldr	r0, .L73+4
+ 626 0290 D0F82001 		ldr	r0, [r0, #288]
+ 627 0294 B0F5FA7F 		cmp	r0, #500
+ 628 0298 1DDA     		bge	.L37
+ 629              		.loc 1 250 0 discriminator 2
+ 630 029a B3F5FA7F 		cmp	r3, #500
+ 631 029e 1ADD     		ble	.L37
+ 251:main.c        ****             if(FSM != left_turn){
+ 632              		.loc 1 251 0 is_stmt 1
+ 633 02a0 002C     		cmp	r4, #0
+ 634 02a2 00F0FD80 		beq	.L28
+ 252:main.c        ****                 if(currentTurnAction == 2){
+ 635              		.loc 1 252 0
+ 636 02a6 0229     		cmp	r1, #2
+ 637 02a8 04D1     		bne	.L38
+ 253:main.c        ****                     rightTurn = 22;
+ 638              		.loc 1 253 0
+ 639 02aa 1621     		movs	r1, #22
+ 640              	.LVL55:
+ 641 02ac 154A     		ldr	r2, .L73+4
+ 642 02ae C2F83811 		str	r1, [r2, #312]
+ 643 02b2 F5E0     		b	.L28
+ 644              	.LVL56:
+ 645              	.L38:
+ 254:main.c        ****                 }else if(currentTurnAction == 0){
+ 646              		.loc 1 254 0
+ 647 02b4 21B9     		cbnz	r1, .L39
+ 255:main.c        ****                      rightTurn = 20;
+ 648              		.loc 1 255 0
+ 649 02b6 1421     		movs	r1, #20
+ 650              	.LVL57:
+ 651 02b8 124A     		ldr	r2, .L73+4
+ 652 02ba C2F83811 		str	r1, [r2, #312]
+ 653 02be EFE0     		b	.L28
+ 654              	.LVL58:
+ 655              	.L39:
+ 256:main.c        ****                  }else if((currentTurnAction == 3)&&(FSM != right_turn)){
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 17
+
+
+ 656              		.loc 1 256 0
+ 657 02c0 0329     		cmp	r1, #3
+ 658 02c2 40F0ED80 		bne	.L28
+ 659              		.loc 1 256 0 is_stmt 0 discriminator 1
+ 660 02c6 012C     		cmp	r4, #1
+ 661 02c8 00F0EA80 		beq	.L28
+ 257:main.c        ****                     leftTurn = 11;
+ 662              		.loc 1 257 0 is_stmt 1
+ 663 02cc 0B21     		movs	r1, #11
+ 664              	.LVL59:
+ 665 02ce 0D4A     		ldr	r2, .L73+4
+ 666 02d0 C2F83C11 		str	r1, [r2, #316]
+ 667 02d4 E4E0     		b	.L28
+ 668              	.LVL60:
+ 669              	.L37:
+ 258:main.c        ****                                        
+ 259:main.c        ****                 }       
+ 260:main.c        ****             }
+ 261:main.c        ****         }
+ 262:main.c        ****         
+ 263:main.c        **** 
+ 264:main.c        ****         //for intersection when both leftturn and rightturn avaliable
+ 265:main.c        ****         else if((far_left < cmp_val)&&(front > cmp_val)&&(far_right < cmp_val)){
+ 670              		.loc 1 265 0
+ 671 02d6 B3F5FA7F 		cmp	r3, #500
+ 672 02da 2DDA     		bge	.L40
+ 673              		.loc 1 265 0 is_stmt 0 discriminator 1
+ 674 02dc 0948     		ldr	r0, .L73+4
+ 675 02de D0F82001 		ldr	r0, [r0, #288]
+ 676 02e2 B0F5FA7F 		cmp	r0, #500
+ 677 02e6 27DD     		ble	.L40
+ 678              		.loc 1 265 0 discriminator 2
+ 679 02e8 B2F5FA7F 		cmp	r2, #500
+ 680 02ec 24DA     		bge	.L40
+ 266:main.c        ****             if(FSM != right_turn){
+ 681              		.loc 1 266 0 is_stmt 1
+ 682 02ee 012C     		cmp	r4, #1
+ 683 02f0 11D0     		beq	.L41
+ 267:main.c        ****                 if(currentTurnAction == 1){
+ 684              		.loc 1 267 0
+ 685 02f2 0129     		cmp	r1, #1
+ 686 02f4 0AD1     		bne	.L42
+ 268:main.c        ****                     leftTurn = 1;
+ 687              		.loc 1 268 0
+ 688 02f6 0120     		movs	r0, #1
+ 689 02f8 024A     		ldr	r2, .L73+4
+ 690 02fa C2F83C01 		str	r0, [r2, #316]
+ 691 02fe 0AE0     		b	.L41
+ 692              	.L74:
+ 693              		.align	2
+ 694              	.L73:
+ 695 0300 00000000 		.word	eoc1
+ 696 0304 00000000 		.word	.LANCHOR0
+ 697 0308 00000000 		.word	turnActionArray
+ 698              	.L42:
+ 269:main.c        ****                 }else if(currentTurnAction == 0){
+ 699              		.loc 1 269 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 18
+
+
+ 700 030c 19B9     		cbnz	r1, .L41
+ 270:main.c        ****                      leftTurn = 10;
+ 701              		.loc 1 270 0
+ 702 030e 0A20     		movs	r0, #10
+ 703 0310 B04A     		ldr	r2, .L75
+ 704 0312 C2F83C01 		str	r0, [r2, #316]
+ 705              	.L41:
+ 271:main.c        ****                  }             
+ 272:main.c        ****              }if(FSM != left_turn){
+ 706              		.loc 1 272 0
+ 707 0316 002C     		cmp	r4, #0
+ 708 0318 00F0C280 		beq	.L28
+ 273:main.c        ****                 if(currentTurnAction == 2){
+ 709              		.loc 1 273 0
+ 710 031c 0229     		cmp	r1, #2
+ 711 031e 03D1     		bne	.L43
+ 274:main.c        ****                     rightTurn = 2;
+ 712              		.loc 1 274 0
+ 713 0320 AC4A     		ldr	r2, .L75
+ 714 0322 C2F83811 		str	r1, [r2, #312]
+ 715 0326 BBE0     		b	.L28
+ 716              	.L43:
+ 275:main.c        ****                 }else if(currentTurnAction == 0){
+ 717              		.loc 1 275 0
+ 718 0328 0029     		cmp	r1, #0
+ 719 032a 40F0B980 		bne	.L28
+ 276:main.c        ****                      rightTurn = 20;
+ 720              		.loc 1 276 0
+ 721 032e 1421     		movs	r1, #20
+ 722              	.LVL61:
+ 723 0330 A84A     		ldr	r2, .L75
+ 724 0332 C2F83811 		str	r1, [r2, #312]
+ 725 0336 B3E0     		b	.L28
+ 726              	.LVL62:
+ 727              	.L40:
+ 277:main.c        ****                  }    
+ 278:main.c        ****             } 
+ 279:main.c        ****         }
+ 280:main.c        ****         
+ 281:main.c        ****         //for intersection when  leftturn , rightturn and straight avaliable 
+ 282:main.c        ****         else if ((far_left < cmp_val)&&(front < cmp_val)&&(far_right < cmp_val)) {  
+ 728              		.loc 1 282 0
+ 729 0338 B3F5FA7F 		cmp	r3, #500
+ 730 033c 27DA     		bge	.L44
+ 731              		.loc 1 282 0 is_stmt 0 discriminator 1
+ 732 033e A548     		ldr	r0, .L75
+ 733 0340 D0F82001 		ldr	r0, [r0, #288]
+ 734 0344 B0F5FA7F 		cmp	r0, #500
+ 735 0348 21DA     		bge	.L44
+ 736              		.loc 1 282 0 discriminator 2
+ 737 034a B2F5FA7F 		cmp	r2, #500
+ 738 034e 1EDA     		bge	.L44
+ 283:main.c        ****             if(FSM != left_turn){
+ 739              		.loc 1 283 0 is_stmt 1
+ 740 0350 5CB1     		cbz	r4, .L45
+ 284:main.c        ****                 if(currentTurnAction == 2){
+ 741              		.loc 1 284 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 19
+
+
+ 742 0352 0229     		cmp	r1, #2
+ 743 0354 04D1     		bne	.L46
+ 285:main.c        ****                     rightTurn = 22;
+ 744              		.loc 1 285 0
+ 745 0356 1620     		movs	r0, #22
+ 746 0358 9E4A     		ldr	r2, .L75
+ 747 035a C2F83801 		str	r0, [r2, #312]
+ 748 035e 04E0     		b	.L45
+ 749              	.L46:
+ 286:main.c        ****                 }else if(currentTurnAction == 0){
+ 750              		.loc 1 286 0
+ 751 0360 19B9     		cbnz	r1, .L45
+ 287:main.c        ****                      rightTurn = 20;
+ 752              		.loc 1 287 0
+ 753 0362 1420     		movs	r0, #20
+ 754 0364 9B4A     		ldr	r2, .L75
+ 755 0366 C2F83801 		str	r0, [r2, #312]
+ 756              	.L45:
+ 288:main.c        ****                 }    
+ 289:main.c        ****             }
+ 290:main.c        ****             if(FSM != right_turn){
+ 757              		.loc 1 290 0
+ 758 036a 012C     		cmp	r4, #1
+ 759 036c 00F09880 		beq	.L28
+ 291:main.c        ****                 if(currentTurnAction == 1){
+ 760              		.loc 1 291 0
+ 761 0370 0129     		cmp	r1, #1
+ 762 0372 04D1     		bne	.L47
+ 292:main.c        ****                     leftTurn = 11;
+ 763              		.loc 1 292 0
+ 764 0374 0B21     		movs	r1, #11
+ 765              	.LVL63:
+ 766 0376 974A     		ldr	r2, .L75
+ 767 0378 C2F83C11 		str	r1, [r2, #316]
+ 768 037c 90E0     		b	.L28
+ 769              	.LVL64:
+ 770              	.L47:
+ 293:main.c        ****                     
+ 294:main.c        ****                 }else if(currentTurnAction == 0){
+ 771              		.loc 1 294 0
+ 772 037e 0029     		cmp	r1, #0
+ 773 0380 40F08E80 		bne	.L28
+ 295:main.c        ****                     leftTurn = 10;
+ 774              		.loc 1 295 0
+ 775 0384 0A21     		movs	r1, #10
+ 776              	.LVL65:
+ 777 0386 934A     		ldr	r2, .L75
+ 778 0388 C2F83C11 		str	r1, [r2, #316]
+ 779 038c 88E0     		b	.L28
+ 780              	.LVL66:
+ 781              	.L44:
+ 296:main.c        ****                 }            
+ 297:main.c        ****             }
+ 298:main.c        ****         }
+ 299:main.c        ****         
+ 300:main.c        ****         
+ 301:main.c        ****         else if ((left < cmp_val) && (right < cmp_val)) {
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 20
+
+
+ 782              		.loc 1 301 0
+ 783 038e 914A     		ldr	r2, .L75
+ 784 0390 D2F82421 		ldr	r2, [r2, #292]
+ 785 0394 B2F5FA7F 		cmp	r2, #500
+ 786 0398 45DA     		bge	.L48
+ 787              		.loc 1 301 0 is_stmt 0 discriminator 1
+ 788 039a 8E49     		ldr	r1, .L75
+ 789              	.LVL67:
+ 790 039c D1F82811 		ldr	r1, [r1, #296]
+ 791 03a0 B1F5FA7F 		cmp	r1, #500
+ 792 03a4 3FDA     		bge	.L48
+ 302:main.c        ****             //rightTurn = 0;
+ 303:main.c        ****             
+ 304:main.c        ****             if((FSM  == right_turn)&&(rightTurn ==2)&& (front<cmp_val)){
+ 793              		.loc 1 304 0 is_stmt 1
+ 794 03a6 012C     		cmp	r4, #1
+ 795 03a8 14D1     		bne	.L49
+ 796              		.loc 1 304 0 is_stmt 0 discriminator 1
+ 797 03aa 8A4A     		ldr	r2, .L75
+ 798 03ac D2F83821 		ldr	r2, [r2, #312]
+ 799 03b0 022A     		cmp	r2, #2
+ 800 03b2 0FD1     		bne	.L49
+ 801              		.loc 1 304 0 discriminator 2
+ 802 03b4 874A     		ldr	r2, .L75
+ 803 03b6 D2F82021 		ldr	r2, [r2, #288]
+ 804 03ba B2F5FA7F 		cmp	r2, #500
+ 805 03be 09DA     		bge	.L49
+ 305:main.c        ****                 
+ 306:main.c        ****                 rightTurn = 0;
+ 806              		.loc 1 306 0 is_stmt 1
+ 807 03c0 844A     		ldr	r2, .L75
+ 808 03c2 0021     		movs	r1, #0
+ 809 03c4 C2F83811 		str	r1, [r2, #312]
+ 307:main.c        ****                 currentActionIndex++;
+ 810              		.loc 1 307 0
+ 811 03c8 0135     		adds	r5, r5, #1
+ 812              	.LVL68:
+ 308:main.c        ****                 //LED_2_Write(~LED_2_Read());
+ 309:main.c        ****                 FSM = straight; // go straight only
+ 310:main.c        ****                 leftFlag =0;
+ 813              		.loc 1 310 0
+ 814 03ca C2F84011 		str	r1, [r2, #320]
+ 311:main.c        ****                 rightFlag =0;
+ 815              		.loc 1 311 0
+ 816 03ce C2F84411 		str	r1, [r2, #324]
+ 309:main.c        ****                 leftFlag =0;
+ 817              		.loc 1 309 0
+ 818 03d2 0224     		movs	r4, #2
+ 819              	.LVL69:
+ 820              	.L49:
+ 312:main.c        ****             }
+ 313:main.c        ****             
+ 314:main.c        **** 
+ 315:main.c        ****             if((FSM  == left_turn)&&(leftTurn ==1)&& (front<cmp_val)){
+ 821              		.loc 1 315 0
+ 822 03d4 ACB9     		cbnz	r4, .L50
+ 823              		.loc 1 315 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 21
+
+
+ 824 03d6 7F4A     		ldr	r2, .L75
+ 825 03d8 D2F83C21 		ldr	r2, [r2, #316]
+ 826 03dc 012A     		cmp	r2, #1
+ 827 03de 10D1     		bne	.L50
+ 828              		.loc 1 315 0 discriminator 2
+ 829 03e0 7C4A     		ldr	r2, .L75
+ 830 03e2 D2F82021 		ldr	r2, [r2, #288]
+ 831 03e6 B2F5FA7F 		cmp	r2, #500
+ 832 03ea 0ADA     		bge	.L50
+ 316:main.c        ****                 leftTurn = 0;
+ 833              		.loc 1 316 0 is_stmt 1
+ 834 03ec 794A     		ldr	r2, .L75
+ 835 03ee 0021     		movs	r1, #0
+ 836 03f0 C2F83C11 		str	r1, [r2, #316]
+ 317:main.c        ****                 currentActionIndex++;
+ 837              		.loc 1 317 0
+ 838 03f4 0135     		adds	r5, r5, #1
+ 839              	.LVL70:
+ 318:main.c        ****                 //LED_2_Write(~LED_2_Read());
+ 319:main.c        ****                 
+ 320:main.c        ****                 FSM = left_to_straight; // go straight only
+ 321:main.c        ****                 leftFlag =0;
+ 840              		.loc 1 321 0
+ 841 03f6 C2F84011 		str	r1, [r2, #320]
+ 322:main.c        ****                 rightFlag =0;
+ 842              		.loc 1 322 0
+ 843 03fa C2F84411 		str	r1, [r2, #324]
+ 320:main.c        ****                 leftFlag =0;
+ 844              		.loc 1 320 0
+ 845 03fe 0624     		movs	r4, #6
+ 846              		.loc 1 322 0
+ 847 0400 4EE0     		b	.L28
+ 848              	.LVL71:
+ 849              	.L50:
+ 323:main.c        ****             }
+ 324:main.c        ****             
+ 325:main.c        ****             
+ 326:main.c        ****             else if((leftTurn == 0)&&(rightTurn == 0)){
+ 850              		.loc 1 326 0
+ 851 0402 744A     		ldr	r2, .L75
+ 852 0404 D2F83C21 		ldr	r2, [r2, #316]
+ 853 0408 002A     		cmp	r2, #0
+ 854 040a 49D1     		bne	.L28
+ 855              		.loc 1 326 0 is_stmt 0 discriminator 1
+ 856 040c 714A     		ldr	r2, .L75
+ 857 040e D2F83821 		ldr	r2, [r2, #312]
+ 858 0412 002A     		cmp	r2, #0
+ 859 0414 44D1     		bne	.L28
+ 860              	.LVL72:
+ 327:main.c        ****                  FSM = straight; // go straight only
+ 328:main.c        ****                  leftFlag =0;
+ 861              		.loc 1 328 0 is_stmt 1
+ 862 0416 6F4A     		ldr	r2, .L75
+ 863 0418 0021     		movs	r1, #0
+ 864 041a C2F84011 		str	r1, [r2, #320]
+ 329:main.c        ****                  rightFlag =0;
+ 865              		.loc 1 329 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 22
+
+
+ 866 041e C2F84411 		str	r1, [r2, #324]
+ 327:main.c        ****                  FSM = straight; // go straight only
+ 867              		.loc 1 327 0
+ 868 0422 0224     		movs	r4, #2
+ 869 0424 3CE0     		b	.L28
+ 870              	.LVL73:
+ 871              	.L48:
+ 330:main.c        ****             }
+ 331:main.c        **** 
+ 332:main.c        ****         } else if ((left > cmp_val) && (right < cmp_val) && (back<cmp_val)){
+ 872              		.loc 1 332 0
+ 873 0426 B2F5FA7F 		cmp	r2, #500
+ 874 042a 1BDD     		ble	.L51
+ 875              		.loc 1 332 0 is_stmt 0 discriminator 1
+ 876 042c 6949     		ldr	r1, .L75
+ 877 042e D1F82811 		ldr	r1, [r1, #296]
+ 878 0432 B1F5FA7F 		cmp	r1, #500
+ 879 0436 15DA     		bge	.L51
+ 880              		.loc 1 332 0 discriminator 2
+ 881 0438 6649     		ldr	r1, .L75
+ 882 043a D1F83411 		ldr	r1, [r1, #308]
+ 883 043e B1F5FA7F 		cmp	r1, #500
+ 884 0442 0FDA     		bge	.L51
+ 333:main.c        ****             
+ 334:main.c        ****             if((leftTurn == 0)&&(rightTurn == 0)){
+ 885              		.loc 1 334 0 is_stmt 1
+ 886 0444 634A     		ldr	r2, .L75
+ 887 0446 D2F83C21 		ldr	r2, [r2, #316]
+ 888 044a 4ABB     		cbnz	r2, .L28
+ 889              		.loc 1 334 0 is_stmt 0 discriminator 1
+ 890 044c 614A     		ldr	r2, .L75
+ 891 044e D2F83821 		ldr	r2, [r2, #312]
+ 892 0452 2ABB     		cbnz	r2, .L28
+ 893              	.LVL74:
+ 335:main.c        ****                 FSM = straight_left_adjust;
+ 336:main.c        ****                 leftFlag =0;
+ 894              		.loc 1 336 0 is_stmt 1
+ 895 0454 5F4A     		ldr	r2, .L75
+ 896 0456 0021     		movs	r1, #0
+ 897 0458 C2F84011 		str	r1, [r2, #320]
+ 337:main.c        ****                 rightFlag =0;
+ 898              		.loc 1 337 0
+ 899 045c C2F84411 		str	r1, [r2, #324]
+ 335:main.c        ****                 FSM = straight_left_adjust;
+ 900              		.loc 1 335 0
+ 901 0460 0424     		movs	r4, #4
+ 902 0462 1DE0     		b	.L28
+ 903              	.LVL75:
+ 904              	.L51:
+ 338:main.c        ****             }
+ 339:main.c        ****         
+ 340:main.c        ****         } else if ((left < cmp_val) && (right > cmp_val) && (back<cmp_val)) {
+ 905              		.loc 1 340 0
+ 906 0464 B2F5FA7F 		cmp	r2, #500
+ 907 0468 1ADA     		bge	.L28
+ 908              		.loc 1 340 0 is_stmt 0 discriminator 1
+ 909 046a 5A4A     		ldr	r2, .L75
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 23
+
+
+ 910 046c D2F82821 		ldr	r2, [r2, #296]
+ 911 0470 B2F5FA7F 		cmp	r2, #500
+ 912 0474 14DD     		ble	.L28
+ 913              		.loc 1 340 0 discriminator 2
+ 914 0476 574A     		ldr	r2, .L75
+ 915 0478 D2F83421 		ldr	r2, [r2, #308]
+ 916 047c B2F5FA7F 		cmp	r2, #500
+ 917 0480 0EDA     		bge	.L28
+ 341:main.c        ****             
+ 342:main.c        ****             if((leftTurn == 0)&&(rightTurn == 0)){
+ 918              		.loc 1 342 0 is_stmt 1
+ 919 0482 544A     		ldr	r2, .L75
+ 920 0484 D2F83C21 		ldr	r2, [r2, #316]
+ 921 0488 52B9     		cbnz	r2, .L28
+ 922              		.loc 1 342 0 is_stmt 0 discriminator 1
+ 923 048a 524A     		ldr	r2, .L75
+ 924 048c D2F83821 		ldr	r2, [r2, #312]
+ 925 0490 32B9     		cbnz	r2, .L28
+ 926              	.LVL76:
+ 343:main.c        ****                 FSM = straight_right_adjust;
+ 344:main.c        ****                 leftFlag =0;
+ 927              		.loc 1 344 0 is_stmt 1
+ 928 0492 504A     		ldr	r2, .L75
+ 929 0494 0021     		movs	r1, #0
+ 930 0496 C2F84011 		str	r1, [r2, #320]
+ 345:main.c        ****                 rightFlag =0;
+ 931              		.loc 1 345 0
+ 932 049a C2F84411 		str	r1, [r2, #324]
+ 343:main.c        ****                 FSM = straight_right_adjust;
+ 933              		.loc 1 343 0
+ 934 049e 0524     		movs	r4, #5
+ 935              	.LVL77:
+ 936              	.L28:
+ 346:main.c        ****             }    
+ 347:main.c        ****         }
+ 348:main.c        ****         
+ 349:main.c        ****         
+ 350:main.c        ****         if((FSM  == left_turn)&&(leftTurn ==11)&&(front>cmp_val)){
+ 937              		.loc 1 350 0
+ 938 04a0 74B9     		cbnz	r4, .L52
+ 939              		.loc 1 350 0 is_stmt 0 discriminator 1
+ 940 04a2 4C4A     		ldr	r2, .L75
+ 941 04a4 D2F83C21 		ldr	r2, [r2, #316]
+ 942 04a8 0B2A     		cmp	r2, #11
+ 943 04aa 09D1     		bne	.L52
+ 944              		.loc 1 350 0 discriminator 2
+ 945 04ac 494A     		ldr	r2, .L75
+ 946 04ae D2F82021 		ldr	r2, [r2, #288]
+ 947 04b2 B2F5FA7F 		cmp	r2, #500
+ 948 04b6 03DD     		ble	.L52
+ 351:main.c        ****                 leftFlag =1;
+ 949              		.loc 1 351 0 is_stmt 1
+ 950 04b8 0121     		movs	r1, #1
+ 951 04ba 464A     		ldr	r2, .L75
+ 952 04bc C2F84011 		str	r1, [r2, #320]
+ 953              	.L52:
+ 352:main.c        ****         }
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 24
+
+
+ 353:main.c        ****         
+ 354:main.c        ****         if((FSM  == left_turn)&&(leftTurn ==11)&&(front<cmp_val)){
+ 954              		.loc 1 354 0
+ 955 04c0 B4B9     		cbnz	r4, .L53
+ 956              		.loc 1 354 0 is_stmt 0 discriminator 1
+ 957 04c2 444A     		ldr	r2, .L75
+ 958 04c4 D2F83C21 		ldr	r2, [r2, #316]
+ 959 04c8 0B2A     		cmp	r2, #11
+ 960 04ca 11D1     		bne	.L53
+ 961              		.loc 1 354 0 discriminator 2
+ 962 04cc 414A     		ldr	r2, .L75
+ 963 04ce D2F82021 		ldr	r2, [r2, #288]
+ 964 04d2 B2F5FA7F 		cmp	r2, #500
+ 965 04d6 0BDA     		bge	.L53
+ 355:main.c        ****                 if(leftFlag == 1){
+ 966              		.loc 1 355 0 is_stmt 1
+ 967 04d8 3E4A     		ldr	r2, .L75
+ 968 04da D2F84021 		ldr	r2, [r2, #320]
+ 969 04de 012A     		cmp	r2, #1
+ 970 04e0 06D1     		bne	.L53
+ 356:main.c        ****                     leftFlag =0;
+ 971              		.loc 1 356 0
+ 972 04e2 3C4A     		ldr	r2, .L75
+ 973 04e4 0021     		movs	r1, #0
+ 974 04e6 C2F84011 		str	r1, [r2, #320]
+ 357:main.c        ****                     leftTurn = 0;  
+ 975              		.loc 1 357 0
+ 976 04ea C2F83C11 		str	r1, [r2, #316]
+ 358:main.c        ****                     currentActionIndex++; 
+ 977              		.loc 1 358 0
+ 978 04ee 0135     		adds	r5, r5, #1
+ 979              	.LVL78:
+ 980              	.L53:
+ 359:main.c        ****                     //LED_2_Write(~LED_2_Read());
+ 360:main.c        ****                     
+ 361:main.c        ****                 }
+ 362:main.c        ****            }
+ 363:main.c        ****             
+ 364:main.c        ****         if((FSM  == right_turn)&&(rightTurn ==22)&& (front>cmp_val)){
+ 981              		.loc 1 364 0
+ 982 04f0 012C     		cmp	r4, #1
+ 983 04f2 0ED1     		bne	.L54
+ 984              		.loc 1 364 0 is_stmt 0 discriminator 1
+ 985 04f4 374A     		ldr	r2, .L75
+ 986 04f6 D2F83821 		ldr	r2, [r2, #312]
+ 987 04fa 162A     		cmp	r2, #22
+ 988 04fc 09D1     		bne	.L54
+ 989              		.loc 1 364 0 discriminator 2
+ 990 04fe 354A     		ldr	r2, .L75
+ 991 0500 D2F82021 		ldr	r2, [r2, #288]
+ 992 0504 B2F5FA7F 		cmp	r2, #500
+ 993 0508 03DD     		ble	.L54
+ 365:main.c        ****                 rightFlag = 2;
+ 994              		.loc 1 365 0 is_stmt 1
+ 995 050a 0221     		movs	r1, #2
+ 996 050c 314A     		ldr	r2, .L75
+ 997 050e C2F84411 		str	r1, [r2, #324]
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 25
+
+
+ 998              	.L54:
+ 366:main.c        ****             }
+ 367:main.c        ****             
+ 368:main.c        ****         if((FSM  == right_turn)&&(rightTurn ==22)&& (front<cmp_val)){
+ 999              		.loc 1 368 0
+ 1000 0512 012C     		cmp	r4, #1
+ 1001 0514 16D1     		bne	.L55
+ 1002              		.loc 1 368 0 is_stmt 0 discriminator 1
+ 1003 0516 2F4A     		ldr	r2, .L75
+ 1004 0518 D2F83821 		ldr	r2, [r2, #312]
+ 1005 051c 162A     		cmp	r2, #22
+ 1006 051e 11D1     		bne	.L55
+ 1007              		.loc 1 368 0 discriminator 2
+ 1008 0520 2C4A     		ldr	r2, .L75
+ 1009 0522 D2F82021 		ldr	r2, [r2, #288]
+ 1010 0526 B2F5FA7F 		cmp	r2, #500
+ 1011 052a 0BDA     		bge	.L55
+ 369:main.c        ****                 if(rightFlag ==2){
+ 1012              		.loc 1 369 0 is_stmt 1
+ 1013 052c 294A     		ldr	r2, .L75
+ 1014 052e D2F84421 		ldr	r2, [r2, #324]
+ 1015 0532 022A     		cmp	r2, #2
+ 1016 0534 06D1     		bne	.L55
+ 370:main.c        ****                     rightTurn = 0;
+ 1017              		.loc 1 370 0
+ 1018 0536 274A     		ldr	r2, .L75
+ 1019 0538 0021     		movs	r1, #0
+ 1020 053a C2F83811 		str	r1, [r2, #312]
+ 371:main.c        ****                     rightFlag = 0;
+ 1021              		.loc 1 371 0
+ 1022 053e C2F84411 		str	r1, [r2, #324]
+ 372:main.c        ****                     currentActionIndex++;     
+ 1023              		.loc 1 372 0
+ 1024 0542 0135     		adds	r5, r5, #1
+ 1025              	.LVL79:
+ 1026              	.L55:
+ 373:main.c        ****                     //LED_2_Write(~LED_2_Read());
+ 374:main.c        ****                 }
+ 375:main.c        ****         }
+ 376:main.c        ****         
+ 377:main.c        **** 
+ 378:main.c        ****         //left turn FSM from condition check
+ 379:main.c        ****         if(((leftTurn ==1)||(leftTurn == 11))&&(far_left >cmp_val)){
+ 1027              		.loc 1 379 0
+ 1028 0544 234A     		ldr	r2, .L75
+ 1029 0546 D2F83C21 		ldr	r2, [r2, #316]
+ 1030 054a 012A     		cmp	r2, #1
+ 1031 054c 01D0     		beq	.L56
+ 1032              		.loc 1 379 0 is_stmt 0 discriminator 2
+ 1033 054e 0B2A     		cmp	r2, #11
+ 1034 0550 03D1     		bne	.L57
+ 1035              	.L56:
+ 1036              		.loc 1 379 0 discriminator 3
+ 1037 0552 B3F5FA7F 		cmp	r3, #500
+ 1038 0556 00DD     		ble	.L57
+ 380:main.c        ****             FSM = left_turn;
+ 1039              		.loc 1 380 0 is_stmt 1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 26
+
+
+ 1040 0558 0024     		movs	r4, #0
+ 1041              	.LVL80:
+ 1042              	.L57:
+ 381:main.c        ****         }
+ 382:main.c        ****         
+ 383:main.c        ****         if((leftTurn == 10)&&(far_left>cmp_val)){
+ 1043              		.loc 1 383 0
+ 1044 055a 0A2A     		cmp	r2, #10
+ 1045 055c 07D1     		bne	.L58
+ 1046              		.loc 1 383 0 is_stmt 0 discriminator 1
+ 1047 055e B3F5FA7F 		cmp	r3, #500
+ 1048 0562 04DD     		ble	.L58
+ 384:main.c        ****             currentActionIndex++;
+ 1049              		.loc 1 384 0 is_stmt 1
+ 1050 0564 0135     		adds	r5, r5, #1
+ 1051              	.LVL81:
+ 385:main.c        ****             leftTurn = 0;
+ 1052              		.loc 1 385 0
+ 1053 0566 0022     		movs	r2, #0
+ 1054 0568 1A4B     		ldr	r3, .L75
+ 1055 056a C3F83C21 		str	r2, [r3, #316]
+ 1056              	.L58:
+ 386:main.c        ****             //LED_2_Write(~LED_2_Read());      
+ 387:main.c        ****         }
+ 388:main.c        ****         
+ 389:main.c        ****         //right turn FSM from condition check
+ 390:main.c        ****         if(((rightTurn ==2)||(rightTurn == 22))&&(far_right >cmp_val)){
+ 1057              		.loc 1 390 0
+ 1058 056e 194B     		ldr	r3, .L75
+ 1059 0570 D3F83831 		ldr	r3, [r3, #312]
+ 1060 0574 022B     		cmp	r3, #2
+ 1061 0576 01D0     		beq	.L59
+ 1062              		.loc 1 390 0 is_stmt 0 discriminator 2
+ 1063 0578 162B     		cmp	r3, #22
+ 1064 057a 06D1     		bne	.L60
+ 1065              	.L59:
+ 1066              		.loc 1 390 0 discriminator 3
+ 1067 057c 154A     		ldr	r2, .L75
+ 1068 057e D2F83021 		ldr	r2, [r2, #304]
+ 1069 0582 B2F5FA7F 		cmp	r2, #500
+ 1070 0586 00DD     		ble	.L60
+ 391:main.c        ****             FSM = right_turn;
+ 1071              		.loc 1 391 0 is_stmt 1
+ 1072 0588 0124     		movs	r4, #1
+ 1073              	.LVL82:
+ 1074              	.L60:
+ 392:main.c        ****         }
+ 393:main.c        ****         
+ 394:main.c        ****         if((rightTurn == 20)&&(far_right>cmp_val)){
+ 1075              		.loc 1 394 0
+ 1076 058a 142B     		cmp	r3, #20
+ 1077 058c 0AD1     		bne	.L61
+ 1078              		.loc 1 394 0 is_stmt 0 discriminator 1
+ 1079 058e 114B     		ldr	r3, .L75
+ 1080 0590 D3F83031 		ldr	r3, [r3, #304]
+ 1081 0594 B3F5FA7F 		cmp	r3, #500
+ 1082 0598 04DD     		ble	.L61
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 27
+
+
+ 395:main.c        ****             currentActionIndex++;
+ 1083              		.loc 1 395 0 is_stmt 1
+ 1084 059a 0135     		adds	r5, r5, #1
+ 1085              	.LVL83:
+ 396:main.c        ****             rightTurn = 0;
+ 1086              		.loc 1 396 0
+ 1087 059c 0022     		movs	r2, #0
+ 1088 059e 0D4B     		ldr	r3, .L75
+ 1089 05a0 C3F83821 		str	r2, [r3, #312]
+ 1090              	.L61:
+ 397:main.c        ****             //LED_2_Write(~LED_2_Read());
+ 398:main.c        ****         }
+ 399:main.c        **** 
+ 400:main.c        **** 
+ 401:main.c        ****         // FSM switch cases
+ 402:main.c        ****         switch(FSM) {
+ 1091              		.loc 1 402 0
+ 1092 05a4 062C     		cmp	r4, #6
+ 1093 05a6 3FF646AD 		bhi	.L18
+ 1094 05aa DFE804F0 		tbb	[pc, r4]
+ 1095              	.L63:
+ 1096 05ae 0D       		.byte	(.L62-.L63)/2
+ 1097 05af 15       		.byte	(.L64-.L63)/2
+ 1098 05b0 04       		.byte	(.L65-.L63)/2
+ 1099 05b1 18       		.byte	(.L66-.L63)/2
+ 1100 05b2 07       		.byte	(.L67-.L63)/2
+ 1101 05b3 0A       		.byte	(.L68-.L63)/2
+ 1102 05b4 10       		.byte	(.L69-.L63)/2
+ 1103 05b5 00       		.p2align 1
+ 1104              	.L65:
+ 403:main.c        ****          
+ 404:main.c        ****             case straight:
+ 405:main.c        ****                 GoStraight();
+ 1105              		.loc 1 405 0
+ 1106 05b6 FFF7FEFF 		bl	GoStraight
+ 1107              	.LVL84:
+ 406:main.c        ****                 break;
+ 1108              		.loc 1 406 0
+ 1109 05ba 3CE5     		b	.L18
+ 1110              	.L67:
+ 407:main.c        ****                 
+ 408:main.c        ****             // adjust when left sensor is out of path
+ 409:main.c        ****             case straight_left_adjust:
+ 410:main.c        ****                 ArrangeToLeft();
+ 1111              		.loc 1 410 0
+ 1112 05bc FFF7FEFF 		bl	ArrangeToLeft
+ 1113              	.LVL85:
+ 411:main.c        ****                 break;
+ 1114              		.loc 1 411 0
+ 1115 05c0 39E5     		b	.L18
+ 1116              	.L68:
+ 412:main.c        ****                 
+ 413:main.c        ****                 
+ 414:main.c        ****             // adjust when right sensor is out of path
+ 415:main.c        ****             case straight_right_adjust:
+ 416:main.c        ****                 ArrangeToRight();
+ 1117              		.loc 1 416 0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 28
+
+
+ 1118 05c2 FFF7FEFF 		bl	ArrangeToRight
+ 1119              	.LVL86:
+ 417:main.c        ****                 break;
+ 1120              		.loc 1 417 0
+ 1121 05c6 36E5     		b	.L18
+ 1122              	.L62:
+ 418:main.c        ****                 
+ 419:main.c        ****             case left_turn:                  
+ 420:main.c        ****                 DoLeftTurn();
+ 1123              		.loc 1 420 0
+ 1124 05c8 FFF7FEFF 		bl	DoLeftTurn
+ 1125              	.LVL87:
+ 421:main.c        ****                 break;
+ 1126              		.loc 1 421 0
+ 1127 05cc 33E5     		b	.L18
+ 1128              	.L69:
+ 422:main.c        ****                             
+ 423:main.c        ****             case left_to_straight:
+ 424:main.c        ****                 
+ 425:main.c        ****                 DoLeftToStraight();
+ 1129              		.loc 1 425 0
+ 1130 05ce FFF7FEFF 		bl	DoLeftToStraight
+ 1131              	.LVL88:
+ 426:main.c        ****                 break;
+ 1132              		.loc 1 426 0
+ 1133 05d2 30E5     		b	.L18
+ 1134              	.L76:
+ 1135              		.align	2
+ 1136              	.L75:
+ 1137 05d4 00000000 		.word	.LANCHOR0
+ 1138              	.L64:
+ 427:main.c        ****                 
+ 428:main.c        ****             case right_turn:             
+ 429:main.c        ****                 DoRightTurn();
+ 1139              		.loc 1 429 0
+ 1140 05d8 FFF7FEFF 		bl	DoRightTurn
+ 1141              	.LVL89:
+ 430:main.c        ****                 break;
+ 1142              		.loc 1 430 0
+ 1143 05dc 2BE5     		b	.L18
+ 1144              	.L66:
+ 431:main.c        ****   
+ 432:main.c        ****             case stop:
+ 433:main.c        ****                 Stop();
+ 1145              		.loc 1 433 0
+ 1146 05de FFF7FEFF 		bl	Stop
+ 1147              	.LVL90:
+ 434:main.c        ****                 break;
+ 1148              		.loc 1 434 0
+ 1149 05e2 28E5     		b	.L18
+ 1150              	.LBE8:
+ 1151              		.cfi_endproc
+ 1152              	.LFE65:
+ 1153              		.size	main, .-main
+ 1154              		.global	back
+ 1155              		.global	far_right
+ 1156              		.global	far_left
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 29
+
+
+ 1157              		.global	right
+ 1158              		.global	left
+ 1159              		.global	front
+ 1160              		.global	finishTurn
+ 1161              		.global	rightTurn
+ 1162              		.global	leftTurn
+ 1163              		.global	array6
+ 1164              		.global	array5
+ 1165              		.global	array4
+ 1166              		.global	array3
+ 1167              		.global	array2
+ 1168              		.global	array
+ 1169              		.global	count6
+ 1170              		.global	count5
+ 1171              		.global	count4
+ 1172              		.global	count3
+ 1173              		.global	count2
+ 1174              		.global	count1
+ 1175              		.global	flag6
+ 1176              		.global	flag5
+ 1177              		.global	flag4
+ 1178              		.global	flag3
+ 1179              		.global	flag2
+ 1180              		.global	flag
+ 1181              		.global	rightFlag
+ 1182              		.global	leftFlag
+ 1183              		.global	testArray3
+ 1184              		.global	testArray2
+ 1185              		.global	testArray
+ 1186              		.comm	turnActionArray,2000,4
+ 1187              		.data
+ 1188              		.align	2
+ 1189              		.type	testArray3, %object
+ 1190              		.size	testArray3, 100
+ 1191              	testArray3:
+ 1192 0000 02000000 		.word	2
+ 1193 0004 01000000 		.word	1
+ 1194 0008 01000000 		.word	1
+ 1195 000c 02000000 		.word	2
+ 1196 0010 00000000 		.word	0
+ 1197 0014 03000000 		.word	3
+ 1198 0018 00000000 		.word	0
+ 1199 001c 01000000 		.word	1
+ 1200 0020 01000000 		.word	1
+ 1201 0024 02000000 		.word	2
+ 1202 0028 02000000 		.word	2
+ 1203 002c 01000000 		.word	1
+ 1204 0030 00000000 		.word	0
+ 1205 0034 02000000 		.word	2
+ 1206 0038 01000000 		.word	1
+ 1207 003c 01000000 		.word	1
+ 1208 0040 03000000 		.word	3
+ 1209 0044 02000000 		.word	2
+ 1210 0048 02000000 		.word	2
+ 1211 004c 00000000 		.word	0
+ 1212 0050 02000000 		.word	2
+ 1213 0054 01000000 		.word	1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 30
+
+
+ 1214 0058 00000000 		.word	0
+ 1215 005c 01000000 		.word	1
+ 1216 0060 00000000 		.word	0
+ 1217              		.type	testArray2, %object
+ 1218              		.size	testArray2, 84
+ 1219              	testArray2:
+ 1220 0064 01000000 		.word	1
+ 1221 0068 02000000 		.word	2
+ 1222 006c 00000000 		.word	0
+ 1223 0070 01000000 		.word	1
+ 1224 0074 01000000 		.word	1
+ 1225 0078 02000000 		.word	2
+ 1226 007c 02000000 		.word	2
+ 1227 0080 01000000 		.word	1
+ 1228 0084 01000000 		.word	1
+ 1229 0088 02000000 		.word	2
+ 1230 008c 02000000 		.word	2
+ 1231 0090 01000000 		.word	1
+ 1232 0094 01000000 		.word	1
+ 1233 0098 03000000 		.word	3
+ 1234 009c 02000000 		.word	2
+ 1235 00a0 02000000 		.word	2
+ 1236 00a4 00000000 		.word	0
+ 1237 00a8 02000000 		.word	2
+ 1238 00ac 01000000 		.word	1
+ 1239 00b0 01000000 		.word	1
+ 1240 00b4 01000000 		.word	1
+ 1241              		.type	testArray, %object
+ 1242              		.size	testArray, 56
+ 1243              	testArray:
+ 1244 00b8 03000000 		.word	3
+ 1245 00bc 03000000 		.word	3
+ 1246 00c0 00000000 		.word	0
+ 1247 00c4 01000000 		.word	1
+ 1248 00c8 02000000 		.word	2
+ 1249 00cc 01000000 		.word	1
+ 1250 00d0 01000000 		.word	1
+ 1251 00d4 00000000 		.word	0
+ 1252 00d8 01000000 		.word	1
+ 1253 00dc 02000000 		.word	2
+ 1254 00e0 00000000 		.word	0
+ 1255 00e4 00000000 		.word	0
+ 1256 00e8 02000000 		.word	2
+ 1257 00ec 01000000 		.word	1
+ 1258              		.bss
+ 1259              		.align	2
+ 1260              		.set	.LANCHOR0,. + 0
+ 1261              		.type	count1, %object
+ 1262              		.size	count1, 4
+ 1263              	count1:
+ 1264 0000 00000000 		.space	4
+ 1265              		.type	array, %object
+ 1266              		.size	array, 40
+ 1267              	array:
+ 1268 0004 00000000 		.space	40
+ 1268      00000000 
+ 1268      00000000 
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 31
+
+
+ 1268      00000000 
+ 1268      00000000 
+ 1269              		.type	flag, %object
+ 1270              		.size	flag, 4
+ 1271              	flag:
+ 1272 002c 00000000 		.space	4
+ 1273              		.type	count2, %object
+ 1274              		.size	count2, 4
+ 1275              	count2:
+ 1276 0030 00000000 		.space	4
+ 1277              		.type	array2, %object
+ 1278              		.size	array2, 40
+ 1279              	array2:
+ 1280 0034 00000000 		.space	40
+ 1280      00000000 
+ 1280      00000000 
+ 1280      00000000 
+ 1280      00000000 
+ 1281              		.type	flag2, %object
+ 1282              		.size	flag2, 4
+ 1283              	flag2:
+ 1284 005c 00000000 		.space	4
+ 1285              		.type	count3, %object
+ 1286              		.size	count3, 4
+ 1287              	count3:
+ 1288 0060 00000000 		.space	4
+ 1289              		.type	array3, %object
+ 1290              		.size	array3, 40
+ 1291              	array3:
+ 1292 0064 00000000 		.space	40
+ 1292      00000000 
+ 1292      00000000 
+ 1292      00000000 
+ 1292      00000000 
+ 1293              		.type	flag3, %object
+ 1294              		.size	flag3, 4
+ 1295              	flag3:
+ 1296 008c 00000000 		.space	4
+ 1297              		.type	count4, %object
+ 1298              		.size	count4, 4
+ 1299              	count4:
+ 1300 0090 00000000 		.space	4
+ 1301              		.type	array4, %object
+ 1302              		.size	array4, 40
+ 1303              	array4:
+ 1304 0094 00000000 		.space	40
+ 1304      00000000 
+ 1304      00000000 
+ 1304      00000000 
+ 1304      00000000 
+ 1305              		.type	flag4, %object
+ 1306              		.size	flag4, 4
+ 1307              	flag4:
+ 1308 00bc 00000000 		.space	4
+ 1309              		.type	count5, %object
+ 1310              		.size	count5, 4
+ 1311              	count5:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 32
+
+
+ 1312 00c0 00000000 		.space	4
+ 1313              		.type	array5, %object
+ 1314              		.size	array5, 40
+ 1315              	array5:
+ 1316 00c4 00000000 		.space	40
+ 1316      00000000 
+ 1316      00000000 
+ 1316      00000000 
+ 1316      00000000 
+ 1317              		.type	flag5, %object
+ 1318              		.size	flag5, 4
+ 1319              	flag5:
+ 1320 00ec 00000000 		.space	4
+ 1321              		.type	count6, %object
+ 1322              		.size	count6, 4
+ 1323              	count6:
+ 1324 00f0 00000000 		.space	4
+ 1325              		.type	array6, %object
+ 1326              		.size	array6, 40
+ 1327              	array6:
+ 1328 00f4 00000000 		.space	40
+ 1328      00000000 
+ 1328      00000000 
+ 1328      00000000 
+ 1328      00000000 
+ 1329              		.type	flag6, %object
+ 1330              		.size	flag6, 4
+ 1331              	flag6:
+ 1332 011c 00000000 		.space	4
+ 1333              		.type	front, %object
+ 1334              		.size	front, 4
+ 1335              	front:
+ 1336 0120 00000000 		.space	4
+ 1337              		.type	left, %object
+ 1338              		.size	left, 4
+ 1339              	left:
+ 1340 0124 00000000 		.space	4
+ 1341              		.type	right, %object
+ 1342              		.size	right, 4
+ 1343              	right:
+ 1344 0128 00000000 		.space	4
+ 1345              		.type	far_left, %object
+ 1346              		.size	far_left, 4
+ 1347              	far_left:
+ 1348 012c 00000000 		.space	4
+ 1349              		.type	far_right, %object
+ 1350              		.size	far_right, 4
+ 1351              	far_right:
+ 1352 0130 00000000 		.space	4
+ 1353              		.type	back, %object
+ 1354              		.size	back, 4
+ 1355              	back:
+ 1356 0134 00000000 		.space	4
+ 1357              		.type	rightTurn, %object
+ 1358              		.size	rightTurn, 4
+ 1359              	rightTurn:
+ 1360 0138 00000000 		.space	4
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 33
+
+
+ 1361              		.type	leftTurn, %object
+ 1362              		.size	leftTurn, 4
+ 1363              	leftTurn:
+ 1364 013c 00000000 		.space	4
+ 1365              		.type	leftFlag, %object
+ 1366              		.size	leftFlag, 4
+ 1367              	leftFlag:
+ 1368 0140 00000000 		.space	4
+ 1369              		.type	rightFlag, %object
+ 1370              		.size	rightFlag, 4
+ 1371              	rightFlag:
+ 1372 0144 00000000 		.space	4
+ 1373              		.type	finishTurn, %object
+ 1374              		.size	finishTurn, 4
+ 1375              	finishTurn:
+ 1376 0148 00000000 		.space	4
+ 1377              		.text
+ 1378              	.Letext0:
+ 1379              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1380              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1381              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 1382              		.file 5 "Generated_Source\\PSoC5/ADC_SAR_Seq_1.h"
+ 1383              		.file 6 "functions.h"
+ 1384              		.file 7 "Generated_Source\\PSoC5/isr_EOC_3.h"
+ 1385              		.file 8 "Generated_Source\\PSoC5/USBUART_1.h"
+ 1386              		.file 9 "Generated_Source\\PSoC5/Timer_2.h"
+ 1387              		.file 10 "algorithm.h"
+ 1388              		.file 11 "Generated_Source\\PSoC5/LED_1.h"
+ 1389              		.file 12 "Generated_Source\\PSoC5/LED_2.h"
+ 1390              		.file 13 "Generated_Source\\PSoC5/LED_3.h"
+ 1391              		.section	.debug_info,"",%progbits
+ 1392              	.Ldebug_info0:
+ 1393 0000 59080000 		.4byte	0x859
+ 1394 0004 0400     		.2byte	0x4
+ 1395 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1396 000a 04       		.byte	0x4
+ 1397 000b 01       		.uleb128 0x1
+ 1398 000c E0030000 		.4byte	.LASF89
+ 1399 0010 0C       		.byte	0xc
+ 1400 0011 0E030000 		.4byte	.LASF90
+ 1401 0015 C7000000 		.4byte	.LASF91
+ 1402 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1403 001d 00000000 		.4byte	0
+ 1404 0021 00000000 		.4byte	.Ldebug_line0
+ 1405 0025 02       		.uleb128 0x2
+ 1406 0026 01       		.byte	0x1
+ 1407 0027 06       		.byte	0x6
+ 1408 0028 4A020000 		.4byte	.LASF0
+ 1409 002c 02       		.uleb128 0x2
+ 1410 002d 01       		.byte	0x1
+ 1411 002e 08       		.byte	0x8
+ 1412 002f 26020000 		.4byte	.LASF1
+ 1413 0033 02       		.uleb128 0x2
+ 1414 0034 02       		.byte	0x2
+ 1415 0035 05       		.byte	0x5
+ 1416 0036 BD000000 		.4byte	.LASF2
+ 1417 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 34
+
+
+ 1418 003b 02       		.byte	0x2
+ 1419 003c 07       		.byte	0x7
+ 1420 003d B7020000 		.4byte	.LASF3
+ 1421 0041 03       		.uleb128 0x3
+ 1422 0042 4C030000 		.4byte	.LASF9
+ 1423 0046 02       		.byte	0x2
+ 1424 0047 3F       		.byte	0x3f
+ 1425 0048 4C000000 		.4byte	0x4c
+ 1426 004c 02       		.uleb128 0x2
+ 1427 004d 04       		.byte	0x4
+ 1428 004e 05       		.byte	0x5
+ 1429 004f BE010000 		.4byte	.LASF4
+ 1430 0053 02       		.uleb128 0x2
+ 1431 0054 04       		.byte	0x4
+ 1432 0055 07       		.byte	0x7
+ 1433 0056 15030000 		.4byte	.LASF5
+ 1434 005a 02       		.uleb128 0x2
+ 1435 005b 08       		.byte	0x8
+ 1436 005c 05       		.byte	0x5
+ 1437 005d A3010000 		.4byte	.LASF6
+ 1438 0061 02       		.uleb128 0x2
+ 1439 0062 08       		.byte	0x8
+ 1440 0063 07       		.byte	0x7
+ 1441 0064 5E020000 		.4byte	.LASF7
+ 1442 0068 04       		.uleb128 0x4
+ 1443 0069 04       		.byte	0x4
+ 1444 006a 05       		.byte	0x5
+ 1445 006b 696E7400 		.ascii	"int\000"
+ 1446 006f 02       		.uleb128 0x2
+ 1447 0070 04       		.byte	0x4
+ 1448 0071 07       		.byte	0x7
+ 1449 0072 87020000 		.4byte	.LASF8
+ 1450 0076 03       		.uleb128 0x3
+ 1451 0077 56020000 		.4byte	.LASF10
+ 1452 007b 03       		.byte	0x3
+ 1453 007c 2C       		.byte	0x2c
+ 1454 007d 41000000 		.4byte	0x41
+ 1455 0081 02       		.uleb128 0x2
+ 1456 0082 04       		.byte	0x4
+ 1457 0083 04       		.byte	0x4
+ 1458 0084 91010000 		.4byte	.LASF11
+ 1459 0088 02       		.uleb128 0x2
+ 1460 0089 08       		.byte	0x8
+ 1461 008a 04       		.byte	0x4
+ 1462 008b 27030000 		.4byte	.LASF12
+ 1463 008f 02       		.uleb128 0x2
+ 1464 0090 01       		.byte	0x1
+ 1465 0091 08       		.byte	0x8
+ 1466 0092 D4020000 		.4byte	.LASF13
+ 1467 0096 02       		.uleb128 0x2
+ 1468 0097 08       		.byte	0x8
+ 1469 0098 04       		.byte	0x4
+ 1470 0099 1A020000 		.4byte	.LASF14
+ 1471 009d 02       		.uleb128 0x2
+ 1472 009e 04       		.byte	0x4
+ 1473 009f 07       		.byte	0x7
+ 1474 00a0 9C000000 		.4byte	.LASF15
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 35
+
+
+ 1475 00a4 05       		.uleb128 0x5
+ 1476 00a5 9E020000 		.4byte	.LASF92
+ 1477 00a9 01       		.byte	0x1
+ 1478 00aa 2C000000 		.4byte	0x2c
+ 1479 00ae 01       		.byte	0x1
+ 1480 00af 41       		.byte	0x41
+ 1481 00b0 DF000000 		.4byte	0xdf
+ 1482 00b4 06       		.uleb128 0x6
+ 1483 00b5 10020000 		.4byte	.LASF16
+ 1484 00b9 00       		.byte	0
+ 1485 00ba 06       		.uleb128 0x6
+ 1486 00bb 1E000000 		.4byte	.LASF17
+ 1487 00bf 01       		.byte	0x1
+ 1488 00c0 06       		.uleb128 0x6
+ 1489 00c1 AC030000 		.4byte	.LASF18
+ 1490 00c5 02       		.byte	0x2
+ 1491 00c6 06       		.uleb128 0x6
+ 1492 00c7 CF020000 		.4byte	.LASF19
+ 1493 00cb 03       		.byte	0x3
+ 1494 00cc 06       		.uleb128 0x6
+ 1495 00cd 00000000 		.4byte	.LASF20
+ 1496 00d1 04       		.byte	0x4
+ 1497 00d2 06       		.uleb128 0x6
+ 1498 00d3 96030000 		.4byte	.LASF21
+ 1499 00d7 05       		.byte	0x5
+ 1500 00d8 06       		.uleb128 0x6
+ 1501 00d9 E3010000 		.4byte	.LASF22
+ 1502 00dd 06       		.byte	0x6
+ 1503 00de 00       		.byte	0
+ 1504 00df 07       		.uleb128 0x7
+ 1505 00e0 CA020000 		.4byte	.LASF93
+ 1506 00e4 01       		.byte	0x1
+ 1507 00e5 43       		.byte	0x43
+ 1508 00e6 00000000 		.4byte	.LFB64
+ 1509 00ea 18010000 		.4byte	.LFE64-.LFB64
+ 1510 00ee 01       		.uleb128 0x1
+ 1511 00ef 9C       		.byte	0x9c
+ 1512 00f0 A1020000 		.4byte	0x2a1
+ 1513 00f4 08       		.uleb128 0x8
+ 1514 00f5 0A000000 		.4byte	.LBB2
+ 1515 00f9 18000000 		.4byte	.LBE2-.LBB2
+ 1516 00fd 3C010000 		.4byte	0x13c
+ 1517 0101 09       		.uleb128 0x9
+ 1518 0102 76616C00 		.ascii	"val\000"
+ 1519 0106 01       		.byte	0x1
+ 1520 0107 46       		.byte	0x46
+ 1521 0108 68000000 		.4byte	0x68
+ 1522 010c 00000000 		.4byte	.LLST0
+ 1523 0110 0A       		.uleb128 0xa
+ 1524 0111 DC010000 		.4byte	.LASF23
+ 1525 0115 01       		.byte	0x1
+ 1526 0116 47       		.byte	0x47
+ 1527 0117 68000000 		.4byte	0x68
+ 1528 011b 19000000 		.4byte	.LLST1
+ 1529 011f 0B       		.uleb128 0xb
+ 1530 0120 10000000 		.4byte	.LVL0
+ 1531 0124 8C070000 		.4byte	0x78c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 36
+
+
+ 1532 0128 32010000 		.4byte	0x132
+ 1533 012c 0C       		.uleb128 0xc
+ 1534 012d 01       		.uleb128 0x1
+ 1535 012e 50       		.byte	0x50
+ 1536 012f 01       		.uleb128 0x1
+ 1537 0130 30       		.byte	0x30
+ 1538 0131 00       		.byte	0
+ 1539 0132 0D       		.uleb128 0xd
+ 1540 0133 14000000 		.4byte	.LVL1
+ 1541 0137 97070000 		.4byte	0x797
+ 1542 013b 00       		.byte	0
+ 1543 013c 08       		.uleb128 0x8
+ 1544 013d 32000000 		.4byte	.LBB3
+ 1545 0141 18000000 		.4byte	.LBE3-.LBB3
+ 1546 0145 84010000 		.4byte	0x184
+ 1547 0149 0A       		.uleb128 0xa
+ 1548 014a 94020000 		.4byte	.LASF24
+ 1549 014e 01       		.byte	0x1
+ 1550 014f 50       		.byte	0x50
+ 1551 0150 68000000 		.4byte	0x68
+ 1552 0154 2C000000 		.4byte	.LLST2
+ 1553 0158 0A       		.uleb128 0xa
+ 1554 0159 7E040000 		.4byte	.LASF25
+ 1555 015d 01       		.byte	0x1
+ 1556 015e 51       		.byte	0x51
+ 1557 015f 68000000 		.4byte	0x68
+ 1558 0163 45000000 		.4byte	.LLST3
+ 1559 0167 0B       		.uleb128 0xb
+ 1560 0168 38000000 		.4byte	.LVL3
+ 1561 016c 8C070000 		.4byte	0x78c
+ 1562 0170 7A010000 		.4byte	0x17a
+ 1563 0174 0C       		.uleb128 0xc
+ 1564 0175 01       		.uleb128 0x1
+ 1565 0176 50       		.byte	0x50
+ 1566 0177 01       		.uleb128 0x1
+ 1567 0178 31       		.byte	0x31
+ 1568 0179 00       		.byte	0
+ 1569 017a 0D       		.uleb128 0xd
+ 1570 017b 3C000000 		.4byte	.LVL4
+ 1571 017f 97070000 		.4byte	0x797
+ 1572 0183 00       		.byte	0
+ 1573 0184 08       		.uleb128 0x8
+ 1574 0185 5A000000 		.4byte	.LBB4
+ 1575 0189 18000000 		.4byte	.LBE4-.LBB4
+ 1576 018d CC010000 		.4byte	0x1cc
+ 1577 0191 0A       		.uleb128 0xa
+ 1578 0192 99020000 		.4byte	.LASF26
+ 1579 0196 01       		.byte	0x1
+ 1580 0197 5A       		.byte	0x5a
+ 1581 0198 68000000 		.4byte	0x68
+ 1582 019c 58000000 		.4byte	.LLST4
+ 1583 01a0 0A       		.uleb128 0xa
+ 1584 01a1 86040000 		.4byte	.LASF27
+ 1585 01a5 01       		.byte	0x1
+ 1586 01a6 5B       		.byte	0x5b
+ 1587 01a7 68000000 		.4byte	0x68
+ 1588 01ab 71000000 		.4byte	.LLST5
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 37
+
+
+ 1589 01af 0B       		.uleb128 0xb
+ 1590 01b0 60000000 		.4byte	.LVL6
+ 1591 01b4 8C070000 		.4byte	0x78c
+ 1592 01b8 C2010000 		.4byte	0x1c2
+ 1593 01bc 0C       		.uleb128 0xc
+ 1594 01bd 01       		.uleb128 0x1
+ 1595 01be 50       		.byte	0x50
+ 1596 01bf 01       		.uleb128 0x1
+ 1597 01c0 32       		.byte	0x32
+ 1598 01c1 00       		.byte	0
+ 1599 01c2 0D       		.uleb128 0xd
+ 1600 01c3 64000000 		.4byte	.LVL7
+ 1601 01c7 97070000 		.4byte	0x797
+ 1602 01cb 00       		.byte	0
+ 1603 01cc 08       		.uleb128 0x8
+ 1604 01cd 86000000 		.4byte	.LBB5
+ 1605 01d1 1E000000 		.4byte	.LBE5-.LBB5
+ 1606 01d5 14020000 		.4byte	0x214
+ 1607 01d9 0A       		.uleb128 0xa
+ 1608 01da 6E040000 		.4byte	.LASF28
+ 1609 01de 01       		.byte	0x1
+ 1610 01df 64       		.byte	0x64
+ 1611 01e0 68000000 		.4byte	0x68
+ 1612 01e4 84000000 		.4byte	.LLST6
+ 1613 01e8 0A       		.uleb128 0xa
+ 1614 01e9 8E040000 		.4byte	.LASF29
+ 1615 01ed 01       		.byte	0x1
+ 1616 01ee 65       		.byte	0x65
+ 1617 01ef 68000000 		.4byte	0x68
+ 1618 01f3 9D000000 		.4byte	.LLST7
+ 1619 01f7 0B       		.uleb128 0xb
+ 1620 01f8 8C000000 		.4byte	.LVL9
+ 1621 01fc 8C070000 		.4byte	0x78c
+ 1622 0200 0A020000 		.4byte	0x20a
+ 1623 0204 0C       		.uleb128 0xc
+ 1624 0205 01       		.uleb128 0x1
+ 1625 0206 50       		.byte	0x50
+ 1626 0207 01       		.uleb128 0x1
+ 1627 0208 33       		.byte	0x33
+ 1628 0209 00       		.byte	0
+ 1629 020a 0D       		.uleb128 0xd
+ 1630 020b 90000000 		.4byte	.LVL10
+ 1631 020f 97070000 		.4byte	0x797
+ 1632 0213 00       		.byte	0
+ 1633 0214 08       		.uleb128 0x8
+ 1634 0215 B8000000 		.4byte	.LBB6
+ 1635 0219 1E000000 		.4byte	.LBE6-.LBB6
+ 1636 021d 5C020000 		.4byte	0x25c
+ 1637 0221 0A       		.uleb128 0xa
+ 1638 0222 A5020000 		.4byte	.LASF30
+ 1639 0226 01       		.byte	0x1
+ 1640 0227 6E       		.byte	0x6e
+ 1641 0228 68000000 		.4byte	0x68
+ 1642 022c B0000000 		.4byte	.LLST8
+ 1643 0230 0A       		.uleb128 0xa
+ 1644 0231 96040000 		.4byte	.LASF31
+ 1645 0235 01       		.byte	0x1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 38
+
+
+ 1646 0236 6F       		.byte	0x6f
+ 1647 0237 68000000 		.4byte	0x68
+ 1648 023b C9000000 		.4byte	.LLST9
+ 1649 023f 0B       		.uleb128 0xb
+ 1650 0240 BE000000 		.4byte	.LVL12
+ 1651 0244 8C070000 		.4byte	0x78c
+ 1652 0248 52020000 		.4byte	0x252
+ 1653 024c 0C       		.uleb128 0xc
+ 1654 024d 01       		.uleb128 0x1
+ 1655 024e 50       		.byte	0x50
+ 1656 024f 01       		.uleb128 0x1
+ 1657 0250 34       		.byte	0x34
+ 1658 0251 00       		.byte	0
+ 1659 0252 0D       		.uleb128 0xd
+ 1660 0253 C2000000 		.4byte	.LVL13
+ 1661 0257 97070000 		.4byte	0x797
+ 1662 025b 00       		.byte	0
+ 1663 025c 0E       		.uleb128 0xe
+ 1664 025d EA000000 		.4byte	.LBB7
+ 1665 0261 1E000000 		.4byte	.LBE7-.LBB7
+ 1666 0265 0A       		.uleb128 0xa
+ 1667 0266 AA020000 		.4byte	.LASF32
+ 1668 026a 01       		.byte	0x1
+ 1669 026b 78       		.byte	0x78
+ 1670 026c 68000000 		.4byte	0x68
+ 1671 0270 DC000000 		.4byte	.LLST10
+ 1672 0274 0A       		.uleb128 0xa
+ 1673 0275 9E040000 		.4byte	.LASF33
+ 1674 0279 01       		.byte	0x1
+ 1675 027a 79       		.byte	0x79
+ 1676 027b 68000000 		.4byte	0x68
+ 1677 027f F5000000 		.4byte	.LLST11
+ 1678 0283 0B       		.uleb128 0xb
+ 1679 0284 F0000000 		.4byte	.LVL15
+ 1680 0288 8C070000 		.4byte	0x78c
+ 1681 028c 96020000 		.4byte	0x296
+ 1682 0290 0C       		.uleb128 0xc
+ 1683 0291 01       		.uleb128 0x1
+ 1684 0292 50       		.byte	0x50
+ 1685 0293 01       		.uleb128 0x1
+ 1686 0294 35       		.byte	0x35
+ 1687 0295 00       		.byte	0
+ 1688 0296 0D       		.uleb128 0xd
+ 1689 0297 F4000000 		.4byte	.LVL16
+ 1690 029b 97070000 		.4byte	0x797
+ 1691 029f 00       		.byte	0
+ 1692 02a0 00       		.byte	0
+ 1693 02a1 0F       		.uleb128 0xf
+ 1694 02a2 AF000000 		.4byte	.LASF94
+ 1695 02a6 01       		.byte	0x1
+ 1696 02a7 84       		.byte	0x84
+ 1697 02a8 68000000 		.4byte	0x68
+ 1698 02ac 00000000 		.4byte	.LFB65
+ 1699 02b0 E4050000 		.4byte	.LFE65-.LFB65
+ 1700 02b4 01       		.uleb128 0x1
+ 1701 02b5 9C       		.byte	0x9c
+ 1702 02b6 F9040000 		.4byte	0x4f9
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 39
+
+
+ 1703 02ba 0A       		.uleb128 0xa
+ 1704 02bb 74000000 		.4byte	.LASF34
+ 1705 02bf 01       		.byte	0x1
+ 1706 02c0 86       		.byte	0x86
+ 1707 02c1 68000000 		.4byte	0x68
+ 1708 02c5 08010000 		.4byte	.LLST12
+ 1709 02c9 09       		.uleb128 0x9
+ 1710 02ca 46534D00 		.ascii	"FSM\000"
+ 1711 02ce 01       		.byte	0x1
+ 1712 02cf 98       		.byte	0x98
+ 1713 02d0 A4000000 		.4byte	0xa4
+ 1714 02d4 27010000 		.4byte	.LLST13
+ 1715 02d8 08       		.uleb128 0x8
+ 1716 02d9 36000000 		.4byte	.LBB8
+ 1717 02dd AE050000 		.4byte	.LBE8-.LBB8
+ 1718 02e1 79040000 		.4byte	0x479
+ 1719 02e5 10       		.uleb128 0x10
+ 1720 02e6 AF020000 		.4byte	.LASF35
+ 1721 02ea 01       		.byte	0x1
+ 1722 02eb C8       		.byte	0xc8
+ 1723 02ec 68000000 		.4byte	0x68
+ 1724 02f0 F401     		.2byte	0x1f4
+ 1725 02f2 0A       		.uleb128 0xa
+ 1726 02f3 75020000 		.4byte	.LASF36
+ 1727 02f7 01       		.byte	0x1
+ 1728 02f8 C9       		.byte	0xc9
+ 1729 02f9 68000000 		.4byte	0x68
+ 1730 02fd B9010000 		.4byte	.LLST14
+ 1731 0301 0B       		.uleb128 0xb
+ 1732 0302 4E000000 		.4byte	.LVL28
+ 1733 0306 A2070000 		.4byte	0x7a2
+ 1734 030a 15030000 		.4byte	0x315
+ 1735 030e 0C       		.uleb128 0xc
+ 1736 030f 01       		.uleb128 0x1
+ 1737 0310 50       		.byte	0x50
+ 1738 0311 02       		.uleb128 0x2
+ 1739 0312 78       		.byte	0x78
+ 1740 0313 00       		.sleb128 0
+ 1741 0314 00       		.byte	0
+ 1742 0315 0B       		.uleb128 0xb
+ 1743 0316 5E000000 		.4byte	.LVL29
+ 1744 031a AD070000 		.4byte	0x7ad
+ 1745 031e 35030000 		.4byte	0x335
+ 1746 0322 0C       		.uleb128 0xc
+ 1747 0323 01       		.uleb128 0x1
+ 1748 0324 50       		.byte	0x50
+ 1749 0325 02       		.uleb128 0x2
+ 1750 0326 78       		.byte	0x78
+ 1751 0327 00       		.sleb128 0
+ 1752 0328 0C       		.uleb128 0xc
+ 1753 0329 01       		.uleb128 0x1
+ 1754 032a 51       		.byte	0x51
+ 1755 032b 02       		.uleb128 0x2
+ 1756 032c 77       		.byte	0x77
+ 1757 032d 00       		.sleb128 0
+ 1758 032e 0C       		.uleb128 0xc
+ 1759 032f 01       		.uleb128 0x1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 40
+
+
+ 1760 0330 52       		.byte	0x52
+ 1761 0331 02       		.uleb128 0x2
+ 1762 0332 08       		.byte	0x8
+ 1763 0333 28       		.byte	0x28
+ 1764 0334 00       		.byte	0
+ 1765 0335 0B       		.uleb128 0xb
+ 1766 0336 76000000 		.4byte	.LVL30
+ 1767 033a A2070000 		.4byte	0x7a2
+ 1768 033e 49030000 		.4byte	0x349
+ 1769 0342 0C       		.uleb128 0xc
+ 1770 0343 01       		.uleb128 0x1
+ 1771 0344 50       		.byte	0x50
+ 1772 0345 02       		.uleb128 0x2
+ 1773 0346 78       		.byte	0x78
+ 1774 0347 00       		.sleb128 0
+ 1775 0348 00       		.byte	0
+ 1776 0349 0B       		.uleb128 0xb
+ 1777 034a 86000000 		.4byte	.LVL31
+ 1778 034e AD070000 		.4byte	0x7ad
+ 1779 0352 69030000 		.4byte	0x369
+ 1780 0356 0C       		.uleb128 0xc
+ 1781 0357 01       		.uleb128 0x1
+ 1782 0358 50       		.byte	0x50
+ 1783 0359 02       		.uleb128 0x2
+ 1784 035a 78       		.byte	0x78
+ 1785 035b 00       		.sleb128 0
+ 1786 035c 0C       		.uleb128 0xc
+ 1787 035d 01       		.uleb128 0x1
+ 1788 035e 51       		.byte	0x51
+ 1789 035f 02       		.uleb128 0x2
+ 1790 0360 77       		.byte	0x77
+ 1791 0361 00       		.sleb128 0
+ 1792 0362 0C       		.uleb128 0xc
+ 1793 0363 01       		.uleb128 0x1
+ 1794 0364 52       		.byte	0x52
+ 1795 0365 02       		.uleb128 0x2
+ 1796 0366 08       		.byte	0x8
+ 1797 0367 28       		.byte	0x28
+ 1798 0368 00       		.byte	0
+ 1799 0369 0B       		.uleb128 0xb
+ 1800 036a A2000000 		.4byte	.LVL32
+ 1801 036e A2070000 		.4byte	0x7a2
+ 1802 0372 7D030000 		.4byte	0x37d
+ 1803 0376 0C       		.uleb128 0xc
+ 1804 0377 01       		.uleb128 0x1
+ 1805 0378 50       		.byte	0x50
+ 1806 0379 02       		.uleb128 0x2
+ 1807 037a 78       		.byte	0x78
+ 1808 037b 00       		.sleb128 0
+ 1809 037c 00       		.byte	0
+ 1810 037d 0B       		.uleb128 0xb
+ 1811 037e B2000000 		.4byte	.LVL33
+ 1812 0382 AD070000 		.4byte	0x7ad
+ 1813 0386 9D030000 		.4byte	0x39d
+ 1814 038a 0C       		.uleb128 0xc
+ 1815 038b 01       		.uleb128 0x1
+ 1816 038c 50       		.byte	0x50
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 41
+
+
+ 1817 038d 02       		.uleb128 0x2
+ 1818 038e 78       		.byte	0x78
+ 1819 038f 00       		.sleb128 0
+ 1820 0390 0C       		.uleb128 0xc
+ 1821 0391 01       		.uleb128 0x1
+ 1822 0392 51       		.byte	0x51
+ 1823 0393 02       		.uleb128 0x2
+ 1824 0394 77       		.byte	0x77
+ 1825 0395 00       		.sleb128 0
+ 1826 0396 0C       		.uleb128 0xc
+ 1827 0397 01       		.uleb128 0x1
+ 1828 0398 52       		.byte	0x52
+ 1829 0399 02       		.uleb128 0x2
+ 1830 039a 08       		.byte	0x8
+ 1831 039b 28       		.byte	0x28
+ 1832 039c 00       		.byte	0
+ 1833 039d 0B       		.uleb128 0xb
+ 1834 039e CE000000 		.4byte	.LVL34
+ 1835 03a2 A2070000 		.4byte	0x7a2
+ 1836 03a6 B1030000 		.4byte	0x3b1
+ 1837 03aa 0C       		.uleb128 0xc
+ 1838 03ab 01       		.uleb128 0x1
+ 1839 03ac 50       		.byte	0x50
+ 1840 03ad 02       		.uleb128 0x2
+ 1841 03ae 78       		.byte	0x78
+ 1842 03af 00       		.sleb128 0
+ 1843 03b0 00       		.byte	0
+ 1844 03b1 0B       		.uleb128 0xb
+ 1845 03b2 E0000000 		.4byte	.LVL35
+ 1846 03b6 AD070000 		.4byte	0x7ad
+ 1847 03ba D1030000 		.4byte	0x3d1
+ 1848 03be 0C       		.uleb128 0xc
+ 1849 03bf 01       		.uleb128 0x1
+ 1850 03c0 50       		.byte	0x50
+ 1851 03c1 02       		.uleb128 0x2
+ 1852 03c2 78       		.byte	0x78
+ 1853 03c3 00       		.sleb128 0
+ 1854 03c4 0C       		.uleb128 0xc
+ 1855 03c5 01       		.uleb128 0x1
+ 1856 03c6 51       		.byte	0x51
+ 1857 03c7 02       		.uleb128 0x2
+ 1858 03c8 77       		.byte	0x77
+ 1859 03c9 00       		.sleb128 0
+ 1860 03ca 0C       		.uleb128 0xc
+ 1861 03cb 01       		.uleb128 0x1
+ 1862 03cc 52       		.byte	0x52
+ 1863 03cd 02       		.uleb128 0x2
+ 1864 03ce 08       		.byte	0x8
+ 1865 03cf 28       		.byte	0x28
+ 1866 03d0 00       		.byte	0
+ 1867 03d1 0B       		.uleb128 0xb
+ 1868 03d2 FC000000 		.4byte	.LVL36
+ 1869 03d6 A2070000 		.4byte	0x7a2
+ 1870 03da E5030000 		.4byte	0x3e5
+ 1871 03de 0C       		.uleb128 0xc
+ 1872 03df 01       		.uleb128 0x1
+ 1873 03e0 50       		.byte	0x50
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 42
+
+
+ 1874 03e1 02       		.uleb128 0x2
+ 1875 03e2 78       		.byte	0x78
+ 1876 03e3 00       		.sleb128 0
+ 1877 03e4 00       		.byte	0
+ 1878 03e5 0B       		.uleb128 0xb
+ 1879 03e6 0E010000 		.4byte	.LVL37
+ 1880 03ea AD070000 		.4byte	0x7ad
+ 1881 03ee 05040000 		.4byte	0x405
+ 1882 03f2 0C       		.uleb128 0xc
+ 1883 03f3 01       		.uleb128 0x1
+ 1884 03f4 50       		.byte	0x50
+ 1885 03f5 02       		.uleb128 0x2
+ 1886 03f6 78       		.byte	0x78
+ 1887 03f7 00       		.sleb128 0
+ 1888 03f8 0C       		.uleb128 0xc
+ 1889 03f9 01       		.uleb128 0x1
+ 1890 03fa 51       		.byte	0x51
+ 1891 03fb 02       		.uleb128 0x2
+ 1892 03fc 77       		.byte	0x77
+ 1893 03fd 00       		.sleb128 0
+ 1894 03fe 0C       		.uleb128 0xc
+ 1895 03ff 01       		.uleb128 0x1
+ 1896 0400 52       		.byte	0x52
+ 1897 0401 02       		.uleb128 0x2
+ 1898 0402 08       		.byte	0x8
+ 1899 0403 28       		.byte	0x28
+ 1900 0404 00       		.byte	0
+ 1901 0405 0B       		.uleb128 0xb
+ 1902 0406 2A010000 		.4byte	.LVL38
+ 1903 040a A2070000 		.4byte	0x7a2
+ 1904 040e 19040000 		.4byte	0x419
+ 1905 0412 0C       		.uleb128 0xc
+ 1906 0413 01       		.uleb128 0x1
+ 1907 0414 50       		.byte	0x50
+ 1908 0415 02       		.uleb128 0x2
+ 1909 0416 78       		.byte	0x78
+ 1910 0417 00       		.sleb128 0
+ 1911 0418 00       		.byte	0
+ 1912 0419 0B       		.uleb128 0xb
+ 1913 041a 3C010000 		.4byte	.LVL39
+ 1914 041e AD070000 		.4byte	0x7ad
+ 1915 0422 39040000 		.4byte	0x439
+ 1916 0426 0C       		.uleb128 0xc
+ 1917 0427 01       		.uleb128 0x1
+ 1918 0428 50       		.byte	0x50
+ 1919 0429 02       		.uleb128 0x2
+ 1920 042a 78       		.byte	0x78
+ 1921 042b 00       		.sleb128 0
+ 1922 042c 0C       		.uleb128 0xc
+ 1923 042d 01       		.uleb128 0x1
+ 1924 042e 51       		.byte	0x51
+ 1925 042f 02       		.uleb128 0x2
+ 1926 0430 77       		.byte	0x77
+ 1927 0431 00       		.sleb128 0
+ 1928 0432 0C       		.uleb128 0xc
+ 1929 0433 01       		.uleb128 0x1
+ 1930 0434 52       		.byte	0x52
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 43
+
+
+ 1931 0435 02       		.uleb128 0x2
+ 1932 0436 08       		.byte	0x8
+ 1933 0437 28       		.byte	0x28
+ 1934 0438 00       		.byte	0
+ 1935 0439 0D       		.uleb128 0xd
+ 1936 043a BA050000 		.4byte	.LVL84
+ 1937 043e B6070000 		.4byte	0x7b6
+ 1938 0442 0D       		.uleb128 0xd
+ 1939 0443 C0050000 		.4byte	.LVL85
+ 1940 0447 C1070000 		.4byte	0x7c1
+ 1941 044b 0D       		.uleb128 0xd
+ 1942 044c C6050000 		.4byte	.LVL86
+ 1943 0450 CC070000 		.4byte	0x7cc
+ 1944 0454 0D       		.uleb128 0xd
+ 1945 0455 CC050000 		.4byte	.LVL87
+ 1946 0459 D7070000 		.4byte	0x7d7
+ 1947 045d 0D       		.uleb128 0xd
+ 1948 045e D2050000 		.4byte	.LVL88
+ 1949 0462 E2070000 		.4byte	0x7e2
+ 1950 0466 0D       		.uleb128 0xd
+ 1951 0467 DC050000 		.4byte	.LVL89
+ 1952 046b ED070000 		.4byte	0x7ed
+ 1953 046f 0D       		.uleb128 0xd
+ 1954 0470 E2050000 		.4byte	.LVL90
+ 1955 0474 F8070000 		.4byte	0x7f8
+ 1956 0478 00       		.byte	0
+ 1957 0479 0B       		.uleb128 0xb
+ 1958 047a 0A000000 		.4byte	.LVL19
+ 1959 047e 03080000 		.4byte	0x803
+ 1960 0482 90040000 		.4byte	0x490
+ 1961 0486 0C       		.uleb128 0xc
+ 1962 0487 01       		.uleb128 0x1
+ 1963 0488 50       		.byte	0x50
+ 1964 0489 05       		.uleb128 0x5
+ 1965 048a 03       		.byte	0x3
+ 1966 048b 00000000 		.4byte	eoc1
+ 1967 048f 00       		.byte	0
+ 1968 0490 0B       		.uleb128 0xb
+ 1969 0491 14000000 		.4byte	.LVL20
+ 1970 0495 0E080000 		.4byte	0x80e
+ 1971 0499 A8040000 		.4byte	0x4a8
+ 1972 049d 0C       		.uleb128 0xc
+ 1973 049e 01       		.uleb128 0x1
+ 1974 049f 50       		.byte	0x50
+ 1975 04a0 01       		.uleb128 0x1
+ 1976 04a1 30       		.byte	0x30
+ 1977 04a2 0C       		.uleb128 0xc
+ 1978 04a3 01       		.uleb128 0x1
+ 1979 04a4 51       		.byte	0x51
+ 1980 04a5 01       		.uleb128 0x1
+ 1981 04a6 31       		.byte	0x31
+ 1982 04a7 00       		.byte	0
+ 1983 04a8 0D       		.uleb128 0xd
+ 1984 04a9 18000000 		.4byte	.LVL21
+ 1985 04ad 1A080000 		.4byte	0x81a
+ 1986 04b1 0D       		.uleb128 0xd
+ 1987 04b2 1C000000 		.4byte	.LVL22
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 44
+
+
+ 1988 04b6 25080000 		.4byte	0x825
+ 1989 04ba 0D       		.uleb128 0xd
+ 1990 04bb 20000000 		.4byte	.LVL23
+ 1991 04bf 30080000 		.4byte	0x830
+ 1992 04c3 0B       		.uleb128 0xb
+ 1993 04c4 26000000 		.4byte	.LVL24
+ 1994 04c8 3B080000 		.4byte	0x83b
+ 1995 04cc D6040000 		.4byte	0x4d6
+ 1996 04d0 0C       		.uleb128 0xc
+ 1997 04d1 01       		.uleb128 0x1
+ 1998 04d2 50       		.byte	0x50
+ 1999 04d3 01       		.uleb128 0x1
+ 2000 04d4 31       		.byte	0x31
+ 2001 04d5 00       		.byte	0
+ 2002 04d6 0B       		.uleb128 0xb
+ 2003 04d7 2C000000 		.4byte	.LVL25
+ 2004 04db 46080000 		.4byte	0x846
+ 2005 04df E9040000 		.4byte	0x4e9
+ 2006 04e3 0C       		.uleb128 0xc
+ 2007 04e4 01       		.uleb128 0x1
+ 2008 04e5 50       		.byte	0x50
+ 2009 04e6 01       		.uleb128 0x1
+ 2010 04e7 31       		.byte	0x31
+ 2011 04e8 00       		.byte	0
+ 2012 04e9 11       		.uleb128 0x11
+ 2013 04ea 32000000 		.4byte	.LVL26
+ 2014 04ee 51080000 		.4byte	0x851
+ 2015 04f2 0C       		.uleb128 0xc
+ 2016 04f3 01       		.uleb128 0x1
+ 2017 04f4 50       		.byte	0x50
+ 2018 04f5 01       		.uleb128 0x1
+ 2019 04f6 31       		.byte	0x31
+ 2020 04f7 00       		.byte	0
+ 2021 04f8 00       		.byte	0
+ 2022 04f9 12       		.uleb128 0x12
+ 2023 04fa D3030000 		.4byte	.LASF37
+ 2024 04fe 04       		.byte	0x4
+ 2025 04ff 1207     		.2byte	0x712
+ 2026 0501 05050000 		.4byte	0x505
+ 2027 0505 13       		.uleb128 0x13
+ 2028 0506 76000000 		.4byte	0x76
+ 2029 050a 14       		.uleb128 0x14
+ 2030 050b 68000000 		.4byte	0x68
+ 2031 050f 1B050000 		.4byte	0x51b
+ 2032 0513 15       		.uleb128 0x15
+ 2033 0514 9D000000 		.4byte	0x9d
+ 2034 0518 F301     		.2byte	0x1f3
+ 2035 051a 00       		.byte	0
+ 2036 051b 16       		.uleb128 0x16
+ 2037 051c EF020000 		.4byte	.LASF38
+ 2038 0520 01       		.byte	0x1
+ 2039 0521 14       		.byte	0x14
+ 2040 0522 0A050000 		.4byte	0x50a
+ 2041 0526 05       		.uleb128 0x5
+ 2042 0527 03       		.byte	0x3
+ 2043 0528 00000000 		.4byte	turnActionArray
+ 2044 052c 14       		.uleb128 0x14
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 45
+
+
+ 2045 052d 68000000 		.4byte	0x68
+ 2046 0531 3C050000 		.4byte	0x53c
+ 2047 0535 17       		.uleb128 0x17
+ 2048 0536 9D000000 		.4byte	0x9d
+ 2049 053a 0D       		.byte	0xd
+ 2050 053b 00       		.byte	0
+ 2051 053c 16       		.uleb128 0x16
+ 2052 053d A5000000 		.4byte	.LASF39
+ 2053 0541 01       		.byte	0x1
+ 2054 0542 17       		.byte	0x17
+ 2055 0543 2C050000 		.4byte	0x52c
+ 2056 0547 05       		.uleb128 0x5
+ 2057 0548 03       		.byte	0x3
+ 2058 0549 00000000 		.4byte	testArray
+ 2059 054d 14       		.uleb128 0x14
+ 2060 054e 68000000 		.4byte	0x68
+ 2061 0552 5D050000 		.4byte	0x55d
+ 2062 0556 17       		.uleb128 0x17
+ 2063 0557 9D000000 		.4byte	0x9d
+ 2064 055b 14       		.byte	0x14
+ 2065 055c 00       		.byte	0
+ 2066 055d 16       		.uleb128 0x16
+ 2067 055e 5D010000 		.4byte	.LASF40
+ 2068 0562 01       		.byte	0x1
+ 2069 0563 18       		.byte	0x18
+ 2070 0564 4D050000 		.4byte	0x54d
+ 2071 0568 05       		.uleb128 0x5
+ 2072 0569 03       		.byte	0x3
+ 2073 056a 00000000 		.4byte	testArray2
+ 2074 056e 14       		.uleb128 0x14
+ 2075 056f 68000000 		.4byte	0x68
+ 2076 0573 7E050000 		.4byte	0x57e
+ 2077 0577 17       		.uleb128 0x17
+ 2078 0578 9D000000 		.4byte	0x9d
+ 2079 057c 18       		.byte	0x18
+ 2080 057d 00       		.byte	0
+ 2081 057e 16       		.uleb128 0x16
+ 2082 057f 68010000 		.4byte	.LASF41
+ 2083 0583 01       		.byte	0x1
+ 2084 0584 19       		.byte	0x19
+ 2085 0585 6E050000 		.4byte	0x56e
+ 2086 0589 05       		.uleb128 0x5
+ 2087 058a 03       		.byte	0x3
+ 2088 058b 00000000 		.4byte	testArray3
+ 2089 058f 16       		.uleb128 0x16
+ 2090 0590 15000000 		.4byte	.LASF42
+ 2091 0594 01       		.byte	0x1
+ 2092 0595 1B       		.byte	0x1b
+ 2093 0596 68000000 		.4byte	0x68
+ 2094 059a 05       		.uleb128 0x5
+ 2095 059b 03       		.byte	0x3
+ 2096 059c 00000000 		.4byte	leftFlag
+ 2097 05a0 16       		.uleb128 0x16
+ 2098 05a1 87000000 		.4byte	.LASF43
+ 2099 05a5 01       		.byte	0x1
+ 2100 05a6 1C       		.byte	0x1c
+ 2101 05a7 68000000 		.4byte	0x68
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 46
+
+
+ 2102 05ab 05       		.uleb128 0x5
+ 2103 05ac 03       		.byte	0x3
+ 2104 05ad 00000000 		.4byte	rightFlag
+ 2105 05b1 16       		.uleb128 0x16
+ 2106 05b2 BC030000 		.4byte	.LASF44
+ 2107 05b6 01       		.byte	0x1
+ 2108 05b7 1F       		.byte	0x1f
+ 2109 05b8 68000000 		.4byte	0x68
+ 2110 05bc 05       		.uleb128 0x5
+ 2111 05bd 03       		.byte	0x3
+ 2112 05be 00000000 		.4byte	flag
+ 2113 05c2 16       		.uleb128 0x16
+ 2114 05c3 73010000 		.4byte	.LASF45
+ 2115 05c7 01       		.byte	0x1
+ 2116 05c8 20       		.byte	0x20
+ 2117 05c9 68000000 		.4byte	0x68
+ 2118 05cd 05       		.uleb128 0x5
+ 2119 05ce 03       		.byte	0x3
+ 2120 05cf 00000000 		.4byte	flag2
+ 2121 05d3 16       		.uleb128 0x16
+ 2122 05d4 79010000 		.4byte	.LASF46
+ 2123 05d8 01       		.byte	0x1
+ 2124 05d9 21       		.byte	0x21
+ 2125 05da 68000000 		.4byte	0x68
+ 2126 05de 05       		.uleb128 0x5
+ 2127 05df 03       		.byte	0x3
+ 2128 05e0 00000000 		.4byte	flag3
+ 2129 05e4 16       		.uleb128 0x16
+ 2130 05e5 7F010000 		.4byte	.LASF47
+ 2131 05e9 01       		.byte	0x1
+ 2132 05ea 22       		.byte	0x22
+ 2133 05eb 68000000 		.4byte	0x68
+ 2134 05ef 05       		.uleb128 0x5
+ 2135 05f0 03       		.byte	0x3
+ 2136 05f1 00000000 		.4byte	flag4
+ 2137 05f5 16       		.uleb128 0x16
+ 2138 05f6 85010000 		.4byte	.LASF48
+ 2139 05fa 01       		.byte	0x1
+ 2140 05fb 23       		.byte	0x23
+ 2141 05fc 68000000 		.4byte	0x68
+ 2142 0600 05       		.uleb128 0x5
+ 2143 0601 03       		.byte	0x3
+ 2144 0602 00000000 		.4byte	flag5
+ 2145 0606 16       		.uleb128 0x16
+ 2146 0607 8B010000 		.4byte	.LASF49
+ 2147 060b 01       		.byte	0x1
+ 2148 060c 24       		.byte	0x24
+ 2149 060d 68000000 		.4byte	0x68
+ 2150 0611 05       		.uleb128 0x5
+ 2151 0612 03       		.byte	0x3
+ 2152 0613 00000000 		.4byte	flag6
+ 2153 0617 16       		.uleb128 0x16
+ 2154 0618 3E030000 		.4byte	.LASF50
+ 2155 061c 01       		.byte	0x1
+ 2156 061d 27       		.byte	0x27
+ 2157 061e 68000000 		.4byte	0x68
+ 2158 0622 05       		.uleb128 0x5
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 47
+
+
+ 2159 0623 03       		.byte	0x3
+ 2160 0624 00000000 		.4byte	count1
+ 2161 0628 16       		.uleb128 0x16
+ 2162 0629 45030000 		.4byte	.LASF51
+ 2163 062d 01       		.byte	0x1
+ 2164 062e 28       		.byte	0x28
+ 2165 062f 68000000 		.4byte	0x68
+ 2166 0633 05       		.uleb128 0x5
+ 2167 0634 03       		.byte	0x3
+ 2168 0635 00000000 		.4byte	count2
+ 2169 0639 16       		.uleb128 0x16
+ 2170 063a 66000000 		.4byte	.LASF52
+ 2171 063e 01       		.byte	0x1
+ 2172 063f 29       		.byte	0x29
+ 2173 0640 68000000 		.4byte	0x68
+ 2174 0644 05       		.uleb128 0x5
+ 2175 0645 03       		.byte	0x3
+ 2176 0646 00000000 		.4byte	count3
+ 2177 064a 16       		.uleb128 0x16
+ 2178 064b 6D000000 		.4byte	.LASF53
+ 2179 064f 01       		.byte	0x1
+ 2180 0650 2A       		.byte	0x2a
+ 2181 0651 68000000 		.4byte	0x68
+ 2182 0655 05       		.uleb128 0x5
+ 2183 0656 03       		.byte	0x3
+ 2184 0657 00000000 		.4byte	count4
+ 2185 065b 16       		.uleb128 0x16
+ 2186 065c 62030000 		.4byte	.LASF54
+ 2187 0660 01       		.byte	0x1
+ 2188 0661 2B       		.byte	0x2b
+ 2189 0662 68000000 		.4byte	0x68
+ 2190 0666 05       		.uleb128 0x5
+ 2191 0667 03       		.byte	0x3
+ 2192 0668 00000000 		.4byte	count5
+ 2193 066c 16       		.uleb128 0x16
+ 2194 066d 69030000 		.4byte	.LASF55
+ 2195 0671 01       		.byte	0x1
+ 2196 0672 2C       		.byte	0x2c
+ 2197 0673 68000000 		.4byte	0x68
+ 2198 0677 05       		.uleb128 0x5
+ 2199 0678 03       		.byte	0x3
+ 2200 0679 00000000 		.4byte	count6
+ 2201 067d 14       		.uleb128 0x14
+ 2202 067e 68000000 		.4byte	0x68
+ 2203 0682 8D060000 		.4byte	0x68d
+ 2204 0686 17       		.uleb128 0x17
+ 2205 0687 9D000000 		.4byte	0x9d
+ 2206 068b 09       		.byte	0x9
+ 2207 068c 00       		.byte	0
+ 2208 068d 16       		.uleb128 0x16
+ 2209 068e 2E030000 		.4byte	.LASF56
+ 2210 0692 01       		.byte	0x1
+ 2211 0693 2F       		.byte	0x2f
+ 2212 0694 7D060000 		.4byte	0x67d
+ 2213 0698 05       		.uleb128 0x5
+ 2214 0699 03       		.byte	0x3
+ 2215 069a 00000000 		.4byte	array
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 48
+
+
+ 2216 069e 16       		.uleb128 0x16
+ 2217 069f F4010000 		.4byte	.LASF57
+ 2218 06a3 01       		.byte	0x1
+ 2219 06a4 30       		.byte	0x30
+ 2220 06a5 7D060000 		.4byte	0x67d
+ 2221 06a9 05       		.uleb128 0x5
+ 2222 06aa 03       		.byte	0x3
+ 2223 06ab 00000000 		.4byte	array2
+ 2224 06af 16       		.uleb128 0x16
+ 2225 06b0 FB010000 		.4byte	.LASF58
+ 2226 06b4 01       		.byte	0x1
+ 2227 06b5 31       		.byte	0x31
+ 2228 06b6 7D060000 		.4byte	0x67d
+ 2229 06ba 05       		.uleb128 0x5
+ 2230 06bb 03       		.byte	0x3
+ 2231 06bc 00000000 		.4byte	array3
+ 2232 06c0 16       		.uleb128 0x16
+ 2233 06c1 02020000 		.4byte	.LASF59
+ 2234 06c5 01       		.byte	0x1
+ 2235 06c6 32       		.byte	0x32
+ 2236 06c7 7D060000 		.4byte	0x67d
+ 2237 06cb 05       		.uleb128 0x5
+ 2238 06cc 03       		.byte	0x3
+ 2239 06cd 00000000 		.4byte	array4
+ 2240 06d1 16       		.uleb128 0x16
+ 2241 06d2 09020000 		.4byte	.LASF60
+ 2242 06d6 01       		.byte	0x1
+ 2243 06d7 33       		.byte	0x33
+ 2244 06d8 7D060000 		.4byte	0x67d
+ 2245 06dc 05       		.uleb128 0x5
+ 2246 06dd 03       		.byte	0x3
+ 2247 06de 00000000 		.4byte	array5
+ 2248 06e2 16       		.uleb128 0x16
+ 2249 06e3 B5030000 		.4byte	.LASF61
+ 2250 06e7 01       		.byte	0x1
+ 2251 06e8 34       		.byte	0x34
+ 2252 06e9 7D060000 		.4byte	0x67d
+ 2253 06ed 05       		.uleb128 0x5
+ 2254 06ee 03       		.byte	0x3
+ 2255 06ef 00000000 		.4byte	array6
+ 2256 06f3 16       		.uleb128 0x16
+ 2257 06f4 B4000000 		.4byte	.LASF62
+ 2258 06f8 01       		.byte	0x1
+ 2259 06f9 36       		.byte	0x36
+ 2260 06fa 68000000 		.4byte	0x68
+ 2261 06fe 05       		.uleb128 0x5
+ 2262 06ff 03       		.byte	0x3
+ 2263 0700 00000000 		.4byte	leftTurn
+ 2264 0704 16       		.uleb128 0x16
+ 2265 0705 53010000 		.4byte	.LASF63
+ 2266 0709 01       		.byte	0x1
+ 2267 070a 37       		.byte	0x37
+ 2268 070b 68000000 		.4byte	0x68
+ 2269 070f 05       		.uleb128 0x5
+ 2270 0710 03       		.byte	0x3
+ 2271 0711 00000000 		.4byte	rightTurn
+ 2272 0715 16       		.uleb128 0x16
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 49
+
+
+ 2273 0716 91000000 		.4byte	.LASF64
+ 2274 071a 01       		.byte	0x1
+ 2275 071b 38       		.byte	0x38
+ 2276 071c 68000000 		.4byte	0x68
+ 2277 0720 05       		.uleb128 0x5
+ 2278 0721 03       		.byte	0x3
+ 2279 0722 00000000 		.4byte	finishTurn
+ 2280 0726 16       		.uleb128 0x16
+ 2281 0727 B1010000 		.4byte	.LASF65
+ 2282 072b 01       		.byte	0x1
+ 2283 072c 3A       		.byte	0x3a
+ 2284 072d 68000000 		.4byte	0x68
+ 2285 0731 05       		.uleb128 0x5
+ 2286 0732 03       		.byte	0x3
+ 2287 0733 00000000 		.4byte	front
+ 2288 0737 16       		.uleb128 0x16
+ 2289 0738 E5020000 		.4byte	.LASF66
+ 2290 073c 01       		.byte	0x1
+ 2291 073d 3B       		.byte	0x3b
+ 2292 073e 68000000 		.4byte	0x68
+ 2293 0742 05       		.uleb128 0x5
+ 2294 0743 03       		.byte	0x3
+ 2295 0744 00000000 		.4byte	left
+ 2296 0748 16       		.uleb128 0x16
+ 2297 0749 42000000 		.4byte	.LASF67
+ 2298 074d 01       		.byte	0x1
+ 2299 074e 3C       		.byte	0x3c
+ 2300 074f 68000000 		.4byte	0x68
+ 2301 0753 05       		.uleb128 0x5
+ 2302 0754 03       		.byte	0x3
+ 2303 0755 00000000 		.4byte	right
+ 2304 0759 16       		.uleb128 0x16
+ 2305 075a C7010000 		.4byte	.LASF68
+ 2306 075e 01       		.byte	0x1
+ 2307 075f 3D       		.byte	0x3d
+ 2308 0760 68000000 		.4byte	0x68
+ 2309 0764 05       		.uleb128 0x5
+ 2310 0765 03       		.byte	0x3
+ 2311 0766 00000000 		.4byte	far_left
+ 2312 076a 16       		.uleb128 0x16
+ 2313 076b 34030000 		.4byte	.LASF69
+ 2314 076f 01       		.byte	0x1
+ 2315 0770 3E       		.byte	0x3e
+ 2316 0771 68000000 		.4byte	0x68
+ 2317 0775 05       		.uleb128 0x5
+ 2318 0776 03       		.byte	0x3
+ 2319 0777 00000000 		.4byte	far_right
+ 2320 077b 16       		.uleb128 0x16
+ 2321 077c EA020000 		.4byte	.LASF70
+ 2322 0780 01       		.byte	0x1
+ 2323 0781 3F       		.byte	0x3f
+ 2324 0782 68000000 		.4byte	0x68
+ 2325 0786 05       		.uleb128 0x5
+ 2326 0787 03       		.byte	0x3
+ 2327 0788 00000000 		.4byte	back
+ 2328 078c 18       		.uleb128 0x18
+ 2329 078d 70030000 		.4byte	.LASF71
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 50
+
+
+ 2330 0791 70030000 		.4byte	.LASF71
+ 2331 0795 05       		.byte	0x5
+ 2332 0796 35       		.byte	0x35
+ 2333 0797 18       		.uleb128 0x18
+ 2334 0798 48000000 		.4byte	.LASF72
+ 2335 079c 48000000 		.4byte	.LASF72
+ 2336 07a0 05       		.byte	0x5
+ 2337 07a1 3A       		.byte	0x3a
+ 2338 07a2 18       		.uleb128 0x18
+ 2339 07a3 56030000 		.4byte	.LASF73
+ 2340 07a7 56030000 		.4byte	.LASF73
+ 2341 07ab 06       		.byte	0x6
+ 2342 07ac 15       		.byte	0x15
+ 2343 07ad 19       		.uleb128 0x19
+ 2344 07ae B7010000 		.4byte	.LASF95
+ 2345 07b2 B7010000 		.4byte	.LASF95
+ 2346 07b6 18       		.uleb128 0x18
+ 2347 07b7 73040000 		.4byte	.LASF74
+ 2348 07bb 73040000 		.4byte	.LASF74
+ 2349 07bf 06       		.byte	0x6
+ 2350 07c0 1D       		.byte	0x1d
+ 2351 07c1 18       		.uleb128 0x18
+ 2352 07c2 34000000 		.4byte	.LASF75
+ 2353 07c6 34000000 		.4byte	.LASF75
+ 2354 07ca 06       		.byte	0x6
+ 2355 07cb 1F       		.byte	0x1f
+ 2356 07cc 18       		.uleb128 0x18
+ 2357 07cd FF020000 		.4byte	.LASF76
+ 2358 07d1 FF020000 		.4byte	.LASF76
+ 2359 07d5 06       		.byte	0x6
+ 2360 07d6 20       		.byte	0x20
+ 2361 07d7 18       		.uleb128 0x18
+ 2362 07d8 29000000 		.4byte	.LASF77
+ 2363 07dc 29000000 		.4byte	.LASF77
+ 2364 07e0 06       		.byte	0x6
+ 2365 07e1 1A       		.byte	0x1a
+ 2366 07e2 18       		.uleb128 0x18
+ 2367 07e3 34020000 		.4byte	.LASF78
+ 2368 07e7 34020000 		.4byte	.LASF78
+ 2369 07eb 06       		.byte	0x6
+ 2370 07ec 1B       		.byte	0x1b
+ 2371 07ed 18       		.uleb128 0x18
+ 2372 07ee D9020000 		.4byte	.LASF79
+ 2373 07f2 D9020000 		.4byte	.LASF79
+ 2374 07f6 06       		.byte	0x6
+ 2375 07f7 1C       		.byte	0x1c
+ 2376 07f8 18       		.uleb128 0x18
+ 2377 07f9 45020000 		.4byte	.LASF80
+ 2378 07fd 45020000 		.4byte	.LASF80
+ 2379 0801 06       		.byte	0x6
+ 2380 0802 1E       		.byte	0x1e
+ 2381 0803 18       		.uleb128 0x18
+ 2382 0804 C1030000 		.4byte	.LASF81
+ 2383 0808 C1030000 		.4byte	.LASF81
+ 2384 080c 07       		.byte	0x7
+ 2385 080d 18       		.byte	0x18
+ 2386 080e 1A       		.uleb128 0x1a
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 51
+
+
+ 2387 080f BA040000 		.4byte	.LASF82
+ 2388 0813 BA040000 		.4byte	.LASF82
+ 2389 0817 08       		.byte	0x8
+ 2390 0818 2A01     		.2byte	0x12a
+ 2391 081a 18       		.uleb128 0x18
+ 2392 081b A6040000 		.4byte	.LASF83
+ 2393 081f A6040000 		.4byte	.LASF83
+ 2394 0823 05       		.byte	0x5
+ 2395 0824 31       		.byte	0x31
+ 2396 0825 18       		.uleb128 0x18
+ 2397 0826 45010000 		.4byte	.LASF84
+ 2398 082a 45010000 		.4byte	.LASF84
+ 2399 082e 09       		.byte	0x9
+ 2400 082f 5A       		.byte	0x5a
+ 2401 0830 18       		.uleb128 0x18
+ 2402 0831 34010000 		.4byte	.LASF85
+ 2403 0835 34010000 		.4byte	.LASF85
+ 2404 0839 0A       		.byte	0xa
+ 2405 083a 18       		.byte	0x18
+ 2406 083b 18       		.uleb128 0x18
+ 2407 083c 97010000 		.4byte	.LASF86
+ 2408 0840 97010000 		.4byte	.LASF86
+ 2409 0844 0B       		.byte	0xb
+ 2410 0845 26       		.byte	0x26
+ 2411 0846 18       		.uleb128 0x18
+ 2412 0847 8A030000 		.4byte	.LASF87
+ 2413 084b 8A030000 		.4byte	.LASF87
+ 2414 084f 0C       		.byte	0xc
+ 2415 0850 26       		.byte	0x26
+ 2416 0851 18       		.uleb128 0x18
+ 2417 0852 D0010000 		.4byte	.LASF88
+ 2418 0856 D0010000 		.4byte	.LASF88
+ 2419 085a 0D       		.byte	0xd
+ 2420 085b 26       		.byte	0x26
+ 2421 085c 00       		.byte	0
+ 2422              		.section	.debug_abbrev,"",%progbits
+ 2423              	.Ldebug_abbrev0:
+ 2424 0000 01       		.uleb128 0x1
+ 2425 0001 11       		.uleb128 0x11
+ 2426 0002 01       		.byte	0x1
+ 2427 0003 25       		.uleb128 0x25
+ 2428 0004 0E       		.uleb128 0xe
+ 2429 0005 13       		.uleb128 0x13
+ 2430 0006 0B       		.uleb128 0xb
+ 2431 0007 03       		.uleb128 0x3
+ 2432 0008 0E       		.uleb128 0xe
+ 2433 0009 1B       		.uleb128 0x1b
+ 2434 000a 0E       		.uleb128 0xe
+ 2435 000b 55       		.uleb128 0x55
+ 2436 000c 17       		.uleb128 0x17
+ 2437 000d 11       		.uleb128 0x11
+ 2438 000e 01       		.uleb128 0x1
+ 2439 000f 10       		.uleb128 0x10
+ 2440 0010 17       		.uleb128 0x17
+ 2441 0011 00       		.byte	0
+ 2442 0012 00       		.byte	0
+ 2443 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 52
+
+
+ 2444 0014 24       		.uleb128 0x24
+ 2445 0015 00       		.byte	0
+ 2446 0016 0B       		.uleb128 0xb
+ 2447 0017 0B       		.uleb128 0xb
+ 2448 0018 3E       		.uleb128 0x3e
+ 2449 0019 0B       		.uleb128 0xb
+ 2450 001a 03       		.uleb128 0x3
+ 2451 001b 0E       		.uleb128 0xe
+ 2452 001c 00       		.byte	0
+ 2453 001d 00       		.byte	0
+ 2454 001e 03       		.uleb128 0x3
+ 2455 001f 16       		.uleb128 0x16
+ 2456 0020 00       		.byte	0
+ 2457 0021 03       		.uleb128 0x3
+ 2458 0022 0E       		.uleb128 0xe
+ 2459 0023 3A       		.uleb128 0x3a
+ 2460 0024 0B       		.uleb128 0xb
+ 2461 0025 3B       		.uleb128 0x3b
+ 2462 0026 0B       		.uleb128 0xb
+ 2463 0027 49       		.uleb128 0x49
+ 2464 0028 13       		.uleb128 0x13
+ 2465 0029 00       		.byte	0
+ 2466 002a 00       		.byte	0
+ 2467 002b 04       		.uleb128 0x4
+ 2468 002c 24       		.uleb128 0x24
+ 2469 002d 00       		.byte	0
+ 2470 002e 0B       		.uleb128 0xb
+ 2471 002f 0B       		.uleb128 0xb
+ 2472 0030 3E       		.uleb128 0x3e
+ 2473 0031 0B       		.uleb128 0xb
+ 2474 0032 03       		.uleb128 0x3
+ 2475 0033 08       		.uleb128 0x8
+ 2476 0034 00       		.byte	0
+ 2477 0035 00       		.byte	0
+ 2478 0036 05       		.uleb128 0x5
+ 2479 0037 04       		.uleb128 0x4
+ 2480 0038 01       		.byte	0x1
+ 2481 0039 03       		.uleb128 0x3
+ 2482 003a 0E       		.uleb128 0xe
+ 2483 003b 0B       		.uleb128 0xb
+ 2484 003c 0B       		.uleb128 0xb
+ 2485 003d 49       		.uleb128 0x49
+ 2486 003e 13       		.uleb128 0x13
+ 2487 003f 3A       		.uleb128 0x3a
+ 2488 0040 0B       		.uleb128 0xb
+ 2489 0041 3B       		.uleb128 0x3b
+ 2490 0042 0B       		.uleb128 0xb
+ 2491 0043 01       		.uleb128 0x1
+ 2492 0044 13       		.uleb128 0x13
+ 2493 0045 00       		.byte	0
+ 2494 0046 00       		.byte	0
+ 2495 0047 06       		.uleb128 0x6
+ 2496 0048 28       		.uleb128 0x28
+ 2497 0049 00       		.byte	0
+ 2498 004a 03       		.uleb128 0x3
+ 2499 004b 0E       		.uleb128 0xe
+ 2500 004c 1C       		.uleb128 0x1c
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 53
+
+
+ 2501 004d 0B       		.uleb128 0xb
+ 2502 004e 00       		.byte	0
+ 2503 004f 00       		.byte	0
+ 2504 0050 07       		.uleb128 0x7
+ 2505 0051 2E       		.uleb128 0x2e
+ 2506 0052 01       		.byte	0x1
+ 2507 0053 3F       		.uleb128 0x3f
+ 2508 0054 19       		.uleb128 0x19
+ 2509 0055 03       		.uleb128 0x3
+ 2510 0056 0E       		.uleb128 0xe
+ 2511 0057 3A       		.uleb128 0x3a
+ 2512 0058 0B       		.uleb128 0xb
+ 2513 0059 3B       		.uleb128 0x3b
+ 2514 005a 0B       		.uleb128 0xb
+ 2515 005b 27       		.uleb128 0x27
+ 2516 005c 19       		.uleb128 0x19
+ 2517 005d 11       		.uleb128 0x11
+ 2518 005e 01       		.uleb128 0x1
+ 2519 005f 12       		.uleb128 0x12
+ 2520 0060 06       		.uleb128 0x6
+ 2521 0061 40       		.uleb128 0x40
+ 2522 0062 18       		.uleb128 0x18
+ 2523 0063 9742     		.uleb128 0x2117
+ 2524 0065 19       		.uleb128 0x19
+ 2525 0066 01       		.uleb128 0x1
+ 2526 0067 13       		.uleb128 0x13
+ 2527 0068 00       		.byte	0
+ 2528 0069 00       		.byte	0
+ 2529 006a 08       		.uleb128 0x8
+ 2530 006b 0B       		.uleb128 0xb
+ 2531 006c 01       		.byte	0x1
+ 2532 006d 11       		.uleb128 0x11
+ 2533 006e 01       		.uleb128 0x1
+ 2534 006f 12       		.uleb128 0x12
+ 2535 0070 06       		.uleb128 0x6
+ 2536 0071 01       		.uleb128 0x1
+ 2537 0072 13       		.uleb128 0x13
+ 2538 0073 00       		.byte	0
+ 2539 0074 00       		.byte	0
+ 2540 0075 09       		.uleb128 0x9
+ 2541 0076 34       		.uleb128 0x34
+ 2542 0077 00       		.byte	0
+ 2543 0078 03       		.uleb128 0x3
+ 2544 0079 08       		.uleb128 0x8
+ 2545 007a 3A       		.uleb128 0x3a
+ 2546 007b 0B       		.uleb128 0xb
+ 2547 007c 3B       		.uleb128 0x3b
+ 2548 007d 0B       		.uleb128 0xb
+ 2549 007e 49       		.uleb128 0x49
+ 2550 007f 13       		.uleb128 0x13
+ 2551 0080 02       		.uleb128 0x2
+ 2552 0081 17       		.uleb128 0x17
+ 2553 0082 00       		.byte	0
+ 2554 0083 00       		.byte	0
+ 2555 0084 0A       		.uleb128 0xa
+ 2556 0085 34       		.uleb128 0x34
+ 2557 0086 00       		.byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 54
+
+
+ 2558 0087 03       		.uleb128 0x3
+ 2559 0088 0E       		.uleb128 0xe
+ 2560 0089 3A       		.uleb128 0x3a
+ 2561 008a 0B       		.uleb128 0xb
+ 2562 008b 3B       		.uleb128 0x3b
+ 2563 008c 0B       		.uleb128 0xb
+ 2564 008d 49       		.uleb128 0x49
+ 2565 008e 13       		.uleb128 0x13
+ 2566 008f 02       		.uleb128 0x2
+ 2567 0090 17       		.uleb128 0x17
+ 2568 0091 00       		.byte	0
+ 2569 0092 00       		.byte	0
+ 2570 0093 0B       		.uleb128 0xb
+ 2571 0094 898201   		.uleb128 0x4109
+ 2572 0097 01       		.byte	0x1
+ 2573 0098 11       		.uleb128 0x11
+ 2574 0099 01       		.uleb128 0x1
+ 2575 009a 31       		.uleb128 0x31
+ 2576 009b 13       		.uleb128 0x13
+ 2577 009c 01       		.uleb128 0x1
+ 2578 009d 13       		.uleb128 0x13
+ 2579 009e 00       		.byte	0
+ 2580 009f 00       		.byte	0
+ 2581 00a0 0C       		.uleb128 0xc
+ 2582 00a1 8A8201   		.uleb128 0x410a
+ 2583 00a4 00       		.byte	0
+ 2584 00a5 02       		.uleb128 0x2
+ 2585 00a6 18       		.uleb128 0x18
+ 2586 00a7 9142     		.uleb128 0x2111
+ 2587 00a9 18       		.uleb128 0x18
+ 2588 00aa 00       		.byte	0
+ 2589 00ab 00       		.byte	0
+ 2590 00ac 0D       		.uleb128 0xd
+ 2591 00ad 898201   		.uleb128 0x4109
+ 2592 00b0 00       		.byte	0
+ 2593 00b1 11       		.uleb128 0x11
+ 2594 00b2 01       		.uleb128 0x1
+ 2595 00b3 31       		.uleb128 0x31
+ 2596 00b4 13       		.uleb128 0x13
+ 2597 00b5 00       		.byte	0
+ 2598 00b6 00       		.byte	0
+ 2599 00b7 0E       		.uleb128 0xe
+ 2600 00b8 0B       		.uleb128 0xb
+ 2601 00b9 01       		.byte	0x1
+ 2602 00ba 11       		.uleb128 0x11
+ 2603 00bb 01       		.uleb128 0x1
+ 2604 00bc 12       		.uleb128 0x12
+ 2605 00bd 06       		.uleb128 0x6
+ 2606 00be 00       		.byte	0
+ 2607 00bf 00       		.byte	0
+ 2608 00c0 0F       		.uleb128 0xf
+ 2609 00c1 2E       		.uleb128 0x2e
+ 2610 00c2 01       		.byte	0x1
+ 2611 00c3 3F       		.uleb128 0x3f
+ 2612 00c4 19       		.uleb128 0x19
+ 2613 00c5 03       		.uleb128 0x3
+ 2614 00c6 0E       		.uleb128 0xe
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 55
+
+
+ 2615 00c7 3A       		.uleb128 0x3a
+ 2616 00c8 0B       		.uleb128 0xb
+ 2617 00c9 3B       		.uleb128 0x3b
+ 2618 00ca 0B       		.uleb128 0xb
+ 2619 00cb 27       		.uleb128 0x27
+ 2620 00cc 19       		.uleb128 0x19
+ 2621 00cd 49       		.uleb128 0x49
+ 2622 00ce 13       		.uleb128 0x13
+ 2623 00cf 8701     		.uleb128 0x87
+ 2624 00d1 19       		.uleb128 0x19
+ 2625 00d2 11       		.uleb128 0x11
+ 2626 00d3 01       		.uleb128 0x1
+ 2627 00d4 12       		.uleb128 0x12
+ 2628 00d5 06       		.uleb128 0x6
+ 2629 00d6 40       		.uleb128 0x40
+ 2630 00d7 18       		.uleb128 0x18
+ 2631 00d8 9742     		.uleb128 0x2117
+ 2632 00da 19       		.uleb128 0x19
+ 2633 00db 01       		.uleb128 0x1
+ 2634 00dc 13       		.uleb128 0x13
+ 2635 00dd 00       		.byte	0
+ 2636 00de 00       		.byte	0
+ 2637 00df 10       		.uleb128 0x10
+ 2638 00e0 34       		.uleb128 0x34
+ 2639 00e1 00       		.byte	0
+ 2640 00e2 03       		.uleb128 0x3
+ 2641 00e3 0E       		.uleb128 0xe
+ 2642 00e4 3A       		.uleb128 0x3a
+ 2643 00e5 0B       		.uleb128 0xb
+ 2644 00e6 3B       		.uleb128 0x3b
+ 2645 00e7 0B       		.uleb128 0xb
+ 2646 00e8 49       		.uleb128 0x49
+ 2647 00e9 13       		.uleb128 0x13
+ 2648 00ea 1C       		.uleb128 0x1c
+ 2649 00eb 05       		.uleb128 0x5
+ 2650 00ec 00       		.byte	0
+ 2651 00ed 00       		.byte	0
+ 2652 00ee 11       		.uleb128 0x11
+ 2653 00ef 898201   		.uleb128 0x4109
+ 2654 00f2 01       		.byte	0x1
+ 2655 00f3 11       		.uleb128 0x11
+ 2656 00f4 01       		.uleb128 0x1
+ 2657 00f5 31       		.uleb128 0x31
+ 2658 00f6 13       		.uleb128 0x13
+ 2659 00f7 00       		.byte	0
+ 2660 00f8 00       		.byte	0
+ 2661 00f9 12       		.uleb128 0x12
+ 2662 00fa 34       		.uleb128 0x34
+ 2663 00fb 00       		.byte	0
+ 2664 00fc 03       		.uleb128 0x3
+ 2665 00fd 0E       		.uleb128 0xe
+ 2666 00fe 3A       		.uleb128 0x3a
+ 2667 00ff 0B       		.uleb128 0xb
+ 2668 0100 3B       		.uleb128 0x3b
+ 2669 0101 05       		.uleb128 0x5
+ 2670 0102 49       		.uleb128 0x49
+ 2671 0103 13       		.uleb128 0x13
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 56
+
+
+ 2672 0104 3F       		.uleb128 0x3f
+ 2673 0105 19       		.uleb128 0x19
+ 2674 0106 3C       		.uleb128 0x3c
+ 2675 0107 19       		.uleb128 0x19
+ 2676 0108 00       		.byte	0
+ 2677 0109 00       		.byte	0
+ 2678 010a 13       		.uleb128 0x13
+ 2679 010b 35       		.uleb128 0x35
+ 2680 010c 00       		.byte	0
+ 2681 010d 49       		.uleb128 0x49
+ 2682 010e 13       		.uleb128 0x13
+ 2683 010f 00       		.byte	0
+ 2684 0110 00       		.byte	0
+ 2685 0111 14       		.uleb128 0x14
+ 2686 0112 01       		.uleb128 0x1
+ 2687 0113 01       		.byte	0x1
+ 2688 0114 49       		.uleb128 0x49
+ 2689 0115 13       		.uleb128 0x13
+ 2690 0116 01       		.uleb128 0x1
+ 2691 0117 13       		.uleb128 0x13
+ 2692 0118 00       		.byte	0
+ 2693 0119 00       		.byte	0
+ 2694 011a 15       		.uleb128 0x15
+ 2695 011b 21       		.uleb128 0x21
+ 2696 011c 00       		.byte	0
+ 2697 011d 49       		.uleb128 0x49
+ 2698 011e 13       		.uleb128 0x13
+ 2699 011f 2F       		.uleb128 0x2f
+ 2700 0120 05       		.uleb128 0x5
+ 2701 0121 00       		.byte	0
+ 2702 0122 00       		.byte	0
+ 2703 0123 16       		.uleb128 0x16
+ 2704 0124 34       		.uleb128 0x34
+ 2705 0125 00       		.byte	0
+ 2706 0126 03       		.uleb128 0x3
+ 2707 0127 0E       		.uleb128 0xe
+ 2708 0128 3A       		.uleb128 0x3a
+ 2709 0129 0B       		.uleb128 0xb
+ 2710 012a 3B       		.uleb128 0x3b
+ 2711 012b 0B       		.uleb128 0xb
+ 2712 012c 49       		.uleb128 0x49
+ 2713 012d 13       		.uleb128 0x13
+ 2714 012e 3F       		.uleb128 0x3f
+ 2715 012f 19       		.uleb128 0x19
+ 2716 0130 02       		.uleb128 0x2
+ 2717 0131 18       		.uleb128 0x18
+ 2718 0132 00       		.byte	0
+ 2719 0133 00       		.byte	0
+ 2720 0134 17       		.uleb128 0x17
+ 2721 0135 21       		.uleb128 0x21
+ 2722 0136 00       		.byte	0
+ 2723 0137 49       		.uleb128 0x49
+ 2724 0138 13       		.uleb128 0x13
+ 2725 0139 2F       		.uleb128 0x2f
+ 2726 013a 0B       		.uleb128 0xb
+ 2727 013b 00       		.byte	0
+ 2728 013c 00       		.byte	0
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 57
+
+
+ 2729 013d 18       		.uleb128 0x18
+ 2730 013e 2E       		.uleb128 0x2e
+ 2731 013f 00       		.byte	0
+ 2732 0140 3F       		.uleb128 0x3f
+ 2733 0141 19       		.uleb128 0x19
+ 2734 0142 3C       		.uleb128 0x3c
+ 2735 0143 19       		.uleb128 0x19
+ 2736 0144 6E       		.uleb128 0x6e
+ 2737 0145 0E       		.uleb128 0xe
+ 2738 0146 03       		.uleb128 0x3
+ 2739 0147 0E       		.uleb128 0xe
+ 2740 0148 3A       		.uleb128 0x3a
+ 2741 0149 0B       		.uleb128 0xb
+ 2742 014a 3B       		.uleb128 0x3b
+ 2743 014b 0B       		.uleb128 0xb
+ 2744 014c 00       		.byte	0
+ 2745 014d 00       		.byte	0
+ 2746 014e 19       		.uleb128 0x19
+ 2747 014f 2E       		.uleb128 0x2e
+ 2748 0150 00       		.byte	0
+ 2749 0151 3F       		.uleb128 0x3f
+ 2750 0152 19       		.uleb128 0x19
+ 2751 0153 3C       		.uleb128 0x3c
+ 2752 0154 19       		.uleb128 0x19
+ 2753 0155 6E       		.uleb128 0x6e
+ 2754 0156 0E       		.uleb128 0xe
+ 2755 0157 03       		.uleb128 0x3
+ 2756 0158 0E       		.uleb128 0xe
+ 2757 0159 00       		.byte	0
+ 2758 015a 00       		.byte	0
+ 2759 015b 1A       		.uleb128 0x1a
+ 2760 015c 2E       		.uleb128 0x2e
+ 2761 015d 00       		.byte	0
+ 2762 015e 3F       		.uleb128 0x3f
+ 2763 015f 19       		.uleb128 0x19
+ 2764 0160 3C       		.uleb128 0x3c
+ 2765 0161 19       		.uleb128 0x19
+ 2766 0162 6E       		.uleb128 0x6e
+ 2767 0163 0E       		.uleb128 0xe
+ 2768 0164 03       		.uleb128 0x3
+ 2769 0165 0E       		.uleb128 0xe
+ 2770 0166 3A       		.uleb128 0x3a
+ 2771 0167 0B       		.uleb128 0xb
+ 2772 0168 3B       		.uleb128 0x3b
+ 2773 0169 05       		.uleb128 0x5
+ 2774 016a 00       		.byte	0
+ 2775 016b 00       		.byte	0
+ 2776 016c 00       		.byte	0
+ 2777              		.section	.debug_loc,"",%progbits
+ 2778              	.Ldebug_loc0:
+ 2779              	.LLST0:
+ 2780 0000 10000000 		.4byte	.LVL0
+ 2781 0004 13000000 		.4byte	.LVL1-1
+ 2782 0008 0700     		.2byte	0x7
+ 2783 000a 70       		.byte	0x70
+ 2784 000b 00       		.sleb128 0
+ 2785 000c 40       		.byte	0x40
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 58
+
+
+ 2786 000d 24       		.byte	0x24
+ 2787 000e 40       		.byte	0x40
+ 2788 000f 26       		.byte	0x26
+ 2789 0010 9F       		.byte	0x9f
+ 2790 0011 00000000 		.4byte	0
+ 2791 0015 00000000 		.4byte	0
+ 2792              	.LLST1:
+ 2793 0019 14000000 		.4byte	.LVL1
+ 2794 001d 24000000 		.4byte	.LVL2
+ 2795 0021 0100     		.2byte	0x1
+ 2796 0023 50       		.byte	0x50
+ 2797 0024 00000000 		.4byte	0
+ 2798 0028 00000000 		.4byte	0
+ 2799              	.LLST2:
+ 2800 002c 38000000 		.4byte	.LVL3
+ 2801 0030 3B000000 		.4byte	.LVL4-1
+ 2802 0034 0700     		.2byte	0x7
+ 2803 0036 70       		.byte	0x70
+ 2804 0037 00       		.sleb128 0
+ 2805 0038 40       		.byte	0x40
+ 2806 0039 24       		.byte	0x24
+ 2807 003a 40       		.byte	0x40
+ 2808 003b 26       		.byte	0x26
+ 2809 003c 9F       		.byte	0x9f
+ 2810 003d 00000000 		.4byte	0
+ 2811 0041 00000000 		.4byte	0
+ 2812              	.LLST3:
+ 2813 0045 3C000000 		.4byte	.LVL4
+ 2814 0049 4C000000 		.4byte	.LVL5
+ 2815 004d 0100     		.2byte	0x1
+ 2816 004f 50       		.byte	0x50
+ 2817 0050 00000000 		.4byte	0
+ 2818 0054 00000000 		.4byte	0
+ 2819              	.LLST4:
+ 2820 0058 60000000 		.4byte	.LVL6
+ 2821 005c 63000000 		.4byte	.LVL7-1
+ 2822 0060 0700     		.2byte	0x7
+ 2823 0062 70       		.byte	0x70
+ 2824 0063 00       		.sleb128 0
+ 2825 0064 40       		.byte	0x40
+ 2826 0065 24       		.byte	0x24
+ 2827 0066 40       		.byte	0x40
+ 2828 0067 26       		.byte	0x26
+ 2829 0068 9F       		.byte	0x9f
+ 2830 0069 00000000 		.4byte	0
+ 2831 006d 00000000 		.4byte	0
+ 2832              	.LLST5:
+ 2833 0071 64000000 		.4byte	.LVL7
+ 2834 0075 74000000 		.4byte	.LVL8
+ 2835 0079 0100     		.2byte	0x1
+ 2836 007b 50       		.byte	0x50
+ 2837 007c 00000000 		.4byte	0
+ 2838 0080 00000000 		.4byte	0
+ 2839              	.LLST6:
+ 2840 0084 8C000000 		.4byte	.LVL9
+ 2841 0088 8F000000 		.4byte	.LVL10-1
+ 2842 008c 0700     		.2byte	0x7
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 59
+
+
+ 2843 008e 70       		.byte	0x70
+ 2844 008f 00       		.sleb128 0
+ 2845 0090 40       		.byte	0x40
+ 2846 0091 24       		.byte	0x24
+ 2847 0092 40       		.byte	0x40
+ 2848 0093 26       		.byte	0x26
+ 2849 0094 9F       		.byte	0x9f
+ 2850 0095 00000000 		.4byte	0
+ 2851 0099 00000000 		.4byte	0
+ 2852              	.LLST7:
+ 2853 009d 90000000 		.4byte	.LVL10
+ 2854 00a1 A6000000 		.4byte	.LVL11
+ 2855 00a5 0100     		.2byte	0x1
+ 2856 00a7 50       		.byte	0x50
+ 2857 00a8 00000000 		.4byte	0
+ 2858 00ac 00000000 		.4byte	0
+ 2859              	.LLST8:
+ 2860 00b0 BE000000 		.4byte	.LVL12
+ 2861 00b4 C1000000 		.4byte	.LVL13-1
+ 2862 00b8 0700     		.2byte	0x7
+ 2863 00ba 70       		.byte	0x70
+ 2864 00bb 00       		.sleb128 0
+ 2865 00bc 40       		.byte	0x40
+ 2866 00bd 24       		.byte	0x24
+ 2867 00be 40       		.byte	0x40
+ 2868 00bf 26       		.byte	0x26
+ 2869 00c0 9F       		.byte	0x9f
+ 2870 00c1 00000000 		.4byte	0
+ 2871 00c5 00000000 		.4byte	0
+ 2872              	.LLST9:
+ 2873 00c9 C2000000 		.4byte	.LVL13
+ 2874 00cd D8000000 		.4byte	.LVL14
+ 2875 00d1 0100     		.2byte	0x1
+ 2876 00d3 50       		.byte	0x50
+ 2877 00d4 00000000 		.4byte	0
+ 2878 00d8 00000000 		.4byte	0
+ 2879              	.LLST10:
+ 2880 00dc F0000000 		.4byte	.LVL15
+ 2881 00e0 F3000000 		.4byte	.LVL16-1
+ 2882 00e4 0700     		.2byte	0x7
+ 2883 00e6 70       		.byte	0x70
+ 2884 00e7 00       		.sleb128 0
+ 2885 00e8 40       		.byte	0x40
+ 2886 00e9 24       		.byte	0x24
+ 2887 00ea 40       		.byte	0x40
+ 2888 00eb 26       		.byte	0x26
+ 2889 00ec 9F       		.byte	0x9f
+ 2890 00ed 00000000 		.4byte	0
+ 2891 00f1 00000000 		.4byte	0
+ 2892              	.LLST11:
+ 2893 00f5 F4000000 		.4byte	.LVL16
+ 2894 00f9 0A010000 		.4byte	.LVL17
+ 2895 00fd 0100     		.2byte	0x1
+ 2896 00ff 50       		.byte	0x50
+ 2897 0100 00000000 		.4byte	0
+ 2898 0104 00000000 		.4byte	0
+ 2899              	.LLST12:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 60
+
+
+ 2900 0108 04000000 		.4byte	.LVL18
+ 2901 010c 36000000 		.4byte	.LVL27
+ 2902 0110 0200     		.2byte	0x2
+ 2903 0112 30       		.byte	0x30
+ 2904 0113 9F       		.byte	0x9f
+ 2905 0114 36000000 		.4byte	.LVL27
+ 2906 0118 E4050000 		.4byte	.LFE65
+ 2907 011c 0100     		.2byte	0x1
+ 2908 011e 55       		.byte	0x55
+ 2909 011f 00000000 		.4byte	0
+ 2910 0123 00000000 		.4byte	0
+ 2911              	.LLST13:
+ 2912 0127 32000000 		.4byte	.LVL26
+ 2913 012b 36000000 		.4byte	.LVL27
+ 2914 012f 0200     		.2byte	0x2
+ 2915 0131 32       		.byte	0x32
+ 2916 0132 9F       		.byte	0x9f
+ 2917 0133 36000000 		.4byte	.LVL27
+ 2918 0137 CA030000 		.4byte	.LVL68
+ 2919 013b 0100     		.2byte	0x1
+ 2920 013d 54       		.byte	0x54
+ 2921 013e CA030000 		.4byte	.LVL68
+ 2922 0142 D4030000 		.4byte	.LVL69
+ 2923 0146 0200     		.2byte	0x2
+ 2924 0148 32       		.byte	0x32
+ 2925 0149 9F       		.byte	0x9f
+ 2926 014a D4030000 		.4byte	.LVL69
+ 2927 014e F6030000 		.4byte	.LVL70
+ 2928 0152 0100     		.2byte	0x1
+ 2929 0154 54       		.byte	0x54
+ 2930 0155 F6030000 		.4byte	.LVL70
+ 2931 0159 02040000 		.4byte	.LVL71
+ 2932 015d 0200     		.2byte	0x2
+ 2933 015f 36       		.byte	0x36
+ 2934 0160 9F       		.byte	0x9f
+ 2935 0161 02040000 		.4byte	.LVL71
+ 2936 0165 16040000 		.4byte	.LVL72
+ 2937 0169 0100     		.2byte	0x1
+ 2938 016b 54       		.byte	0x54
+ 2939 016c 16040000 		.4byte	.LVL72
+ 2940 0170 26040000 		.4byte	.LVL73
+ 2941 0174 0200     		.2byte	0x2
+ 2942 0176 32       		.byte	0x32
+ 2943 0177 9F       		.byte	0x9f
+ 2944 0178 26040000 		.4byte	.LVL73
+ 2945 017c 54040000 		.4byte	.LVL74
+ 2946 0180 0100     		.2byte	0x1
+ 2947 0182 54       		.byte	0x54
+ 2948 0183 54040000 		.4byte	.LVL74
+ 2949 0187 64040000 		.4byte	.LVL75
+ 2950 018b 0200     		.2byte	0x2
+ 2951 018d 34       		.byte	0x34
+ 2952 018e 9F       		.byte	0x9f
+ 2953 018f 64040000 		.4byte	.LVL75
+ 2954 0193 92040000 		.4byte	.LVL76
+ 2955 0197 0100     		.2byte	0x1
+ 2956 0199 54       		.byte	0x54
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 61
+
+
+ 2957 019a 92040000 		.4byte	.LVL76
+ 2958 019e A0040000 		.4byte	.LVL77
+ 2959 01a2 0200     		.2byte	0x2
+ 2960 01a4 35       		.byte	0x35
+ 2961 01a5 9F       		.byte	0x9f
+ 2962 01a6 A0040000 		.4byte	.LVL77
+ 2963 01aa E4050000 		.4byte	.LFE65
+ 2964 01ae 0100     		.2byte	0x1
+ 2965 01b0 54       		.byte	0x54
+ 2966 01b1 00000000 		.4byte	0
+ 2967 01b5 00000000 		.4byte	0
+ 2968              	.LLST14:
+ 2969 01b9 42010000 		.4byte	.LVL40
+ 2970 01bd C4010000 		.4byte	.LVL41
+ 2971 01c1 0100     		.2byte	0x1
+ 2972 01c3 51       		.byte	0x51
+ 2973 01c4 C4010000 		.4byte	.LVL41
+ 2974 01c8 CC010000 		.4byte	.LVL42
+ 2975 01cc 0A00     		.2byte	0xa
+ 2976 01ce 75       		.byte	0x75
+ 2977 01cf 00       		.sleb128 0
+ 2978 01d0 32       		.byte	0x32
+ 2979 01d1 24       		.byte	0x24
+ 2980 01d2 03       		.byte	0x3
+ 2981 01d3 00000000 		.4byte	turnActionArray
+ 2982 01d7 22       		.byte	0x22
+ 2983 01d8 CC010000 		.4byte	.LVL42
+ 2984 01dc DA010000 		.4byte	.LVL43
+ 2985 01e0 0100     		.2byte	0x1
+ 2986 01e2 51       		.byte	0x51
+ 2987 01e3 DA010000 		.4byte	.LVL43
+ 2988 01e7 E2010000 		.4byte	.LVL44
+ 2989 01eb 0A00     		.2byte	0xa
+ 2990 01ed 75       		.byte	0x75
+ 2991 01ee 00       		.sleb128 0
+ 2992 01ef 32       		.byte	0x32
+ 2993 01f0 24       		.byte	0x24
+ 2994 01f1 03       		.byte	0x3
+ 2995 01f2 00000000 		.4byte	turnActionArray
+ 2996 01f6 22       		.byte	0x22
+ 2997 01f7 E2010000 		.4byte	.LVL44
+ 2998 01fb 0C020000 		.4byte	.LVL45
+ 2999 01ff 0100     		.2byte	0x1
+ 3000 0201 51       		.byte	0x51
+ 3001 0202 0C020000 		.4byte	.LVL45
+ 3002 0206 14020000 		.4byte	.LVL46
+ 3003 020a 0A00     		.2byte	0xa
+ 3004 020c 75       		.byte	0x75
+ 3005 020d 00       		.sleb128 0
+ 3006 020e 32       		.byte	0x32
+ 3007 020f 24       		.byte	0x24
+ 3008 0210 03       		.byte	0x3
+ 3009 0211 00000000 		.4byte	turnActionArray
+ 3010 0215 22       		.byte	0x22
+ 3011 0216 14020000 		.4byte	.LVL46
+ 3012 021a 18020000 		.4byte	.LVL47
+ 3013 021e 0100     		.2byte	0x1
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 62
+
+
+ 3014 0220 51       		.byte	0x51
+ 3015 0221 18020000 		.4byte	.LVL47
+ 3016 0225 20020000 		.4byte	.LVL48
+ 3017 0229 0A00     		.2byte	0xa
+ 3018 022b 75       		.byte	0x75
+ 3019 022c 00       		.sleb128 0
+ 3020 022d 32       		.byte	0x32
+ 3021 022e 24       		.byte	0x24
+ 3022 022f 03       		.byte	0x3
+ 3023 0230 00000000 		.4byte	turnActionArray
+ 3024 0234 22       		.byte	0x22
+ 3025 0235 20020000 		.4byte	.LVL48
+ 3026 0239 2E020000 		.4byte	.LVL49
+ 3027 023d 0100     		.2byte	0x1
+ 3028 023f 51       		.byte	0x51
+ 3029 0240 2E020000 		.4byte	.LVL49
+ 3030 0244 36020000 		.4byte	.LVL50
+ 3031 0248 0A00     		.2byte	0xa
+ 3032 024a 75       		.byte	0x75
+ 3033 024b 00       		.sleb128 0
+ 3034 024c 32       		.byte	0x32
+ 3035 024d 24       		.byte	0x24
+ 3036 024e 03       		.byte	0x3
+ 3037 024f 00000000 		.4byte	turnActionArray
+ 3038 0253 22       		.byte	0x22
+ 3039 0254 36020000 		.4byte	.LVL50
+ 3040 0258 6A020000 		.4byte	.LVL51
+ 3041 025c 0100     		.2byte	0x1
+ 3042 025e 51       		.byte	0x51
+ 3043 025f 6A020000 		.4byte	.LVL51
+ 3044 0263 72020000 		.4byte	.LVL52
+ 3045 0267 0A00     		.2byte	0xa
+ 3046 0269 75       		.byte	0x75
+ 3047 026a 00       		.sleb128 0
+ 3048 026b 32       		.byte	0x32
+ 3049 026c 24       		.byte	0x24
+ 3050 026d 03       		.byte	0x3
+ 3051 026e 00000000 		.4byte	turnActionArray
+ 3052 0272 22       		.byte	0x22
+ 3053 0273 72020000 		.4byte	.LVL52
+ 3054 0277 80020000 		.4byte	.LVL53
+ 3055 027b 0100     		.2byte	0x1
+ 3056 027d 51       		.byte	0x51
+ 3057 027e 80020000 		.4byte	.LVL53
+ 3058 0282 88020000 		.4byte	.LVL54
+ 3059 0286 0A00     		.2byte	0xa
+ 3060 0288 75       		.byte	0x75
+ 3061 0289 00       		.sleb128 0
+ 3062 028a 32       		.byte	0x32
+ 3063 028b 24       		.byte	0x24
+ 3064 028c 03       		.byte	0x3
+ 3065 028d 00000000 		.4byte	turnActionArray
+ 3066 0291 22       		.byte	0x22
+ 3067 0292 88020000 		.4byte	.LVL54
+ 3068 0296 AC020000 		.4byte	.LVL55
+ 3069 029a 0100     		.2byte	0x1
+ 3070 029c 51       		.byte	0x51
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 63
+
+
+ 3071 029d AC020000 		.4byte	.LVL55
+ 3072 02a1 B4020000 		.4byte	.LVL56
+ 3073 02a5 0A00     		.2byte	0xa
+ 3074 02a7 75       		.byte	0x75
+ 3075 02a8 00       		.sleb128 0
+ 3076 02a9 32       		.byte	0x32
+ 3077 02aa 24       		.byte	0x24
+ 3078 02ab 03       		.byte	0x3
+ 3079 02ac 00000000 		.4byte	turnActionArray
+ 3080 02b0 22       		.byte	0x22
+ 3081 02b1 B4020000 		.4byte	.LVL56
+ 3082 02b5 B8020000 		.4byte	.LVL57
+ 3083 02b9 0100     		.2byte	0x1
+ 3084 02bb 51       		.byte	0x51
+ 3085 02bc B8020000 		.4byte	.LVL57
+ 3086 02c0 C0020000 		.4byte	.LVL58
+ 3087 02c4 0A00     		.2byte	0xa
+ 3088 02c6 75       		.byte	0x75
+ 3089 02c7 00       		.sleb128 0
+ 3090 02c8 32       		.byte	0x32
+ 3091 02c9 24       		.byte	0x24
+ 3092 02ca 03       		.byte	0x3
+ 3093 02cb 00000000 		.4byte	turnActionArray
+ 3094 02cf 22       		.byte	0x22
+ 3095 02d0 C0020000 		.4byte	.LVL58
+ 3096 02d4 CE020000 		.4byte	.LVL59
+ 3097 02d8 0100     		.2byte	0x1
+ 3098 02da 51       		.byte	0x51
+ 3099 02db CE020000 		.4byte	.LVL59
+ 3100 02df D6020000 		.4byte	.LVL60
+ 3101 02e3 0A00     		.2byte	0xa
+ 3102 02e5 75       		.byte	0x75
+ 3103 02e6 00       		.sleb128 0
+ 3104 02e7 32       		.byte	0x32
+ 3105 02e8 24       		.byte	0x24
+ 3106 02e9 03       		.byte	0x3
+ 3107 02ea 00000000 		.4byte	turnActionArray
+ 3108 02ee 22       		.byte	0x22
+ 3109 02ef D6020000 		.4byte	.LVL60
+ 3110 02f3 30030000 		.4byte	.LVL61
+ 3111 02f7 0100     		.2byte	0x1
+ 3112 02f9 51       		.byte	0x51
+ 3113 02fa 30030000 		.4byte	.LVL61
+ 3114 02fe 38030000 		.4byte	.LVL62
+ 3115 0302 0A00     		.2byte	0xa
+ 3116 0304 75       		.byte	0x75
+ 3117 0305 00       		.sleb128 0
+ 3118 0306 32       		.byte	0x32
+ 3119 0307 24       		.byte	0x24
+ 3120 0308 03       		.byte	0x3
+ 3121 0309 00000000 		.4byte	turnActionArray
+ 3122 030d 22       		.byte	0x22
+ 3123 030e 38030000 		.4byte	.LVL62
+ 3124 0312 76030000 		.4byte	.LVL63
+ 3125 0316 0100     		.2byte	0x1
+ 3126 0318 51       		.byte	0x51
+ 3127 0319 76030000 		.4byte	.LVL63
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 64
+
+
+ 3128 031d 7E030000 		.4byte	.LVL64
+ 3129 0321 0A00     		.2byte	0xa
+ 3130 0323 75       		.byte	0x75
+ 3131 0324 00       		.sleb128 0
+ 3132 0325 32       		.byte	0x32
+ 3133 0326 24       		.byte	0x24
+ 3134 0327 03       		.byte	0x3
+ 3135 0328 00000000 		.4byte	turnActionArray
+ 3136 032c 22       		.byte	0x22
+ 3137 032d 7E030000 		.4byte	.LVL64
+ 3138 0331 86030000 		.4byte	.LVL65
+ 3139 0335 0100     		.2byte	0x1
+ 3140 0337 51       		.byte	0x51
+ 3141 0338 86030000 		.4byte	.LVL65
+ 3142 033c 8E030000 		.4byte	.LVL66
+ 3143 0340 0A00     		.2byte	0xa
+ 3144 0342 75       		.byte	0x75
+ 3145 0343 00       		.sleb128 0
+ 3146 0344 32       		.byte	0x32
+ 3147 0345 24       		.byte	0x24
+ 3148 0346 03       		.byte	0x3
+ 3149 0347 00000000 		.4byte	turnActionArray
+ 3150 034b 22       		.byte	0x22
+ 3151 034c 8E030000 		.4byte	.LVL66
+ 3152 0350 9C030000 		.4byte	.LVL67
+ 3153 0354 0100     		.2byte	0x1
+ 3154 0356 51       		.byte	0x51
+ 3155 0357 9C030000 		.4byte	.LVL67
+ 3156 035b CA030000 		.4byte	.LVL68
+ 3157 035f 0A00     		.2byte	0xa
+ 3158 0361 75       		.byte	0x75
+ 3159 0362 00       		.sleb128 0
+ 3160 0363 32       		.byte	0x32
+ 3161 0364 24       		.byte	0x24
+ 3162 0365 03       		.byte	0x3
+ 3163 0366 00000000 		.4byte	turnActionArray
+ 3164 036a 22       		.byte	0x22
+ 3165 036b CA030000 		.4byte	.LVL68
+ 3166 036f D4030000 		.4byte	.LVL69
+ 3167 0373 0A00     		.2byte	0xa
+ 3168 0375 75       		.byte	0x75
+ 3169 0376 7F       		.sleb128 -1
+ 3170 0377 32       		.byte	0x32
+ 3171 0378 24       		.byte	0x24
+ 3172 0379 03       		.byte	0x3
+ 3173 037a 00000000 		.4byte	turnActionArray
+ 3174 037e 22       		.byte	0x22
+ 3175 037f 26040000 		.4byte	.LVL73
+ 3176 0383 A0040000 		.4byte	.LVL77
+ 3177 0387 0A00     		.2byte	0xa
+ 3178 0389 75       		.byte	0x75
+ 3179 038a 00       		.sleb128 0
+ 3180 038b 32       		.byte	0x32
+ 3181 038c 24       		.byte	0x24
+ 3182 038d 03       		.byte	0x3
+ 3183 038e 00000000 		.4byte	turnActionArray
+ 3184 0392 22       		.byte	0x22
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 65
+
+
+ 3185 0393 00000000 		.4byte	0
+ 3186 0397 00000000 		.4byte	0
+ 3187              		.section	.debug_aranges,"",%progbits
+ 3188 0000 24000000 		.4byte	0x24
+ 3189 0004 0200     		.2byte	0x2
+ 3190 0006 00000000 		.4byte	.Ldebug_info0
+ 3191 000a 04       		.byte	0x4
+ 3192 000b 00       		.byte	0
+ 3193 000c 0000     		.2byte	0
+ 3194 000e 0000     		.2byte	0
+ 3195 0010 00000000 		.4byte	.LFB64
+ 3196 0014 18010000 		.4byte	.LFE64-.LFB64
+ 3197 0018 00000000 		.4byte	.LFB65
+ 3198 001c E4050000 		.4byte	.LFE65-.LFB65
+ 3199 0020 00000000 		.4byte	0
+ 3200 0024 00000000 		.4byte	0
+ 3201              		.section	.debug_ranges,"",%progbits
+ 3202              	.Ldebug_ranges0:
+ 3203 0000 00000000 		.4byte	.LFB64
+ 3204 0004 18010000 		.4byte	.LFE64
+ 3205 0008 00000000 		.4byte	.LFB65
+ 3206 000c E4050000 		.4byte	.LFE65
+ 3207 0010 00000000 		.4byte	0
+ 3208 0014 00000000 		.4byte	0
+ 3209              		.section	.debug_line,"",%progbits
+ 3210              	.Ldebug_line0:
+ 3211 0000 D4030000 		.section	.debug_str,"MS",%progbits,1
+ 3211      0200BC01 
+ 3211      00000201 
+ 3211      FB0E0D00 
+ 3211      01010101 
+ 3212              	.LASF20:
+ 3213 0000 73747261 		.ascii	"straight_left_adjust\000"
+ 3213      69676874 
+ 3213      5F6C6566 
+ 3213      745F6164 
+ 3213      6A757374 
+ 3214              	.LASF42:
+ 3215 0015 6C656674 		.ascii	"leftFlag\000"
+ 3215      466C6167 
+ 3215      00
+ 3216              	.LASF17:
+ 3217 001e 72696768 		.ascii	"right_turn\000"
+ 3217      745F7475 
+ 3217      726E00
+ 3218              	.LASF77:
+ 3219 0029 446F4C65 		.ascii	"DoLeftTurn\000"
+ 3219      66745475 
+ 3219      726E00
+ 3220              	.LASF75:
+ 3221 0034 41727261 		.ascii	"ArrangeToLeft\000"
+ 3221      6E676554 
+ 3221      6F4C6566 
+ 3221      7400
+ 3222              	.LASF67:
+ 3223 0042 72696768 		.ascii	"right\000"
+ 3223      7400
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 66
+
+
+ 3224              	.LASF72:
+ 3225 0048 4144435F 		.ascii	"ADC_SAR_Seq_1_CountsTo_mVolts\000"
+ 3225      5341525F 
+ 3225      5365715F 
+ 3225      315F436F 
+ 3225      756E7473 
+ 3226              	.LASF52:
+ 3227 0066 636F756E 		.ascii	"count3\000"
+ 3227      743300
+ 3228              	.LASF53:
+ 3229 006d 636F756E 		.ascii	"count4\000"
+ 3229      743400
+ 3230              	.LASF34:
+ 3231 0074 63757272 		.ascii	"currentActionIndex\000"
+ 3231      656E7441 
+ 3231      6374696F 
+ 3231      6E496E64 
+ 3231      657800
+ 3232              	.LASF43:
+ 3233 0087 72696768 		.ascii	"rightFlag\000"
+ 3233      74466C61 
+ 3233      6700
+ 3234              	.LASF64:
+ 3235 0091 66696E69 		.ascii	"finishTurn\000"
+ 3235      73685475 
+ 3235      726E00
+ 3236              	.LASF15:
+ 3237 009c 73697A65 		.ascii	"sizetype\000"
+ 3237      74797065 
+ 3237      00
+ 3238              	.LASF39:
+ 3239 00a5 74657374 		.ascii	"testArray\000"
+ 3239      41727261 
+ 3239      7900
+ 3240              	.LASF94:
+ 3241 00af 6D61696E 		.ascii	"main\000"
+ 3241      00
+ 3242              	.LASF62:
+ 3243 00b4 6C656674 		.ascii	"leftTurn\000"
+ 3243      5475726E 
+ 3243      00
+ 3244              	.LASF2:
+ 3245 00bd 73686F72 		.ascii	"short int\000"
+ 3245      7420696E 
+ 3245      7400
+ 3246              	.LASF91:
+ 3247 00c7 433A5C55 		.ascii	"C:\\Users\\Francis Cho\\Documents\\School\\Path_Fin"
+ 3247      73657273 
+ 3247      5C467261 
+ 3247      6E636973 
+ 3247      2043686F 
+ 3248 00f5 64696E67 		.ascii	"ding_Robot\\PathFindingRobot_Workspace\\Path_Findin"
+ 3248      5F526F62 
+ 3248      6F745C50 
+ 3248      61746846 
+ 3248      696E6469 
+ 3249 0126 675F526F 		.ascii	"g_Robot.cydsn\000"
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 67
+
+
+ 3249      626F742E 
+ 3249      63796473 
+ 3249      6E00
+ 3250              	.LASF85:
+ 3251 0134 66696E64 		.ascii	"findshortestPath\000"
+ 3251      73686F72 
+ 3251      74657374 
+ 3251      50617468 
+ 3251      00
+ 3252              	.LASF84:
+ 3253 0145 54696D65 		.ascii	"Timer_2_Start\000"
+ 3253      725F325F 
+ 3253      53746172 
+ 3253      7400
+ 3254              	.LASF63:
+ 3255 0153 72696768 		.ascii	"rightTurn\000"
+ 3255      74547572 
+ 3255      6E00
+ 3256              	.LASF40:
+ 3257 015d 74657374 		.ascii	"testArray2\000"
+ 3257      41727261 
+ 3257      793200
+ 3258              	.LASF41:
+ 3259 0168 74657374 		.ascii	"testArray3\000"
+ 3259      41727261 
+ 3259      793300
+ 3260              	.LASF45:
+ 3261 0173 666C6167 		.ascii	"flag2\000"
+ 3261      3200
+ 3262              	.LASF46:
+ 3263 0179 666C6167 		.ascii	"flag3\000"
+ 3263      3300
+ 3264              	.LASF47:
+ 3265 017f 666C6167 		.ascii	"flag4\000"
+ 3265      3400
+ 3266              	.LASF48:
+ 3267 0185 666C6167 		.ascii	"flag5\000"
+ 3267      3500
+ 3268              	.LASF49:
+ 3269 018b 666C6167 		.ascii	"flag6\000"
+ 3269      3600
+ 3270              	.LASF11:
+ 3271 0191 666C6F61 		.ascii	"float\000"
+ 3271      7400
+ 3272              	.LASF86:
+ 3273 0197 4C45445F 		.ascii	"LED_1_Write\000"
+ 3273      315F5772 
+ 3273      69746500 
+ 3274              	.LASF6:
+ 3275 01a3 6C6F6E67 		.ascii	"long long int\000"
+ 3275      206C6F6E 
+ 3275      6720696E 
+ 3275      7400
+ 3276              	.LASF65:
+ 3277 01b1 66726F6E 		.ascii	"front\000"
+ 3277      7400
+ 3278              	.LASF95:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 68
+
+
+ 3279 01b7 6D656D73 		.ascii	"memset\000"
+ 3279      657400
+ 3280              	.LASF4:
+ 3281 01be 6C6F6E67 		.ascii	"long int\000"
+ 3281      20696E74 
+ 3281      00
+ 3282              	.LASF68:
+ 3283 01c7 6661725F 		.ascii	"far_left\000"
+ 3283      6C656674 
+ 3283      00
+ 3284              	.LASF88:
+ 3285 01d0 4C45445F 		.ascii	"LED_3_Write\000"
+ 3285      335F5772 
+ 3285      69746500 
+ 3286              	.LASF23:
+ 3287 01dc 6D566F6C 		.ascii	"mVolts\000"
+ 3287      747300
+ 3288              	.LASF22:
+ 3289 01e3 6C656674 		.ascii	"left_to_straight\000"
+ 3289      5F746F5F 
+ 3289      73747261 
+ 3289      69676874 
+ 3289      00
+ 3290              	.LASF57:
+ 3291 01f4 61727261 		.ascii	"array2\000"
+ 3291      793200
+ 3292              	.LASF58:
+ 3293 01fb 61727261 		.ascii	"array3\000"
+ 3293      793300
+ 3294              	.LASF59:
+ 3295 0202 61727261 		.ascii	"array4\000"
+ 3295      793400
+ 3296              	.LASF60:
+ 3297 0209 61727261 		.ascii	"array5\000"
+ 3297      793500
+ 3298              	.LASF16:
+ 3299 0210 6C656674 		.ascii	"left_turn\000"
+ 3299      5F747572 
+ 3299      6E00
+ 3300              	.LASF14:
+ 3301 021a 6C6F6E67 		.ascii	"long double\000"
+ 3301      20646F75 
+ 3301      626C6500 
+ 3302              	.LASF1:
+ 3303 0226 756E7369 		.ascii	"unsigned char\000"
+ 3303      676E6564 
+ 3303      20636861 
+ 3303      7200
+ 3304              	.LASF78:
+ 3305 0234 446F4C65 		.ascii	"DoLeftToStraight\000"
+ 3305      6674546F 
+ 3305      53747261 
+ 3305      69676874 
+ 3305      00
+ 3306              	.LASF80:
+ 3307 0245 53746F70 		.ascii	"Stop\000"
+ 3307      00
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 69
+
+
+ 3308              	.LASF0:
+ 3309 024a 7369676E 		.ascii	"signed char\000"
+ 3309      65642063 
+ 3309      68617200 
+ 3310              	.LASF10:
+ 3311 0256 696E7433 		.ascii	"int32_t\000"
+ 3311      325F7400 
+ 3312              	.LASF7:
+ 3313 025e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3313      206C6F6E 
+ 3313      6720756E 
+ 3313      7369676E 
+ 3313      65642069 
+ 3314              	.LASF36:
+ 3315 0275 63757272 		.ascii	"currentTurnAction\000"
+ 3315      656E7454 
+ 3315      75726E41 
+ 3315      6374696F 
+ 3315      6E00
+ 3316              	.LASF8:
+ 3317 0287 756E7369 		.ascii	"unsigned int\000"
+ 3317      676E6564 
+ 3317      20696E74 
+ 3317      00
+ 3318              	.LASF24:
+ 3319 0294 76616C32 		.ascii	"val2\000"
+ 3319      00
+ 3320              	.LASF26:
+ 3321 0299 76616C33 		.ascii	"val3\000"
+ 3321      00
+ 3322              	.LASF92:
+ 3323 029e 53746174 		.ascii	"States\000"
+ 3323      657300
+ 3324              	.LASF30:
+ 3325 02a5 76616C35 		.ascii	"val5\000"
+ 3325      00
+ 3326              	.LASF32:
+ 3327 02aa 76616C36 		.ascii	"val6\000"
+ 3327      00
+ 3328              	.LASF35:
+ 3329 02af 636D705F 		.ascii	"cmp_val\000"
+ 3329      76616C00 
+ 3330              	.LASF3:
+ 3331 02b7 73686F72 		.ascii	"short unsigned int\000"
+ 3331      7420756E 
+ 3331      7369676E 
+ 3331      65642069 
+ 3331      6E7400
+ 3332              	.LASF93:
+ 3333 02ca 656F6331 		.ascii	"eoc1\000"
+ 3333      00
+ 3334              	.LASF19:
+ 3335 02cf 73746F70 		.ascii	"stop\000"
+ 3335      00
+ 3336              	.LASF13:
+ 3337 02d4 63686172 		.ascii	"char\000"
+ 3337      00
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 70
+
+
+ 3338              	.LASF79:
+ 3339 02d9 446F5269 		.ascii	"DoRightTurn\000"
+ 3339      67687454 
+ 3339      75726E00 
+ 3340              	.LASF66:
+ 3341 02e5 6C656674 		.ascii	"left\000"
+ 3341      00
+ 3342              	.LASF70:
+ 3343 02ea 6261636B 		.ascii	"back\000"
+ 3343      00
+ 3344              	.LASF38:
+ 3345 02ef 7475726E 		.ascii	"turnActionArray\000"
+ 3345      41637469 
+ 3345      6F6E4172 
+ 3345      72617900 
+ 3346              	.LASF76:
+ 3347 02ff 41727261 		.ascii	"ArrangeToRight\000"
+ 3347      6E676554 
+ 3347      6F526967 
+ 3347      687400
+ 3348              	.LASF90:
+ 3349 030e 6D61696E 		.ascii	"main.c\000"
+ 3349      2E6300
+ 3350              	.LASF5:
+ 3351 0315 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3351      20756E73 
+ 3351      69676E65 
+ 3351      6420696E 
+ 3351      7400
+ 3352              	.LASF12:
+ 3353 0327 646F7562 		.ascii	"double\000"
+ 3353      6C6500
+ 3354              	.LASF56:
+ 3355 032e 61727261 		.ascii	"array\000"
+ 3355      7900
+ 3356              	.LASF69:
+ 3357 0334 6661725F 		.ascii	"far_right\000"
+ 3357      72696768 
+ 3357      7400
+ 3358              	.LASF50:
+ 3359 033e 636F756E 		.ascii	"count1\000"
+ 3359      743100
+ 3360              	.LASF51:
+ 3361 0345 636F756E 		.ascii	"count2\000"
+ 3361      743200
+ 3362              	.LASF9:
+ 3363 034c 5F5F696E 		.ascii	"__int32_t\000"
+ 3363      7433325F 
+ 3363      7400
+ 3364              	.LASF73:
+ 3365 0356 66696E64 		.ascii	"findMaximum\000"
+ 3365      4D617869 
+ 3365      6D756D00 
+ 3366              	.LASF54:
+ 3367 0362 636F756E 		.ascii	"count5\000"
+ 3367      743500
+ 3368              	.LASF55:
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 71
+
+
+ 3369 0369 636F756E 		.ascii	"count6\000"
+ 3369      743600
+ 3370              	.LASF71:
+ 3371 0370 4144435F 		.ascii	"ADC_SAR_Seq_1_GetResult16\000"
+ 3371      5341525F 
+ 3371      5365715F 
+ 3371      315F4765 
+ 3371      74526573 
+ 3372              	.LASF87:
+ 3373 038a 4C45445F 		.ascii	"LED_2_Write\000"
+ 3373      325F5772 
+ 3373      69746500 
+ 3374              	.LASF21:
+ 3375 0396 73747261 		.ascii	"straight_right_adjust\000"
+ 3375      69676874 
+ 3375      5F726967 
+ 3375      68745F61 
+ 3375      646A7573 
+ 3376              	.LASF18:
+ 3377 03ac 73747261 		.ascii	"straight\000"
+ 3377      69676874 
+ 3377      00
+ 3378              	.LASF61:
+ 3379 03b5 61727261 		.ascii	"array6\000"
+ 3379      793600
+ 3380              	.LASF44:
+ 3381 03bc 666C6167 		.ascii	"flag\000"
+ 3381      00
+ 3382              	.LASF81:
+ 3383 03c1 6973725F 		.ascii	"isr_EOC_3_StartEx\000"
+ 3383      454F435F 
+ 3383      335F5374 
+ 3383      61727445 
+ 3383      7800
+ 3384              	.LASF37:
+ 3385 03d3 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3385      52784275 
+ 3385      66666572 
+ 3385      00
+ 3386              	.LASF89:
+ 3387 03e0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3387      43313120 
+ 3387      352E342E 
+ 3387      31203230 
+ 3387      31363036 
+ 3388 0413 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3388      20726576 
+ 3388      6973696F 
+ 3388      6E203233 
+ 3388      37373135 
+ 3389 0446 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 3389      66756E63 
+ 3389      74696F6E 
+ 3389      2D736563 
+ 3389      74696F6E 
+ 3390              	.LASF28:
+ 3391 046e 76616C34 		.ascii	"val4\000"
+ARM GAS  C:\Users\FRANCI~2\AppData\Local\Temp\ccAgjSzM.s 			page 72
+
+
+ 3391      00
+ 3392              	.LASF74:
+ 3393 0473 476F5374 		.ascii	"GoStraight\000"
+ 3393      72616967 
+ 3393      687400
+ 3394              	.LASF25:
+ 3395 047e 6D566F6C 		.ascii	"mVolts2\000"
+ 3395      74733200 
+ 3396              	.LASF27:
+ 3397 0486 6D566F6C 		.ascii	"mVolts3\000"
+ 3397      74733300 
+ 3398              	.LASF29:
+ 3399 048e 6D566F6C 		.ascii	"mVolts4\000"
+ 3399      74733400 
+ 3400              	.LASF31:
+ 3401 0496 6D566F6C 		.ascii	"mVolts5\000"
+ 3401      74733500 
+ 3402              	.LASF33:
+ 3403 049e 6D566F6C 		.ascii	"mVolts6\000"
+ 3403      74733600 
+ 3404              	.LASF83:
+ 3405 04a6 4144435F 		.ascii	"ADC_SAR_Seq_1_Start\000"
+ 3405      5341525F 
+ 3405      5365715F 
+ 3405      315F5374 
+ 3405      61727400 
+ 3406              	.LASF82:
+ 3407 04ba 55534255 		.ascii	"USBUART_1_Start\000"
+ 3407      4152545F 
+ 3407      315F5374 
+ 3407      61727400 
+ 3408              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

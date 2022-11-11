@@ -1,0 +1,6 @@
+C:\Users\Francis Cho\Documents\School\Path_Finding_Robot\PathFindingRobot_Workspace\Path_Finding_Robot.cydsn\Path_Finding_Robot.cyprj|ed5ed7e5-fe5b-409d-8cc5-755f31d480b6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|9df94d57-682d-4e47-9cb1-1357b945f0c9
+C:\Users\Francis Cho\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|4a6cd64b-85c0-4346-9862-f57d72ee76f0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|ac68d9ea-29f5-4ab8-b538-c15e3709d209
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|94ca215e-0d21-4b71-8d68-7c62777dc425
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bf450e2b-15e1-4a7c-b880-6fc8d69d46bc
